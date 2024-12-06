@@ -4,10 +4,10 @@ from sympy import *
 from scipy.integrate import odeint
 
 m = 1 #mass of inflaton
-phi0 = 1.1 #non-propagating field
+phi0 = 1.5 #non-propagating field
 
-s = 5 #model param1 (sigma)
-v = 10 #model param2 (nu)
+s = 11 #model param1 (sigma)
+v = 50 #model param2 (nu)
 c = 0 #integration constant
 
 f = np.sqrt(v-s**2/4)
@@ -36,7 +36,7 @@ def eta(phi):
     return ddV(phi) / V0(phi)
 
 # Define a range of phi values
-phi = np.linspace(0, 100, 500)
+phi = np.linspace(0, 10, 500)
 
 # Compute values for potential and slow-roll parameters
 v1 = V0(phi)
