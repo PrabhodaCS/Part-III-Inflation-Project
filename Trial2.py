@@ -4,7 +4,7 @@ from sympy import *
 from scipy.integrate import odeint
 
 m = 1 #mass of inflaton
-phi0 = 1.5 #non-propagating field
+phi0 = 1.5 #non-propagating field (Dimensions of Mass [phi0]=M)
 
 s = 11 #model param1 (sigma)
 v = 50 #model param2 (nu)
@@ -53,7 +53,7 @@ L = np.array(L)
 Mv = V0(L)
 
 # Defining Hubble Constant given slow roll conditions (dφ/dt)**2 << V(φ)
-f = 8*pi/3*v1
+f = 8*pi/(3*v1)
 f = f.astype(float)
 H = np.sqrt(f)
 
@@ -95,14 +95,18 @@ plt.xlabel("φ")
 plt.ylabel("V(φ)")
 plt.legend()
 plt.grid()
-
 plt.tight_layout()
+plt.savefig("Potential and Slow-Roll Parameters")
 plt.show()
 
 # isolating values of slow-rolling φ
 def csr(phi):
     return epsilon(phi) < 1 and abs(eta(phi)) < 1
 
+
+### NOT REQUIRED
+
+"""
 fp = []
 ft = []
 for i in range(len(t)):
@@ -112,6 +116,7 @@ for i in range(len(t)):
 
 fp1 = np.array(fp)
 t1 = np.array(ft)
+"""
 
 # Plot the phase diagram: φ vs dφ/dt
 dphi_dt = np.array([dp(p, 0) for p in L])  # Calculate dφ/dt for slow-rolling φ values
@@ -123,16 +128,17 @@ plt.ylabel("dφ/dt")
 plt.legend()
 plt.grid()
 plt.tight_layout()
+plt.savefig("Phase Diagram p vs dpdt")
 plt.show()
 
 #Plot the diagram of φ(t)
 plt.figure(figsize=(10, 6))
 plt.plot(t, pt, label="φ(t)")
-plt.plot(t1,fp1,label = "Another")
 plt.title("φ as a function of t")
 plt.xlabel("t")
 plt.ylabel("φ")
 plt.legend()
 plt.grid()
 plt.tight_layout()
+plt.savefig("Field as a function of t")
 plt.show()
