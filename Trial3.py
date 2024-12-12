@@ -10,8 +10,9 @@ phi0 = 1.5  # non-propagating field (Dimensions of Mass [phi0]=M)
 s = 11  # model parameter sigma
 v = 50  # model parameter nu
 d = 1.5 #minima of potential
-c = 6.91 + d  # integration constant (minima + displacement)
 f = np.sqrt(v - s**2 / 4)
+
+c = -f*phi0*np.arcsinh(-s/(2*f)) + d  # integration constant (minima + displacement)
 
 eh = 0.02 #initial slow roll parameter (1/2)*(dp/dN)**2
 
@@ -120,7 +121,7 @@ plt.ylabel(r"$\phi$")
 plt.legend()
 plt.grid()
 plt.tight_layout()
-plt.savefig("Field_ as a function of t")
+plt.savefig("Field as a function of N")
 plt.show()
 
 # Plot the velocity evolution dφ(N)
@@ -133,5 +134,5 @@ plt.ylabel(r"$\phi$")
 plt.legend()
 plt.grid()
 plt.tight_layout()
-plt.savefig("Field velocity as a function of t")
+plt.savefig("Field velocity as a function of N")
 plt.show()
