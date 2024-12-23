@@ -121,7 +121,7 @@ plt.text(-yj, cd + 6*xd, f"$c'$ = {c_:.2f}", fontsize=10)
 
 plt.text(-yj, cd + 2*xd, f'μ = {m:.2f}', fontsize=10)
 plt.text(-yj, cd + xd, f'φ₀ = {phi0:.2f}', fontsize=10)
-plt.text(-yj, cd, f's = {s:.2f}', fontsize=10)
+plt.text(-yj, cd, f'σ = {s:.2f}', fontsize=10)
 plt.text(-yj, cd - xd, f'ν = {v:.2f}', fontsize=10)
 plt.text(-yj, cd - 2*xd, f'c = {c:.2f}', fontsize=10)
 
