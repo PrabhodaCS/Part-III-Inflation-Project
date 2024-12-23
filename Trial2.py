@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 from sympy import *
 from scipy.integrate import odeint
 
-m = 1 #mass of inflaton
-phi0 = 1.5 #non-propagating field (Dimensions of Mass [phi0]=M)
+m = 1  # mass of inflaton
+phi0 = 1.5  # non-propagating field (Dimensions of Mass [phi0]=M)
+s = 11  # model parameter sigma
+v = 50  # model parameter nu
+d = 1.5 #minima of potential
+f = np.sqrt(v - s**2 / 4)
 
-s = 11 #model param1 (sigma)
-v = 50 #model param2 (nu)
-c = 0 #integration constant
-
-f = np.sqrt(v-s**2/4)
+c = 0  # integration constant (minima @ 0c + displacement)
 
 p_s = symbols('phi')
 
@@ -75,11 +75,11 @@ t=np.linspace(0,10,100)
 
 
 ef1, efolds_func = ef(L[-1], L[0])
-print(ef1)
 
 pt=odeint(dp,p0,t)
 #print(f"φ(t) Evolution: Final φ = {pt[-1][0]:.3f}")  (No need?) ,,check
 print(f"Number of e-folds (symbolic integration): {ef1:.3f}")
+print("The form of the N functions is :", efolds_func)
 
 
 # Plot potential

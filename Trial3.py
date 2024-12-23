@@ -12,7 +12,8 @@ v = 50  # model parameter nu
 d = 1.5 #minima of potential
 f = np.sqrt(v - s**2 / 4)
 
-c = -f*phi0*np.arcsinh(-s/(2*f)) + d  # integration constant (minima + displacement)
+c = -f*phi0*np.arcsinh(-s/(2*f)) + d  # integration constant (minima @ 0c + displacement)
+
 
 eh = 0.02 #initial slow roll parameter (1/2)*(dp/dN)**2
 
@@ -20,7 +21,6 @@ eh = 0.02 #initial slow roll parameter (1/2)*(dp/dN)**2
 p_s = symbols('phi')
 Vp = (m**2) * (phi0**4) / 2 * (s / 2 + f * sinh((p_s - c) / (f * phi0)))**2
 print("The potential V(φ) is:", Vp)
-
 
 
 V_ = diff(Vp, p_s)
