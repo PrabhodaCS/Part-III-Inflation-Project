@@ -106,6 +106,7 @@ scal = (np.max(v_1) / np.max(v_2))
 print("The scaling factor is : ", scal)
 v_2 = v_2 * scal
 
+
 # Plot potentials
 plt.figure(figsize=(10, 6))
 plt.plot(phi, v_1, label="V(φ)", color="blue")
@@ -115,7 +116,8 @@ plt.plot(L, Mv, label = "Slow Roll Region", color = "green")
 # Adding parameter values as text annotations
 yj = 5
 xd = 5
-cd = 60
+cd = max(v_2)/2
+print(cd)
 plt.text(-yj, cd + 7*xd, f'β = {b:.2f}', fontsize=10)
 plt.text(-yj, cd + 6*xd, f"$c'$ = {c_:.2f}", fontsize=10)
 
