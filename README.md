@@ -17,3 +17,8 @@ In this project we will investigate the inflationary signatures of scale-invaria
 1. We may focus on the theoretical development of the model, such as the addition of extra so-called "compensator" fields, and the resulting implications for the potential. It is also possible to explore whether unusual features are present in the potential which could give rise to non-standard power spectra (e.g. inflection points leading to ultra-slow-roll inflation).
 
 2. We may go beyond the boilerplate comparison with summary statistics of the Planck data, as usually seen in the [hep-th] literature, and perform an [astro-ph.CO]-style Bayesian analysis to constrain the theory. This route will require the candidate to use high-performance computing techniques and learn about Bayesian inference in precision cosmology.
+
+
+### Structure of GitHub Repo
+
+The LaTeX folder contains the working notebook. This includes any updates and current state of progress (Please note, it may not be up to date and updates are meant to be in shorthand despite work done). The Python folder contains milestone/important pieces of code+graphs generated. The mathematica notebooks are also used to show sample calculations being conducted at current time. (The same notice of it not being up to date/ in shorthand applies the latter two too)
