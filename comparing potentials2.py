@@ -117,7 +117,6 @@ plt.plot(L, Mv, label = "Slow Roll Region", color = "green")
 yj = 5
 xd = 5
 cd = max(v_2)/2
-print(cd)
 plt.text(-yj, cd + 7*xd, f'β = {b:.2f}', fontsize=10)
 plt.text(-yj, cd + 6*xd, f"$c'$ = {c_:.2f}", fontsize=10)
 
