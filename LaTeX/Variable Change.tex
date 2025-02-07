@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -59,7 +61,7 @@ where
     \text{X}(\varphi) =  \frac{\varphi}{\phi_0 \sqrt{\nu - \frac{\sigma^2}{4}}} - \frac{c}{\phi_0 \sqrt{\nu - \frac{\sigma^2}{4}}}
 \end{equation}
 
-\section{Translating Variables}
+\section{Translating Variables}   \label{Section 2}
 We know that, $[\beta] = [M_{p}^{2}]$  and $[c'] = 0$ from \cite{Pradisi_2022}. If we want $\varphi = \omega$ (it can't be $\varphi = f(\omega)$ as that would ruin the $(\partial\varphi)^2$ term in Lagrangian), we are forced to make the substitutions that make dimensional sense:
 
 \begin{align}
@@ -93,10 +95,63 @@ Below is a plot of the aligned graphs with $M_p = 1$ and the values of the param
     \label{Aligned Potential}
 \end{figure}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Insert greek in mathematica.png}
+    \caption{Personal Ref}
+    \label{Greek in Mathematica}
+\end{figure}
+
 For this value of $\beta$, we get $N = 73.582$ as the number of e-folds.
+
+\newpage
+
+\newpage
+\section{Coupling to gravity}
+
+
+To find invariant form of Ricci scalar, look at Christoffel symbol. Can be offset by defining
+
+
+\begin{equation}
+    \mathcal{T}^{\alpha}_{\beta \gamma} = \Gamma^{\alpha}_{\beta \gamma} + (\delta^{\alpha}_{\beta} B_{\gamma} + \delta^{\alpha}_{\gamma} B_{\beta} - g_{\beta \gamma}g^{\alpha \tau}B_{\tau})
+\end{equation}
+
+where $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu} \rho$ under a conformal transformation like in \cite{barker2024poincaregaugetheoryconformal}, 
+
+Using this new conformally covariant connection in the definition of the Riemman tennsor and contracting to get conformally covariant Ricci Scalar (CCRS), we get 
+
+
+\begin{equation}
+    \tilde{R} = R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
+\end{equation}
+
+So lagrangian is ? ? 
+
+Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces fundamental scale (as seen in prev section \ref{Section 2}, $\phi_0 \sim M_p$), maybe first couple it directly to CCRS, gives us an action in the Jordan Frame, then, transform to Einstein frame, and then minimally couple to inflaton field $\varphi$ in the PHYSICAL Einstein Frame?
+
+\begin{equation}
+    \mathcal{L} = (A\phi^2 + B\varphi^2) \tilde{R} + \frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi  +  \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L} = &\; (A\phi^2 + B\varphi^2)R - 6(A\phi^2 + B\varphi^2)(B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \\
+        & +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \\
+        & - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \end{aligned}
+\end{equation}
 
 
 \newpage
+\begin{equation}
+    \mathcal{L} = \frac{\epsilon \alpha}{2} \frac{D_{\mu}\varphi D^{\mu}\varphi}{\phi^2 + \varphi^2} + \frac{\sigma \alpha}{2} \frac{D_{\mu}\varphi D^{\mu}\phi}{\phi^2 + \varphi^2}  +  \frac{\nu \alpha}{2} \frac{D_{\mu}\phi D^{\mu}\phi}{\phi^2 + \varphi^2}
+\end{equation}
+
+
+\newpage
+
 \printbibliography
 
 \end{document}
+
