@@ -24,7 +24,7 @@ sorting=none]{biblatex}
 \addbibresource{PartIIIProjectTemplate.bib}
 
 
-\title{Variable change}
+\title{Project Progress Notebook}
 \author{PRABHODA C S}
 \date{December 2024}
 
@@ -32,7 +32,7 @@ sorting=none]{biblatex}
 
 \maketitle
 
-\section{Introduction}  \label{Section 1}
+\section{Variable translation from Salvio to Barker}  \label{Section 1}
 Silvio \cite{Salvio_2022} and especially \cite{Pradisi_2022}, give us for the potential
 
 \begin{equation}
@@ -61,7 +61,7 @@ where
     \text{X}(\varphi) =  \frac{\varphi}{\phi_0 \sqrt{\nu - \frac{\sigma^2}{4}}} - \frac{c}{\phi_0 \sqrt{\nu - \frac{\sigma^2}{4}}}
 \end{equation}
 
-\section{Translating Variables}   \label{Section 2}
+\subsection{Translating Variables}   \label{Section 1.1}
 We know that, $[\beta] = [M_{p}^{2}]$  and $[c'] = 0$ from \cite{Pradisi_2022}. If we want $\varphi = \omega$ (it can't be $\varphi = f(\omega)$ as that would ruin the $(\partial\varphi)^2$ term in Lagrangian), we are forced to make the substitutions that make dimensional sense:
 
 \begin{align}
@@ -129,15 +129,15 @@ Using this new conformally covariant connection in the definition of the Riemman
 Under a conformal transformation $g_{\mu\nu} \rightarrow e^{2\rho}g_{\mu\nu}$, $\tilde{R} \rightarrow e^{-2\rho} \tilde{R}$
 So lagrangian is ? ? 
 
-Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces fundamental scale (as seen in prev section \ref{Section 2}, $\phi_0 \sim M_p$), maybe first couple it directly to CCRS, gives us an action in the Jordan Frame, then, transform to Einstein frame, and then minimally couple to inflaton field $\varphi$ in the PHYSICAL Einstein Frame?
+Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces fundamental scale (as seen in prev section \ref{Section 1.1}, $\phi_0 \sim M_p$), maybe first couple it directly to CCRS, gives us an action in the Jordan Frame, then, transform to Einstein frame, and then minimally couple to inflaton field $\varphi$ in the PHYSICAL Einstein Frame?
 
 \begin{equation}
-    \mathcal{L} = (A\phi^2 + B\varphi^2) \tilde{R} + \frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi  +  \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \mathcal{L} = (\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi) \tilde{R} + \frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi  +  \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
 \end{equation}
 
 \begin{equation}
     \begin{aligned}
-        \mathcal{L} = &\; (A\phi^2 + B\varphi^2)R - 6(A\phi^2 + B\varphi^2)(B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \\
+        \mathcal{L} = &\; (\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)R - 6((\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)(B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \\
         & +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \\
         & - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
     \end{aligned}
@@ -147,8 +147,28 @@ Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces funda
 Taking a leaf out of \cite{barker2024poincaregaugetheoryconformal}, we pick a gauge choice $g_{\mu \nu} \rightarrow \frac{\phi_0}{\phi} g_{\mu \nu}$, $\varphi \rightarrow \frac{\phi}{\phi_0} \varphi$ and $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu} ln(\phi)$. So that, the resulting action (still in jordan frame)
 
 \begin{equation}
-    \mathcal{L} = (A\phi^2_0 + B\varphi^2) (R - 6B_{\mu} B^{\mu} - 6\nabla_\mu B^\mu) + \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi - \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu) - \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \begin{aligned}
+        \mathcal{L} &= (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) (R - 6B_{\mu} B^{\mu} - 6\nabla_\mu B^\mu) \\
+        &+ \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi + \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu)\\
+        &- \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \end{aligned}
 \end{equation}
+
+Assuming $\xi << 1$ again or other conditions based on result, we solve for Euler-Lagrange Equations for field $B_\mu$ and get:
+
+\begin{equation}
+    B_\mu = \frac{1}{2} \partial_\mu \text{ln}(\epsilon \varphi^2 - \sigma \phi_0 \varphi + \nu \phi^2_0 -12 (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi))
+\end{equation}
+
+That is.
+
+\begin{equation}
+    B_\mu = \frac{1}{2} \partial_\mu \text{ln}((\epsilon - \beta') \varphi^2 - (\sigma + \gamma') \phi_0 \varphi + (\nu - \alpha')\phi^2_0)
+\end{equation}
+
+Where, $\alpha' = 12\alpha, \beta' = 12\beta \text{ and } \gamma' = 12 \gamma$
+
+gi
 
 
 \newpage
