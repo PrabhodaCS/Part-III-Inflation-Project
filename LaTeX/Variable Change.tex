@@ -126,6 +126,7 @@ Using this new conformally covariant connection in the definition of the Riemman
     \tilde{R} = R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
 \end{equation}
 
+Under a conformal transformation $g_{\mu\nu} \rightarrow e^{2\rho}g_{\mu\nu}$, $\tilde{R} \rightarrow e^{-2\rho} \tilde{R}$
 So lagrangian is ? ? 
 
 Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces fundamental scale (as seen in prev section \ref{Section 2}, $\phi_0 \sim M_p$), maybe first couple it directly to CCRS, gives us an action in the Jordan Frame, then, transform to Einstein frame, and then minimally couple to inflaton field $\varphi$ in the PHYSICAL Einstein Frame?
@@ -143,9 +144,10 @@ Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces funda
 \end{equation}
 
 
-\newpage
+Taking a leaf out of \cite{barker2024poincaregaugetheoryconformal}, we pick a gauge choice $g_{\mu \nu} \rightarrow \frac{\phi_0}{\phi} g_{\mu \nu}$, $\varphi \rightarrow \frac{\phi}{\phi_0} \varphi$ and $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu} ln(\phi)$. So that, the resulting action (still in jordan frame)
+
 \begin{equation}
-    \mathcal{L} = \frac{\epsilon \alpha}{2} \frac{D_{\mu}\varphi D^{\mu}\varphi}{\phi^2 + \varphi^2} + \frac{\sigma \alpha}{2} \frac{D_{\mu}\varphi D^{\mu}\phi}{\phi^2 + \varphi^2}  +  \frac{\nu \alpha}{2} \frac{D_{\mu}\phi D^{\mu}\phi}{\phi^2 + \varphi^2}
+    \mathcal{L} = (A\phi^2_0 + B\varphi^2) (R - 6B_{\mu} B^{\mu} - 6\nabla_\mu B^\mu) + \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi - \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu) - \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
 \end{equation}
 
 
