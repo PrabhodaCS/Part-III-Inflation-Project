@@ -19,6 +19,14 @@ In this project we will investigate the inflationary signatures of scale-invaria
 2. We may go beyond the boilerplate comparison with summary statistics of the Planck data, as usually seen in the [hep-th] literature, and perform an [astro-ph.CO]-style Bayesian analysis to constrain the theory. This route will require the candidate to use high-performance computing techniques and learn about Bayesian inference in precision cosmology.
 
 
-### Structure of GitHub Repo
+# Structure of GitHub Repo
 
 The LaTeX folder contains the working notebook. This includes any updates and current state of progress (Please note, it may not be up to date and updates are meant to be in shorthand despite work done). The Python folder contains milestone/important pieces of code+graphs generated. The mathematica notebooks are also used to show sample calculations being conducted at current time. (The same notice of it not being up to date/ in shorthand applies the latter two too)
+
+## Mathematica Folder
+
+The "Learning Notebook.nb" serves as an introductory testfile + playground for me to learn the commands used in the rest of the notebooks. The "Salvio into Barker variables.nb" too serves as an elementary application of these tests. These may be overlooked for other viewers.
+
+The "Finding Conf Invariant Tensor.nb" was my attempt at deriving a conformally invariant version of the Ricci Scalar. This was before I learned of the existence of the Weyl Curvature Scalar, but either way, served as an excellent testfile for me to learn and practice the xAct module.
+
+The "Finding Action.nb" is my ongoing attempt at solving the EOM for the B vector and entering that into the action to find the final form of the potential. Further work needed in this section (Is it possible to simplify further on Mathematica at all?).
