@@ -25,8 +25,8 @@ The LaTeX folder contains the working notebook. This includes any updates and cu
 
 ### Mathematica Folder
 
-The "Learning Notebook.nb" serves as an introductory testfile + playground for me to learn the commands used in the rest of the notebooks. The "Salvio into Barker variables.nb" too serves as an elementary application of these tests. These may be overlooked for other viewers.
+1. The "Learning Notebook.nb" serves as an introductory testfile + playground for me to learn the commands used in the rest of the notebooks. The "Salvio into Barker variables.nb" too serves as an elementary application of these tests. These may be overlooked for other viewers.
 
-The "Finding Conf Invariant Tensor.nb" was my attempt at deriving a conformally invariant version of the Ricci Scalar. This was before I learned of the existence of the Weyl Curvature Scalar, but either way, served as an excellent testfile for me to learn and practice the xAct module.
+2. The "Finding Conf Invariant Tensor.nb" was my attempt at deriving a conformally invariant version of the Ricci Scalar. This was before I learned of the existence of the Weyl Curvature Scalar, but either way, served as an excellent testfile for me to learn and practice the xAct module.
 
-The "Finding Action.nb" is my ongoing attempt at solving the EOM for the B vector and entering that into the action to find the final form of the potential. Further work needed in this section (Is it possible to simplify further on Mathematica at all?).
+3. The "Finding Action.nb" is my ongoing attempt at solving the EOM for the B vector and entering that into the action to find the final form of the potential. Further work needed in this section (Is it possible to simplify further on Mathematica at all?).
