@@ -19,11 +19,11 @@ In this project we will investigate the inflationary signatures of scale-invaria
 2. We may go beyond the boilerplate comparison with summary statistics of the Planck data, as usually seen in the [hep-th] literature, and perform an [astro-ph.CO]-style Bayesian analysis to constrain the theory. This route will require the candidate to use high-performance computing techniques and learn about Bayesian inference in precision cosmology.
 
 
-# Structure of GitHub Repo
+## Structure of GitHub Repo
 
 The LaTeX folder contains the working notebook. This includes any updates and current state of progress (Please note, it may not be up to date and updates are meant to be in shorthand despite work done). The Python folder contains milestone/important pieces of code+graphs generated. The mathematica notebooks are also used to show sample calculations being conducted at current time. (The same notice of it not being up to date/ in shorthand applies the latter two too)
 
-## Mathematica Folder
+### Mathematica Folder
 
 The "Learning Notebook.nb" serves as an introductory testfile + playground for me to learn the commands used in the rest of the notebooks. The "Salvio into Barker variables.nb" too serves as an elementary application of these tests. These may be overlooked for other viewers.
 
