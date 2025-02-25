@@ -18,6 +18,12 @@
 \usepackage{comment}
 \usepackage{lipsum}
 
+\usepackage{xcolor}
+
+\newcommand{\highlight}[1]{%
+  \colorbox{red!50}{$\displaystyle#1$}}
+
+
 \usepackage[style=nejm, 
 citestyle=numeric-comp,
 sorting=none]{biblatex}
@@ -157,19 +163,60 @@ Taking a leaf out of \cite{barker2024poincaregaugetheoryconformal}, we pick a ga
 Assuming $\xi << 1$ again or other conditions based on result, we solve for Euler-Lagrange Equations for field $B_\mu$ and get:
 
 \begin{equation}
-    B_\mu = \frac{1}{2} \partial_\mu \text{ln}(\epsilon \varphi^2 - \sigma \phi_0 \varphi + \nu \phi^2_0 -12 (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi))
+    B_\mu = \frac{1}{2} \partial_\mu \text{ln}(\epsilon \varphi^2 + \sigma \phi_0 \varphi + \nu \phi^2_0 -12 (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi))
 \end{equation}
 
 That is.
 
 \begin{equation}
-    B_\mu = \frac{1}{2} \partial_\mu \text{ln}((\epsilon - \beta') \varphi^2 - (\sigma + \gamma') \phi_0 \varphi + (\nu - \alpha')\phi^2_0)
+    B_\mu = \frac{1}{2} \partial_\mu \text{ln}((\epsilon - \beta') \varphi^2 + (\sigma - \gamma') \phi_0 \varphi + (\nu - \alpha')\phi^2_0)
 \end{equation}
 
 Where, $\alpha' = 12\alpha, \beta' = 12\beta \text{ and } \gamma' = 12 \gamma$
 
-gi
+Now inputting that value of $B_\mu$ into the action and plugging through the calculations, we get
 
+\begin{equation}
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) R \\
+          & - 6 (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)B_{\mu} B^{\mu} + 6\partial_\mu (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)B^\mu \\
+        &+ \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi + \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu)\\
+        &- \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} ] 
+    \end{aligned}
+\end{equation}
+
+becomes
+
+\begin{equation}
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) R \\
+        &+ \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)- \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+where $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$
+
+Let us reparametrize the metric such that the action takes the form of an Einstein-Hilbert Lagrangian + Matter Lagrangian. For this we choose $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu} $, this makes the  Ricci Scalar go as $\Omega^{-2} [R - 6\frac{\Box\Omega}{\Omega}]$, by setting $\Omega^2 = A^{-1} * M^{-2}$, where $A = (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)$ and M is the coupling constant (Planck Mass) and something we can use to eliminate one of the 6 variables in our equation and make it simpler. So action becomes
+
+\begin{equation}
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ \frac{1}{M^2}  R \\
+        &+ \Omega^2 \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi) - \frac{3}{2M^2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
+        &- \Omega^4 \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+which subbing in $\Omega^4$, we get,
+\begin{equation}
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
+        &+ M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta \highlight{V}} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)\\ 
+        &- \frac{3M^2}{2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
+        &-  \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+where this $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$ and is the only part which contains the original Barker variables $\{\epsilon, \nu, \sigma \}$, so can't assume Discriminant = 0? Or use this to set other variables?
 
 \newpage
 
