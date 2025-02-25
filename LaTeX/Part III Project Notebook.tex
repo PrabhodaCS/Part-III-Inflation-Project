@@ -187,7 +187,7 @@ Now inputting that value of $B_\mu$ into the action and plugging through the cal
 
 becomes
 
-\begin{equation}
+\begin{equation} \label{24}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) R \\
         &+ \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)- \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
@@ -207,7 +207,7 @@ Let us reparametrize the metric such that the action takes the form of an Einste
 \end{equation}
 
 which subbing in $\Omega^4$, we get,
-\begin{equation}
+\begin{equation} \label{26}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
         &+ M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta \highlight{V}} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)\\ 
@@ -217,6 +217,38 @@ which subbing in $\Omega^4$, we get,
 \end{equation}
 
 where this $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$ and is the only part which contains the original Barker variables $\{\epsilon, \nu, \sigma \}$, so can't assume Discriminant = 0? Or use this to set other variables?
+
+\newpage
+
+GOING BACK TO EQN \ref{24}, WE CAN...
+
+if $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta )$
+
+If D assumed small (teehee), maybe $\approx 1 - D/V$ can be assumed to be a taylor expansion of some function and contracted? 
+
+If D small, we can assume the $\sqrt{\text{expr}} \approx \left[ 1 + \frac{\phi_0^2*D}{96\beta V}  \right]$, if $A = \frac{\phi_0^2*D}{48\beta}$
+
+For that,
+\begin{equation}
+    \tilde{\varphi} = \varphi-\frac{ A \tanh ^{-1}\left(\frac{12 \gamma  \phi_0 -\sigma  \phi_0 +24 \beta  \varphi-2 \varphi \epsilon }{\phi_0  \sqrt{-576 \alpha  \beta +48 \alpha  \epsilon +48 \beta  \nu +144 \gamma ^2-24 \gamma  \sigma +\sigma ^2-4 \nu  \epsilon }}\right)}{\phi_0  \sqrt{-576 \alpha  \beta +48 \alpha  \epsilon +48 \beta  \nu +144 \gamma ^2-24 \gamma  \sigma +\sigma ^2-4 \nu  \epsilon }}
+\end{equation}
+
+
+\begin{equation}
+    \tilde{\varphi} = \sqrt{30\beta} \left[ \varphi - \frac{\phi_0}{48\beta}\sqrt{D} \tanh^{-1} \left( \frac{2\varphi (12\beta - \epsilon) + \phi_0 (12\gamma - \sigma)}{\phi_0 \sqrt{D}}\right) \right]
+\end{equation}
+
+NOW, WE CAN GO BACK TO EQN \ref{26}, we get
+
+\begin{equation} \label{26}
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
+        &+ M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{1}{2} (\partial_\mu  \tilde{\varphi} \partial^\mu \tilde{\varphi})  \\
+        &-  \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+
 
 \newpage
 
