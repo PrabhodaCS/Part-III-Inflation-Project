@@ -30,3 +30,6 @@ The LaTeX folder contains the working notebook. This includes any updates and cu
 2. The "Finding Conf Invariant Tensor.nb" was my attempt at deriving a conformally invariant version of the Ricci Scalar. This was before I learned of the existence of the Weyl Curvature Scalar, but either way, served as an excellent testfile for me to learn and practice the xAct module.
 
 3. The "Finding Action.nb" is my ongoing attempt at solving the EOM for the B vector and entering that into the action to find the final form of the potential. Further work needed in this section (Is it possible to simplify further on Mathematica at all?).
+  
+4.  The "Rubi Learning.nb" is the nb in which I calculated the field redefinitions and tried out possible different expansions for field redefinitions /potential redefinitions
+
