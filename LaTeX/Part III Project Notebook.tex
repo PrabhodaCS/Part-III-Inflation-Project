@@ -185,7 +185,7 @@ becomes
 \begin{equation} \label{24}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) R \\
-        &+ \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)- \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+        &- 12 \beta \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)- \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 
@@ -193,19 +193,21 @@ where $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi 
 
 Let us reparametrize the metric such that the action takes the form of an Einstein-Hilbert Lagrangian + Matter Lagrangian. For this we choose $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu} $, this makes the  Ricci Scalar go as $\Omega^{-2} [R - 6\frac{\Box\Omega}{\Omega}]$, by setting $\Omega^2 = A^{-1} * M^{-2}$, where $A = (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)$ and M is the coupling constant (Planck Mass) and something we can use to eliminate one of the 6 variables in our equation and make it simpler. So action becomes
 
+\begin{comment}    
 \begin{equation}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ \frac{1}{M^2}  R \\
-        &+ \Omega^2 \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi) - \frac{3}{2M^2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
+        &- \frac{24 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi) (\partial_\mu \varphi \partial^\mu \varphi) - \frac{3}{2M^2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
         &- \Omega^4 \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
+\end{comment}
 
 which subbing in $\Omega^4$, we get,
 \begin{equation} \label{26}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
-        &+ M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{30 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta \highlight{V}} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right] (\partial_\mu \varphi \partial^\mu \varphi)\\ 
+        &- M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{24 \beta}{2} \left[ 1 - \frac{\phi_0^2}{48\beta V} [(\sigma - 12\gamma)^2 - 4(\epsilon - 12 \beta)(\nu - 12\alpha) ] \right]  (\partial_\mu \varphi \partial^\mu \varphi)\\ 
         &- \frac{3M^2}{2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
         &-  \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
@@ -214,7 +216,7 @@ which subbing in $\Omega^4$, we get,
 where this $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$ and is the only part which contains the original Barker variables $\{\epsilon, \nu, \sigma \}$, so can't assume Discriminant = 0? Or use this to set other variables?
 
 
-\textbf{GOING BACK TO EQN \ref{24}, WE CAN...}
+\textbf{GOING BACK TO EQN \ref{24}, WE CAN... ###Scrapped method}
 
 if $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta )$
 
@@ -225,13 +227,16 @@ actually, $D * \phi_0 \propto M_P$, so maybe $D/\beta$ small?
 If D small, we can assume the $\sqrt{\text{expr}} \approx \left[ 1 + \frac{\phi_0^2*D}{96\beta V}  \right]$, if $A = \frac{\phi_0^2*D}{48\beta}$
 
 For that,
-\begin{equation}
+\begin{comment}
+    \begin{equation}
     \tilde{\varphi} = \varphi-\frac{ A \tanh ^{-1}\left(\frac{12 \gamma  \phi_0 -\sigma  \phi_0 +24 \beta  \varphi-2 \varphi \epsilon }{\phi_0  \sqrt{-576 \alpha  \beta +48 \alpha  \epsilon +48 \beta  \nu +144 \gamma ^2-24 \gamma  \sigma +\sigma ^2-4 \nu  \epsilon }}\right)}{\phi_0  \sqrt{-576 \alpha  \beta +48 \alpha  \epsilon +48 \beta  \nu +144 \gamma ^2-24 \gamma  \sigma +\sigma ^2-4 \nu  \epsilon }}
 \end{equation}
+\end{comment}
+
 
 
 \begin{equation}
-    \tilde{\varphi} = \sqrt{30\beta} \left[ \varphi - \frac{\phi_0}{48\beta}\sqrt{D} \tanh^{-1} \left( \frac{2\varphi (12\beta - \epsilon) + \phi_0 (12\gamma - \sigma)}{\phi_0 \sqrt{D}}\right) \right]
+    \tilde{\varphi} = \sqrt{24\beta} \left[ \varphi - \frac{\phi_0}{48\beta}\sqrt{D} \tanh^{-1} \left( \frac{2\varphi (12\beta - \epsilon) + \phi_0 (12\gamma - \sigma)}{\phi_0 \sqrt{D}}\right) \right]
 \end{equation}
 
 NOW, WE CAN GO BACK TO EQN \ref{26}, we get
@@ -239,12 +244,82 @@ NOW, WE CAN GO BACK TO EQN \ref{26}, we get
 \begin{equation} \label{26}
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
-        &+ M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{1}{2} (\partial_\mu  \tilde{\varphi} \partial^\mu \tilde{\varphi})  \\
+        &- M^2 \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)} \frac{1}{2} (\partial_\mu  \tilde{\varphi} \partial^\mu \tilde{\varphi})  \\
+        &- 3 M^2 \frac{(2\beta \varphi + \gamma \phi_0)^2}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{1}{2}(\partial_\mu \varphi \partial^\mu \varphi)  \\
         &-  \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 
 
+\subsection{ALT METHOD }
+Madness or 
+
+We have 6 variables in V ; $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$
+
+Going back to the initial Lagrangian, we see, that by field redefinition, we can remove two of them. Two d.o.f available, so 4 legit variables then.
+
+Say $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0] = k*[\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0 ]$, therefore only 4 variables still remain free; $\{k, \beta, \gamma, \alpha \}$
+
+\begin{equation}
+    \begin{pmatrix}
+        \epsilon \\ \sigma \\ \nu 
+    \end{pmatrix}
+    = (12+k)
+    \begin{pmatrix}
+        \beta \\ \gamma \\ \alpha
+    \end{pmatrix}
+\end{equation}
+
+Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta ) = k^2 (\gamma^2 - 4\alpha \beta) = (\frac{k}{12+k})^2 (\sigma^2 -4 \epsilon \nu)$
+
+So \ref{26} becomes...
+
+\begin{equation} 
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
+        &- M^2 \frac{1}{A} \frac{24 \beta}{2} \left[ 1 - \frac{\phi_0^2 k}{48\beta A} [(\gamma^2 - 4\alpha \beta) ] \right]  (\partial_\mu \varphi \partial^\mu \varphi)\\ 
+        &- \frac{3M^2}{2} \frac{(2\beta \varphi + \gamma \phi_0)^2}{A^2} (\partial_\mu \varphi \partial^\mu \varphi)  \\
+        &-  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+where $A = (\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0)$
+
+Simplifying this, we get,
+
+
+\begin{equation} 
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
+        &- \frac{M^2}{2} \left[\frac{36}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6\beta)}{2\beta A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) \\
+        &-  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+    \end{aligned}
+\end{equation}
+
+\subsubsection{CASE I : $k = 6\beta$}
+In this case, the field redefinition,
+
+\begin{equation}
+    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \frac{6M}{\sqrt{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0}} \right]
+\end{equation}
+gives, 
+
+\begin{equation}
+    \tilde{\varphi} = 6M \frac{1}{\sqrt{\beta}} \sinh^{-1} \left(\frac{2\varphi\beta+\gamma\phi_0}{\phi_0 \sqrt{4\alpha\beta -\gamma^2}} \right) - C
+\end{equation}
+so,
+
+\begin{equation}
+    \varphi = \frac{\phi_0}{2 \beta} \left[ \gamma - \sqrt{D}\sinh[ \frac{\sqrt{\beta }\tilde{\varphi}}{6M} + C] \right]
+\end{equation}
+
+\begin{equation} 
+    \begin{aligned}
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R - \frac{1}{2}  (\partial_\mu \tilde{\varphi} \partial^\mu \tilde{\varphi}) + V(\tilde{\varphi}) ] 
+    \end{aligned}
+\end{equation}
+where,
+ill solve for V($\phi$) soon, I can simplify it more
 
 \newpage
 
