@@ -299,8 +299,8 @@ Simplifying this, we get,
 \subsubsection{CASE I : $k = 6\beta$}
 In this case, the field redefinition,
 
-\begin{equation}
-    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \frac{6M}{\sqrt{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0}} \right]
+\begin{equation} \label{31}
+    \left(\frac{d\tilde{\varphi}}{d\varphi} \right)^2 = \left[ \frac{36M^2}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
 \end{equation}
 gives, 
 
@@ -310,8 +310,9 @@ gives,
 so,
 
 \begin{equation}
-    \varphi = \frac{\phi_0}{2 \beta} \left[ \gamma - \sqrt{D}\sinh[ \frac{\sqrt{\beta }\tilde{\varphi}}{6M} + C] \right]
+    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + \sqrt{D}\sinh[ \frac{\sqrt{\beta }\tilde{\varphi}}{6M} + C] \right]
 \end{equation}
+Here, I have used the fact that the sqrt in eqn \ref{31}, we can choose any sign for the sqrt to make the equations simpler,
 
 \begin{equation} 
     \begin{aligned}
@@ -319,17 +320,76 @@ so,
     \end{aligned}
 \end{equation}
 where,
+\begin{comment}
 ill solve for V($\tilde{\varphi}$) soon, I can simplify it more
 
 \begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2 \beta^2}{2} \left[ \frac{\frac{\gamma}{2} - \sqrt{\alpha \beta - \frac{\gamma^2}{4}}\sinh(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C)}{\gamma^2-4\gamma\sqrt{\alpha \beta - \frac{\gamma^2}{4}}\sinh(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C) +4(\alpha \beta - \frac{\gamma^2}{4})\cosh^2(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C)}\right]^2
+    V(\tilde{\varphi}) = \frac{\mu^2}{2} \left[ \frac{\frac{\gamma}{2} - \sqrt{\alpha \beta - \frac{\gamma^2}{4}}\sinh(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C)}{\gamma^2-4\gamma\sqrt{\alpha \beta - \frac{\gamma^2}{4}}\sinh(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C) +4(\alpha \beta - \frac{\gamma^2}{4})\cosh^2(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C)}\right]^2
 \end{equation}
 
 Using $D = \sqrt{\alpha \beta - \frac{\gamma^2}{4}}$, $X(\tilde{\varphi}) = \frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C$, we can clean up the expression to write,
+\end{comment}
 
 \begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2 \beta^2}{2} \left[ \frac{\frac{\gamma}{2} - D \sinh(X)}{\gamma^2-4\gamma D \sinh(X) +4D\cosh^2(X)}\right]^2
+    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(4\alpha\beta-\gamma^2)^2} \text{sech}^4\left(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C \right) \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C \right) \right]^2
 \end{equation}
+
+\subsubsection{CASE II : $k \neq 6\beta$ and D very large}
+
+In this case, the lagrangian for the field redefinition becomes
+
+\begin{equation}
+    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \sqrt{\frac{k-6\beta}{2\beta}} \frac{M \phi_0 D}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
+\end{equation}
+
+Here,  $D = \sqrt{ \gamma^2-4\alpha \beta}$, 
+
+solving, we get (Similarly chosen a sqrt sign to make final potential cleaner)
+
+\begin{equation}
+    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]
+\end{equation}
+
+denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$, we get for the potential some stuff ill fill in tomorrow 
+
+
+
+So potential is, 
+
+
+\begin{equation}
+    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(\gamma^2-4\alpha\beta)^2} \cosh^4\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \left[\frac{\gamma }{2} + \sqrt{\frac{\gamma^2}{4}-\alpha\beta} \tanh\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \right]^2
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LaTeX/New Potenial with gravity.png}
+    \caption{The second case graphed, values listed below}
+    \label{New potential}
+\end{figure}
+Here,
+
+$   m = 1  , M = 20, ,g = 20, a = 50, b = 1, d = 1.5, K = 1 $
+where $K = \sqrt{\frac{k-6\beta}{2\beta}}$ and $d$ is basically C
+
+I have also found, there can be old inflation kind of graphs with a suitable choice of parameters, as graphed below,
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{LaTeX/CASE II Potential.png}
+    \caption{Old inflation kinda potential}
+    \label{Old inflation}
+\end{figure}
+
+Also going back to \ref{New potential}, we get the below as the field as a function of Number of efolds, a linear relationship, which idk
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LaTeX/NewField as a function of N.png}
+    \caption{Newfield as func of N}
+    \label{Newfield as func of N}
+\end{figure}
+
 
 
 \newpage
