@@ -18,8 +18,8 @@ m = 1             # mass of inflaton
 M = 20            # Planck mass
 phi0 = 3        # non-propagating field (in mass units)
 g = 20             # model parameter gamma
-a = 50            # model parameter alpha
-b = -1             # model parameter beta
+a = -50            # model parameter alpha
+b = 1             # model parameter beta
 d = 1.5           # minima of potential (unused in this version)
 D = np.sqrt(g**2 - 4*a*b)  # Here: sqrt(81 - 68) = sqrt(13) ≈ 3.606
 K = 1             # K = sqrt(2\beta / k-6\beta)
@@ -37,7 +37,7 @@ Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
 # After defining Xp and A, simplify Vp symbolically
 # Corrected analytical potential using cosh^4
 
-Vpp = (2*m**2)/(D**4) * (g * cosh(x) + D * sinh(x))**2 * cosh(x)**2
+Vpp = (2*m**2) * (g * cosh(x) + D * sinh(x))**2 * cosh(x)**2 /(2*g**2 - D**2 +2*g*(g * cosh(2*x) + D * sinh(2*x)))**2
 
 print("The potential V(φ) is:", Vp)
 
@@ -157,7 +157,7 @@ slow_mask = (eps_values < 1) & (eta_values < 1)
 
 
 plt.plot(phi, v1, label="V(φ)")
-#plt.plot(phi, v2, label="Analytic V(φ)")
+plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 """
 plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
