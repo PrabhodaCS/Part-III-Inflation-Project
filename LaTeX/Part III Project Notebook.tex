@@ -352,24 +352,25 @@ solving, we get (Similarly chosen a sqrt sign to make final potential cleaner)
 
 denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$, we get for the potential some stuff ill fill in tomorrow.
 
-
-So potential is, 
-
-
-\begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(\gamma^2-4\alpha\beta)^2} \cosh^4\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \left[\frac{\gamma }{2} + \sqrt{\frac{\gamma^2}{4}-\alpha\beta} \tanh\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \right]^2
-\end{equation}
-
 The function plotted below is based on this tho:
 
 \begin{equation}
     V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{(\frac{\phi_0}{2\beta})^2\left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]^2}{\left[\beta (\frac{\phi_0}{2 \beta})^2 \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]^2 - \gamma \phi_0 \frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right] + \alpha \phi_0^2 \right]^2}
 \end{equation}
 
+So potential is, 
+
+
+\begin{equation}
+    V(\tilde{\varphi}) =  \frac{2\mu^2}{D^4} \cosh^2(X)  \left[\gamma \cosh(X)  + D \sinh(X)  \right]^2
+\end{equation}
+where, 
+$X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$ upon simplifying
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{Python/Figures/New Potenial with gravity.png}
-    \caption{The second case graphed, values listed below}
+    \includegraphics[width=0.7\textwidth]{LaTeX/New Potenial with gravity.png}
+    \caption{The second case graphed, values listed below (Possible errors in code)}
     \label{New potential}
 \end{figure}
 
