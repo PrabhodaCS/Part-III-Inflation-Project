@@ -19,7 +19,7 @@ M = 20            # Planck mass
 phi0 = 3        # non-propagating field (in mass units)
 g = 20             # model parameter gamma
 a = 50            # model parameter alpha
-b = 1             # model parameter beta
+b = -1             # model parameter beta
 d = 1.5           # minima of potential (unused in this version)
 D = np.sqrt(g**2 - 4*a*b)  # Here: sqrt(81 - 68) = sqrt(13) ≈ 3.606
 K = 1             # K = sqrt(2\beta / k-6\beta)
@@ -32,7 +32,7 @@ eh = 0.2          # initial slow roll parameter
 # Symbolic expressions for potential and derivatives
 p_s = symbols('phi')
 x = K*p_s /(2*M) + c
-Xp = - (phi0/(2*b)) * (g  + D * tanh(K*p_s /(2*M) + c))
+Xp = (phi0/(2*b)) * (g  + D * tanh(K*p_s /(2*M) + c))
 Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
 # After defining Xp and A, simplify Vp symbolically
 # Corrected analytical potential using cosh^4
@@ -103,7 +103,7 @@ sr_0 = np.zeros(len(Nr)-len(sr_))
 sr_ = np.append(sr_,sr_0)
 
 # Define a range of phi values
-phi = np.linspace(-55, 200, 500)
+phi = np.linspace(-100, 44, 5000)
 
 exit_index = np.argmax(e >= 1)  # first index where slow-roll fails
 phi_exit_H = ps[exit_index]
@@ -157,7 +157,7 @@ slow_mask = (eps_values < 1) & (eta_values < 1)
 
 
 plt.plot(phi, v1, label="V(φ)")
-plt.plot(phi, v2, label="Analytic V(φ)")
+#plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 """
 plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
@@ -180,7 +180,7 @@ plt.show()
 #Plot slow roll parameters, epsilon and eta
 plt.figure(figsize=(10, 6))
 plt.plot(phi, ep, label=r"$\epsilon$")
-plt.plot(phi, ea, label=r"$\epsilon$ analytical")
+#plt.plot(phi, ea, label=r"$\epsilon$ analytical")
 #plt.plot(phi, et, label=r"$\eta$")
 plt.title("Slow Roll Parameter: $\epsilon$ vs. Field ($\phi$)")
 plt.xlabel("\phi")
