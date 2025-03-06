@@ -13,28 +13,39 @@ from sympy import *
 from scipy.integrate import solve_ivp
 
 # Parameters
-Nend = 70 #end of efolds
-m = 1  # mass of inflaton
-M = 20  # Planck mass
-phi0 = 1.5  # non-propagating field (Dimensions of Mass [phi0]=M)
-g = 20  # model parameter gamma
-a = 50  # model parameter alpha
-b = 1 # model parameter beta
-d = 1.5 #minima of potential
-D = np.sqrt( g**2 / 4 - a*b)
-K = 1 # this is sqrt((k-6\beta)/2\beta)
-mo = 1000000
-c =  d  # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
+Nend = 70         # End of efolds
+m = 1             # mass of inflaton
+M = 20            # Planck mass
+phi0 = 3        # non-propagating field (in mass units)
+g = 20             # model parameter gamma
+a = 50            # model parameter alpha
+b = 1             # model parameter beta
+d = 1.5           # minima of potential (unused in this version)
+D = np.sqrt(g**2 - 4*a*b)  # Here: sqrt(81 - 68) = sqrt(13) ≈ 3.606
+K = 1             # K = sqrt(2\beta / k-6\beta)
+sf = 1000000      # overall scale factor in potential
+c = -2            # integration constant (shift so that tanh argument remains moderate)
+eh = 0.2          # initial slow roll parameter
 
-
-eh = 0.2 #initial slow roll parameter (1/2)*(dp/dN)**2
+# integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
 
 # Symbolic expressions for potential and derivatives
 p_s = symbols('phi')
-Xp = - (phi0/(2*b)) * (g / 2 + D * tanh(K*p_s /(2*M) + c))
-Vp = (m**2)/(2*mo) * Xp**2/(b*Xp**2 + g*phi0*Xp + a*phi0**2)**2
+x = K*p_s /(2*M) + c
+Xp = - (phi0/(2*b)) * (g  + D * tanh(K*p_s /(2*M) + c))
+Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
+# After defining Xp and A, simplify Vp symbolically
+# Corrected analytical potential using cosh^4
+
+Vpp = (2*m**2)/(D**4) * (g * cosh(x) + D * sinh(x))**2 * cosh(x)**2
+
 print("The potential V(φ) is:", Vp)
 
+print("\n")
+
+print("The potential V(φ) is:", Vpp)
+
+print("\n")
 
 V_ = diff(Vp, p_s)
 V__ = diff(V_,p_s)
@@ -42,12 +53,15 @@ lnV = ln(Vp)
 dlnV = diff(lnV, p_s)
 print("First derivative of log(V):", dlnV)
 
+print("\n")
+
 dV = lambdify(p_s, V_, 'numpy')
 ddV = lambdify(p_s, V__, 'numpy')
 
 # Convert symbolic expressions to numerical functions
 Vi = lambdify(p_s, Vp, 'numpy')
 dlnV = lambdify(p_s, dlnV, 'numpy')  # derivative of log(V)
+Vii = lambdify(p_s, Vpp, 'numpy')
 
 # Define the system of differential equations where N = #of efolds and V is the vector containing [phi, dphi]
 def de(N, V):
@@ -89,13 +103,13 @@ sr_0 = np.zeros(len(Nr)-len(sr_))
 sr_ = np.append(sr_,sr_0)
 
 # Define a range of phi values
-phi = np.linspace(-55, 200, 5000)
-
+phi = np.linspace(-55, 200, 500)
 
 exit_index = np.argmax(e >= 1)  # first index where slow-roll fails
 phi_exit_H = ps[exit_index]
 print("Slow-roll exit (Hubble parameter) occurs at φ =", phi_exit_H)
 
+print("\n")
 
 # Define slow-roll parameters
 def epsilon(phi):
@@ -104,10 +118,22 @@ def epsilon(phi):
 def eta(phi):
     return ddV(phi) / Vi(phi)
 
+
+epsilona = 1/(2*((4*b/phi0)*Xp)**2) * sech(K*p_s /(2*M) + c)**4 * (D*cosh(K*p_s /(M) + 2*c) + g*sinh(K*p_s /(M) + 2*c))**2
+
+print("The slow roll parameter epsilon is:", epsilona)
+
+print("\n")
+
+epa = lambdify(p_s, epsilona, 'numpy')
+
+ea = epa(phi)
+
 # Compute values for potential and slow-roll parameters
 v1 = Vi(phi)
 ep = epsilon(phi)
 et = abs(eta(phi))
+v2 = Vii(phi)
 
 # Isolating parts of graph s.t., slow roll conditions are satisfied
 L = []
@@ -131,6 +157,7 @@ slow_mask = (eps_values < 1) & (eta_values < 1)
 
 
 plt.plot(phi, v1, label="V(φ)")
+plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 """
 plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
@@ -150,10 +177,23 @@ plt.tight_layout()
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\New Potenial with gravity")
 plt.show()
 
+#Plot slow roll parameters, epsilon and eta
+plt.figure(figsize=(10, 6))
+plt.plot(phi, ep, label=r"$\epsilon$")
+plt.plot(phi, ea, label=r"$\epsilon$ analytical")
+#plt.plot(phi, et, label=r"$\eta$")
+plt.title("Slow Roll Parameter: $\epsilon$ vs. Field ($\phi$)")
+plt.xlabel("\phi")
+plt.ylabel(r"$\epsilon$")
+plt.legend()
+plt.grid()
+plt.tight_layout()
+plt.show()
+
 # Plot the field evolution φ(N)
 plt.figure(figsize=(10, 6))
 plt.plot(Nr, ps, label=r"$\phi(N)$")
-#plt.plot(Nr, sr, 'o', label = "Slow roll conditions met")
+plt.plot(Nr, sr, 'o', label = "Slow roll conditions met")
 plt.title("Field Evolution: $\phi$ vs. Number of e-folds ($N$)")
 plt.xlabel("N")
 plt.ylabel(r"$\phi$")

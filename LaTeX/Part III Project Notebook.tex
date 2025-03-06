@@ -96,7 +96,7 @@ Below is a plot of the aligned graphs with $M_p = 1$ and the values of the param
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{Comparing Silvio - Barker.png}
+    \includegraphics[width=1\textwidth]{Python/Figures/Comparing Silvio - Barker.png}
     \caption{Aligned graphs with parameter values on the side}
     \label{Aligned Potential}
 \end{figure}
@@ -352,18 +352,25 @@ solving, we get (Similarly chosen a sqrt sign to make final potential cleaner)
 
 denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$, we get for the potential some stuff ill fill in tomorrow.
 
+The function plotted below is based on this tho:
+
+\begin{equation}
+    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{(\frac{\phi_0}{2\beta})^2\left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]^2}{\left[\beta (\frac{\phi_0}{2 \beta})^2 \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]^2 - \gamma \phi_0 \frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right] + \alpha \phi_0^2 \right]^2}
+\end{equation}
 
 So potential is, 
 
 
 \begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(\gamma^2-4\alpha\beta)^2} \cosh^4\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \left[\frac{\gamma }{2} + \sqrt{\frac{\gamma^2}{4}-\alpha\beta} \tanh\left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)  \right]^2
+    V(\tilde{\varphi}) =  \frac{2\mu^2}{D^4} \cosh^2(X)  \left[\gamma \cosh(X)  + D \sinh(X)  \right]^2
 \end{equation}
+where, 
+$X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$ upon simplifying
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{LaTeX/New Potenial with gravity.png}
-    \caption{The second case graphed, values listed below}
+    \includegraphics[width=0.7\textwidth]{LaTeX/New Potenial with gravity.png}
+    \caption{The second case graphed, values listed below (Possible errors in code)}
     \label{New potential}
 \end{figure}
 
@@ -385,11 +392,25 @@ Also going back to \ref{New potential}, we get the below as the field as a funct
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{LaTeX/NewField as a function of N.png}
+    \includegraphics[width=0.6\textwidth]{Python/Figures/NewField as a function of N.png}
     \caption{Newfield as func of N}
     \label{Newfield as func of N}
 \end{figure}
 
+\textbf{FOR CASE I, If $D < 0$ };
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Python/Figures/New Potenial V1,5 with gravity.png}
+    \caption{Newfield V1.5 Potential (CASE I)}
+    \label{Newfield V1.5 as func of N}
+\end{figure}
+
+Maybe total potential (no approx) is like a series of both? So multiple valleys and plateaus and continuously rising. Taylor expand?
+
+\begin{equation}
+    \mathcal{L}_{inflaton} = - \frac{M^2}{2} \left[\frac{36}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6\beta)}{2\beta A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 
+\end{equation}
 
 
 \newpage
