@@ -16,15 +16,14 @@ from scipy.integrate import solve_ivp
 Nend = 70         # End of efolds
 m = 1             # mass of inflaton
 M = 20            # Planck mass
-phi0 = 3        # non-propagating field (in mass units)
+phi0 = 3        # non-propagating field 
 g = 20             # model parameter gamma
 a = -50            # model parameter alpha
 b = 1             # model parameter beta
-d = 1.5           # minima of potential (unused in this version)
-D = np.sqrt(g**2 - 4*a*b)  # Here: sqrt(81 - 68) = sqrt(13) ≈ 3.606
+D = np.sqrt(g**2 - 4*a*b)  
 K = 1             # K = sqrt(2\beta / k-6\beta)
 sf = 1000000      # overall scale factor in potential
-c = -2            # integration constant (shift so that tanh argument remains moderate)
+c = -2            # integration constant 
 eh = 0.2          # initial slow roll parameter
 
 # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
@@ -170,10 +169,10 @@ slow_mask = (eps_values < 1) & (eta_values < 1)
 plt.plot(phi, v1, label="V(φ)")
 plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
-"""
-plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
+
+plt.plot(L, Mv, label="Slow rolling V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
-"""
+
 
 # Highlight the slow-roll region using fill_between
 plt.fill_between(phi, v1, vmin, where=slow_mask, color='orange', alpha=0.3, label="Slow Roll Region")
