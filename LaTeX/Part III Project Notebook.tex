@@ -215,8 +215,8 @@ which subbing in $\Omega^4$, we get,
 
 where this $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$ and is the only part which contains the original Barker variables $\{\epsilon, \nu, \sigma \}$, so can't assume Discriminant = 0? Or use this to set other variables?
 
-
-\textbf{GOING BACK TO EQN \ref{24}, WE CAN... ###Scrapped method}
+\begin{comment}
+    \textbf{GOING BACK TO EQN \ref{24}, WE CAN... ###Scrapped method}
 
 if $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta )$
 
@@ -249,7 +249,7 @@ NOW, WE CAN GO BACK TO EQN \ref{26}, we get
         &-  \frac{1}{(\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi)^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
-
+\end{comment}
 
 \subsection{ALT METHOD }
 Madness or 
@@ -355,7 +355,7 @@ denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tild
 So potential is, 
 
 \begin{equation}
-    V(\tilde{\varphi}) =  \frac{2\mu^2}{D^4} \cosh^2(X)  \left[\gamma \cosh(X)  + D \sinh(X)  \right]^2
+    \color{red} V(\tilde{\varphi}) =  \frac{2\mu^2}{D^4} \cosh^2(X)  \left[\gamma \cosh(X)  + D \sinh(X)  \right]^2
 \end{equation}
 where, 
 $X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$ upon simplifying
@@ -373,9 +373,22 @@ so
     V(\tilde{\varphi}) =  2\mu^2 \cosh^2(X)  \left [ \frac{\gamma \cosh(X)  + D \sinh(X) }{2\gamma^2 - D^2 + 2\gamma(\gamma \cosh(2X)  + D \sinh(2X))} \right]^2
 \end{equation}
 
+Noticing that this function $f(X) = \gamma \cosh(X)  + D \sinh(X)$ appears several times, we can rewrite potential as 
+
+\begin{equation}
+    V(\tilde{\varphi}) =  2\mu^2 \cosh^2(X)  \left [ \frac{f(X) }{2\gamma^2 - D^2 + 2\gamma f(2X)} \right]^2
+\end{equation}
+
+and now, the slow roll parameter $\varepsilon = \frac{1}{2} (\frac{\text{d}\ln(V(\tilde{\varphi}))}{\text{d}\tilde{\varphi}})^2$, we get
+
+\begin{equation}
+    \varepsilon = \frac{M^2 \beta}{k-6\beta} D^4 \text{sech}^2(X) \left[ \frac{f'(2X)}{f(X)(2\gamma^2 - D^2 + 2\gamma f(2X))} \right]^2
+\end{equation}
+$f(X) = \gamma \cosh(X)  + D \sinh(X)$, and $f'(X) = D \cosh(X)  + \gamma \sinh(X)$, $X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$
 using same 
+
 \begin{comment}
-    
+
 The function plotted below is based on this tho:
 
 \begin{equation}
@@ -385,7 +398,7 @@ The function plotted below is based on this tho:
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{LaTeX/New Potenial with gravity.png}
+    \includegraphics[width=0.7\textwidth]{Python/Figures/New Potenial with gravity.png}
     \caption{The second case graphed, values listed below (Possible errors in code)}
     \label{New potential}
 \end{figure}
