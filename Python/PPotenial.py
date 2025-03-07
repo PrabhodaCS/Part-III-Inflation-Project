@@ -34,10 +34,13 @@ p_s = symbols('phi')
 x = K*p_s /(2*M) + c
 Xp = (phi0/(2*b)) * (g  + D * tanh(K*p_s /(2*M) + c))
 Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
-# After defining Xp and A, simplify Vp symbolically
-# Corrected analytical potential using cosh^4
 
-Vpp = (2*m**2) * (g * cosh(x) + D * sinh(x))**2 * cosh(x)**2 /(2*g**2 - D**2 +2*g*(g * cosh(2*x) + D * sinh(2*x)))**2
+#Analytic potential
+def f(X):
+    f = g * cosh(X) + D * sinh(X)
+    return f
+
+Vpp = (2*m**2) * (f(x))**2 * cosh(x)**2 /(2*g**2 - D**2 +2*g*f(2*x))**2
 
 print("The potential V(φ) is:", Vp)
 
@@ -87,7 +90,6 @@ ps_ = sol.y[1]  # dφ/dN
 
 e = 0.5 * ps_**2 # Hubble slow-roll parameter
 
-
 sr = []
 sr_ = []
 for i in range(len(e)):
@@ -113,13 +115,16 @@ print("\n")
 
 # Define slow-roll parameters
 def epsilon(phi):
-    return 0.5 * (dV(phi) / Vi(phi))**2
+    return 0.5 * (dV(phi) / Vi(phi))**2 
 
 def eta(phi):
     return ddV(phi) / Vi(phi)
 
-
-epsilona = 1/(2*((4*b/phi0)*Xp)**2) * sech(K*p_s /(2*M) + c)**4 * (D*cosh(K*p_s /(M) + 2*c) + g*sinh(K*p_s /(M) + 2*c))**2
+# Corrected analytical epsilon
+prefactor = (K**2) / (8 * M**2)
+term1 = 4*g*D*sinh(2*x) + 2*g**2*cosh(2*x) - D**2
+denominator = 2*g**2 - D**2 + 2*g*(g*cosh(2*x) + D*sinh(2*x))
+epsilona = prefactor * sech(x)**2 * (term1 / denominator)**2
 
 print("The slow roll parameter epsilon is:", epsilona)
 
@@ -131,9 +136,15 @@ ea = epa(phi)
 
 # Compute values for potential and slow-roll parameters
 v1 = Vi(phi)
-ep = epsilon(phi)
+ep = epsilon(phi) 
 et = abs(eta(phi))
 v2 = Vii(phi)
+
+m1 = max(v1)
+m2 = max(v2)
+
+ratio = m1/m2
+print("The ratio of the potentials are:", ratio)
 
 # Isolating parts of graph s.t., slow roll conditions are satisfied
 L = []
@@ -168,7 +179,6 @@ plt.title("Potential and Slow-Roll Parameters")
 plt.fill_between(phi, v1, vmin, where=slow_mask, color='orange', alpha=0.3, label="Slow Roll Region")
 
 
-
 plt.xlabel("φ")
 plt.ylabel("V(φ)")
 plt.legend()
@@ -179,8 +189,8 @@ plt.show()
 
 #Plot slow roll parameters, epsilon and eta
 plt.figure(figsize=(10, 6))
-plt.plot(phi, ep, label=r"$\epsilon$")
-#plt.plot(phi, ea, label=r"$\epsilon$ analytical")
+#plt.plot(phi, ep, label=r"$\epsilon$")
+plt.plot(phi, ea, label=r"$\epsilon$ analytical")
 #plt.plot(phi, et, label=r"$\eta$")
 plt.title("Slow Roll Parameter: $\epsilon$ vs. Field ($\phi$)")
 plt.xlabel("\phi")
