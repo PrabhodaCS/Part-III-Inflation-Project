@@ -6,7 +6,6 @@ from sympy import *
 
 # Define model parameters (set these to your model's numbers)
 
-
 Nend = 70         # End of efolds
 m = 1             # mass of inflaton
 M = 20            # Planck mass
@@ -76,4 +75,5 @@ plt.title("Potential vs. Canonical Field")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full lagriangian potential")
 plt.show()
