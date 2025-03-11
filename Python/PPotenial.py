@@ -21,7 +21,7 @@ g = 20             # model parameter gamma
 a = -50            # model parameter alpha
 b = 1             # model parameter beta
 D = np.sqrt(g**2 - 4*a*b)  
-K = 1             # K = sqrt(2\beta / k-6\beta)
+K = 1             # K = sqrt(2 / k-6)
 sf = 1000000      # overall scale factor in potential
 c = -2            # integration constant 
 eh = 0.2          # initial slow roll parameter
@@ -38,6 +38,10 @@ Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
 def f(X):
     f = g * cosh(X) + D * sinh(X)
     return f
+
+def fp(X):
+    fp = g * sinh(X) + D * cosh(X)
+    return fp
 
 Vpp = (2*m**2) * (f(x))**2 * cosh(x)**2 /(2*g**2 - D**2 +2*g*f(2*x))**2
 
@@ -104,7 +108,7 @@ sr_0 = np.zeros(len(Nr)-len(sr_))
 sr_ = np.append(sr_,sr_0)
 
 # Define a range of phi values
-phi = np.linspace(-100, 44, 5000)
+phi = np.linspace(30, 40, 5000)
 
 exit_index = np.argmax(e >= 1)  # first index where slow-roll fails
 phi_exit_H = ps[exit_index]
@@ -120,10 +124,11 @@ def eta(phi):
     return ddV(phi) / Vi(phi)
 
 # Corrected analytical epsilon
-prefactor = (K**2) / (8 * M**2)
-term1 = 4*g*D*sinh(2*x) + 2*g**2*cosh(2*x) - D**2
-denominator = 2*g**2 - D**2 + 2*g*(g*cosh(2*x) + D*sinh(2*x))
-epsilona = prefactor * sech(x)**2 * (term1 / denominator)**2
+pf = (K**2) / (2* M**2)          #Prefactor = 1/(M^2 * (k-6))
+term2 = fp(x)/f(x)
+term3 =  - 4*g*fp(2*x) / (2*g**2 - D**2 + 2*g*f(2*x))
+
+epsilona = pf * (tanh(x) + term2 + term3)**2
 
 print("The slow roll parameter epsilon is:", epsilona)
 
@@ -170,9 +175,10 @@ plt.plot(phi, v1, label="V(φ)")
 plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 
-plt.plot(L, Mv, label="Slow rolling V(φ)")
+"""
+plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
-
+"""
 
 # Highlight the slow-roll region using fill_between
 plt.fill_between(phi, v1, vmin, where=slow_mask, color='orange', alpha=0.3, label="Slow Roll Region")
@@ -188,11 +194,11 @@ plt.show()
 
 #Plot slow roll parameters, epsilon and eta
 plt.figure(figsize=(10, 6))
-#plt.plot(phi, ep, label=r"$\epsilon$")
+plt.plot(phi, ep, label=r"$\epsilon$")
 plt.plot(phi, ea, label=r"$\epsilon$ analytical")
 #plt.plot(phi, et, label=r"$\eta$")
 plt.title("Slow Roll Parameter: $\epsilon$ vs. Field ($\phi$)")
-plt.xlabel("\phi")
+plt.xlabel("$\phi$")
 plt.ylabel(r"$\epsilon$")
 plt.legend()
 plt.grid()
