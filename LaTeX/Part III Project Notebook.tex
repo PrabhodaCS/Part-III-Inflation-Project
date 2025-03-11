@@ -17,6 +17,8 @@
 \usepackage{hyperref}
 \usepackage{comment}
 \usepackage{lipsum}
+\usepackage{physics}
+
 
 \usepackage{xcolor}
 
@@ -291,29 +293,29 @@ Simplifying this, we get,
 \begin{equation} 
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R \\
-        &- \frac{M^2}{2} \left[\frac{36}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6\beta)}{2\beta A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) \\
+        &- \frac{M^2}{2} \left[\frac{36 \beta}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) \\
         &-  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 
-\subsubsection{CASE I : $k = 6\beta$}
+\subsubsection{CASE I : $k = 6$}
 In this case, the field redefinition,
 
 \begin{equation} \label{31}
-    \left(\frac{d\tilde{\varphi}}{d\varphi} \right)^2 = \left[ \frac{36M^2}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
+    \left(\frac{d\tilde{\varphi}}{d\varphi} \right)^2 = \left[ \frac{36M^2 \beta}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
 \end{equation}
 gives, 
 
 \begin{equation}
-    \tilde{\varphi} = 6M \frac{1}{\sqrt{\beta}} \sinh^{-1} \left(\frac{2\varphi\beta+\gamma\phi_0}{\phi_0 \sqrt{4\alpha\beta -\gamma^2}} \right) - C
+    \tilde{\varphi} = 6M \sinh^{-1} \left(\frac{2\varphi\beta+\gamma\phi_0}{\phi_0 \sqrt{4\alpha\beta -\gamma^2}} \right) - C
 \end{equation}
 so,
 
 \begin{equation}
-    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + \sqrt{D}\sinh[ \frac{\sqrt{\beta }\tilde{\varphi}}{6M} + C] \right]
+    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + \sqrt{D}\sinh[\frac{\tilde{\varphi}}{6M} + C] \right]
 \end{equation}
 Here, I have used the fact that the sqrt in eqn \ref{31}, we can choose any sign for the sqrt to make the equations simpler,
-
+\textbf{By mistake, I have taken M to be $M_p/2$, its fine}
 \begin{equation} 
     \begin{aligned}
         S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R - \frac{1}{2}  (\partial_\mu \tilde{\varphi} \partial^\mu \tilde{\varphi}) + V(\tilde{\varphi}) ] 
@@ -331,7 +333,7 @@ Using $D = \sqrt{\alpha \beta - \frac{\gamma^2}{4}}$, $X(\tilde{\varphi}) = \fra
 \end{comment}
 
 \begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(4\alpha\beta-\gamma^2)^2} \text{sech}^4\left(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C \right) \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left(\frac{\sqrt{\beta}\tilde{\varphi}}{6M}+C \right) \right]^2
+    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(4\alpha\beta-\gamma^2)^2} \text{sech}^4\left(\frac{\tilde{\varphi}}{6M}+C \right) \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left(\frac{\tilde{\varphi}}{6M}+C \right) \right]^2
 \end{equation}
 
 \subsubsection{CASE II : $k \neq 6\beta$ and D very large}
@@ -339,7 +341,7 @@ Using $D = \sqrt{\alpha \beta - \frac{\gamma^2}{4}}$, $X(\tilde{\varphi}) = \fra
 In this case, the lagrangian for the field redefinition becomes
 
 \begin{equation}
-    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \sqrt{\frac{k-6\beta}{2\beta}} \frac{M \phi_0 D}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
+    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \sqrt{\frac{k-6}{2}} \frac{M \phi_0 D}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
 \end{equation}
 
 Here,  $D = \sqrt{ \gamma^2-4\alpha \beta}$, 
@@ -347,10 +349,10 @@ Here,  $D = \sqrt{ \gamma^2-4\alpha \beta}$,
 solving, we get (Similarly chosen a sqrt sign to make final potential cleaner)
 
 \begin{equation}
-    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]
+    \varphi = -\frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2}{k-6}} \frac{\tilde{\varphi}}{2M} + C \right) \right]
 \end{equation}
 
-denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$, we get for the potential some stuff ill fill in tomorrow.
+denoting $X(\tilde{\varphi}) = \left( \sqrt{\frac{2}{k-6}} \frac{\tilde{\varphi}}{2M} + C \right)$, we get for the potential some stuff ill fill in tomorrow.
 
 So potential is, 
 
@@ -358,13 +360,13 @@ So potential is,
     \color{red} V(\tilde{\varphi}) =  \frac{2\mu^2}{D^4} \cosh^2(X)  \left[\gamma \cosh(X)  + D \sinh(X)  \right]^2
 \end{equation}
 where, 
-$X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$ upon simplifying
+$X = \left( \sqrt{\frac{2}{k-6}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$ upon simplifying
 
 BUT THIS IS A POTENTIAL THAT ONLY SEEMS TO GROW \textbf{Observations : } Kinda scale invariant, also, at zero:$ V(\tilde{\varphi}) \approx  \frac{2\mu^2}{D^4} (1 + X^2) (\gamma + DX)^2$
 so kinda quadratic/quartic at 0. But at large, $\tilde{\varphi}$, it goes like $V \approx e^{4X}$, so diverges, this prompts us to try the positive solution, which gives the us a plateau
 
 \begin{equation}
-    \varphi = \frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right) \right]
+    \varphi = \frac{\phi_0}{2 \beta} \left[ \gamma + D\tanh \left( \sqrt{\frac{2}{k-6}} \frac{\tilde{\varphi}}{2M} + C \right) \right]
 \end{equation}
 
 so
@@ -382,9 +384,9 @@ Noticing that this function $f(X) = \gamma \cosh(X)  + D \sinh(X)$ appears sever
 and now, the slow roll parameter $\varepsilon = \frac{1}{2} (\frac{\text{d}\ln(V(\tilde{\varphi}))}{\text{d}\tilde{\varphi}})^2$, we get
 
 \begin{equation}
-    \varepsilon = \frac{M^2 \beta}{k-6\beta} D^4 \text{sech}^2(X) \left[ \frac{f'(2X)}{f(X)(2\gamma^2 - D^2 + 2\gamma f(2X))} \right]^2
+    \varepsilon = \frac{1}{M^2 (k-6)} \left[ \tanh(X) + \frac{f'(X)}{f(X)} - \frac{4\gamma f'(2X)}{2\gamma^2 - D^2 + 2\gamma f(2X)} \right]^2
 \end{equation}
-$f(X) = \gamma \cosh(X)  + D \sinh(X)$, and $f'(X) = D \cosh(X)  + \gamma \sinh(X)$, $X = \left( \sqrt{\frac{2\beta}{k-6\beta}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$
+$f(X) = \gamma \cosh(X)  + D \sinh(X)$, and $f'(X) = D \cosh(X)  + \gamma \sinh(X)$, $X = \left( \sqrt{\frac{2}{k-6}} \frac{\tilde{\varphi}}{2M} + C \right)$ and $D = \sqrt{\gamma^2-4\alpha\beta}$
 using same 
 
 \begin{comment}
@@ -406,7 +408,7 @@ The function plotted below is based on this tho:
 Here,
 
 $\mu = 1    ,M = 20     ,\phi_0 = 3   .\gamma = 20 ,\alpha = -50,\beta = 1 ,K = 1, C = -2  $
-where $K = \sqrt{\frac{k-6\beta}{2\beta}}$. Plotting $\varphi$ vs N also gives us a straight line.
+where $K = \sqrt{\frac{k-6}{2}}$. Plotting $\varphi$ vs N also gives us a straight line.
 
 I have also found, there can be old inflation kind of graphs with a suitable choice of parameters, as graphed below,
 
@@ -438,9 +440,97 @@ I have also found, there can be old inflation kind of graphs with a suitable cho
 Maybe total potential (no approx) is like a series of both? So multiple valleys and plateaus and continuously rising. Taylor expand?
 
 \begin{equation}
-    \mathcal{L}_{inflaton} = - \frac{M^2}{2} \left[\frac{36}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6\beta)}{2\beta A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 
+    \mathcal{L}_{inflaton} = \frac{M^2}{2} \left[-\frac{36\beta}{A} + \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{1}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 
 \end{equation}
 
+\section{Equations of Motion for my Action (Nonconstant Derivative coupling)}
+
+So action is
+
+\begin{equation} \label{44}
+    S = \int \text{dt}\text{d}^3\text{x} \; \text{a}^3(t) \left[ \frac{K(\varphi)}{2}(\dot{\varphi}^2 - (\grad \varphi)^2) - V(\varphi) \right]
+\end{equation}
+
+where,
+\begin{equation}
+    K(\varphi) = M^2 \left[-\frac{36\beta}{A} + \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 A^2}\right]
+\end{equation}
+where $A = (\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0)$
+
+\textbf{NOTE : By mistake, I have taken M to be $M_p/\sqrt{2}$, its fine tho}
+
+varying eqn \ref{44} (and neglecting the grad term cause homogenous fluid), we get
+
+\begin{align}
+    \delta S &= \int \text{dt}\,\text{d}^3\text{x} \;  \left[ a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2} \delta \varphi + a^3 K \dot{\varphi} \dot{\delta \varphi} - a^3V_{,\varphi} \delta\varphi \right] \nonumber \\
+    &\Rightarrow \int \text{dt}\,\text{d}^3\text{x} \;  \left[ a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2} \delta \varphi - \frac{\text{d}}{\text{d}t}(a^3 K \dot{\varphi}) \delta \varphi - a^3V_{,\varphi} \delta\varphi \right] \nonumber \\
+    &\Rightarrow \int \text{dt}\,\text{d}^3\text{x} \;  \left[ a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2}  -  3\dot{a} a^2 K \dot{\varphi} - a^3 K_{,\varphi}\dot{\varphi}^2 - a^3 K \ddot{\varphi} - a^3V_{,\varphi}  \right]\delta \varphi
+    \nonumber \\
+    &\Rightarrow \int \text{dt}\,\text{d}^3\text{x} \; - \left[ a^3 K \ddot{\varphi} + a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2}  +  3\dot{a} a^2 K \dot{\varphi} + a^3V_{,\varphi}  \right]\delta \varphi
+\end{align}
+
+Setting the variation inside to zero, we get
+
+\begin{equation} \label{47}
+    K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
+\end{equation}
+
+Simple crosscheck, if $K = 1$, we get $ \ddot{\varphi} +  3H \dot{\varphi}  + V_{,\varphi}   = 0$, which is correct EOM for inflaton field
+YAYYY GOT IT
+
+So we can readoff the energy density and pressure to be,
+
+\begin{align}
+    \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
+    p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
+\end{align}
+
+The second friedmann equation $H^2 = \frac{8 \pi G}{3} \rho$, then reads, 
+
+\begin{equation}    \label{Friedmann Eqn 2}
+    3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
+\end{equation}
+differentiate this wrt time
+
+\begin{align}   
+     6 M_p^2H \dot{H} &= \frac{K_{,\varphi}}{2} \dot{\varphi}^3 + K \dot{\varphi} \ddot{\varphi} + V_{,\varphi} \dot{\varphi} \nonumber \\
+     \Rightarrow 6 M_p^2H \dot{H} &= \frac{K_{,\varphi}}{2} \dot{\varphi}^3 + \dot{\varphi} (K  \ddot{\varphi} + V_{,\varphi}) 
+\end{align}
+
+Subbing in from \ref{47}, we get
+
+\begin{align}
+    6 M_p^2H \dot{H} &= \frac{K_{,\varphi}}{2} \dot{\varphi}^3 - \dot{\varphi}^2 \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) \nonumber \\
+    \Rightarrow 6 M_p^2H \dot{H} &= - 3H K \dot{\varphi}^2   \nonumber \\ 
+    \Rightarrow 2 M_p^2 \dot{H} &= -  K \dot{\varphi}^2
+\end{align}
+
+Now, to find the the differential equation of the field $\varphi$ as a function of N, we use $\text{d}N = H \text{d}t$ in eqn \ref{47}, so first $ \dot{\varphi} = H \frac{\text{d}\varphi}{\text{d}N}$ and then for first term of \ref{47}:
+
+\begin{align} \label{52}
+    K \frac{\text{d}^2\varphi}{\text{d}t^2} &= H^2 \frac{\text{d}^2\varphi}{\text{d}N^2} + \frac{\text{d}\varphi}{\text{d}N}\dot{H} \nonumber \\
+    \Rightarrow K \ddot{\varphi} &= K H^2 \left( \frac{\text{d}^2\varphi}{\text{d}N^2} - \frac{K}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3 \right) 
+\end{align}
+
+For the second term of \ref{47}, we have
+\begin{align}
+    \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) = H^2 \frac{\text{d}\varphi}{\text{d}N} \left(\frac{K_{,\varphi}}{2} \frac{\text{d}\varphi}{\text{d}N}+ 3 K \right)
+\end{align}
+
+and the potential for the third term is, by eqn \ref{Friedmann Eqn 2}
+
+\begin{equation}
+    V(\varphi) = H^2 \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right)
+\end{equation}
+
+Putting it all together in the EOM \ref{47}, we get, 
+
+\begin{align}
+    K \left( \frac{\text{d}^2\varphi}{\text{d}N^2} - \frac{K}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3 \right) +  \frac{\text{d}\varphi}{\text{d}N} \left(\frac{K_{,\varphi}}{2} \frac{\text{d}\varphi}{\text{d}N}+ 3 K \right) + \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} &= 0 \nonumber \\
+    \Rightarrow K\frac{\text{d}^2\varphi}{\text{d}N^2} +3 K \frac{\text{d}\varphi}{\text{d}N}  - \frac{K^2}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3  +  \frac{K_{,\varphi}}{2}  \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 +  \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} &= 0    
+\end{align}
+
+which aligns exactly with the equation in \cite{barker2024inflationarygravitationalwavesignatures}, when $K = 1$
 
 \newpage
 
