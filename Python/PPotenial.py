@@ -144,11 +144,12 @@ ep = epsilon(phi)
 et = abs(eta(phi))
 v2 = Vii(phi)
 
-m1 = max(v1)
-m2 = max(v2)
+m1 = max(ea)
+m2 = max(ep)
 
 ratio = m1/m2
-print("The ratio of the potentials are:", ratio)
+print("The ratio of the analytic and numerical epsilon are:", ratio)
+print("\n")
 
 # Isolating parts of graph s.t., slow roll conditions are satisfied
 L = []
