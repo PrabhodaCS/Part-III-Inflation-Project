@@ -24,7 +24,7 @@ g = 20             # model parameter gamma
 a = -50            # model parameter alpha
 b = 1             # model parameter beta
 D = np.sqrt(g**2 - 4*a*b)  
-k = 1000             # model parameter k
+k = 50             # model parameter k
 sf = 1000000      # overall scale factor in potential
 c = -2            # integration constant 
 
