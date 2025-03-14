@@ -108,7 +108,7 @@ sr_0 = np.zeros(len(Nr)-len(sr_))
 sr_ = np.append(sr_,sr_0)
 
 # Define a range of phi values
-phi = np.linspace(30, 40, 5000)
+phi = np.linspace(-50, 44, 5000)
 
 exit_index = np.argmax(e >= 1)  # first index where slow-roll fails
 phi_exit_H = ps[exit_index]

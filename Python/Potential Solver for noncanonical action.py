@@ -92,7 +92,6 @@ plt.tight_layout()
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full lagriangian potential")
 plt.show()
 
-"""
 plt.figure(figsize=(8,6))
 plt.plot(phi_vals1, V_normal, label=r"$V(\varphi)$")
 plt.xlabel(r"Field $\varphi$")
@@ -102,4 +101,3 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-"""
