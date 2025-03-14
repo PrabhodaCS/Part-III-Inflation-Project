@@ -444,7 +444,7 @@ Maybe total potential (no approx) is like a series of both? So multiple valleys 
 \end{equation}
 
 \section{Equations of Motion for my Action (Nonconstant Derivative coupling)}
-
+Method using \cite{Baumann_2022} (but original derivation)  
 So action is
 
 \begin{equation} \label{44}
@@ -500,20 +500,20 @@ differentiate this wrt time
 
 Subbing in from \ref{47}, we get
 
-\begin{align}
+\begin{align}   \label{51}
     6 M_p^2H \dot{H} &= \frac{K_{,\varphi}}{2} \dot{\varphi}^3 - \dot{\varphi}^2 \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) \nonumber \\
     \Rightarrow 6 M_p^2H \dot{H} &= - 3H K \dot{\varphi}^2   \nonumber \\ 
     \Rightarrow 2 M_p^2 \dot{H} &= -  K \dot{\varphi}^2
 \end{align}
 
-Now, to find the the differential equation of the field $\varphi$ as a function of N, we use $\text{d}N = H \text{d}t$ in eqn \ref{47}, so first $ \dot{\varphi} = H \frac{\text{d}\varphi}{\text{d}N}$ and then for first term of \ref{47}:
+Now, to find the the differential equation of the field $\varphi$ as a function of N, we use $\text{d}N = H \text{d}t$ in eqn \ref{47}, so first $ \dot{\varphi} = H \frac{\text{d}\varphi}{\text{d}N}$, also sub in \ref{51} ($\dot{H} = -  \frac{K}{2 M_p^2 } \left(H \frac{\text{d}\varphi}{\text{d}N} \right)^2$) and then for first term of \ref{47}:
 
 \begin{align} \label{52}
     K \frac{\text{d}^2\varphi}{\text{d}t^2} &= H^2 \frac{\text{d}^2\varphi}{\text{d}N^2} + \frac{\text{d}\varphi}{\text{d}N}\dot{H} \nonumber \\
     \Rightarrow K \ddot{\varphi} &= K H^2 \left( \frac{\text{d}^2\varphi}{\text{d}N^2} - \frac{K}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3 \right) 
 \end{align}
 
-For the second term of \ref{47}, we have
+For the second term of \ref{47}, we have, 
 \begin{align}
     \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) = H^2 \frac{\text{d}\varphi}{\text{d}N} \left(\frac{K_{,\varphi}}{2} \frac{\text{d}\varphi}{\text{d}N}+ 3 K \right)
 \end{align}
