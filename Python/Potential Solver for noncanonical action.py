@@ -9,7 +9,7 @@ m = 1             # mass of inflaton
 M = 20            # Planck mass
 Mp = sqrt(2)*M   # Actual Planck mass (lol)
 phi0 = 30        # non-propagating field 
-gamma = 50             # model parameter gamma
+gamma = 100             # model parameter gamma
 alpha = -50            # model parameter alpha
 beta = 0.1             # model parameter beta
 D = np.sqrt(gamma**2 - 4*alpha*beta) 
@@ -56,7 +56,7 @@ def V(phi):
 phi_of_tilde = interp1d(tilde_vals, phi_vals, kind='cubic', fill_value="extrapolate")
 
 # Specify the range for the canonical field you want to plot:
-tilde_start = -2000 # lower limit for canonical field
+tilde_start = -3000 # lower limit for canonical field
 tilde_end   = 500  # upper limit for canonical field
 
 if not np.all(np.diff(tilde_vals) > 0):
