@@ -74,23 +74,68 @@ phi_vals1 = np.linspace(-50, 30, 1001)
 V_normal = V(phi_vals1)
 
 tvals = np.linspace(0, 1, 101)
-print(phi_vals)
+"""print(phi_vals)
 print("\n")
 print(tilde_vals)
-
-plt.plot(phi_vals, tilde_vals)
-
-# Plot the potential as a function of the canonical field:
-plt.figure(figsize=(8,6))
-plt.plot(tilde_plot, V_plot, label=r"$V(\tilde{\varphi})$")
-plt.xlabel(r"Canonical field $\tilde{\varphi}$")
-plt.ylabel(r"$V$")
-plt.title("Potential vs. Canonical Field")
-plt.legend()
-plt.grid(True)
+"""
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(phi_vals, tilde_vals)
+ax.set_xlabel(r"Field $\varphi$")
+ax.set_ylabel(r"Canonical field $\tilde{\varphi}$")
+ax.set_title(r"$\varphi$ vs. $\tilde{\varphi}$")
+ax.legend()
+ax.grid(True)
 plt.tight_layout()
-plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full lagriangian potential")
+
+# Parameters to display
+parameters = [
+    (r'$\beta$', beta),
+    (r"$c'$", c),
+    (r'$\mu$', m),
+    (r'$\varphi_0$', phi0),
+    (r'$\gamma$', gamma),
+    (r'$\alpha$', alpha),
+    (r'$D$', D)
+]
+
+# Display parameters on the plot
+for i, (name, value) in enumerate(parameters):
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+
+
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Field vs Canonical Field.png")
 plt.show()
+
+
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(tilde_plot, V_plot, label=r"$V(\tilde{\varphi})$")
+ax.set_xlabel(r"Canonical field $\tilde{\varphi}$")
+ax.set_ylabel(r"$V$")
+ax.set_title("Potential vs. Canonical Field")
+ax.legend()
+ax.grid(True)
+plt.tight_layout()
+
+# Parameters to display
+parameters = [
+    (r'$\beta$', beta),
+    (r"$c'$", c),
+    (r'$\mu$', m),
+    (r'$\varphi_0$', phi0),
+    (r'$\gamma$', gamma),
+    (r'$\alpha$', alpha),
+    (r'$D$', D)
+]
+
+# Display parameters on the plot
+for i, (name, value) in enumerate(parameters):
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+
+
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Lagrangian potential.png")
+plt.show()
+
+
 
 """
 plt.figure(figsize=(8,6))
