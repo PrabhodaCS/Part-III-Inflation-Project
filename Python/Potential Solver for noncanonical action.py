@@ -4,20 +4,20 @@ from scipy.integrate import solve_ivp
 from scipy.interpolate import interp1d
 from sympy import *
 
-# Define model parameters (set these to your model's numbers)
-
 Nend = 70         # End of efolds
 m = 1             # mass of inflaton
 M = 20            # Planck mass
 Mp = sqrt(2)*M   # Actual Planck mass (lol)
-phi0 = 3        # non-propagating field 
+phi0 = 30        # non-propagating field 
 gamma = 20             # model parameter gamma
 alpha = -50            # model parameter alpha
-beta = 0.00001             # model parameter beta
+beta = 10             # model parameter beta
 D = np.sqrt(gamma**2 - 4*alpha*beta) 
-k = 10             # model parameter k
+k = 7             # model parameter k
 sf = 1000000      # overall scale factor in potential
-c = -2            # integration constant 
+c = 0            # integration constant 
+
+p_s = symbols('phi')
 
 # Define A(phi) = beta*phi^2 + gamma*phi0*phi + alpha*phi0^2.
 def A_func(phi):
@@ -33,13 +33,13 @@ def dtilde_dphi(phi, tilde):
     return np.sqrt(K(phi))
 
 # Choose a range for phi over which you want to integrate:
-phi_min = -10
-phi_max = 10
+phi_min = 0
+phi_max = 40
 
 # Solve the ODE numerically to get tilde_phi as a function of phi
 phi_span = (phi_min, phi_max)
 # We'll solve the ODE using solve_ivp. We use phi as the independent variable.
-sol = solve_ivp(dtilde_dphi, phi_span, [0.0], t_eval=np.linspace(phi_min, phi_max, 1000))
+sol = solve_ivp(dtilde_dphi, phi_span, [c], t_eval=np.linspace(phi_min, phi_max, 1001), method='DOP853', rtol=1e-9, atol=1e-12)
 
 print(K(phi_span[0]), K(phi_span[1]))
 
@@ -48,9 +48,7 @@ tilde_vals = sol.y[0]     # corresponding canonical field values
 
 print("beginning value of canonical phi : ",tilde_vals[0],"\n","End value  of canonical phi : ", tilde_vals[-1])
 
-# Now, suppose we have a potential V(phi). For demonstration, let’s assume
 def V(phi):
-    # Example: a simple quadratic potential (replace with your model)
     return 0.5 * (m*phi0)**2 * (phi**2)/A_func(phi)**2
 
 # If you want to plot V as a function of the canonical field, you need to know phi as a function of tilde.
@@ -58,13 +56,29 @@ def V(phi):
 phi_of_tilde = interp1d(tilde_vals, phi_vals, kind='cubic', fill_value="extrapolate")
 
 # Specify the range for the canonical field you want to plot:
-tilde_start = -40 # set your desired lower limit for canonical field
-tilde_end   = 40  # set your desired upper limit for canonical field
+tilde_start = -30*k # lower limit for canonical field
+tilde_end   = 30*k  # upper limit for canonical field
+
+if not np.all(np.diff(tilde_vals) > 0):
+    print("Warning: tilde_vals is not strictly increasing!")
+else:
+    print("tilde_vals is strictly increasing.")
 
 # Generate canonical field values in that range:
 tilde_plot = np.linspace(tilde_start, tilde_end, 500)
 phi_plot = phi_of_tilde(tilde_plot)
 V_plot   = V(phi_plot)
+
+phi_vals1 = np.linspace(-50, 30, 1001)
+
+V_normal = V(phi_vals1)
+
+tvals = np.linspace(0, 1, 101)
+print(phi_vals)
+print("\n")
+print(tilde_vals)
+
+plt.plot(phi_vals, tilde_vals)
 
 # Plot the potential as a function of the canonical field:
 plt.figure(figsize=(8,6))
@@ -77,3 +91,15 @@ plt.grid(True)
 plt.tight_layout()
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full lagriangian potential")
 plt.show()
+
+"""
+plt.figure(figsize=(8,6))
+plt.plot(phi_vals1, V_normal, label=r"$V(\varphi)$")
+plt.xlabel(r"Field $\varphi$")
+plt.ylabel(r"$V$")
+plt.title("Potential vs. Field")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+"""
