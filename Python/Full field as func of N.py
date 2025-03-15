@@ -37,7 +37,7 @@ p_s = symbols('phi')
 A = a*phi0**2 + g*phi0*p_s + b*p_s**2
 
 K = - 36*(M*b)**2/A**2 + (k-6)*(phi0*M*D)**2/(2*A**2)
-V = - (m*phi0)**2 * (p_s/A)**2 / 2
+V =  (m*phi0)**2 * (p_s/A)**2 / 2
 
 Kp = diff(K, p_s)
 V_ = diff(V, p_s)

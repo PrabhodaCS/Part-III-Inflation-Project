@@ -1,3 +1,13 @@
+"""
+/**
+ * @author Prabhoda CS
+ * @email pcs52@cam.ac.uk
+ * @create date 15-03-2025 20:28:34
+ * @modify date 15-03-2025 20:28:34
+ * @desc [description]
+ */
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
@@ -40,7 +50,7 @@ def compute_ns(params):
     # Define potential
     def potential(p):
         A = a * phi0**2 + g * phi0 * p + b * p**2
-        return - (m * phi0) ** 2 * (p / A) ** 2 / 2
+        return (m * phi0) ** 2 * (p / A) ** 2 / 2
     
     # Compute potential
     tilde_plot = np.linspace(-200, 200, 1000)
