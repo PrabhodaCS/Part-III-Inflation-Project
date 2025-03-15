@@ -49,14 +49,14 @@ tilde_vals = sol.y[0]     # corresponding canonical field values
 print("beginning value of canonical phi : ",tilde_vals[0],"\n","End value  of canonical phi : ", tilde_vals[-1])
 
 def V(phi):
-    return 0.5 * (m*phi0)**2 * (phi**2)/A_func(phi)**2
+    return  0.5 * (m*phi0)**2 * (phi**2)/A_func(phi)**2
 
 # If you want to plot V as a function of the canonical field, you need to know phi as a function of tilde.
 # We can build an interpolation function from tilde_vals vs. phi_vals.
 phi_of_tilde = interp1d(tilde_vals, phi_vals, kind='cubic', fill_value="extrapolate")
 
 # Specify the range for the canonical field you want to plot:
-tilde_start = -3000 # lower limit for canonical field
+tilde_start = -2000 # lower limit for canonical field
 tilde_end   = 500  # upper limit for canonical field
 
 if not np.all(np.diff(tilde_vals) > 0):
@@ -65,19 +65,30 @@ else:
     print("tilde_vals is strictly increasing.")
 
 # Generate canonical field values in that range:
-tilde_plot = np.linspace(tilde_start, tilde_end, 500)
+tilde_plot = np.linspace(tilde_start, tilde_end, 50000)
 phi_plot = phi_of_tilde(tilde_plot)
 V_plot   = V(phi_plot)
 
-phi_vals1 = np.linspace(-50, 30, 1001)
-
-V_normal = V(phi_vals1)
-
-tvals = np.linspace(0, 1, 101)
 """print(phi_vals)
 print("\n")
 print(tilde_vals)
 """
+
+dV = np.gradient(V_plot, tilde_plot)
+ddV = np.gradient(dV, tilde_plot)
+
+ratio = max(dV)/max(V_plot)
+ratio2 = max(ddV)/max(V_plot)
+
+print("Ratio of dV to V maxima is: ", ratio)
+print("Ratio of d^2V to V maxima is: ", ratio2)
+print("Ratio of d^2V to dV maxima is: ", ratio2/ratio)
+
+#Defining slow roll parameters : 
+epsilon = 0.5 * (dV/V_plot)**2
+eta = abs(ddV/V_plot)
+
+print(max(epsilon), max(eta))
 
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(phi_vals, tilde_vals)
@@ -91,12 +102,13 @@ plt.tight_layout()
 # Parameters to display
 parameters = [
     (r'$\beta$', beta),
-    (r"$c'$", c),
+    (r"$c$", c),
     (r'$\mu$', m),
     (r'$\varphi_0$', phi0),
     (r'$\gamma$', gamma),
     (r'$\alpha$', alpha),
-    (r'$D$', D)
+    (r'$D$', D),
+    (r'$k$', k)
 ]
 
 # Display parameters on the plot
@@ -107,24 +119,46 @@ for i, (name, value) in enumerate(parameters):
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Field vs Canonical Field.png")
 plt.show()
 
+Nr = []
+for i in range(len(epsilon)):
+    if epsilon[i] < 1:
+       Nr.append(tilde_plot[i])
+
+print(len(Nr),len(tilde_plot))
 
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(tilde_plot, V_plot, label=r"$V(\tilde{\varphi})$")
+ax.plot(tilde_plot, dV/ratio, label=r"$dV/d\tilde{\varphi}$  (Scaled)")
+ax.plot(tilde_plot, ddV/ratio2, label=r"$d^2V/d\tilde{\varphi}^2$  (Scaled)")
 ax.set_xlabel(r"Canonical field $\tilde{\varphi}$")
 ax.set_ylabel(r"$V(\tilde{\varphi})$")
 ax.set_title("Potential vs. Canonical Field")
 ax.grid(True)
+
+mask = (epsilon > 1) & (eta > 1)
+
+# Check that there is at least one point satisfying the condition
+if np.any(mask):
+    slow_roll_min = np.min(tilde_plot[mask])
+    slow_roll_max = np.max(tilde_plot[mask])
+    ax.axvspan(slow_roll_min, slow_roll_max, color='grey', alpha=0.3, label="Slow-roll region")
+    print(f"Slow-roll region: {slow_roll_min:.2f} < tilde_phi < {slow_roll_max:.2f}")
+else:
+    print("No slow-roll region found in the specified canonical range.")
+
+
 plt.tight_layout()
 
 # Parameters to display
 parameters = [
     (r'$\beta$', beta),
-    (r"$c'$", c),
+    (r"$c$", c),
     (r'$\mu$', m),
     (r'$\varphi_0$', phi0),
     (r'$\gamma$', gamma),
     (r'$\alpha$', alpha),
-    (r'$D$', D)
+    (r'$D$', D),
+    (r'$k$', k)
 ]
 
 # Display parameters on the plot
@@ -135,16 +169,41 @@ for i, (name, value) in enumerate(parameters):
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Lagrangian potential.png")
 plt.show()
 
+ep_start = -50
+ep_end = 50
+
+mask = (epsilon < 1) & (eta < 1) & (tilde_plot > ep_start) & (tilde_plot < ep_end)
+epsilon_masked = np.ma.masked_where(~mask, epsilon)
+eta_masked = np.ma.masked_where(~mask, eta)
+
+# --- Plot Slow-Roll Parameters vs Canonical Field ---
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(tilde_plot, epsilon_masked, label=r"$\epsilon$")
+ax.plot(tilde_plot, eta_masked, label=r"$\eta$")
+ax.set_xlabel(r"Canonical field $\tilde{\varphi}$")
+ax.set_ylabel("Slow-roll parameters")
+ax.set_title("Slow-roll Parameters vs. Canonical Field")
+ax.legend()
+ax.grid(True)
 
 
-"""
-plt.figure(figsize=(8,6))
-plt.plot(phi_vals1, V_normal, label=r"$V(\varphi)$")
-plt.xlabel(r"Field $\varphi$")
-plt.ylabel(r"$V$")
-plt.title("Potential vs. Field")
-plt.legend()
-plt.grid(True)
+# Parameters to display
+parameters = [
+    (r'$\beta$', beta),
+    (r"$c$", c),
+    (r'$\mu$', m),
+    (r'$\varphi_0$', phi0),
+    (r'$\gamma$', gamma),
+    (r'$\alpha$', alpha),
+    (r'$D$', D),
+    (r'$k$', k)
+]
+
+# Display parameters on the plot
+for i, (name, value) in enumerate(parameters):
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+
+
 plt.tight_layout()
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Slow Roll Parameters.png")
 plt.show()
-"""
