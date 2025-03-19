@@ -155,35 +155,67 @@ Given that $\ddot{a} > 0$ and Friedmann equation \ref{2}, we see that $\frac{\rh
 
 So far, we have described the physical implications of inflation and it's effects. In the following section, we shall describe the physical conditions under which such an exponential expansion can arise. 
 
-\subsection{Scalar Field Inflation}
-The simplest models of inflation involve a scalar field $\phi$ (Inflation Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
+\subsection{Non-Canonical Scalar Field Inflation}
+The simplest models of inflation involve a scalar field $\phi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
 
-The dynamics of a scalar field minimally coupled to gravity is governed by the action
+In this section, we shall work with a general non-canonical scalar field and derive the equations of motion and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model.
+
+\begin{equation}\label{12}
+    S = \int \mathrm{d}^4 x \sqrt{-g} \left[ g^{\mu \nu} \frac{K(\phi)}{2} \partial_{\mu}\phi \partial_{\nu} \phi  - V(\phi) \right]\
+\end{equation}
+
+Since during the inflationary period, we assume a de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \text{diag}[1,-a^2(t),-a^2(t),-a^2(t)]$ making $\sqrt{-g} = a^3(t)$. We also assume that the scalar field is homogeneous and therefore only varies with time, allowing us to drop the gradient term. The action then becomes: 
+
+\begin{equation} \label{13}
+    S = \int \text{dt}\text{d}^3\text{x} \; \text{a}^3(t) \left[ \frac{K(\varphi)}{2}\dot{\varphi}^2 - V(\varphi) \right]
+\end{equation}
+
+We vary the action and upon integrating by parts we get,
 
 \begin{equation}
-    S = \int \mathrm{d}^4 x \sqrt{-g} \left[ \frac{1}{2} R + g^{\mu \nu}\partial_{\mu}\phi \partial_{\nu} \phi  - V(\phi) \right] = S_{\text{EH}} + S_{\phi}
-\end{equation}
-Using Noether's Theorem, we see that the energy momentum tensor for the scalar field gives,
-\begin{equation}
-    T_{\mu \nu} = \partial_{\mu} \phi \partial_{\nu} \phi - g_{\mu \nu} \left( \frac{1}{2}\partial_{\sigma} \phi \partial^{\sigma}\phi - V(\phi) \right)
-\end{equation}
-Using the energy momentum tensor and assuming homogeneity in the perfect fluid (scalar field), we get
-\begin{equation}
-    \rho_{\phi} = \frac{1}{2}{\dot{\phi}}^2 + V(\phi)
-\end{equation}
-\begin{equation}
-    p_{\phi} = \frac{1}{2}{\dot{\phi}}^2 - V(\phi)    
+    \delta S = - \int \text{dt}\,\text{d}^3\textbf{x} \; \left[ a^3 K \ddot{\varphi} + a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2}  +  3\dot{a} a^2 K \dot{\varphi} + a^3V_{,\varphi}  \right]\delta \varphi
 \end{equation}
 
-Substituting these values of $\rho$ and p into the continuity equation \ref{1} and also using equation \ref{3} and substituting $k = 0$, we get 
+Setting this variation to zero, we get the equation of motion for a non-canonical scalar field.
 
-\begin{equation} \label{17}
-    \ddot{\phi} + 3H\dot{\phi} + V,_\phi = 0
+\begin{equation} \label{16}
+    K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
 \end{equation}
 
-\begin{equation} \label{18}
-    H^2 = \frac{8\pi G}{3} \left(\frac{1}{2} {\dot{\phi}}^2 + V(\phi) \right)
+We see this aligns with the canonical scalar field when we set $K = 1$, getting  $ \ddot{\varphi} +  3H \dot{\varphi}  + V_{,\varphi}   = 0$. While this equation is nice, it turns out to be more useful in cosmology to record how the inflaton field changes with respect to the e-folding time ($N = \int H \text{d}t$). For this, let us take an aside and given the action \ref{12}, derive the energy-momentum tensor.
+
+\begin{equation}
+    T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \phi)} \partial_\nu \phi - g_{\mu\nu} \mathcal{L}
 \end{equation}
+
+Using this, and simplifying the final expression we get, for the energy density and the pressure of the fluid: 
+
+\begin{align}
+    \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
+    p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
+\end{align}
+
+Using the third Friedmann equation \ref{3}, we get:
+
+\begin{equation}    \label{Friedmann Eqn 2}
+    3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
+\end{equation}
+
+Upon differentiating this expression with respect to time and using \ref{16}, we get:
+
+\begin{equation}
+    2 M_p^2 \dot{H} = -  K \dot{\varphi}^2
+\end{equation}
+
+Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
+
+\begin{widetext}
+\begin{subequations}
+\begin{align}\label{21}
+    K\frac{\text{d}^2\varphi}{\text{d}N^2} +3 K \frac{\text{d}\varphi}{\text{d}N}  - \frac{K^2}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3  +  \frac{K_{,\varphi}}{2}  \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 +  \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} = 0    
+\end{align}
+\end{subequations}
+\end{widetext}
 
 \subsection{Slow Roll Inflation}
 The acceleration equation for universe dominated by the inflaton field with the energy density $\rho_{\phi}$ and pressure $p_{\phi}$ is given by Friedmann equation \ref{2},
@@ -192,33 +224,39 @@ The acceleration equation for universe dominated by the inflaton field with the 
 \end{equation}
 We see that if we can get $\ddot{a} > 0$ by requiring $\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down it's potential hill. The accelerated expansion will also only be satisfied for a long period of time if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. 
 
-We can rewrite these two slow-roll conditions with the two slow roll parameters $\epsilon$ and $\eta$ and requiring that $\epsilon << 1$ and $\eta << 1$ during the slow roll. 
+We can rewrite these two slow-roll conditions with the two slow roll parameters $\epsilon$ and $\eta$ and requiring that $\epsilon_V << 1$ and $\eta_V << 1$ during the slow roll. 
 \begin{equation}
-    \epsilon = \frac{1}{2}  \left( \frac{V,_{\phi}}{V} \right)^2 \,\,\,\,\,\,\,\,\ \eta = \left| \frac{V,_{\phi\phi}}{V} \right|
+    \epsilon_V = \frac{1}{2}  \left( \frac{V,_{\phi}}{V} \right)^2 \,\,\,\,\,\,\,\,\ \eta_V = \left| \frac{V,_{\phi\phi}}{V} \right|
 \end{equation}
 
-With these conditions in place, the two equations relating the scale factor and the scalar field \ref{17} and \ref{18} reduce to
-\begin{equation}  \label{21}
-    3H\dot{\phi} + V,_{\phi} = 0 \,\,\,\,\,\,\,\,\,\,\,\  H^2 = \frac{8\pi G}{3} V(\phi)
-\end{equation}
+We can also write down the Hubble Slow Roll parameters (HSR), which are easily computable for our case of a non-canonical action:
 
-So far, these arguments only provide restrictions on the potential of the scalar field $\phi$, but make no attempt to motivate the form of the potential or the action principle for the field from first principles. This is inflation refers to a whole host of theories which aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
+\begin{align}
+    \epsilon_H &= -  \left( \frac{\dot{H}}{H^2} \right) = \frac{K(\phi)}{2 M_p^2} \left( \frac{\text{d}\phi}{\text{d}N} \right)^2  \nonumber \\
+    \eta_H &= \epsilon_H - \frac{1}{2 \epsilon_H} \left( \frac{\text{d}\epsilon_H}{\text{d}N} \right)
+\end{align}
 
-One of the ways to arrive at the action principle of the inflaton field is to take a leaf out of the playbook of many successful QFTs and to hypothesize a gauge condition. This is the approach that shall be taken in this project and explained more in the next section.
+Inflation ends exactly when the HSR hits one, that is, $\epsilon_H = 1$.
+
+So far, these arguments only provide restrictions on the potential of the scalar field $\phi$, but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Thus, we see that the theory of inflation refers to a whole host of theories that aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
+
+\textit{One of the ways to arrive at the action principle of the inflaton field is to take a leaf out of the playbook of many successful QFTs and to hypothesize a gauge condition. This is the approach that shall be taken in this project and explained more in the next section.}
 
 
 \section{Scale Invariant Gravity} \label{Section 3}
-Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and look at it's conclusions. 
+Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and look at its conclusions. 
 
-The theory of General Relativity is one of mankind's most rigorous scientific theories, is self consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy (/length) scales. It is widely accepted that at high enough energy scales, those comparable to the planck scale, GR breaks down. 
+The theory of General Relativity is one of mankind's most rigorous scientific theories, is self-consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy (/length) scales. It is widely accepted that at high enough energy scales, those comparable to the Planck scale, GR breaks down. 
 
-An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert lagrangian being proportional to the Ricci Scalar, is a low energy extrapolation of a more fundamental scale invariant theory which describes physics at higher energies. 
+An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental scale-invariant theory that describes physics at higher energies. 
 
 Let us begin by exploring this possibility with a simple spin-0 scalar field that is minimally coupled to gravity.
 
 \begin{equation}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \varphi \partial^\mu \varphi - m^2   \varphi^2   \right] + \text{gravity}
 \end{equation}
+
+\textbf{CHANGE FROM HERE ONWARDS...}
 
 Before we can require global scale invariance in the theory, we immediately see that there is a problem. Looking at the dimensions of the terms, ($[\partial_\mu \varphi \partial^\mu \varphi ] = 4$) and ($[\varphi^2 ] = 2$) (In natural units).  For such a transformation to leave the action invariant, we would want all the terms in the action to transform similarly, however, while the first term of the action transforms with 4 powers of the transformation the second term only transforms with 2 powers, due to it's dimension. The only way to fix this is to make $m$ a dynamic field $\phi$  and couple it with $\varphi$ using a dimensionless coupling parameter $\mu$.
 
