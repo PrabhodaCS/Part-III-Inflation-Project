@@ -70,7 +70,7 @@ def compute_ns(params):
 guess_params = [100, -50, 0.1, 1, 30]
 
 # Optimize
-result = minimize(compute_ns, guess_params, method='Nelder-Mead', options={'xatol': 1e-3})
+result = minimize(compute_ns, guess_params, method='Nelder-Mead', options={'xatol': 1e-9})
 optimal_params = result.x
 
 print("Optimal Parameters:")

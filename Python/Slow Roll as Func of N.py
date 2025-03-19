@@ -85,12 +85,22 @@ K_n = np.array([float(Ki(p)) for p in ps], dtype=np.float64)  # K as function of
 
 H = np.sqrt(V_n/(3*Mp**2 - 0.5*K_n*ps_**2))  # Hubble parameter as function of N
 
-epsilon =  1/H * np.gradient(H, Nr)  # Slow roll parameter epsilon as function of N
-eta = epsilon - 1/(2*epsilon) * np.gradient(epsilon, Nr)  # Slow roll parameter eta as function of N
-
 
 epsilonh = Mp**2/2 * K_n * ps_**2
 etah = epsilonh - 1/(2*epsilonh) * np.gradient(epsilonh, Nr)
+
+
+# Find index closest to N = 60
+idx_expN = np.argmin(np.abs(Nr - Nend))
+
+    # Convert from Hubble slow-roll parameters to Potential slow-roll parameters
+epsilonV = epsilonh / (3 - etah)**2
+etaV = (etah + epsilonh) / (3 - etah)
+
+# Compute the final spectral tilt
+ns_potential = 1 - 6 * epsilonV[idx_expN] + 2 * etaV[idx_expN]
+
+print(f"Final tilt value (Potential Slow-Roll): ns = {ns_potential:.6f}")
 
 # Main plot in the first column:# Define the starting point
 N_start = 10
