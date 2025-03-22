@@ -68,7 +68,7 @@ sorting=none]{biblatex}
 \begin{abstract}
 
 \textbf{TO BE WRITTEN}
-
+\textit{Italics sections to be edited... and more}
 \end{abstract}
 
 \maketitle
@@ -188,7 +188,7 @@ We see this aligns with the canonical scalar field when we set $K = 1$, getting 
     T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \phi)} \partial_\nu \phi - g_{\mu\nu} \mathcal{L}
 \end{equation}
 
-Using this, and simplifying the final expression we get, for the energy density and the pressure of the fluid: 
+Using this, and simplifying the final expression we get, the energy density and the pressure of the fluid are as follows: 
 
 \begin{align}
     \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
@@ -222,9 +222,9 @@ The acceleration equation for universe dominated by the inflaton field with the 
 \begin{equation}
     \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} ({\dot{\phi}}^2 - V(\phi)) 
 \end{equation}
-We see that if we can get $\ddot{a} > 0$ by requiring $\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down it's potential hill. The accelerated expansion will also only be satisfied for a long period of time if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. 
+We see that if we can get $\ddot{a} > 0$ by requiring $\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. 
 
-We can rewrite these two slow-roll conditions with the two slow roll parameters $\epsilon$ and $\eta$ and requiring that $\epsilon_V << 1$ and $\eta_V << 1$ during the slow roll. 
+We can rewrite these two slow-roll conditions with the two slow-roll parameters $\epsilon$ and $\eta$ and requiring that $\epsilon_V << 1$ and $\eta_V << 1$ during the slow roll. 
 \begin{equation}
     \epsilon_V = \frac{1}{2}  \left( \frac{V,_{\phi}}{V} \right)^2 \,\,\,\,\,\,\,\,\ \eta_V = \left| \frac{V,_{\phi\phi}}{V} \right|
 \end{equation}
@@ -244,51 +244,61 @@ So far, these arguments only provide restrictions on the potential of the scalar
 
 
 \section{Scale Invariant Gravity} \label{Section 3}
-Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and look at its conclusions. 
+Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and analyze the theory with the inclusion of gravity. This immediately makes the theory much richer producing various inflationary scenarios such as hilltop, plateau (Starobinsky-like), and even power law/ exponential potentials.
 
 The theory of General Relativity is one of mankind's most rigorous scientific theories, is self-consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy (/length) scales. It is widely accepted that at high enough energy scales, those comparable to the Planck scale, GR breaks down. 
 
-An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental scale-invariant theory that describes physics at higher energies. 
+An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental scale-invariant theory that describes physics at higher energies. Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP. It shall be shown in the later part of the paper that the desired plateau form of the Starobinsky potential also arises from the inclusion of $R^2$ term in the Lagrangian. Given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant. Another approach to inflationary cosmology is to consider metric-affine theories. This is done through the inclusion of the Holst invariant, a quantity that is already scale-invariant, in the lagrangian. This has been explored in \cite{Salvio_2022} and \cite{pradisi2022equivalence}. The potential achieved in \cite{Salvio_2022} is identical to the one obtained through demanding scale invariance in \cite{barker2024poincaregaugetheoryconformal} and the translation between the variables in the two theories will be given in the Appendix. Finally, when considering the classical action of the Standard Model, dropping the Higgs mass terms, one finds that it too is scale-invariant and can be extended to be conformally invariant \cite{bars2014local}. 
 
-Let us begin by exploring this possibility with a simple spin-0 scalar field that is minimally coupled to gravity.
+All of these investigations may hint towards a fundamental principle out of which these arise as limits - \textit{the inflaton potential arising} due to the gauging of this scale invariance, i.e., conformal symmetry.
 
-\begin{equation}
+In the argument that follows, we derive the most general conformally invariant action with non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though this is a perfectly legal and general extension of the model. It is easy to show that this results in a two-field inflation model. We find, however, that the proceeding model that we will derive is quite general and accounts for a lot of behaviors seen in the potentials derived through other means. Let us begin by exploring this possibility with a spin-0 scalar field that is minimally coupled to gravity.
+
+\begin{equation} \label{25}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \varphi \partial^\mu \varphi - m^2   \varphi^2   \right] + \text{gravity}
 \end{equation}
 
-\textbf{CHANGE FROM HERE ONWARDS...}
+Under local rescalings, the metric and the scalar transforms as $g_{\mu\nu} \rightarrow e^{2\rho} g_{\mu\nu} $ and  $\varphi \rightarrow e^{-\rho}\varphi$ respectively. To ensure the kinetic terms retain their form, we introduce the Weyl vector $B_\mu$ which transforms as such $B_{\mu} \rightarrow B_\mu - \partial_\mu \rho$ under the gauge transformation (going back to the roots of the word) and define the covariant derivative $D_\mu = \partial_\mu - B_\mu$. To remove the explicit mass scale $m$ appearing in the Lagrangian \ref{25}, we add a compensator scalar field $\phi \rightarrow e^{-\rho}\phi$. For the gravity sector of the Lagrangian, let us see how the Christoffel symbol transforms under a local rescaling:
 
-Before we can require global scale invariance in the theory, we immediately see that there is a problem. Looking at the dimensions of the terms, ($[\partial_\mu \varphi \partial^\mu \varphi ] = 4$) and ($[\varphi^2 ] = 2$) (In natural units).  For such a transformation to leave the action invariant, we would want all the terms in the action to transform similarly, however, while the first term of the action transforms with 4 powers of the transformation the second term only transforms with 2 powers, due to it's dimension. The only way to fix this is to make $m$ a dynamic field $\phi$  and couple it with $\varphi$ using a dimensionless coupling parameter $\mu$.
+\begin{equation}
+    \tilde{\Gamma}^{\alpha}_{\beta \gamma} = \Gamma^{\alpha}_{\beta \gamma} +(\delta^{\alpha}_{\beta} \partial_\gamma \rho + \delta^{\alpha}_{\gamma} \partial_{\beta} \rho - g_{\beta \gamma}g^{\alpha \tau}\partial_{\tau}\rho)
+\end{equation}
 
-\begin{subequations}\label{23}
+Defining a new connection that is conformally covariant using $B_\mu$ and using that to define the new curvature scalar, we get the Weyl curvature scalar:
+
 \begin{align}
-    S = \int \mathrm{d}^4 x \sqrt{-g} \bigg[ &\frac{1}{2} \Big( \partial_\mu \varphi \partial^\mu \varphi + \sigma \partial_\mu \varphi \partial^\mu \phi \nonumber\\
-    &+ \nu \partial_\mu \phi \partial^\mu \phi - \mu^2 \phi^2 \varphi^2 \Big) \bigg] + \text{gravity}.
+    \mathcal{T}^{\alpha}_{\beta \gamma} &= \Gamma^{\alpha}_{\beta \gamma} + (\delta^{\alpha}_{\beta} B_{\gamma} + \delta^{\alpha}_{\gamma} B_{\beta} - g_{\beta \gamma}g^{\alpha \tau}B_{\tau}) \nonumber \\
+    \tilde{R} &= R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
 \end{align}
-\end{subequations}
 
-We can now gauge this scale invariance (make the transformation local) to see what the resulting dynamics entail. Under local scale invariance, the metric transform as $g_{\mu \nu} \rightarrow e^{2\rho} g_{\mu \nu}$ and the scalar fields as $\varphi \rightarrow e^{-2\rho} \varphi$ and $\phi \rightarrow e^{-2\rho} \phi$, where $\rho = \rho(x)$. To ensure that the derivative terms respect this transformation, however, we are forced to introduce a vector potential term in a similar vein to QED, which transforms as such $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu}\rho$.
-
-This new field however, cannot propagate on it's own, if we want there to be only degree of freedom between the fields $\varphi$ and $\phi$, we need to choose a suitable gauge. One choice is the Einstein gauge $\phi = \phi_{0}$, however, we can also redefine away the field $\phi$, by choosing $g_{\mu \nu} \rightarrow \frac{\phi_0}{\phi} g_{\mu \nu}$, $\varphi \rightarrow \frac{\phi}{\phi_0} \varphi$ and $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu} ln(\phi)$. Putting all this together, we get
+Putting all this together, we get the most general conformally invariant action, (assuming linearity in the curvature)
 
 \begin{widetext}
-\begin{subequations}
-\begin{align}\label{24}
-    S = \int \mathrm{d}^4 x \sqrt{-g} \left[ \frac{1}{2}  (\partial_\mu \varphi - (\varphi - \sigma \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu)  - 
-    \frac{\mu^2\phi_{0}^{2}}{2} \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu \right] + \text{gravity}
+\begin{subequations} \label{28a}
+\begin{align}
+    S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \right. \nonumber \\
+    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \nonumber\left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right] \,.\label{28a} 
 \end{align}
 \end{subequations}
 \end{widetext}
 
-We are left with a slight problem here, while we set out to discover the dynamics of the inflaton field $\varphi$, we have two fields here, one scalar $\varphi$ and another vector field $B^\mu$. Given that there is no need for an additional vector particle in either particle physics or cosmology, we can employ a trick of sending $\nu \rightarrow \infty$, this has the effect of making the particle heavy and could be seen as a dark matter candidate. For sufficiently large $\nu$, we can ignore the $H_{\mu\nu}H^{\mu\nu}$ term and solve for $B^\mu$ using the Euler-Lagrange equations and get $B^\mu = \frac{1}{2} \partial^\mu \text{ln}(\varphi^2 - \sigma \phi_0 \varphi + \nu \phi^2)$. Substituting this into \ref{24}, we get
+A point to note here is the abundance of dimensionless parameters. We can remove any two of them by rescaling our fields, but we will leave it in this form until necessary. In the proceeding discussions, we shall set $\lambda = \kappa = 0$, this can be reinstated in the end, once the dynamics have been analyzed and the final inflaton potential is revealed.
+
+In the equation above, we find that there are two scalar fields here. This makes analyzing the equations of motion harder. However, we have a redundant degree of freedom granted to us through the Weyl invariance we demanded the action possess. Looking at the units of $[\phi] = 2$, which is inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$. The reparametrizations that allows us to do this are : $g_{\mu \nu} \rightarrow \frac{\phi_0}{\phi} g_{\mu \nu}$, $\varphi \rightarrow \frac{\phi}{\phi_0} \varphi$ and $B_{\mu} \rightarrow B_{\mu} - \partial_{\mu} ln(\phi)$. The resulting action in the Jordan Frame therefore reads:
 
 \begin{equation}
-    S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \varphi \partial^\mu \varphi - U(\varphi)   \right] + \text{gravity}
+    \begin{aligned}
+        \mathcal{L} &= ( \beta \varphi^2 + \gamma \phi_0 \varphi +\alpha \phi^2_0) (R - 6B_{\mu} B^{\mu} - 6\nabla_\mu B^\mu) \\
+        &+ \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi + \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu)\\
+        &- \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \end{aligned}
 \end{equation}
-where
-\begin{equation} \label{26}
-    U(\varphi) = \frac{\mu^2 \phi_{0}^{4}}{2} \left[ \frac{\sigma}{2} + \sqrt{\nu - \frac{\sigma^2}{4}} \text{sinh}\left( \frac{\varphi - c}{\phi_0 \sqrt{\nu - \frac{\sigma^2}{4}}} \right)  \right]
-\end{equation}
+
+
+\textbf{CHANGE FROM HERE ONWARDS...}
+
+
+
 
 We can see the graph of the potential in Fig \ref{Potential from Paper}.
 \begin{figure}[h]
