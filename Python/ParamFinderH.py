@@ -19,12 +19,18 @@ from sympy import *
 expns = 0.9626
 expN = 60
 
+#Fixed parameters
 m = 1
-sf = 1000000
 M = 20
 Mp = np.sqrt(2) * M
+c = 0
 
-
+# Initial conditions
+p0 = 1000
+p_0 = 1
+V0 = [p0, p_0]
+Nend = 70
+Nr = np.linspace(0, Nend, 1000)
 
 # Function to compute slow-roll parameters
 def slow_roll_params(tilde_plot, V_plot):
@@ -38,43 +44,34 @@ def slow_roll_params(tilde_plot, V_plot):
 
 def newslowroll_params(tilde_plot, K_plot):
     dK = np.gradient(K_plot,tilde_plot)
-
     lam = (Mp**2) * (dK/K_plot)
 
     return lam
 
 # Function to compute n_s at N = 60
 def compute_ns(params):
-    g, a, b, k, phi0 = params
+    g, a, b, k, phi0, la, ka = params
     
     # Derived parameters
     D = np.sqrt(g**2 - 4*a*b)
-
-    # Initial conditions
-    p0 = 100
-    p_0 = 0.1
-    V0 = [p0, p_0]
-    Nend = 70
-    Nr = np.linspace(0, Nend, 1000)
     
     # Define potential
     def potential(p):
         A = a * phi0**2 + g * phi0 * p + b * p**2
-        return (m * phi0) ** 2 * (p / A) ** 2 / 2
+        return ((1 * phi0 * p)**2 + la * p**2 + ka * phi0**4) / (2 * A**2)
     
     def K(p):
         A = a * phi0**2 + g * phi0 * p + b * p**2
         return M**2 * ( -36*b/A + (phi0**2*(g**2 - 4*b*a)*(k-6))/(2*A**2) )
 
-
     # Compute potential
-    tilde_plot = np.linspace(-200, 200, 1000)
-    V_plot = potential(tilde_plot)
-    K_plot = K(tilde_plot)
+    phi_plot = np.linspace(-1000, 1000, 10000)
+    V_plot = potential(phi_plot)
+    K_plot = K(phi_plot)
     
     # Compute slow-roll parameters
-    epsilon, eta = slow_roll_params(tilde_plot, V_plot)
-    lam = newslowroll_params(tilde_plot, K_plot)
+    epsilon, eta = slow_roll_params(phi_plot, V_plot)
+    lam = newslowroll_params(phi_plot, K_plot)
 
     # Find index closest to N = 60
     idx_expN = np.argmin(np.abs(Nr - expN))
@@ -84,28 +81,29 @@ def compute_ns(params):
     return (ns - expns) ** 2  # Minimize squared difference from 0.97
 
 # Initial guess for parameters
-guess_params = [100, -50, -1, 100, 30]
+#guess_params = [100, -50, -1, 100, 30]
+# [gamma, alpha, beta, k, phi0, lambda, kappa]
+guess_params = [100, -50,  0.1, 10, -529.7076, 1, 0]
 
 # Optimize
 result = minimize(compute_ns, guess_params, method='Nelder-Mead', options={'xatol': 1e-9})
 optimal_params = result.x
 
 print("Optimal Parameters:")
-print(f"gamma = {optimal_params[0]:.4f}, alpha = {optimal_params[1]:.4f}, beta = {optimal_params[2]:.4f}, k = {optimal_params[3]:.4f}, phi0 = {optimal_params[4]:.4f}")
+print(f"gamma = {optimal_params[0]:.4f}, alpha = {optimal_params[1]:.4f}, beta = {optimal_params[2]:.4f}, k = {optimal_params[3]:.4f}, phi0 = {optimal_params[4]:.4f}, lambda = {optimal_params[5]:.4f}, kappa = {optimal_params[6]:.4f}")
 
-beta = optimal_params[2]
-gamma = optimal_params[0]
+
+# Unpack optimal parameters for later use in the canonical mapping
+gamma = 150
 alpha = optimal_params[1]
-k = optimal_params[3]
+beta = 0.001
+k = 30
 phi0 = optimal_params[4]
+la = optimal_params[5]
+ka = optimal_params[6]
 
 # Fixed parameters
 D = np.sqrt(gamma**2 - 4*alpha*beta)
-m = 10
-M = 20
-Mp = np.sqrt(2) * M
-c = 0
-
 p_s = symbols('phi')
 
 # Define A(phi) = beta*phi^2 + gamma*phi0*phi + alpha*phi0^2.
@@ -136,29 +134,35 @@ tilde_vals = sol.y[0]     # corresponding canonical field values
 print("beginning value of canonical phi : ",tilde_vals[0],"\n","End value  of canonical phi : ", tilde_vals[-1])
 
 def V(phi):
-    return  0.5 * (m*phi0)**2 * (phi**2)/A_func(phi)**2
+    return ((1 * phi0 * phi)**2 + la * phi**2 + ka * phi0**4) / (2 * A_func(phi)**2)
 
 # If you want to plot V as a function of the canonical field, you need to know phi as a function of tilde.
 # We can build an interpolation function from tilde_vals vs. phi_vals.
 phi_of_tilde = interp1d(tilde_vals, phi_vals, kind='cubic', fill_value="extrapolate")
 
 # Specify the range for the canonical field you want to plot:
-tilde_start = -2000 # lower limit for canonical field
-tilde_end   = 200  # upper limit for canonical field
+tilde_start = -50 # lower limit for canonical field
+tilde_end   = 1000  # upper limit for canonical field
 
 # Generate canonical field values in that range:
 tilde_plot = np.linspace(tilde_start, tilde_end, 50000)
 phi_plot = phi_of_tilde(tilde_plot)
 V_plot   = V(phi_plot)
+K_plot = K(phi_plot)
 
-dV = np.gradient(V_plot, tilde_plot)
-ddV = np.gradient(dV, tilde_plot)
+# Compute slow-roll parameters
+epsilon, eta = slow_roll_params(tilde_plot, V_plot)
+lam = newslowroll_params(tilde_plot, K_plot)
 
-ratio = max(dV)/max(V_plot)
-ratio2 = max(ddV)/max(V_plot)
+# Find index closest to N = 60
+idx_expN = np.argmin(np.abs(Nr - expN))
+print(idx_expN)
+print(Nr[idx_expN])
 
-epsilon = 0.5 * (dV / V_plot) ** 2
-eta = np.abs(ddV / V_plot)
+# Compute spectral tilt
+ns = 1 + (2 * eta[idx_expN] - 6 * epsilon[idx_expN] - np.sqrt(2*epsilon[idx_expN])*lam[idx_expN])/K_plot[idx_expN]
+
+print(f"The spectral tilt at N = {expN} is: ",ns)
 
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(phi_vals, tilde_vals)
@@ -178,12 +182,14 @@ parameters = [
     (r'$\gamma$', gamma),
     (r'$\alpha$', alpha),
     (r'$D$', D),
-    (r'$k$', k)
+    (r'$k$', k),
+    (r"$\lambda$", la),
+    (r"$\kappa$", ka)
 ]
 
 # Display parameters on the plot
 for i, (name, value) in enumerate(parameters):
-    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 plt.show()
 
@@ -208,12 +214,14 @@ parameters = [
     (r'$\gamma$', gamma),
     (r'$\alpha$', alpha),
     (r'$D$', D),
-    (r'$k$', k)
+    (r'$k$', k),
+    (r"$\lambda$", la),
+    (r"$\kappa$", ka)
 ]
 
 # Display parameters on the plot
 for i, (name, value) in enumerate(parameters):
-    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Potential with correct parameters.png")
@@ -246,12 +254,14 @@ parameters = [
     (r'$\gamma$', gamma),
     (r'$\alpha$', alpha),
     (r'$D$', D),
-    (r'$k$', k)
+    (r'$k$', k),
+    (r"$\lambda$", la),
+    (r"$\kappa$", ka)
 ]
 
 # Display parameters on the plot
 for i, (name, value) in enumerate(parameters):
-    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 plt.tight_layout()
 plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Slow Roll Parameters.png")
