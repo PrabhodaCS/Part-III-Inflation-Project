@@ -224,7 +224,7 @@ for i, (name, value) in enumerate(parameters):
     ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 
-plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Potential with correct parameters.png")
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Potential with correct parametersH.png")
 plt.show()
 
 
@@ -264,5 +264,5 @@ for i, (name, value) in enumerate(parameters):
     ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 plt.tight_layout()
-plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Slow Roll Parameters.png")
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Full Slow Roll ParametersH.png")
 plt.show()
