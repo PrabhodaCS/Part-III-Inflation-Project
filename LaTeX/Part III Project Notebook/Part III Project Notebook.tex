@@ -140,7 +140,7 @@ Literature is out! Since mass scale $\phi$ (Compensator scalar) introduces funda
 
 \begin{equation}
     \begin{aligned}
-        \mathcal{L} = &\; (\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)R - 6((\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)(B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \\
+        \mathcal{L} = &\; (\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)R - 6((\alpha \phi^2 + \beta \varphi^2 + \gamma \phi \varphi)(B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \\
         & +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \\
         & - \frac{\mu^2}{2} \phi^2 \varphi^2 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
     \end{aligned}
@@ -157,7 +157,7 @@ Taking a leaf out of \cite{barker2024poincaregaugetheoryconformal}, we pick a ga
     \end{aligned}
 \end{equation}
 
-Assuming $\xi << 1$ again or other conditions based on result, we solve for Euler-Lagrange Equations for field $B_\mu$ and get:
+Assuming $\xi << 1$ again or other conditions based on the result, we solve for the Euler-Lagrange Equations for field $B_\mu$ and get:
 
 \begin{equation}
     B_\mu = \frac{1}{2} \partial_\mu \text{ln}(\epsilon \varphi^2 + \sigma \phi_0 \varphi + \nu \phi^2_0 -12 (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi))
@@ -168,6 +168,7 @@ That is.
 \begin{equation}
     B_\mu = \frac{1}{2} \partial_\mu \text{ln}((\epsilon - \beta') \varphi^2 + (\sigma - \gamma') \phi_0 \varphi + (\nu - \alpha')\phi^2_0)
 \end{equation}
+
 
 Where, $\alpha' = 12\alpha, \beta' = 12\beta \text{ and } \gamma' = 12 \gamma$
 
@@ -256,7 +257,7 @@ Madness or
 
 We have 6 variables in V ; $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0]$
 
-Going back to the initial Lagrangian, we see, that by field redefinition, we can remove two of them. Two d.o.f available, so 4 legit variables then.
+Going back to the initial Lagrangian, we see that by field redefinition, we can remove two of them. Two d.o.f available, so 4 legit variables then.
 
 Say $V = [(\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0 \varphi + (\nu - 12\alpha)\phi^2_0] = k*[\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0 ]$, therefore only 4 variables still remain free; $\{k, \beta, \gamma, \alpha \}$
 
@@ -409,13 +410,6 @@ where $K = \sqrt{\frac{k-6}{2}}$. Plotting $\varphi$ vs N also gives us a straig
 
 I have also found, there can be old inflation kind of graphs with a suitable choice of parameters, as graphed below,
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{LaTeX/CASE II Potential.png}
-    \caption{Old inflation kinda potential for $k \neq 6\beta$ (CASE II)}
-    \label{Old inflation}
-\end{figure}
-
 
 \begin{comment}
 \begin{figure}[h!]
@@ -556,7 +550,7 @@ and for these values, since $k \gg 1 \implies$ only second term of kinetic coeff
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\textwidth]{Python/Figures/Full Lagrangian potential.png}
-    \caption{Full lagrangian potential}
+    \caption{Full lagrangian potential, (blue is potential, rest are derivatives, will add label later)}
     \label{Full lagrangian potential}
 \end{figure}
 
@@ -577,6 +571,53 @@ also, slow roll parameters as a function of N are:
     \caption{Hubble Slow Roll Parameters as a function of N}
     \label{Hubble Slow Roll Parameters as a function of N}
 \end{figure}
+
+\section{Reduction to the Starobinsky Model}
+
+\begin{align} \label{28a}
+    S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} - \nabla_\mu B^\mu) \right. \nonumber \\
+    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
+\end{align}
+
+Let us ignore all other terms except for $R$ coefficient $\varphi^2$ and the $\varphi^4$ terms. 
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L} &= (\alpha \phi^2_0 + \beta \varphi^2 + \gamma \phi_0 \varphi) (R - 6B_{\mu} B^{\mu} - 6\nabla_\mu B^\mu) \\
+        &+ \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi + \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu)\\
+        &- \frac{\mu^2}{2} \phi^2_0 \varphi^2 + \frac{\nu \phi_{0}^{2}}{2} B_\mu B^\mu - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \mathcal{L} = \beta \varphi^2 R - 6\beta \varphi^2 B_\mu B^\mu + 6\partial_\mu(\beta \varphi^2) B^\mu - \frac{\epsilon}{2} (\partial_\mu \varphi - (\varphi + \frac{\sigma}{\epsilon} \phi_0)B_\mu)(\partial^\mu \varphi - \varphi B^\mu) + \frac{\nu \phi_0^2}{2} B^\mu B_\mu
+\end{equation}
+
+eom for 
+
+
+\begin{equation}
+    \tilde{R} = \Omega^{-2} \left[ R - 6 \Box(\ln \Omega) - \frac{6 g^{\alpha \beta} \nabla_\alpha\Omega \nabla_\beta\Omega}{\Omega^2} \right]
+\end{equation}
+
+
+\section{Random Lagrangian Try (Not relevant)}
+\begin{equation}
+    \mathcal{L} = K(\phi) \left[\frac{1}{2} \partial_\mu\phi\partial^\mu\phi - V(\phi) \right]
+\end{equation}
+The Euler Lagrange eqns read:
+\begin{equation}
+    \partial^\mu (K \partial_\mu\phi) + K_{,\phi} (\frac{1}{2} \partial_\mu\phi\partial^\mu\phi - V(\phi)) + K V_{,\phi} = 0
+\end{equation}
+So
+\begin{equation}
+    K \partial^\mu \partial_\mu\phi + K_{,\phi} (\frac{3}{2} \partial_\mu\phi\partial^\mu\phi - V(\phi)) + K V_{,\phi} = 0
+\end{equation}
+
+
+\begin{equation}
+     \partial^\mu \partial_\mu\phi + V_{,\phi}  = (T_\mu^\mu) \frac{\text{d}}{\text{d}\phi} \ln (K(\phi)) 
+\end{equation}
 
 \newpage
 
