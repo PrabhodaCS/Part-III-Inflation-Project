@@ -141,6 +141,7 @@ def V(phi):
 phi_of_tilde = interp1d(tilde_vals, phi_vals, kind='cubic', fill_value="extrapolate")
 
 # Specify the range for the canonical field you want to plot:
+# Check this for sensitivity in Ns
 tilde_start = -50 # lower limit for canonical field
 tilde_end   = 1000  # upper limit for canonical field
 
