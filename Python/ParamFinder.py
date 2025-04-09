@@ -168,6 +168,7 @@ parameters = [
 for i, (name, value) in enumerate(parameters):
     ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Redefinition with correct parameters.png")
 plt.show()
 
 
