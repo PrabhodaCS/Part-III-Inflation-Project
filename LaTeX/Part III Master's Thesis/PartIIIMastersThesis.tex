@@ -83,7 +83,7 @@ Being a paradigm, however, the inflationary model provides no fundamental princi
 
 This paper aims to argue that a particularly satisfying and immensely rich inflationary model can be arrived at by arguing for our Inflaton lagrangian, in the presence of gravity, to be locally scale invariant. 
 
-Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP. We also see that during inflation, the approximately deSitter metric $\text{d}s^2 = \frac{1}{H\eta}(\text{d}\eta^2 - \text{d}\Vec{x}^2)$ remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any EFT defined on this background must be scale invariant too, perhaps even locally. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant. Appendix \ref{Appendix B} contains the mapping from the theory developed here to Starobinsky, showing we can arrive at that particular potential from gauged scale invariance. 
+Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP. We also see that during inflation, the approximately deSitter metric $\text{d}s^2 = \frac{1}{H\eta}(\text{d}\eta^2 - \text{d}\Vec{x}^2)$ remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any EFT defined on this background must be scale invariant too, perhaps even locally. This is in line with how EFTs defined on Minkowski space are expected to obey the symmetries of the Lorentz group $SO^+(1,3)$. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant. Appendix \ref{Appendix B} contains the mapping from the theory developed here to Starobinsky, showing we can arrive at that particular potential from gauged scale invariance. 
 
 Another approach to inflationary cosmology is to consider metric-affine theories. This is done through the inclusion of the Holst invariant, a quantity that is already scale-invariant, in the Lagrangian. This has been explored in \cite{Salvio_2022} and \cite{pradisi2022equivalence}. The potential achieved in \cite{Salvio_2022} is identical to the one obtained through demanding scale invariance in \cite{barker2024poincaregaugetheoryconformal}, and the translation between the variables in the two theories will be given in Appendix \ref{Appendix A}. Finally, when considering the classical action of the Standard Model, dropping the Higgs mass terms, one finds that it too is scale-invariant and can be extended to be conformally invariant \cite{bars2014local}.
 
@@ -180,20 +180,20 @@ Setting this variation to zero, we get the equation of motion for a non-canonica
     K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
 \end{equation}
 We see this aligns with the canonical scalar field when we set $K = 1$, getting  $ \ddot{\varphi} +  3H \dot{\varphi}  + V_{,\varphi}   = 0$. While this equation is nice, it turns out to be more useful in cosmology to record how the inflaton field changes with respect to the e-folding time ($N = \int H \text{d}t$). For this, let us take an aside and given the action \ref{12}, derive the energy-momentum tensor.
-\begin{equation}
+\begin{equation} 
     T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \phi)} \partial_\nu \phi - g_{\mu\nu} \mathcal{L}
 \end{equation}
 Using this, and simplifying the final expression we get, the energy density and the pressure of the fluid are as follows: 
-\begin{align}
+\begin{align}   \label{18}
     \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
     p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
 \end{align}
 Using the third Friedmann equation \ref{3}, we get:
-\begin{equation}    \label{Friedmann Eqn 2}
+\begin{equation}    \label{19}
     3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
 Upon differentiating this expression with respect to time and using \ref{16}, we get:
-\begin{equation}
+\begin{equation} \label{20}
     2 M_p^2 \dot{H} = -  K \dot{\varphi}^2
 \end{equation}
 Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
@@ -205,27 +205,37 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{subequations}
 \end{widetext}
 \subsection{Slow Roll Inflation}
-The acceleration equation for universe dominated by the inflaton field with the energy density $\rho_{\phi}$ and pressure $p_{\phi}$ is given by Friedmann equation \ref{2},
+The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\phi}$ and pressure $p_{\phi}$, as defined in \ref{18} is given by the Friedmann equation \ref{2},
 \begin{equation}
-    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} ({\dot{\phi}}^2 - V(\phi)) 
+    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} (K(\phi){\dot{\phi}}^2 - V(\phi)) 
 \end{equation}
-We see that if we can get $\ddot{a} > 0$ by requiring $\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. 
-
-We can rewrite these two slow-roll conditions with the two slow-roll parameters $\epsilon$ and $\eta$ and requiring that $\epsilon_V << 1$ and $\eta_V << 1$ during the slow roll. 
+We see that we can get $\ddot{a} > 0$ by requiring $K\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. To formalize this, start from equation \ref{20}:
+\begin{equation} \label{23}
+    \dot{\varphi}  = -  \frac{2 M_p^2}{K} H'
+\end{equation}
+Where we have denoted $\frac{dH}{d\varphi} = H'$ and using it in Equation \ref{19}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing}, \cite{salopek1990nonlinear} for inflation (where here, it has been applied to a non-canonical field in contrast with the references) :
+\begin{equation}    \label{24}
+    H'^2 - \frac{3K(\varphi)}{2M_p^2}H^2 = - \frac{K(\varphi) V(\varphi)}{2M_p^4} 
+\end{equation}
+While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the first term in \ref{24} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$ and requiring it to be less than 1.
 \begin{equation}
-    \epsilon_V = \frac{1}{2K}  \left( \frac{V,_{\phi}}{V} \right)^2 \,\,\,\,\,\,\,\,\ \eta_V = \left| \frac{V,_{\phi\phi}}{V} \right|
+    \epsilon_H = M_p^2 \left(\frac{H'}{H} \right)^2 = \frac{3}{4} \left( \frac{K^2(\varphi)\dot{\varphi^2}}{V(\varphi)} \right)
 \end{equation}
-We can also write down the Hubble Slow Roll parameters (HSR), which are easily computable for our case of a non-canonical action:
-\begin{align}
-    \epsilon_H &= -  \left( \frac{\dot{H}}{H^2} \right) = \frac{K(\phi)}{2 M_p^2} \left( \frac{\text{d}\phi}{\text{d}N} \right)^2  \nonumber \\
-    \eta_H &= \epsilon_H - \frac{1}{2 \epsilon_H} \left( \frac{\text{d}\epsilon_H}{\text{d}N} \right)
-\end{align}
-Inflation ends exactly when the HSR hits one, that is, $\epsilon_H = 1$.
-
+Where, in the second equality, we have used equations \ref{23} and \ref{16}. The slow roll condition $\epsilon_H < 1 \implies K^2\dot{\varphi}^2 < V(\varphi)$. That is, the kinetic energy of the inflaton field is less than its potential. This is precisely the violation of the strong-energy condition that we were searching for. Using the equations \ref{23} and \ref{20}, it can also be written as such:
+\begin{equation} \label{26}
+    \epsilon_H = -\frac{K}{2} \frac{\dot{H}}{H^2} = -\frac{K}{2} \left(\frac{1}{H}\frac{\text{d}H}{\text{d}N} \right)
+\end{equation}
+Which is more intuitive to interpret as measuring the relative change of the Hubble constant per e-folding time N. Using this, we can define the second Hubble slow-roll parameter $\eta_H$ as the change in $\epsilon_H$ per efold time.
+\begin{equation}
+    \eta_H = \frac{1}{\epsilon_H} \frac{\text{d}\epsilon_H}{\text{d}N}
+\end{equation}
+The requirement $\eta_H < 1$ can be seen as ensuring that inflation lasts for a long enough number of efolds. Now, given these two Hubble slow-roll parameters, we can convert to the potential slow-roll parameter approximation by substituting $\dot{H} = \frac{V'^2}{18H^2KM_p^2}$ and $H^2 = \frac{V}{3M_p^2}$ in equation \ref{26} to get:
+\begin{equation}
+    \epsilon_V = \frac{1}{4}  \left( \frac{V,_{\phi}}{V} \right)^2 
+\end{equation}
 So far, these arguments only provide restrictions on the potential of the scalar field $\phi$ but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Thus, we see that the theory of inflation refers to a whole host of theories that aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
 
 \textit{One of the ways to arrive at the action principle of the inflaton field is to take a leaf out of the playbook of many successful QFTs and to hypothesize a gauge condition. This is the approach that shall be taken in this project and explained more in the next section.}
-
 
 \section{Scale Invariant Gravity} \label{Scale Invariant Gravity}
 Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and analyze the theory with the inclusion of gravity. This immediately makes the theory much richer, producing various inflationary scenarios such as hilltop, plateau (Starobinsky-like), and even power law/ exponential potentials.
@@ -276,7 +286,7 @@ The resulting action in the Jordan Frame therefore reads:
 - \frac{\xi}{16}\,H_{\mu\nu} H^{\mu\nu}\,.
 \end{aligned}
 \end{equation}
-In accordance with \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu \rightarrow \infty$, to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the equations of motion as
+In accordance with \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu \rightarrow \infty$ to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the equations of motion as
 \begin{equation}\label{30}
 B_\mu = \frac{1}{2}\,\partial_\mu \ln\Bigl((\epsilon-12\beta)\,\varphi^2 + (\sigma-12\gamma)\,\phi_0\,\varphi + (\nu-12\alpha)\,\phi_0^2\Bigr)\,.
 \end{equation}
@@ -331,7 +341,6 @@ Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta
 where again, $A =\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2$ and $M_p/\sqrt{2} = M$ has been used in the equation above.
 
 The action is finally of the form $S = S_{\text{EH}} + S_{\text{INFLATON}}$. The inflaton action has the form of a non-canonical scalar field, with the kinetic and potential coefficients, $K(\varphi)$ and $V(\varphi)$.
-
 \subsection{Solution and Different Regimes}
 We now have all the relevant pieces to analyse the model, given the information in section \ref{Non-Canonical Scalar Field Inflation}. For the starting Lagrangian \ref{28a}, we have developed a variable dictionary given the parameter and field definition redundancy as:
 \begin{equation} \label{35}
@@ -350,7 +359,7 @@ Given these parameters, we were able to simplify the Lagrangian \ref{28a} to one
 where, the kinetic and potential terms, $K(\varphi)$ and $V(\varphi)$ are given by:
 \begin{align}
     \text{K}(\varphi) &= \left[-\frac{36 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} + \frac{M^2 \phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 (\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2}\right] \label{37} \\
-    \text{V}(\varphi) &= \frac{ M^4 \mu^2 \phi^2_0 \varphi^2}{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
+    \text{V}(\varphi) &= M^4  \frac{\mu^2 \phi^2_0 \varphi^2 + \lambda \varphi^4 + \kappa \phi_0^4}{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
 \end{align}
 To canonicalize the action, that is, to write it in the form with no kinetic coefficient:
 \begin{equation}
@@ -397,9 +406,11 @@ For the field redefinition to make sense, we require $\gamma^2 < 4\alpha \beta$,
 \end{equation}
 The resulting potential is:
 \begin{equation}
-    V(\tilde{\varphi}) = \frac{\mu^2}{2} \frac{1}{(4\alpha\beta-\gamma^2)^2} \text{sech}^4\left(\frac{\tilde{\varphi}}{3\sqrt{2}M_p} \right) \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left(\frac{\tilde{\varphi}}{3\sqrt{2}M_p} \right) \right]^2
+    V(\tilde{\varphi}) =  \frac{\mu^2\text{sech}^4\left(X(\tilde{\varphi}) \right)}{2(4\alpha\beta-\gamma^2)^2}  \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left( X(\tilde{\varphi})\right) \right]^2
 \end{equation}
-This shows the same behavior as \cite{barker2024poincaregaugetheoryconformal} for small values of $\varphi$; it is an asymptotically exponentially damped version of the same graph.
+Where $X(\tilde{\varphi}) = \frac{\tilde{\varphi}}{3\sqrt{2}M_p}$. This shows the same behavior as \cite{barker2024poincaregaugetheoryconformal} for small values of $\varphi$; it is an asymptotically exponentially damped version of the same graph.
+
+We also see that this choice of $k = 6$ implies that the ratio of the coupling constants of the scalar and vector fields is $18$, in accordance with the calculations done in \cite{doi:10.1098/rspa.1977.0151}, where they arrived at this value by looking at the contribution to the stress energy tensor \textbf{...}
 
 \subsubsection{\textbf{NUMERICAL ANALYSIS}}
 Stitching together the two regimes, we can see that $K(\varphi)$ interpolates between the two regimes based on values of $\varphi \, \, \text{and}\, \,k$. For intermediate $k$, both terms contribute, leading to a non-trivial kinetic structure, which is not always integrable.
@@ -432,6 +443,9 @@ The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach o
     \label{Slow Roll Parameters}
 \end{figure}
 
+\section{Experimental Matching...}
+
+\section{CONCLUSION}
 
 \newpage
 $\,$
@@ -506,7 +520,7 @@ Using this in the potential, we get the Starobinsky-like potential:
 In comparison with the Starobinsky Model, \cite{ivanov2022analytic}, \cite{lust2024starobinsky}, we see that the parameters $m^2 \approx \frac{3}{4} 10^{-10}M_p^2 =\frac{M_p^2}{8\beta}$, giving us $\beta \approx 10^{9}$. We also note that the terms $\alpha, \phi_0$ drop out of the final potential, giving us the Starobinsky behaviour of a one-parameter potential. \textit{The only caveat for this potential is the appearance of the $\frac{1}{3}$ factor in the exponential compared to the $\frac{1}{\sqrt{3}}$ factor in \cite{lust2024starobinsky}, is due to their choice to use the first power of the scalar field to couple to the Ricci scalar, compared to our second powers}.
 
 \section{Reduction to Barker Model}
-For the Lagrangian \ref{28a} to reduce to Barker, we require $\beta = \gamma =0$; this can be done through the choice $k \rightarrow\infty$. To ensure that the conformal transformation we did on the way is not singular, we require $\alpha$. Converting the parameters from $\alpha, \beta, \gamma$ to $\epsilon, \sigma, \nu$ in the $K,V$ formulae:
+For the Lagrangian \ref{28a} to reduce to Barker, we require $\beta = \gamma =0$; this can be done through the choice $k \rightarrow\infty$. To ensure that the conformal transformation we did on the way is not singular, we require $\alpha$ finite. Converting the parameters from $\alpha, \beta, \gamma$ to $\epsilon, \sigma, \nu$ in the $K,V$ formulae:
 
 We get:
 \begin{align}
@@ -523,6 +537,7 @@ The field $\varphi$ is bounded by:
 \end{equation}
 
 \newpage
-
+\,
+\newpage
 \printbibliography
 \end{document}
