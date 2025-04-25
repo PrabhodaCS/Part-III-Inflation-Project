@@ -63,7 +63,7 @@ def compute_ns(params):
     def K(p):
         A = a * phi0**2 + g * phi0 * p + b * p**2
         return M**2 * ( -36*b/A + (phi0**2*(g**2 - 4*b*a)*(k-6))/(2*A**2) )
-
+    #trying VS studio
     # Compute potential
     phi_plot = np.linspace(-1000, 1000, 10000)
     V_plot = potential(phi_plot)
