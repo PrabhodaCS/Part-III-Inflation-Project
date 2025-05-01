@@ -1,3 +1,6 @@
+import numba.cuda as cuda
+import numba
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -5,14 +8,13 @@ from scipy.integrate import solve_ivp
 # ----------------------------------------
 # 1.  Model Definitions
 # ----------------------------------------
-# Physical constants (choose units where M_p = 1 for simplicity)
 M_p = 1.0
 M = np.sqrt(2)*M_p
 
 # Example model parameters (you can swap in your fitted values)
 alpha, beta, gamma, k_param = -52.4048, -0.4628, -185.1555, 27.3976
 phi0 = -529.7076
-mu, la, ka = 10, 0.0, 0.0  # set λ=κ=0 for plateau
+mu, la, ka = 10, 0.0, 0.0  
 
 def A(phi):
     """Denominator function A(φ) = βφ² + γφ₀φ + αφ₀²."""
@@ -79,18 +81,19 @@ def rhs(N, Y):
 # 3.  Phase‑Portrait Grid of Initial Conditions
 # ----------------------------------------
 # Define grid of (φ₀, π₀) to sample
-phi_vals0 = np.linspace(-600, 600, 100)
-pi_vals0  = np.linspace(-2, 2, 10)
+phi_vals0 = np.linspace(-600, 600, 50)
+pi_vals0  = np.linspace(-2, 2, 20)
 
 # ODE integration settings
-N_span = (0, 100)                # "time" range in e‑folds
+t_span = (0, 100)                # "time" range in e‑folds
 sol_kwargs = dict(method='RK45', rtol=1e-6, atol=1e-8)
 
 # Prepare figure
 fig, ax = plt.subplots(figsize=(8,6))
 
 # Plot vector field with streamplot (smooth arrows)
-# Sample a coarser mesh for arrows
+# Sample a coarser mesh for arrow
+
 Phi, Pi = np.meshgrid(np.linspace(-600,600,1000), np.linspace(-3,3,1000))
 U = np.zeros_like(Phi)
 Vv = np.zeros_like(Pi)
@@ -98,20 +101,37 @@ for i in range(Phi.shape[0]):
     for j in range(Phi.shape[1]):
         dphi, dpi = rhs(0, [Phi[i,j], Pi[i,j]])
         U[i,j], Vv[i,j] = dphi, dpi
-ax.streamplot(Phi, Pi, U, Vv, density=1.0, color='gray', linewidth=0.5)  # :contentReference[oaicite:1]{index=1}
+ax.streamplot(Phi, Pi, U, Vv, density=1.0, color='gray', linewidth=0.5)  
+    
 
-# Overlay solution curves for each initial condition
 for phi0_ic in phi_vals0:
     for pi0_ic in pi_vals0:
-        sol = solve_ivp(rhs, N_span, [phi0_ic, pi0_ic], t_eval=np.linspace(0,100,500), **sol_kwargs)
+        sol = solve_ivp(rhs, t_span, [phi0_ic, pi0_ic], t_eval=np.linspace(0,100,500), **sol_kwargs)    
         ax.plot(sol.y[0], sol.y[1], color='C0', alpha=0.6, lw=1)
 
 # Formatting
 ax.set_xlabel(r'$\varphi$')
-ax.set_ylabel(r'$\pi = d\varphi/dN$')
+ax.set_ylabel(r'$\pi = d\varphi/dt$')
 ax.set_title('Phase Portrait: non‑canonical inflationary dynamics')
 ax.set_xlim(-600,600)
 ax.set_ylim(-3,3)
+# Parameters to display
+parameters = [
+    (r'$\beta$', beta),
+    (r'$\mu$', mu),
+    (r'$\varphi_0$', phi0),
+    (r'$\gamma$', gamma),
+    (r'$\alpha$', alpha),
+    (r'$k$', k_param),
+    (r"$\lambda$", la),
+    (r"$\kappa$", ka)
+]
+
+# Display parameters on the plot
+for i, (name, value) in enumerate(parameters):
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.5f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
+
 ax.grid(True)
 plt.tight_layout()
+plt.savefig(r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\Python\Figures\Phase Space 1.png")
 plt.show()
