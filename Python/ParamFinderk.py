@@ -7,7 +7,7 @@
  * @desc Optimized parameter finder and slow-roll plotting for bubble slow-roll inflation.
  */
 """
-
+import numba
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
