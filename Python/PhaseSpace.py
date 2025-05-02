@@ -11,7 +11,7 @@ from scipy.integrate import solve_ivp
 M_p = 1.0
 M = np.sqrt(2)*M_p
 
-# Example model parameters (you can swap in your fitted values)
+# Example model parameters
 alpha, beta, gamma, k_param = -52.4048, -0.4628, -185.1555, 27.3976
 phi0 = -529.7076
 mu, la, ka = 10, 0.0, 0.0  
