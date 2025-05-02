@@ -228,6 +228,24 @@ plt.title(r'Tensor-to-scalar ratio $r$ vs.\ spectral index $n_s$')
 plt.grid(True)
 plt.show()
 
+
+"""
+plt.plot(phi,V_vals, label=r"Potential")
+plt.xlabel(r'$\phi$')
+plt.ylabel(r'$V(\phi)$')
+plt.title(r'V(\phi) vs \phi')
+plt.grid(True)
+plt.show()
+
+cph = np.linspace(-600, -1, 1000)
+Vi = V(cph, opt_params)
+plt.plot(cph,Vi, label=r"Extended Potential")
+plt.xlabel(r'$\phi$')
+plt.ylabel(r'$V(\phi)$')
+plt.title(r'V(\phi) vs \phi')
+plt.grid(True)
+plt.show()
+"""
 """
 Optimal parameters:
 alpha = -1.9272, beta = -4.7452, gamma = 0.0893
