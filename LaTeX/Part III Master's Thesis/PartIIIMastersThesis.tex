@@ -80,7 +80,8 @@ sorting=none]{biblatex}
 \indent The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the CMB, the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \ref{The need for Inflation}).
 
 
-The inflationary theory was developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, and Steinhardt \cite{PhysRevLett.48.1220} and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where in all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, there existed a homogeneous, isotropic field pervading through spacetime such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFE) for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles.
+The inflationary theory was developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
+\cite{PhysRevLett.48.1220}, and Starobinsky \cite{STAROBINSKY198099}, and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where in all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, there existed a homogeneous, isotropic field pervading through spacetime such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFE) for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles.
 
 While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance.
 
@@ -258,7 +259,8 @@ In the argument that follows, we derive the most general conformally invariant a
 \begin{equation} \label{25}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
-The concept of mass, however, is tricky to define in deSitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In deSitter space, this is, however, not the symmetry group we are working with here, as a simple look at the de Sitter metric \ref{1} will show that it does not admit timelike Killing vectors, unlike Minkowski.  \textbf{go thu this, WRITE MORE HERE}
+
+The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minima suitable for reheating, It is not exactly the mass of the field. \footnote{The concept of mass is tricky to define in deSitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In deSitter space, this is, however, not the symmetry group we are working with here, as a simple look at the de Sitter metric \ref{1} will show that it does not admit timelike Killing vectors, unlike Minkowski.}
 
 \begin{comment}
     \url{https://www.physicsforums.com/threads/finding-killing-vector-fields-of-specific-spacetime.986208/}
@@ -275,16 +277,16 @@ Defining a new connection that is conformally covariant using $B_\mu$ and using 
     \mathring{\Gamma}^{\alpha}_{\beta \gamma} &= \Gamma^{\alpha}_{\beta \gamma} + (\delta^{\alpha}_{\beta} B_{\gamma} + \delta^{\alpha}_{\gamma} B_{\beta} - g_{\beta \gamma}g^{\alpha \tau}B_{\tau}) \nonumber \\
     \mathcal{R} &= R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
 \end{align}
-Putting all this together, we get the most general conformally invariant action with $\mathbb{Z}_2$ symmetry that is linear in curvature:
+Putting all this together, we get the most general conformally invariant action that is linear in curvature:
 \begin{widetext} 
 \begin{subequations} \label{32a}
 \begin{align}
     S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
-    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
+    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \omega \phi_0^3 \varphi + \chi \phi_0 \varphi^3 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
 \end{align}
 \end{subequations}
 \end{widetext}
-Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. In the preceding discussions, we shall set $\lambda = \kappa = 0$, this can be reinstated in the end, once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
+Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. In the preceding discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$, this can be reinstated in the end, once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
 
 In the equation above, we find two scalar fields. This makes analyzing the equations of motion harder. However, we have a redundant degree of freedom granted to us through the Weyl invariance. Looking at the units of $[\phi] = 2$, we find that it is an inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$ and "freeze it". The reparametrizations that allow us to do this are :
 \[
@@ -377,9 +379,9 @@ With this choice of parameters (which we have made with no loss in generality), 
 where, the kinetic and potential terms, $K(\varphi)$ and $V(\varphi)$ are given by:
 \begin{align}
     \text{K}(\varphi) &= \left[-\frac{36 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} + \frac{M^2 \phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 (\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2}\right] \label{37} \\
-    \text{V}(\varphi) &= M^4  \frac{\mu^2 \phi^2_0 \varphi^2 + \lambda \varphi^4 + \kappa \phi_0^4}{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
+    \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu^2 \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
 \end{align}
-Where, in the final potential formula, we have reinstated $\lambda, \kappa$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient:
+Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\omega$ and $\chi$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient:
 \begin{equation}
     S_{\text{INFLATON}} = \int \text{d}^4x \sqrt{-g} \left[ \frac{1}{2}\partial_\mu \tilde{\varphi}\partial^\mu \tilde{\varphi} - V(\varphi(\tilde{\varphi})) \right]
 \end{equation}
