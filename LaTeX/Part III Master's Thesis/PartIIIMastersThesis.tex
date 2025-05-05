@@ -406,27 +406,26 @@ Using this in the potential (keeping only the $\mu$ term), we get:
     V(\tilde{\varphi}) =  \frac{\mu^2 M_p^4}{2(4\alpha\beta-\gamma^2)^2} \cos^4(X)  \left [ \gamma - \sqrt{4\alpha\beta- \gamma^2} \tan(X)\right]^2
 \end{equation}
 Where $X = \left(\left(\frac{\tilde{\varphi}}{\sqrt{k}M_p}\right) - c\right)$
-Plotting this potential, we get figure \ref{CASE I potential} 
+Plotting this potential and keeping $c = 0$, we get figure \ref{CASE I potential (HillTop Potential)}, which is a hilltop potential \cite{boubekeur_hilltop_2005}. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\textwidth]{Python/Figures/New Potenial with gravity.png}
+    \includegraphics[width=0.4\textwidth]{Python/Figures/Case1 Potential.png}
     \caption{CASE I}
-    \label{CASE I potential}
+    \label{CASE I potential (HillTop Potential)}
 \end{figure}
-Here the parameter choices made in \ref{CASE I potential} are: $\mu = 1 ,M_p = 20\sqrt{2} ,\phi_0 = 3.\gamma = 20 ,\alpha = -50,\beta = 1, K = 1, c = -2$, where $K = \sqrt{\frac{k}{2}}$
 
 \subsubsection{\textbf{CASE II}: $k = 6$}
 Assuming $k=6$,  we get the field redefinition:
 \begin{equation}
-    \frac{d\tilde{\varphi}}{d\varphi} = \sqrt{\left[\frac{-36 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} \right]}
+    \frac{d\tilde{\varphi}}{d\varphi} = \sqrt{\left[\frac{12\beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} \right]}
 \end{equation}
 For the field redefinition to make sense, we require $\gamma^2 < 4\alpha \beta$, this gives us:
 \begin{equation}
-    \tilde{\varphi} = \frac{\phi_0}{2\beta} \left[\gamma + \sqrt{4\alpha\beta - \gamma^2} \sinh\left(\frac{\varphi}{3\sqrt{2}M_p}\right) \right]
+    \varphi(\tilde{\varphi}) = \frac{1}{4\beta} \left(\text{e}^{-X}(\text{e}^{2X} - 2\text{e}^X \gamma \phi_0 - \phi_0^2(4\alpha\beta-\gamma^2)) \right)
 \end{equation}
-The resulting potential is:
+Where, $X = \frac{\tilde{\varphi}}{\sqrt{6}M_p}+c$The resulting potential is:
 \begin{equation}
-    V(\tilde{\varphi}) =  \frac{\mu^2\text{sech}^4\left(X(\tilde{\varphi}) \right)}{2(4\alpha\beta-\gamma^2)^2}  \left[\frac{\gamma }{2} + \sqrt{\alpha\beta-\frac{\gamma^2}{4}} \sinh\left( X(\tilde{\varphi})\right) \right]^2
+    V(\tilde{\varphi}) =  \frac{2 \mu ^2 M_p^4 e^{2 X} \phi_0^2 \left(\text{e}^{2X} - 2\text{e}^X \gamma \phi_0 - \phi_0^2(4\alpha\beta-\gamma^2)\right)^2}{\left(\phi ^2 \left(4 \alpha  \beta -\gamma ^2\right)+\text{e}^{2 X}\right)^4}
 \end{equation}
 Where $X(\tilde{\varphi}) = \frac{\tilde{\varphi}}{3\sqrt{2}M_p}$. This shows the same behavior as \cite{barker2024poincaregaugetheoryconformal} for small values of $\varphi$; it is an asymptotically exponentially damped version of the same graph.
 
@@ -435,7 +434,7 @@ We also see that this choice of $k = 6$ implies that the ratio of the coupling c
 \subsection{\textbf{NUMERICAL ANALYSIS}}
 Stitching together the two regimes, we can see that $K(\varphi)$ interpolates between the two regimes based on values of $\varphi \, \, \text{and}\, \,k$. For intermediate $k$, both terms contribute, leading to a non-trivial kinetic structure, which is not always integrable.
 
-For $\varphi \rightarrow 0$, the $\frac{1}{A^2(\varphi)}$ term dominates, giving a hyperbolic tangent contribution, a power-law structure/steep potential close to zero. For $\varphi \rightarrow \infty$, the $\frac{1}{A(\varphi)}$ term dominates,  giving a hyperbolic sine contribution, providing an exponentially damped solution leading to a plateau-like shape. 
+For $\varphi \rightarrow 0$, the $\frac{1}{A^2(\varphi)}$ term dominates, giving a tangent contribution, a power-law structure/steep potential close to zero. For $\varphi \rightarrow \infty$, the $\frac{1}{A(\varphi)}$ term dominates,  giving a hyperbolic sine contribution, providing an exponentially damped solution leading to a plateau-like shape. 
 
 Finally, using Python, we can numerically integrate equation \ref{40}, interpolate the function $\tilde{\varphi}(\varphi)$, invert it, and use it to attain the shape of the true potential \ref{38}. The parameters below have been chosen such that the scalar spectral index $n_s = 1 + 2\eta_V - 6 \epsilon_V$ (We would have used $n_s = 1 + \frac{1}{K}(2\eta_V - 6 \epsilon_V -\sqrt{2\epsilon_V}\lambda_K)$ ($\lambda_K = M_p \frac{K_{,\varphi}}{K}$), if the definitions of our slow roll parameters were canonical, but since we have accounted for it's non canonical nature in \ref{26} and \ref{29}, we can use the normal definition \cite{chung2003running} ),  is close to the experimental value of 0.968 at around 60 efolds.
 
