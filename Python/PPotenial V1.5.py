@@ -16,15 +16,16 @@ from scipy.integrate import solve_ivp
 
 # Parameters
 Nend = 70 #end of efolds
-m = 1  # mass of inflaton
-M = 20  # Planck mass
-phi0 = 1.5  # non-propagating field (Dimensions of Mass [phi0]=M)
-g = 20  # model parameter gamma
-a = 50  # model parameter alpha
-b = 5 # model parameter beta
-d = 1.5 #minima of potential
+m    = 1.0    # inflaton mass
+M    = 1.0    # Planck mass
+phi0 = 1.5    # non‑propagating field
+a    = 50.0   # alpha
+b    = 5.0    # beta
+d    = 1.5    # potential minimum parameter
+k = 1
+g = 29
 D = np.sqrt( - g**2 / 4 + a*b)
-K = 1 # this is sqrt((k-6\beta)/2\beta)
+k = 1 # this is sqrt((k-6\beta)/2\beta)
 mo = 1000000
 c =  d  # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
 
@@ -32,8 +33,8 @@ eh = 0.2 #initial slow roll parameter (1/2)*(dp/dN)**2
 
 # Symbolic expressions for potential and derivatives
 p_s = symbols('phi')
-Xp = - (phi0/(2*b)) * (g / 2 + D * sin( sqrt(b)* p_s /(6*M) + c))
-Vp =  - (m**2)/(2*mo) * Xp**2/(b*Xp**2 + g*phi0*Xp + a*phi0**2)**2
+Xp = - (phi0/(2*b)) * (g  + D * tan(p_s /(sqrt(k)*M)))
+Vp =  - (m**2)/(2) * Xp**2/(b*Xp**2 + g*phi0*Xp + a*phi0**2)**2
 print("The potential V(φ) is:", Vp)
 
 
@@ -130,18 +131,31 @@ eta_values = np.abs(eta(phi))
 
 # Define slow-roll condition: both epsilon < 1 and |eta| < 1
 slow_mask = (eps_values < 1) & (eta_values < 1)
-
-
-plt.plot(phi, v1, label="V(φ)")
+phi1 = phi = np.linspace(-2.5, 2.5, 5000)
+v2 = Vi(phi1)
+fig, ax = plt.subplots()
+plt.plot(phi1, v2, label="V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 """
 plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 """
 
-# Highlight the slow-roll region using fill_between
-plt.fill_between(phi, v1, vmin, where=slow_mask, color='orange', alpha=0.3, label="Slow Roll Region")
 
+# Parameters to display
+parameters = [
+    (r'$\beta$', b),
+    (r'$\mu$', m),
+    (r'$\varphi_0$', phi0),
+    (r'$\gamma$', g),
+    (r'$\alpha$', a),
+    (r'$D$', D),
+    (r'$k$', k)
+]
+
+# Display parameters on the plot
+for i, (name, value) in enumerate(parameters):
+    ax.text(0.02, 0.95 - i*0.05, f'{name} = {value:.2f}', transform=ax.transAxes, fontsize=10, verticalalignment='top')
 
 
 plt.xlabel("φ")
