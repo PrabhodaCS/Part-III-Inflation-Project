@@ -14,18 +14,19 @@ from scipy.integrate import solve_ivp
 
 # Parameters
 Nend = 70 #end of efolds
-m    = 1.0    # inflaton mass
-M    = 1.0    # Planck mass
-phi0 = 1.5    # non‑propagating field
-a    = 50.0   # alpha
-b    = 5.0    # beta
-d    = 1.5    # potential minimum parameter
-k = 1
-g = 1
+# --- Your fixed model parameters ---
+m    = 1.0
+M    = 7
+phi0 = 20
+a    = 50.0
+b    = 10.0
+c    = 0    # your 'd' constant from above
+# Domain for phi
+g = 30
 D = np.sqrt( - g**2 / 4 + a*b)
 k = 1 # this is sqrt((k-6\beta)/2\beta)
 mo = 1000000
-c =  d  # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
+c =  0  # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
 
 eh = 0.2 #initial slow roll parameter (1/2)*(dp/dN)**2
 
@@ -96,7 +97,7 @@ sr_0 = np.zeros(len(Nr)-len(sr_))
 sr_ = np.append(sr_,sr_0)
 
 # Define a range of phi values
-phi = np.linspace(-50, 44, 5000)
+phi = np.linspace(0, 100, 5000)
 
 exit_index = np.argmax(e >= 1)  # first index where slow-roll fails
 phi_exit_H = ps[exit_index]
