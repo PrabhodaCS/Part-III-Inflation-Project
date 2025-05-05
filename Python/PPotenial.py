@@ -13,45 +13,34 @@ from sympy import *
 from scipy.integrate import solve_ivp
 
 # Parameters
-Nend = 70         # End of efolds
-m = 1             # mass of inflaton
-M = 20            # Planck mass
-phi0 = 3        # non-propagating field 
-g = 20             # model parameter gamma
-a = -50            # model parameter alpha
-b = 1             # model parameter beta
-D = np.sqrt(g**2 - 4*a*b)  
-K = 1             # K = sqrt(2 / k-6)
-sf = 1000000      # overall scale factor in potential
-c = -2            # integration constant 
-eh = 0.2          # initial slow roll parameter
+Nend = 70 #end of efolds
+m    = 1.0    # inflaton mass
+M    = 1.0    # Planck mass
+phi0 = 1.5    # non‑propagating field
+a    = 50.0   # alpha
+b    = 5.0    # beta
+d    = 1.5    # potential minimum parameter
+k = 1
+g = 1
+D = np.sqrt( - g**2 / 4 + a*b)
+k = 1 # this is sqrt((k-6\beta)/2\beta)
+mo = 1000000
+c =  d  # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
+
+eh = 0.2 #initial slow roll parameter (1/2)*(dp/dN)**2
 
 # integration constant (minima @ 0c + displacement)  #  add this later -f*phi0*np.arcsinh(-s/(2*f)) +
 
 # Symbolic expressions for potential and derivatives
 p_s = symbols('phi')
-x = K*p_s /(2*M) + c
-Xp = (phi0/(2*b)) * (g  + D * tanh(K*p_s /(2*M) + c))
+x = p_s /(np.sqrt(6)*M) + c
+Xp = (1/(4*b)) * exp(-x)*(exp(2*x) - 2*exp(x)*g*phi0 - phi0**2 * D**2)
 Vp = (m**2 * phi0**2 * Xp**2)/(2* (b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
-
-#Analytic potential
-def f(X):
-    f = g * cosh(X) + D * sinh(X)
-    return f
-
-def fp(X):
-    fp = g * sinh(X) + D * cosh(X)
-    return fp
-
-Vpp = (2*m**2) * (f(x))**2 * cosh(x)**2 /(2*g**2 - D**2 +2*g*f(2*x))**2
 
 print("The potential V(φ) is:", Vp)
 
 print("\n")
 
-print("The potential V(φ) is:", Vpp)
-
-print("\n")
 
 V_ = diff(Vp, p_s)
 V__ = diff(V_,p_s)
@@ -67,7 +56,6 @@ ddV = lambdify(p_s, V__, 'numpy')
 # Convert symbolic expressions to numerical functions
 Vi = lambdify(p_s, Vp, 'numpy')
 dlnV = lambdify(p_s, dlnV, 'numpy')  # derivative of log(V)
-Vii = lambdify(p_s, Vpp, 'numpy')
 
 # Define the system of differential equations where N = #of efolds and V is the vector containing [phi, dphi]
 def de(N, V):
@@ -123,33 +111,10 @@ def epsilon(phi):
 def eta(phi):
     return ddV(phi) / Vi(phi)
 
-# Corrected analytical epsilon
-pf = (K**2) / (2* M**2)          #Prefactor = 1/(M^2 * (k-6))
-term2 = fp(x)/f(x)
-term3 =  - 4*g*fp(2*x) / (2*g**2 - D**2 + 2*g*f(2*x))
-
-epsilona = pf * (tanh(x) + term2 + term3)**2
-
-print("The slow roll parameter epsilon is:", epsilona)
-
-print("\n")
-
-epa = lambdify(p_s, epsilona, 'numpy')
-
-ea = epa(phi)
-
 # Compute values for potential and slow-roll parameters
 v1 = Vi(phi)
 ep = epsilon(phi) 
 et = abs(eta(phi))
-v2 = Vii(phi)
-
-m1 = max(ea)
-m2 = max(ep)
-
-ratio = m1/m2
-print("The ratio of the analytic and numerical epsilon are:", ratio)
-print("\n")
 
 # Isolating parts of graph s.t., slow roll conditions are satisfied
 L = []
@@ -173,7 +138,6 @@ slow_mask = (eps_values < 1) & (eta_values < 1)
 
 
 plt.plot(phi, v1, label="V(φ)")
-plt.plot(phi, v2, label="Analytic V(φ)")
 plt.title("Potential and Slow-Roll Parameters")
 
 """
@@ -196,7 +160,6 @@ plt.show()
 #Plot slow roll parameters, epsilon and eta
 plt.figure(figsize=(10, 6))
 plt.plot(phi, ep, label=r"$\epsilon$")
-plt.plot(phi, ea, label=r"$\epsilon$ analytical")
 #plt.plot(phi, et, label=r"$\eta$")
 plt.title("Slow Roll Parameter: $\epsilon$ vs. Field ($\phi$)")
 plt.xlabel("$\phi$")

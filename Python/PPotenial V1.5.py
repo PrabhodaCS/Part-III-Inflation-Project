@@ -135,7 +135,7 @@ phi1 = phi = np.linspace(-2.5, 2.5, 5000)
 v2 = Vi(phi1)
 fig, ax = plt.subplots()
 plt.plot(phi1, v2, label="V(φ)")
-plt.title("Potential and Slow-Roll Parameters")
+plt.title("Potential")
 """
 plt.plot(L, Mv,'o', label="Slow rolling V(φ)")
 plt.title("Potential and Slow-Roll Parameters")

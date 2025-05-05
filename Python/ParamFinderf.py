@@ -32,7 +32,11 @@ ns_exp = 0.9626
 
 
 Nr = np.linspace(0, Nend, 1000)  # Number of e-folds
-params = [-2.0, -5.0,0.1, 0.1,0.1, 0.1, 1.0, 0.1, -1.0, 0.1]
+
+#params = [-2.0, -5.0,0.1, 0.1,0.1, 0.1, 1.0, 0.1, -1.0, 0.1]
+
+params = [-0.46280, -52.40480 ,-185.15550, 27.39760, -529.70760, 0.1, 1.0, 0.1, -1.0, 0.1]
+
 #irrparams = [la, ka, q, li] = [1.0, 0.1, -1.0, 0.1]
 
 # Initial conditions
@@ -257,10 +261,10 @@ Final ns at N=60: 0.96260
 """
 """
 Optimal parameters:
-alpha = -1.9272, beta = -4.7452, gamma = 0.0893
-k = 0.1244, phi0 = 0.1304, mu = 0.1079
+alpha = -0.2821, beta = -81.8965, gamma = -36.1827
+k = 59.2854, phi0 = -361.5663, mu = 0.0755
 
-Optimal irrparams:, la = -0.0004, ka = 0.1056, q = -1.2946,li = 0.1169
+Optimal irrparams:, la = 0.8120, ka = 0.0501, q = -1.1516,li = 0.1553
 
 Final ns at N=60: 0.96260
 """
