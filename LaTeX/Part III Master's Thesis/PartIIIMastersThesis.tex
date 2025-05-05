@@ -260,7 +260,7 @@ In the argument that follows, we derive the most general conformally invariant a
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
 
-The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minima suitable for reheating, It is not exactly the mass of the field. \footnote{The concept of mass is tricky to define in deSitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In deSitter space, this is, however, not the symmetry group we are working with here, as a simple look at the de Sitter metric \ref{1} will show that it does not admit timelike Killing vectors, unlike Minkowski.}
+The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minima suitable for reheating, It is not exactly the mass \footnote{The concept of mass is tricky to define in deSitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In deSitter space, this is, however, not the symmetry group we are working with, as a simple look at the de Sitter metric \ref{1} will show that it does not admit timelike Killing vectors, unlike Minkowski.} of the field.
 
 \begin{comment}
     \url{https://www.physicsforums.com/threads/finding-killing-vector-fields-of-specific-spacetime.986208/}
@@ -314,7 +314,7 @@ and \ref{29} becomes:
 \begin{widetext}
 \begin{subequations}\label{33a}
 \begin{align}
-S = \int d^4x\, \sqrt{-g} \Biggl[ (\alpha\, \phi_0^2 + \beta\, \varphi^2 + \gamma\, \phi_0\,\varphi)R - 12\beta \Biggl\{1 - \frac{\phi_0^2}{48\beta\, V}\Bigl[(\sigma-12\gamma)^2 - 4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\}
+S = \int d^4x\, \sqrt{-g} \Biggl[ (\alpha\, \phi_0^2 + \beta\, \varphi^2 + \gamma\, \phi_0\,\varphi)R + 12\beta \Biggl\{1 - \frac{\phi_0^2}{48\beta\, V}\Bigl[(\sigma-12\gamma)^2 - 4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\}
 (\partial_{\mu}\varphi\, \partial^{\mu}\varphi) - \frac{\mu^2}{2}\,\phi_0^2\,\varphi^2 \Biggr],
 \end{align}
 \end{subequations}
@@ -327,7 +327,7 @@ we can move from the Jordan frame to the Einstein frame and separate the Einstei
 \begin{widetext}
 \begin{subequations}\label{33a}
 \begin{align}
-S = \int d^4x\, \sqrt{-g} &\Biggl[ M^2\, R - \,\frac{M^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}
+S = \int d^4x\, \sqrt{-g} &\Biggl[ M^2\, R + \,\frac{M^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}
 \frac{24\beta}{2}\Biggl\{1 - \frac{\phi_0^2}{48\beta\,V}\Bigl[(\sigma-12\gamma)^2-4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\} \nonumber\\[2mm]
 &\quad - \frac{3M^2}{2}\,\frac{(2\beta\,\varphi+\gamma\,\phi_0)^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,(\partial_{\mu}\varphi\,\partial^{\mu}\varphi) - \frac{M^4}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,\frac{\mu^2}{2}\,\phi_0^2\,\varphi^2 \Biggr].
 \end{align}
@@ -354,7 +354,7 @@ Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta
 \begin{widetext}
     \begin{equation} 
     \begin{aligned}
-        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{M^2}{2} \left[-\frac{36 \beta}{A} + \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{M^2}{2} \left[\frac{12 \beta}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k+6) }{2 A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 \end{widetext}
@@ -378,7 +378,7 @@ With this choice of parameters (which we have made with no loss in generality), 
 \end{equation}
 where, the kinetic and potential terms, $K(\varphi)$ and $V(\varphi)$ are given by:
 \begin{align}
-    \text{K}(\varphi) &= \left[-\frac{36 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} + \frac{M^2 \phi_0^2 (\gamma^2 - 4\beta\alpha)(k-6)}{2 (\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2}\right] \label{37} \\
+    \text{K}(\varphi) &= \left[\frac{12 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} - \frac{M^2 \phi_0^2 (\gamma^2 - 4\beta\alpha)(k+6)}{2 (\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2}\right] \label{37} \\
     \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu^2 \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
 \end{align}
 Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\omega$ and $\chi$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient:
@@ -389,23 +389,23 @@ we will need to redefine the field such that:
 \begin{equation} \label{40}
     \tilde{\varphi}(\varphi) = \int_0^{\varphi} \sqrt{K(x)} \text{d}x
 \end{equation}
-However, for the $K(\varphi)$ derived in this model \ref{37}, there exists no elementary closed-form analytical solution to the integral \ref{40}. While we present the results of numerical integration of the above kinetic term in the next section, here, we will look at various regimes to understand the behaviour of this model in different limits. 
+However, for the $K(\varphi)$ derived in this model \ref{37}, there exists no elementary closed-form analytical solution to the integral \ref{40}. While we present the results of numerical integration of the above kinetic term in the next section, here, we will look at various regimes to understand the behaviour of this model in different limits. \textbf{CHANGES PENDING AHEAD}
 
 \subsubsection{\textbf{CASE I }: $k \gg 1$}
 
-Assuming $\beta \ll \phi_0^2(\gamma^2 - 4\alpha\beta)(k-6)$, we get the field redefinition ($\gamma^2 > 4\alpha\beta$):
+Assuming $\beta \ll \phi_0^2(4\alpha\beta - \gamma^2)(k+6)$, we get the field redefinition ($\gamma^2 <4\alpha\beta$) and using $D = \sqrt{4\alpha\beta-\gamma^2}$:
 \begin{equation}
     \frac{d\tilde{\varphi}}{d\varphi} = \left[ \sqrt{\frac{k}{2}} \frac{M \phi_0 D}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
 \end{equation}
 This gives:
 \begin{equation}
-    \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\beta} \left[\gamma - \sqrt{\gamma^2 - 4\alpha \beta} \tanh\left(\frac{\tilde{\varphi}}{M_p\sqrt{k}}-c \right) \right]
+    \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\beta} \left[ \sqrt{\gamma^2 - 4\alpha \beta} \tan\left(\frac{\tilde{\varphi}}{M_p\sqrt{k}}-c \right) -\gamma \right]
 \end{equation}
-Using this in the potential, we get:
+Using this in the potential (keeping only the $\mu$ term), we get:
 \begin{equation}
-    V(\tilde{\varphi}) =  2\mu^2 \cosh^2(X)  \left [ \frac{f(X) }{2\gamma^2 - D^2 + 2\gamma f(2X)} \right]^2
+    V(\tilde{\varphi}) =  \frac{\mu^2 M_p^4}{2(4\alpha\beta-\gamma^2)^2} \cos^4(X)  \left [ \gamma - \sqrt{4\alpha\beta- \gamma^2} \tan(X)\right]^2
 \end{equation}
-Where,  $f(X) = \gamma \cosh(X)  + D \sinh(X)$. $X = \left(\frac{\tilde{\varphi}}{M_p\sqrt{k}} - c\right)$ and $D = \sqrt{\gamma^2 - 4\alpha\beta}$
+Where $X = \left(\left(\frac{\tilde{\varphi}}{\sqrt{k}M_p}\right) - c\right)$
 Plotting this potential, we get figure \ref{CASE I potential} 
 \begin{figure}[h!]
     \centering
@@ -437,7 +437,7 @@ Stitching together the two regimes, we can see that $K(\varphi)$ interpolates be
 
 For $\varphi \rightarrow 0$, the $\frac{1}{A^2(\varphi)}$ term dominates, giving a hyperbolic tangent contribution, a power-law structure/steep potential close to zero. For $\varphi \rightarrow \infty$, the $\frac{1}{A(\varphi)}$ term dominates,  giving a hyperbolic sine contribution, providing an exponentially damped solution leading to a plateau-like shape. 
 
-Finally, using Python, we can numerically integrate equation \ref{40}, interpolate the function $\tilde{\varphi}(\varphi)$, invert it, and use it to attain the shape of the true potential \ref{38}. The parameters below have been chosen such that the scalar spectral index $n_s = 1 + \frac{1}{K}(2\eta_V - 6 \epsilon_V -\sqrt{2\epsilon_V}\lambda_K)$, \cite{chung2003running} ($\lambda_K = M_p \frac{K_{,\varphi}}{K}$) is close to the experimental value of 0.968 at around 60 efolds.
+Finally, using Python, we can numerically integrate equation \ref{40}, interpolate the function $\tilde{\varphi}(\varphi)$, invert it, and use it to attain the shape of the true potential \ref{38}. The parameters below have been chosen such that the scalar spectral index $n_s = 1 + 2\eta_V - 6 \epsilon_V$ (We would have used $n_s = 1 + \frac{1}{K}(2\eta_V - 6 \epsilon_V -\sqrt{2\epsilon_V}\lambda_K)$ ($\lambda_K = M_p \frac{K_{,\varphi}}{K}$), if the definitions of our slow roll parameters were canonical, but since we have accounted for it's non canonical nature in \ref{26} and \ref{29}, we can use the normal definition \cite{chung2003running} ),  is close to the experimental value of 0.968 at around 60 efolds.
 
 \begin{figure}[h!]
     \centering
@@ -545,19 +545,19 @@ Upon utilization of the Euler-Lagrange equation on the $\varphi$ field $2 \beta 
 
 To reduce to the above equations to \ref{B2}, we choose: $\gamma = 0, k = -12$, and $\beta$ negative, giving $\epsilon = \sigma = \nu = 0$. Our $K(\varphi)$ and $V(\varphi)$ given in \ref{37} and \ref{38} therefore reduce to:
 \begin{align}
-    \text{K}(\varphi) &= \left[\frac{36 M^2 \beta^2 \varphi^2}{ (\beta \varphi^2 + \alpha \phi_0^2)^2}\right] \\
+    \text{K}(\varphi) &= \left[\frac{12 M^2 \beta^2 \varphi^2}{ (\beta \varphi^2 + \alpha \phi_0^2)^2}\right] \\
     \text{V}(\varphi) &= \frac{ M^4 \lambda \varphi^4}{2(\beta \varphi^2 + \alpha \phi_0^2)^2}    
 \end{align}
 Giving the field redefinition:
 \begin{align}
-    \tilde{\varphi}(\varphi) &= 3M \ln\left(1 + \frac{\beta \varphi^2}{\alpha \phi_0^2} \right) \nonumber \\
-    \varphi^2(\tilde{\varphi}) &=  \frac{\alpha}{\beta} \phi_0^2\left [ \exp\left(\frac{\tilde{\varphi}}{3M}\right) -1\right]
+    \tilde{\varphi}(\varphi) &= \sqrt{3}M \ln\left(1 + \frac{\beta \varphi^2}{\alpha \phi_0^2} \right) \nonumber \\
+    \varphi^2(\tilde{\varphi}) &=  \frac{\alpha}{\beta} \phi_0^2\left [ \exp\left(\frac{\tilde{\varphi}}{\sqrt{3}M}\right) -1\right]
 \end{align}
 Using this in the potential, we get the Starobinsky-like potential:
 \begin{equation}
-    \text{V}(\tilde{\varphi}) = \frac{ M_p^4}{8 \beta}  \left(1 - \exp\left(-\frac{\sqrt{2} \tilde{\varphi}}{3 M_p}\right)\right)^2
+    \text{V}(\tilde{\varphi}) = \frac{ M_p^4}{8 \beta}  \left(1 - \exp\left(-\sqrt{\frac{2}{3}}\frac{ \tilde{\varphi}}{ M_p}\right)\right)^2
 \end{equation}
-In comparison with the Starobinsky Model, \cite{ivanov2022analytic}, \cite{lust2024starobinsky}, we see that the parameters $m^2 \approx \frac{3}{4} 10^{-10}M_p^2 =\frac{M_p^2}{8\beta}$, giving us $\beta \approx 10^{9}$. We also note that the terms $\alpha, \phi_0$ drop out of the final potential, giving us the Starobinsky behaviour of a one-parameter potential. The only caveat for this potential is the appearance of the $\frac{1}{3}$ factor in the exponential compared to the $\frac{1}{\sqrt{3}}$ factor in \cite{lust2024starobinsky}, is due to the presence of the Weyl curvature scalar in action \ref{B2}, whereas in the Starobinsky model, it is the Ricci curvature scalar. The Weyl curvature scalar contains the Weyl vector $B_\mu$, which, upon utilization of the Euler-Lagrange equations, contributes kinetic terms that combine with the derivatives generated in the conformal transformation to change the numerical factor.
+This is the exact Starobinsky potential \cite{STAROBINSKY198099}, \cite{maeda_inflation_1988}. In comparison with the Starobinsky Model, \cite{ivanov2022analytic}, \cite{lust2024starobinsky}, we see that the parameters $m^2 \approx \frac{3}{4} 10^{-10}M_p^2 =\frac{M_p^2}{8\beta}$, giving us $\beta \approx 10^{9}$. We also note that the terms $\alpha, \phi_0$ drop out of the final potential, giving us the Starobinsky behaviour of a one-parameter potential.
 
 \section{Reduction to Barker Model}
 For the Lagrangian \ref{32a} to reduce to Barker, we require $\beta = \gamma =0$; this can be done through the choice $k \rightarrow\infty$. To ensure that the conformal transformation we did on the way is not singular, we require $\alpha$ finite. Converting the parameters from $\alpha, \beta, \gamma$ to $\epsilon, \sigma, \nu$ in the $K,V$ formulae: \cite{caputa_cosmology_2013}
