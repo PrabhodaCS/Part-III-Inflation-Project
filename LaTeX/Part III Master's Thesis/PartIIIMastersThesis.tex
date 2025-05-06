@@ -389,7 +389,7 @@ we will need to redefine the field such that:
 \begin{equation} \label{40}
     \tilde{\varphi}(\varphi) = \int_0^{\varphi} \sqrt{K(x)} \text{d}x
 \end{equation}
-However, for the $K(\varphi)$ derived in this model \ref{37}, there exists no elementary closed-form analytical solution to the integral \ref{40}. While we present the results of numerical integration of the above kinetic term in the next section, here, we will look at various regimes to understand the behaviour of this model in different limits. \textbf{CHANGES PENDING AHEAD}
+However, for the $K(\varphi)$ derived in this model \ref{37}, there exists no elementary closed-form analytical solution to the integral \ref{40}. While we present the results of numerical integration of the above kinetic term in the next section, here, we will look at various regimes to understand the behaviour of this model in different limits. 
 
 \subsubsection{\textbf{CASE I }: $k \gg 1$}
 
@@ -414,8 +414,8 @@ Plotting this potential and keeping $c = 0$, we get figure \ref{CASE I potential
     \label{CASE I potential (HillTop Potential)}
 \end{figure}
 
-\subsubsection{\textbf{CASE II}: $k = 6$}
-Assuming $k=6$,  we get the field redefinition:
+\subsubsection{\textbf{CASE II}: $k = -6$}
+Assuming $k=-6$,  we get the field redefinition:
 \begin{equation}
     \frac{d\tilde{\varphi}}{d\varphi} = \sqrt{\left[\frac{12\beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} \right]}
 \end{equation}
@@ -436,9 +436,7 @@ Where $X(\tilde{\varphi}) = \frac{\tilde{\varphi}}{3\sqrt{2}M_p}$. The graph for
     \label{CASE II potential (Exponential)}
 \end{figure}
 
-
-We also see that this choice of $k = 6$ implies that the ratio of the coupling constants of the scalar and vector fields is $18$, in accordance with the calculations done in \cite{doi:10.1098/rspa.1977.0151}, where they arrived at this value by looking at the contribution to the stress energy tensor \textbf{...}
-
+\textbf{CHANGES PENDING AHEAD}
 \subsection{\textbf{NUMERICAL ANALYSIS}}
 Stitching together the two regimes, we can see that $K(\varphi)$ interpolates between the two regimes based on values of $\varphi \, \, \text{and}\, \,k$. For intermediate $k$, both terms contribute, leading to a non-trivial kinetic structure, which is not always integrable.
 
@@ -491,13 +489,13 @@ The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach o
     \label{r vs n_s}
 \end{figure}
 
-\section{CONCLUSION}
 
 \newpage
 $\,$
 
 \newpage
 
+\section{CONCLUSION}
 \appendix
 
 \section{Translating variables from Salvio to Barker} \label{Appendix A}
@@ -560,7 +558,7 @@ Giving the field redefinition:
     \tilde{\varphi}(\varphi) &= \sqrt{3}M \ln\left(1 + \frac{\beta \varphi^2}{\alpha \phi_0^2} \right) \nonumber \\
     \varphi^2(\tilde{\varphi}) &=  \frac{\alpha}{\beta} \phi_0^2\left [ \exp\left(\frac{\tilde{\varphi}}{\sqrt{3}M}\right) -1\right]
 \end{align}
-Using this in the potential, we get the Starobinsky-like potential:
+Using this in the potential, we get reproduce the famous Starobinsky formula:
 \begin{equation}
     \text{V}(\tilde{\varphi}) = \frac{ M_p^4}{8 \beta}  \left(1 - \exp\left(-\sqrt{\frac{2}{3}}\frac{ \tilde{\varphi}}{ M_p}\right)\right)^2
 \end{equation}
