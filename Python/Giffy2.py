@@ -2,61 +2,62 @@
 import matplotlib.pyplot as plt
 import imageio
 import os
-from sympy import *
 
-# --- Your fixed model parameters ---
-m    = 1.0
-M    = 7
-phi0 = 20
-a    = 50.0
-b    = 10.0
-c    = 0    # your 'd' constant from above
+# --- Model parameters (other than gamma) ---
+m    = 1.0    # inflaton mass
+M    = 1.0    # Planck mass
+phi0 = 1.5    # non‑propagating field
+a    = 50.0   # alpha
+b    = 5.0    # beta
+k = 1
+# note: D depends on gamma, so compute inside loop
+
+li = 1
+ka = 0.01
+la = 1
+om = 1
+
+
 # Domain for phi
-phi = np.linspace(0, 100, 1000)
+phi = np.linspace(-3.0, 3.0, 1000)
 
-# GIF sweep settings
-g_min     = 0.0
-g_max     = 30.0    # adjust to whatever max you want
-n_frames  = 40
-gif_file  = "potential_vs_g.gif"
+# GIF settings
+gamma_max = 30.0
+n_frames  = 60
+output_gif = "pvg.gif"
 
-# Prepare sympy for your V(φ;g)
-p_s = symbols('phi')
-x   = p_s/(np.sqrt(6)*M) + c
-# Xp(g,φ):
-Xp_expr = (1/(4*b)) * exp(-x)*(exp(2*x) - 2*exp(x)*symbols('g')*phi0 - phi0**2 * sqrt(-symbols('g')**2/4 + a*b)**2)
-# full Vp(g,φ):
-V_expr  = (m**2 * phi0**2 * Xp_expr**2) / (2*(b*Xp_expr**2 + symbols('g')*phi0*Xp_expr + a*phi0**2)**2)
-
-# turn it into a numpy function of (φ,g)
-V_func = lambdify((p_s, symbols('g')), V_expr, 'numpy')
-
-# Frame directory
-frame_dir = "gif_frames_g"
+# Temporary directory for frames
+frame_dir = "gif_frames"
 os.makedirs(frame_dir, exist_ok=True)
-frames = []
+frame_files = []
 
-for i, g_val in enumerate(np.linspace(g_min, g_max, n_frames)):
-    V_vals = V_func(phi, g_val)
+# Sweep gamma
+for i, g in enumerate(np.linspace(0, gamma_max, n_frames)):
+    D = np.sqrt(-g**2/4 + a*b)
+    # define X(φ) and V(φ;γ)
+    Xp =  (phi0/(2*b)) * (-g  + D * np.tan(phi /(np.sqrt(k+12)*M)))
+    Vp =  - (M**4)/(2) *((ka*phi0**4 +li*phi0**3*Xp +m**2 * Xp**2 + om*phi0*Xp**3 + la*Xp**4) /(b*Xp**2 + g*phi0*Xp + a*phi0**2)**2)
 
+    # Plot
     plt.figure(figsize=(6,4))
-    plt.plot(phi, V_vals, lw=2)
-    plt.ylim(np.min(V_vals)*1.1, np.max(V_vals)*1.1)
-    plt.title(r"$V(\phi)$ at $g={:.2f}$".format(g_val))
+    plt.plot(phi, Vp, lw=2)
+    plt.ylim(np.min(Vp)*1.1, np.max(Vp)*20+0.1)
+    plt.title(r"$V(\phi)$ at $\gamma={:.2f}$".format(g))
     plt.xlabel(r"$\phi$")
     plt.ylabel(r"$V$")
     plt.grid(True)
     plt.tight_layout()
 
-    fname = os.path.join(frame_dir, f"g_frame_{i:03d}.png")
+    # Save frame
+    fname = os.path.join(frame_dir, f"frame_{i:03d}.png")
     plt.savefig(fname)
     plt.close()
-    frames.append(fname)
+    frame_files.append(fname)
 
-# Build the GIF
-with imageio.get_writer(gif_file, mode='I', duration=0.1) as writer:
-    for fname in frames:
-        img = imageio.imread(fname)
-        writer.append_data(img)
+# Build GIF
+with imageio.get_writer(output_gif, mode='I', duration=0.1) as writer:
+    for fname in frame_files:
+        image = imageio.imread(fname)
+        writer.append_data(image)
 
-print(f"Animated GIF written to {gif_file}")
+print(f"GIF saved to {output_gif}")
