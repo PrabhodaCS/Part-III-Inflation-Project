@@ -331,14 +331,14 @@ Defining a new connection that is conformally covariant using $B_\mu$ and using 
 \end{align}
 Putting all this together, we get the most general conformally invariant action that is linear in curvature:
 \begin{widetext} 
-\begin{subequations} \label{32a}
+\begin{subequations} \label{Starting Action}
 \begin{align}
     S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
     &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \omega \phi_0^3 \varphi + \chi \phi_0 \varphi^3 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
 \end{align}
 \end{subequations}
 \end{widetext}
-Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. In the preceding discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$, this can be reinstated in the end, once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
+Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. In the proceeding discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$, this can be reinstated in the end (Section \ref{Solution}), once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
 
 In the equation above, we find two scalar fields. This makes analyzing the equations of motion harder. However, we have a redundant degree of freedom granted to us through the Weyl invariance. Looking at the units of $[\phi] = 2$, we find that it is an inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$ and "freeze it". The reparametrizations that allow us to do this are :
 \[
@@ -380,12 +380,12 @@ we can move from the Jordan frame to the Einstein frame and separate the Einstei
 \begin{subequations}\label{33a}
 \begin{align}
 S = \int d^4x\, \sqrt{-g} &\Biggl[ M^2\, R + \,\frac{M^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}
-\frac{24\beta}{2}\Biggl\{1 - \frac{\phi_0^2}{48\beta\,V}\Bigl[(\sigma-12\gamma)^2-4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\} (\partial_{\mu}\varphi\,\partial^{\mu}\varphi) \nonumber\\[2mm]
+\frac{12\beta}{2}\Biggl\{1 - \frac{\phi_0^2}{48\beta\,V}\Bigl[(\sigma-12\gamma)^2-4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\} (\partial_{\mu}\varphi\,\partial^{\mu}\varphi) \nonumber\\[2mm]
 &\quad - \frac{3M^2}{2}\,\frac{(2\beta\,\varphi+\gamma\,\phi_0)^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,(\partial_{\mu}\varphi\,\partial^{\mu}\varphi) - \frac{M^4}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,\frac{\mu^2}{2}\,\phi_0^2\,\varphi^2 \Biggr].
 \end{align}
 \end{subequations}
 \end{widetext}
-Denoting $A(\varphi) = (\beta\varphi^2+\gamma\phi_0\varphi+\alpha\phi_0^2)$ and $V(\varphi) = (\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0  \varphi + (\nu - 12\alpha)\phi^2_0$. There are 6 free parameters here $\{ \beta, \gamma, \alpha , \epsilon, \sigma, \nu \}$. Using the redundancy in our choice of parameters in \ref{32a}, we can reparametrize the fields $\varphi$ and $\phi_0$ and the parameters to absorb two of these dimensionless parameters. Therefore, we can choose
+Denoting $A(\varphi) = (\beta\varphi^2+\gamma\phi_0\varphi+\alpha\phi_0^2)$ and $V(\varphi) = (\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0  \varphi + (\nu - 12\alpha)\phi^2_0$. There are 6 free parameters here $\{ \beta, \gamma, \alpha , \epsilon, \sigma, \nu \}$. Using the redundancy in our choice of parameters in \ref{Starting Action}, we can reparametrize the fields $\varphi$ and $\phi_0$ and the parameters to absorb two of these dimensionless parameters. Therefore, we can choose
 \[
 \begin{split}
 \text{V} &= \left[(\epsilon - 12\beta)\,\varphi^2 + (\sigma - 12\gamma)\,\phi_0\,\varphi + (\nu - 12\alpha)\,\phi_0^2\right] \\
@@ -393,7 +393,7 @@ Denoting $A(\varphi) = (\beta\varphi^2+\gamma\phi_0\varphi+\alpha\phi_0^2)$ and 
 \end{split}
 \]
 Now only 4 dimensionless parameters still remain free; $\{k, \beta, \gamma, \alpha \}$.
-\begin{equation}
+\begin{equation} \label{Variable Dictionary}
     \begin{Bmatrix}
         \epsilon \\ \sigma \\ \nu 
     \end{Bmatrix}
@@ -406,121 +406,67 @@ Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta
 \begin{widetext}
     \begin{equation} 
     \begin{aligned}
-        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{M^2}{2} \left[\frac{12 \beta}{A} - \frac{\phi_0^2 (\gamma^2 - 4\beta\alpha)(k+6) }{2 A^2}\right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{1}{2} \left[\ \frac{M^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{2(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)} \right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 \end{widetext}
 where again, $A =\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2$ and $M_p/\sqrt{2} = M$ has been used in the equation above.
 
 The action is finally of the form $S = S_{\text{EH}} + S_{\text{INFLATON}}$. The inflaton action has the form of a non-canonical scalar field, with the kinetic and potential coefficients, $K(\varphi)$ and $V(\varphi)$.
-\subsection{Solution and Different Regimes}
-We now have all the relevant pieces to analyse the model, given the information in section \ref{Non-Canonical Scalar Field Inflation}. For the starting Lagrangian \ref{28a}, we have developed a variable dictionary given the parameter and field definition redundancy as:
-\begin{equation} \label{35}
-    \begin{Bmatrix}
-        \epsilon \\ \sigma \\ \nu 
-    \end{Bmatrix}
-    = (12+k)
-    \begin{Bmatrix}
-        \beta \\ \gamma \\ \alpha
-    \end{Bmatrix}
-\end{equation}
-With this choice of parameters (which we have made with no loss in generality), we were able to simplify the action \ref{28a} to one of the form $S_{EH} + S_{INFLATON}$. Now, looking at only the inflaton action alone, we have: 
+
+\subsection{Solution and Different Regimes} \label{Solution}
+We now have all the relevant pieces to analyse the model, given the information in section \ref{Non-Canonical Scalar Field Inflation}  and \ref{Scale Invariant Gravity}. For the starting Lagrangian \ref{Starting Action}, using a neat parameter and field redefinition (which we have done with no loss in generality) given by \ref{Variable Dictionary}, we were able to simplify the action \ref{Starting Action} to one of the form $S_{EH} + S_{INFLATON}$. Now, looking at only the inflaton action alone, we have: 
 \begin{equation}
     S_{INFLATON} = \int \text{d}^4x \left[ \frac{K(\varphi)}{2} \partial_\mu \varphi \partial^\mu \varphi - V(\varphi)\right]
 \end{equation}
 where, the kinetic and potential terms, $K(\varphi)$ and $V(\varphi)$ are given by:
 \begin{align}
-    \text{K}(\varphi) &= \left[\frac{12 \beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} - \frac{M^2 \phi_0^2 (\gamma^2 - 4\beta\alpha)(k+6)}{2 (\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2}\right] \label{37} \\
-    \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu^2 \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{38}
+    \text{K}(\varphi) &= \left[\ \frac{M^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{2(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)} \right] \label{KE} \\
+    \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu^2 \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{VE}
 \end{align}
-Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\omega$ and $\chi$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient:
-\begin{equation}
-    S_{\text{INFLATON}} = \int \text{d}^4x \sqrt{-g} \left[ \frac{1}{2}\partial_\mu \tilde{\varphi}\partial^\mu \tilde{\varphi} - V(\varphi(\tilde{\varphi})) \right]
-\end{equation}
-we will need to redefine the field such that:
+Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\omega$, and $\chi$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient, we will need to redefine the field such that ($4\alpha \beta > \gamma^2$ has to be satisfied to avoid ghost instabilities):
 \begin{equation} \label{40}
     \tilde{\varphi}(\varphi) = \int_0^{\varphi} \sqrt{K(x)} \text{d}x
 \end{equation}
-However, for the $K(\varphi)$ derived in this model \ref{37}, there exists no elementary closed-form analytical solution to the integral \ref{40}. While we present the results of numerical integration of the above kinetic term in the next section, here, we will look at various regimes to understand the behaviour of this model in different limits. 
-
-\subsubsection{\textbf{CASE I }: $k \gg 1$}
-
-Assuming $\beta \ll \phi_0^2(4\alpha\beta - \gamma^2)(k+6)$, we get the field redefinition ($\gamma^2 <4\alpha\beta$) and using $D = \sqrt{4\alpha\beta-\gamma^2}$:
+Using equation \ref{KE}, we get,
 \begin{equation}
-    \frac{d\tilde{\varphi}}{d\varphi} = \left[ \sqrt{\frac{k}{2}} \frac{M \phi_0 D}{\beta \varphi^2  +\gamma \phi_0 \varphi +\alpha \phi^2_0} \right]
+    \tilde{\varphi}(\varphi) = \sqrt{\frac{12+k}{2}}M_p \arctan \left( \frac{2\varphi\beta + \gamma \phi_0}{\phi_0\sqrt{4\alpha\beta - \gamma^2}} \right) + c
 \end{equation}
-This gives:
+Where $c$ is the integration constant dictating where the origin of the potential falls. For inflationary models, we can take it to be 0 without loss in generality or losing any physics. Inverting this relation, we get:
 \begin{equation}
-    \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\beta} \left[ \sqrt{4\alpha \beta - \gamma^2} \tan\left(\frac{\tilde{\varphi}}{M_p\sqrt{k}}-c \right) -\gamma \right]
+    \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr] 
 \end{equation}
-Using this in the potential (keeping only the $\mu$ term), we get:
+This redefinition also tells us that the original range $\varphi \in (-\infty,\infty)$ gets mapped to $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$.Therefore using this inside the potential \ref{VE}, we get the potential $V(\varphi(\tilde{\varphi}))$, to get the final canonical inflaton action:
 \begin{equation}
-    V(\tilde{\varphi}) =  \frac{\mu^2 M_p^4}{2(4\alpha\beta-\gamma^2)^2} \cos^4(X)  \left [ \gamma - \sqrt{4\alpha\beta- \gamma^2} \tan(X)\right]^2
+    S_{\text{INFLATON}} = \int \text{d}^4x \sqrt{-g} \left[ \frac{1}{2}\partial_\mu \tilde{\varphi}\partial^\mu \tilde{\varphi} - V(\varphi(\tilde{\varphi})) \right]
 \end{equation}
-Where $X = \left(\left(\frac{\tilde{\varphi}}{\sqrt{k}M_p}\right) - c\right)$
-Plotting this potential and keeping $c = 0$, we get figure \ref{CASE I potential (HillTop Potential)}, which is a hilltop potential \cite{boubekeur_hilltop_2005}. 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.4\textwidth]{Python/Figures/Case1 Potential.png}
-    \caption{CASE I}
-    \label{CASE I potential (HillTop Potential)}
-\end{figure}
+An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential. We can make this explicit by writing the final potential as:
+\begin{align}
+    V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu^2 X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
+    X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
+\end{align}
+Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$
 
-\subsubsection{\textbf{CASE II}: $k = -6$}
-Assuming $k=-6$,  we get the field redefinition:
-\begin{equation}
-    \frac{d\tilde{\varphi}}{d\varphi} = \sqrt{\left[\frac{12\beta M^2}{(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)} \right]}
-\end{equation}
-For the field redefinition to make sense, we require $\gamma^2 < 4\alpha \beta$, this gives us:
-\begin{equation}
-    \varphi(\tilde{\varphi}) = \frac{1}{4\beta} \left(\text{e}^{-X}(\text{e}^{2X} - 2\text{e}^X \gamma \phi_0 - \phi_0^2(4\alpha\beta-\gamma^2)) \right)
-\end{equation}
-Where, $X = \frac{\tilde{\varphi}}{\sqrt{6}M_p}+c$The resulting potential is:
-\begin{equation}
-    V(\tilde{\varphi}) =  \frac{2 \mu ^2 M_p^4 e^{2 X} \phi_0^2 \left(\text{e}^{2X} - 2\text{e}^X \gamma \phi_0 - \phi_0^2(4\alpha\beta-\gamma^2)\right)^2}{\left(\phi ^2 \left(4 \alpha  \beta -\gamma ^2\right)+\text{e}^{2 X}\right)^4}
-\end{equation}
-Where $X(\tilde{\varphi}) = \frac{\tilde{\varphi}}{3\sqrt{2}M_p}$. The graph for the same is below.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.4\textwidth]{Python/Figures/potential_vs_g.png}
-    \caption{CASE II}
-    \label{CASE II potential (Exponential)}
-\end{figure}
-
-
-\subsection{\textbf{NUMERICAL ANALYSIS}}
-Stitching together the two regimes, we can see that $K(\varphi)$ interpolates between the two regimes based on values of $\varphi \, \, \text{and}\, \,k$. For intermediate $k$, both terms contribute, leading to a non-trivial kinetic structure, which is not always integrable.
-
-For $\varphi \rightarrow 0$, the $\frac{1}{A^2(\varphi)}$ term dominates, giving a tangent contribution, a power-law structure/steep potential close to zero. For $\varphi \rightarrow \infty$, the $\frac{1}{A(\varphi)}$ term dominates,  giving a hyperbolic sine contribution, providing an exponentially damped solution leading to a plateau-like shape. 
-
-Finally, using Python, we can numerically integrate equation \ref{40}, interpolate the function $\tilde{\varphi}(\varphi)$, invert it, and use it to attain the shape of the true potential \ref{38}. The parameters below have been chosen such that the scalar spectral index $n_s = 1 + 2\eta_V - 6 \epsilon_V$ (We would have used $n_s = 1 + \frac{1}{K}(2\eta_V - 6 \epsilon_V -\sqrt{2\epsilon_V}\lambda_K)$ ($\lambda_K = M_p \frac{K_{,\varphi}}{K}$), if the definitions of our slow roll parameters were canonical, but since we have accounted for it's non canonical nature in \ref{26} and \ref{29}, we can use the normal definition \cite{chung2003running} ),  is close to the experimental value of 0.968 at around 60 efolds.
 \textbf{CHANGES PENDING AHEAD}
-\begin{widetext} 
-\begin{subequations} \label{32a}
-\begin{align}
-    S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
-    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \omega \phi_0^3 \varphi + \chi \phi_0 \varphi^3 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
-\end{align}
-\end{subequations}
-\end{widetext}
 
-$\text{params} = [\alpha, \gamma,\beta, \epsilon, \sigma, \nu , \mu, \omega, \chi, \lambda, \kappa]$
-After the variable parameterization, now only 4 dimensionless parameters still remain free; $\{\alpha, \gamma,\beta, \epsilon, \sigma , \nu\} \rightarrow \{k, \beta, \gamma, \alpha \}$.
-So now $\text{params} = [\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa]$
-\begin{equation}
-    \begin{Bmatrix}
-        \epsilon \\ \sigma \\ \nu 
-    \end{Bmatrix}
-    = (12+k)
-    \begin{Bmatrix}
-        \beta \\ \gamma \\ \alpha
-    \end{Bmatrix}
-\end{equation}
-\begin{align}
-    V({\tilde{\varphi}}) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \tilde{\varphi} +\mu^2 \phi^2_0 \tilde{\varphi}^2 + 2\chi \phi_0 \tilde{\varphi}^3 + \lambda \tilde{\varphi}^4 }{2(\beta \tilde{\varphi}^2 + \gamma\phi_0\tilde{\varphi} + \alpha \phi_0^2)^2} \nonumber \\
-    \tilde{\varphi}(\varphi) &= \frac{\phi_0}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\varphi}{M_p}\right) - \gamma \Biggr] 
-\end{align}
+\begin{comment}
+    $\text{params} = [\alpha, \gamma,\beta, \epsilon, \sigma, \nu , \mu, \omega, \chi, \lambda, \kappa]$
+    After the variable parameterization, now only 4 dimensionless parameters still remain free; $\{\alpha, \gamma,\beta, \epsilon, \sigma , \nu\} \rightarrow \{k, \beta, \gamma, \alpha \}$.
+    So now $\text{params} = [\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa]$
+    \begin{equation}
+        \begin{Bmatrix}
+            \epsilon \\ \sigma \\ \nu 
+        \end{Bmatrix}
+        = (12+k)
+        \begin{Bmatrix}
+            \beta \\ \gamma \\ \alpha
+        \end{Bmatrix}
+    \end{equation}
+    \begin{align}
+        V({\tilde{\varphi}}) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \tilde{\varphi} +\mu^2 \phi^2_0 \tilde{\varphi}^2 + 2\chi \phi_0 \tilde{\varphi}^3 + \lambda \tilde{\varphi}^4 }{2(\beta \tilde{\varphi}^2 + \gamma\phi_0\tilde{\varphi} + \alpha \phi_0^2)^2} \nonumber \\
+        \varphi(\tilde{\varphi}) &= \frac{\phi_0}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr] 
+    \end{align}    
+\end{comment}
 
 
 \begin{figure}[h!]
@@ -575,11 +521,16 @@ $\,$
 \newpage
 
 \section{CONCLUSION}
+
+\newpage
+\,\,
+\newpage
+
 \appendix
 
 \section{Translating variables from Salvio to Barker} \label{Appendix A}
 
-In the paper \cite{Salvio_2022}, the authors derived an inflaton potential using metric affine gravity. The motivation here is to give inflation a geometrical explanation. 
+In the paper \cite{Salvio_2022}, the authors derived an inflaton potential using metric-affine gravity. The motivation here is to give inflation a geometrical explanation. 
 By starting with this action, 
 \begin{equation}
     S = \int \text{d}^4\text{x} \sqrt{-g} (\alpha \mathcal{R} + \beta \mathcal{R}' + c \mathcal{R}'^{2})
@@ -614,51 +565,6 @@ The substitutions necessary to transform back and forth from these models are:
 \end{align}
 
 where $g$ is a dimensionless coupling constant, this tells us that the Barker model has an extra degree of freedom that we can absorb into the definitions of the other variables.
-
-\section{Reduction to the Starobinsky Model} \label{Appendix B}
-
-The Starobinsky Model \cite{STAROBINSKY198099} Lagrangian includes a quadratic curvature (a scale-invariant) term in the Einstein-Hilbert action. When the curvature is high, the quadratic term dominates and drives inflation away from an unstable de Sitter fixed point \cite{Cecchini_2024}. Looking at a particular sector in our theory from Lagrangian \ref{32a} where we have chosen $\lambda = \beta$,
-\begin{equation} \label{B1}
-    S =\int \text{d}^4\text{x} \sqrt{-g} \left[ (\alpha \phi_0^2 + \beta \varphi^2)\mathcal{R} - \frac{\lambda}{2} \varphi^4 \right]  
-\end{equation}
-Upon utilization of the Euler-Lagrange equation on the $\varphi$ field $2 \beta \varphi R - 2\beta \varphi^3 = 0$, if $\varphi \neq 0$, the other solution $\varphi^2 = R$, gives us \ref{B2}. This can be re-written as:
-\begin{equation} \label{B2}
-    S =\int \text{d}^4\text{x} \sqrt{-g} \left[ \alpha \phi_0^2 \mathcal{R} + \frac{\beta}{2} \mathcal{R}^2  \right]
-\end{equation}
- We can see that this action, a particular regime of the general lagrangian \ref{32a}, is equivalent to the Starobinsky model. Therefore, to match this with our model, we use our variable dictionary \ref{35}
-
-To reduce to the above equations to \ref{B2}, we choose: $\gamma = 0, k = -12$, and $\beta$ negative, giving $\epsilon = \sigma = \nu = 0$. Our $K(\varphi)$ and $V(\varphi)$ given in \ref{37} and \ref{38} therefore reduce to:
-\begin{align}
-    \text{K}(\varphi) &= \left[\frac{12 M^2 \beta^2 \varphi^2}{ (\beta \varphi^2 + \alpha \phi_0^2)^2}\right] \\
-    \text{V}(\varphi) &= \frac{ M^4 \lambda \varphi^4}{2(\beta \varphi^2 + \alpha \phi_0^2)^2}    
-\end{align}
-Giving the field redefinition:
-\begin{align}
-    \tilde{\varphi}(\varphi) &= \sqrt{3}M \ln\left(1 + \frac{\beta \varphi^2}{\alpha \phi_0^2} \right) \nonumber \\
-    \varphi^2(\tilde{\varphi}) &=  \frac{\alpha}{\beta} \phi_0^2\left [ \exp\left(\frac{\tilde{\varphi}}{\sqrt{3}M}\right) -1\right]
-\end{align}
-Using this in the potential, we get reproduce the famous Starobinsky formula:
-\begin{equation}
-    \text{V}(\tilde{\varphi}) = \frac{ M_p^4}{8 \beta}  \left(1 - \exp\left(-\sqrt{\frac{2}{3}}\frac{ \tilde{\varphi}}{ M_p}\right)\right)^2
-\end{equation}
-This is the exact Starobinsky potential \cite{STAROBINSKY198099}, \cite{maeda_inflation_1988}. In comparison with the Starobinsky Model, \cite{ivanov2022analytic}, \cite{lust2024starobinsky}, we see that the parameters $m^2 \approx \frac{3}{4} 10^{-10}M_p^2 =\frac{M_p^2}{8\beta}$, giving us $\beta \approx 10^{9}$. We also note that the terms $\alpha, \phi_0$ drop out of the final potential, giving us the Starobinsky behaviour of a one-parameter potential.
-
-\section{Reduction to Barker Model}
-For the Lagrangian \ref{32a} to reduce to Barker, we require $\beta = \gamma =0$; this can be done through the choice $k \rightarrow\infty$. To ensure that the conformal transformation we did on the way is not singular, we require $\alpha$ finite. Converting the parameters from $\alpha, \beta, \gamma$ to $\epsilon, \sigma, \nu$ in the $K,V$ formulae: \cite{caputa_cosmology_2013}
-
-We get:
-\begin{align}
-    \text{K}(\varphi) &= \left[\frac{M^2 \phi_0^2 (\sigma^2 - 4\epsilon\nu)k}{2 (\epsilon \varphi^2 + \sigma\phi_0\varphi + \nu \phi_0^2)^2}\right] \label{C4}  \\
-    \text{V}(\varphi) &= \frac{ k^2 M^4 \mu^2 \phi^2_0 \varphi^2}{2(\epsilon \varphi^2 + \sigma\phi_0\varphi + \nu \phi_0^2)^2}
-\end{align}
-In the limit $k \rightarrow\infty$, the field redefinition becomes:
-\begin{equation}
-    \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\epsilon} \left[\sigma - \sqrt{\sigma^2 - 4\epsilon \nu} \tanh\left(\frac{\tilde{\varphi}}{M_p\sqrt{k}}-c \right) \right]
-\end{equation}
-The field $\varphi$ is bounded by:
-\begin{equation}
-    \frac{\phi_0}{2\epsilon} \left[\sigma - \sqrt{\sigma^2 - 4\epsilon \nu}\right] < \varphi < \frac{\phi_0}{2\epsilon} \left[\sigma + \sqrt{\sigma^2 - 4\epsilon \nu}  \right]
-\end{equation}
 
 \newpage
 \,
