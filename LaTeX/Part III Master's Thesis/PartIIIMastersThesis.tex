@@ -174,7 +174,21 @@ In this section, we shall consider a general non-canonical scalar field in the p
 \begin{equation}\label{12}
     S = \int \mathrm{d}^4 x \sqrt{-g} \left[\frac{M_p^2}{2}R+ g^{\mu \nu} \frac{K(\phi)}{2} \partial_{\mu}\phi \partial_{\nu} \phi  - V(\phi) \right]\
 \end{equation}
-Using the methods described in \ref{3+1 decomposition of spacetime}
+Using the methods described in \ref{3+1 decomposition of spacetime}, we can now split the action integral into one over space and one over time and make the Cauchy problem well-defined. Given certain conditions on the spacetime, it has been proven that, given initial conditions, the evolution of the fields described on the spacelike hypersurface has a unique evolution \cite{choquet-bruhat_global_1969}. Therefore, 
+\begin{equation}
+    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_V  \alpha a^3(t) \left[\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\phi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\phi \partial_{j} \phi  - V(\phi) \right]    
+\end{equation}
+Using the form of the Ricci scalar in the FLRW metric and neglecting the spatial derivatives, since we are considering a spatially homogeneous and isotropic fluid, we get:
+\begin{align}
+    S = V \int_{t_1}^{t_2} \mathrm{d}t \left[3M_p^2 \left[ \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right]+  \frac{\alpha a^3(t)}{2} \dot{\phi}^2 \nonumber \\
+    - \alpha a^3(t) V(\phi) \right]    
+\end{align}
+Solving the Equations of motion for $\alpha, a(t) \, \text{and} \, \phi$ (setting $M_p = 1$ for now) respectively give us:
+\begin{align}
+    \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= \frac{\dot{\phi}^2}{2} - V(\phi) \\
+    \frac{2 \ddot{a}}{\alpha^2 a} + \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a} &= -\left(\frac{\dot{\phi}^2}{2} - V(\phi) \right)
+
+\end{align}
 \begin{comment}
     \begin{equation}
         g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + a^2(t)\delta_{ij}\text{d}x^i\text{d}x^j
