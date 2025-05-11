@@ -90,7 +90,7 @@ Scale invariance in cosmology seems quite an attractive hypothesis given the nea
 \begin{equation} \label{1}
     \text{d}s^2 = \frac{1}{H^2\eta^2}(\text{d}\eta^2 - \text{d}\Vec{x}^2)
 \end{equation} 
-remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any EFT defined on this background must be scale invariant too, perhaps even locally. This is in line with how EFTs defined on Minkowski space are expected to obey the symmetries of the Lorentz group $SO^+(1,3)$. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant. Appendix \ref{Appendix B} contains the mapping from the theory developed here to Starobinsky, showing we can arrive at that particular potential from gauged scale invariance. 
+remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any EFT defined on this background must be scale invariant too, perhaps even locally. This is in line with how EFTs defined on Minkowski space are expected to obey the symmetries of the Lorentz group $SO^+(1,3)$. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant.
 
 Another approach to inflationary cosmology is to consider metric-affine theories. This is done through the inclusion of the Holst invariant, a quantity that is already scale-invariant, in the Lagrangian. This has been explored in \cite{Salvio_2022} and \cite{pradisi2022equivalence}. The potential achieved in \cite{Salvio_2022} is identical to the one obtained through demanding scale invariance in \cite{barker2024poincaregaugetheoryconformal}, and the translation between the variables in the two theories will be given in Appendix \ref{Appendix A}. Finally, when considering the classical action of the Standard Model, dropping the Higgs mass terms, one finds that it too is scale-invariant and can be extended to be conformally invariant \cite{bars2014local}.
 
@@ -167,48 +167,14 @@ Given that $\ddot{a} > 0$ and Friedmann equation \ref{2}, we see that $\frac{\rh
 
 So far, we have described the physical implications of inflation and it's effects. In the following section, we shall describe the physical conditions under which such an exponential expansion can arise. 
 
-\subsection{Non-Canonical Scalar Field Inflation} \label{Non-Canonical Scalar Field Inflation}
+\subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
 The simplest models of inflation involve a scalar field $\phi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
 
 In this section, we shall consider a general non-canonical scalar field in the presence of gravity and derive the equations of motion and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model.
 \begin{equation}\label{12}
     S = \int \mathrm{d}^4 x \sqrt{-g} \left[\frac{M_p^2}{2}R+ g^{\mu \nu} \frac{K(\phi)}{2} \partial_{\mu}\phi \partial_{\nu} \phi  - V(\phi) \right]\
 \end{equation}
-Before we proceed further, we have to consider how to treat the FLRW metric in calculations to make them simpler. Given that the FLRW metric supposes spatial homogeneity and isotropy, a natural choice to analyse the metric and dynamics of this spacetime would be to slice the 4D spacetime $\mathcal{M}_4$ into a time-ordered sequence of 3D spacelike hypersurfaces $\Sigma_t$ such that on each hypersurface, time is constant \cite{baumann2012tasilecturesinflation}, 
-\cite{gourgoulhon_31_2007}:
-\begin{equation}
-    \forall t \in \mathbb{R} : \Sigma_t = \{p \in \mathcal{M}_4 \, | \, \hat{t} (p) = t\} \nonumber
-\end{equation}
-Since $t$ (time) is always increasing and we want this slicing to cover all of spacetime, we require:
-\begin{align}
-    \Sigma_t \cap \Sigma_{t'} &= \emptyset \,\, \text{for}\,\, t \neq t' \nonumber \\
-    \mathcal{M}_4 &= \bigcup_{t \in \mathbb{R}} \Sigma_t \nonumber
-\end{align}
-This allows us to to decompose the 4D manifold into a non-intersecting family of spacelike hypersurfaces such that $\mathcal{M}_4 \rightarrow \mathbb{R} \times \Sigma$, where $t \in \mathbb{R}$. On each hypersurface $\Sigma_t$, one can introduce a coordinate system $(x^i) = (x^1,x^2,x^3)$. For a well-behaved coordinate system on $\mathcal{M}_4$, we will require that this coordinate system varies smoothly between neighbouring hypersurfaces. Given a spacelike $\Sigma_t$, we can naturally define a unit normal 1-form 
-\begin{equation} \label{unit 1-form}
-    \underline{\bm{n}} = - \alpha \textbf{d}t    
-\end{equation}
-(Standard literature on this material uses N to denote the proportionality constant between the gradient 1-form and the 1-form $\underline{\bm{n}}$, but since we are going to be using $N$ for the efolding time, we will use $\alpha$ to avoid confusion). Using the full metric, we can also define a vector in $\mathcal{T_p}(\mathcal{M}_4)$ denoted by $\bm{n}$.
-
-By looking at the orthogonal projection operator $\Vec{\mathbf{\gamma}} : \mathcal{T_p}(\mathcal{M}_4) \rightarrow \mathcal{T_p}(\Sigma_t)$, we can define an extended induced metric $\gamma_{\alpha\beta} = g_{\alpha\beta} + n_\alpha n_\beta$ (since $g^{\mu\nu} n_\mu n_\nu = -1$, we can define the inverse metric $\gamma^{\alpha\beta} = g^{\alpha\beta} + n^\alpha n^\beta$). This defines an induced metric on $\Sigma_t$, ensuring that vectors normal to the surface give a zero dot product and tangetial vectors maintain the same dot product structure inherited from the full manifold. 
-
-Choosing the natural basis of $\mathcal{T}_p(\mathcal{M}_4)$ associated with the coordinates $(x^\alpha) =(t,x^i)$ as $(\bm{\partial}_\alpha)=(\bm{\partial}_t, \bm{\partial}_i)$. Given that this is dual to the 1-form basis $(\textbf{d}x^\alpha) = (\textbf{d}t, \textbf{d}x^i)$, we have $\langle \textbf{d}t, \bm{\partial}_t \rangle = 1$, so given equation \ref{unit 1-form}, we get $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$, where the vector $\bm{\beta}$ is the ``shift'' vector tangent to the hypersurface ($\bm{\beta} = \beta^i \boldsymbol{\partial}_i$). 
-
-Now using the components of the 3-metric $\gamma_{i j}$ with respect to the coordinates $(x^i)$, we can write $\beta_i = \gamma_{ij}\beta^j$. The components of the metric $\bm{g}$ with respect to the coordinates $(x^\alpha)$ therefore are $\bm{g} \equiv g_{\alpha \beta} \textbf{d}x^\alpha \otimes \textbf{d}x^\beta$
-By this definition, we see that we can extract the components of the metric by looking at it's action on the basis of the vector space. 
-\begin{equation}
-    g_{\alpha\beta} = \bm{g} (\bm{\partial}_\alpha, \bm{\partial}_\beta)
-\end{equation}
-This gives upon substitution of the $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$:
-\begin{equation}
-    g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}(\text{d}x^i + \beta^i \text{d}t)(\text{d}x^j + \beta^j \text{d}t)
-\end{equation}
-The vector $\alpha \bm{n}$ defines a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. The shift vector $\bm{\beta}$ defines how coordinates ``shift'' from neighbouring spacelike hypersurface on the plane (tangent to $\Sigma_t$). 
-
-So far, the discussion has been quite general; however, coming to the FLRW metric, which is spatially homogeneous and isotropic, we shall set $\beta^i = 0$. Giving us $g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}\text{d}x^i\text{d}x^j$ (The equations of motion we get through $\beta^i$ give us momentum conservation),
-
-The spatial slices $\Sigma_t$, homogeneous and isotropic 3-spaces, have constant 3-curvature. We can therefore choose one of three embeddings such that the curvature is either negative, zero, or positive. 
-
+Using the methods described in \ref{3+1 decomposition of spacetime}
 \begin{comment}
     \begin{equation}
         g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + a^2(t)\delta_{ij}\text{d}x^i\text{d}x^j
@@ -226,17 +192,6 @@ Given this, we can define
 
 
 \end{comment}
-\begin{equation} \label{13}
-    S = \int \text{dt}\text{d}^3\text{x} \; \text{a}^3(t) \left[ \frac{K(\varphi)}{2}\dot{\varphi}^2 - V(\varphi) \right]
-\end{equation}
-We vary the action and upon integrating by parts we get,
-\begin{equation}
-    \delta S = - \int \text{dt}\,\text{d}^3\textbf{x} \; \left[ a^3 K \ddot{\varphi} + a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2}  +  3\dot{a} a^2 K \dot{\varphi} + a^3V_{,\varphi}  \right]\delta \varphi
-\end{equation}
-Setting this variation to zero, we get the equation of motion for a non-canonical scalar field.
-\begin{equation} \label{16}
-    K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
-\end{equation}
 We see this aligns with the canonical scalar field when we set $K = 1$, getting  $ \ddot{\varphi} +  3H \dot{\varphi}  + V_{,\varphi}   = 0$. While this equation is nice, it turns out to be more useful in cosmology to record how the inflaton field changes with respect to the e-folding time ($N = \int H \text{d}t$). For this, let us take an aside and given the action \ref{12}, derive the energy-momentum tensor.
 \begin{equation} 
     T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \phi)} \partial_\nu \phi - g_{\mu\nu} \mathcal{L}
@@ -301,13 +256,13 @@ So far, these arguments only provide restrictions on the potential of the scalar
 \textit{One of the ways to arrive at the action principle of the inflaton field is to take a leaf out of the playbook of many successful QFTs and to hypothesize a gauge condition. This is the approach that shall be taken in this project and will be explained more in the next section.}
 
 \section{Scale Invariant Gravity} \label{Scale Invariant Gravity}
-Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and analyze the theory with the inclusion of gravity. This immediately makes the theory much richer, producing various inflationary scenarios such as hilltop, plateau (Starobinsky-like), and even power law/ exponential potentials.
+Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and analyze the theory with the inclusion of gravity.
 
 The theory of General Relativity is one of mankind's most rigorous scientific theories, is self-consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy (/length) scales. It is widely accepted that at high enough energy scales, those comparable to the Planck scale, GR breaks down. 
 
 An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert Lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental scale-invariant theory that describes physics at higher energies. 
 
-In the argument that follows, we derive the most general conformally invariant action with non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though this is a perfectly legal and general extension of the model. It is easy to show that this results in a two-field inflation model. We find, however, that the following model, which we will derive, is quite general and accounts for a lot of behaviors seen in the potentials derived through other means. Let us begin by exploring this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation.
+In the argument that follows, we derive the most general conformally invariant action with non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though this is a perfectly legal and general extension of the model. It is easy to show that this results in a two-field inflation model. We find, however, that the following model, which we will derive, is quite interesting and matches quite well with what is expected from an inflationary model. Let us begin by exploring this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation.
 \begin{equation} \label{25}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
@@ -334,7 +289,7 @@ Putting all this together, we get the most general conformally invariant action 
 \begin{subequations} \label{Starting Action}
 \begin{align}
     S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R - 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
-    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu^2}{2} \phi^2 \varphi^2 + \omega \phi_0^3 \varphi + \chi \phi_0 \varphi^3 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
+    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu}{2} \phi^2 \varphi^2 + \omega \phi_0^3 \varphi + \chi \phi_0 \varphi^3 + \frac{\lambda}{2} \varphi^4 + \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
 \end{align}
 \end{subequations}
 \end{widetext}
@@ -353,7 +308,7 @@ The resulting action in the Jordan Frame therefore reads:
 \Bigl(R - 6\, B_{\mu} B^{\mu} - 6\, \nabla_{\mu} B^\mu\Bigr) \\
 &\quad + \frac{\epsilon}{2} \Bigl(\partial_{\mu}\varphi - \Bigl(\varphi + \frac{\sigma}{\epsilon}\,\phi_0\Bigr)B_{\mu}\Bigr)
 \Bigl(\partial^{\mu}\varphi - \varphi\,B^{\mu}\Bigr) \\
-&\quad - \frac{\mu^2}{2}\, \phi_0^2\,\varphi^2 
+&\quad - \frac{\mu}{2}\, \phi_0^2\,\varphi^2 
 + \frac{\nu\,\phi_0^2}{2}\,B_{\mu} B^{\mu} 
 - \frac{\xi}{16}\,H_{\mu\nu} H^{\mu\nu}\,.
 \end{aligned}
@@ -367,7 +322,7 @@ and \ref{29} becomes:
 \begin{subequations}\label{33a}
 \begin{align}
 S = \int d^4x\, \sqrt{-g} \Biggl[ (\alpha\, \phi_0^2 + \beta\, \varphi^2 + \gamma\, \phi_0\,\varphi)R + 12\beta \Biggl\{1 - \frac{\phi_0^2}{48\beta\, V}\Bigl[(\sigma-12\gamma)^2 - 4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\}
-(\partial_{\mu}\varphi\, \partial^{\mu}\varphi) - \frac{\mu^2}{2}\,\phi_0^2\,\varphi^2 \Biggr],
+(\partial_{\mu}\varphi\, \partial^{\mu}\varphi) - \frac{\mu}{2}\,\phi_0^2\,\varphi^2 \Biggr],
 \end{align}
 \end{subequations}
 \end{widetext}
@@ -381,7 +336,7 @@ we can move from the Jordan frame to the Einstein frame and separate the Einstei
 \begin{align}
 S = \int d^4x\, \sqrt{-g} &\Biggl[ M^2\, R + \,\frac{M^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}
 \frac{12\beta}{2}\Biggl\{1 - \frac{\phi_0^2}{48\beta\,V}\Bigl[(\sigma-12\gamma)^2-4(\epsilon-12\beta)(\nu-12\alpha)\Bigr]\Biggr\} (\partial_{\mu}\varphi\,\partial^{\mu}\varphi) \nonumber\\[2mm]
-&\quad - \frac{3M^2}{2}\,\frac{(2\beta\,\varphi+\gamma\,\phi_0)^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,(\partial_{\mu}\varphi\,\partial^{\mu}\varphi) - \frac{M^4}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,\frac{\mu^2}{2}\,\phi_0^2\,\varphi^2 \Biggr].
+&\quad - \frac{3M^2}{2}\,\frac{(2\beta\,\varphi+\gamma\,\phi_0)^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,(\partial_{\mu}\varphi\,\partial^{\mu}\varphi) - \frac{M^4}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,\frac{\mu}{2}\,\phi_0^2\,\varphi^2 \Biggr].
 \end{align}
 \end{subequations}
 \end{widetext}
@@ -406,7 +361,7 @@ Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta
 \begin{widetext}
     \begin{equation} 
     \begin{aligned}
-        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{1}{2} \left[\ \frac{M^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{2(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)} \right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu^2}{2} \phi^2_0 \varphi^2 ] 
+        S &= \int \text{d}^4\text{x} \sqrt{-g} [ M^2 R + \frac{1}{2} \left[\ \frac{M^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{2(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)} \right] (\partial_\mu \varphi \partial^\mu \varphi) -  \frac{M^4}{A^2} \frac{\mu}{2} \phi^2_0 \varphi^2 ] 
     \end{aligned}
 \end{equation}
 \end{widetext}
@@ -422,7 +377,7 @@ We now have all the relevant pieces to analyse the model, given the information 
 where, the kinetic and potential terms, $K(\varphi)$ and $V(\varphi)$ are given by:
 \begin{align}
     \text{K}(\varphi) &= \left[\ \frac{M^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{2(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)} \right] \label{KE} \\
-    \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu^2 \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{VE}
+    \text{V}(\varphi) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \varphi +\mu \phi^2_0 \varphi^2 + 2\chi \phi_0 \varphi^3 + \lambda \varphi^4 }{2(\beta \varphi^2 + \gamma\phi_0\varphi + \alpha \phi_0^2)^2} \label{VE}
 \end{align}
 Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\omega$, and $\chi$.To canonicalize the action, that is, to write it in the form with no kinetic coefficient, we will need to redefine the field such that ($4\alpha \beta > \gamma^2$ has to be satisfied to avoid ghost instabilities):
 \begin{equation} \label{40}
@@ -442,14 +397,22 @@ This redefinition also tells us that the original range $\varphi \in (-\infty,\i
 \end{equation}
 An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential. We can make this explicit by writing the final potential as:
 \begin{align}
-    V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu^2 X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
+    V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
     X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
 \end{align}
 Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$
+Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \infty} V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta}$. This shows that it plateaus at high $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k}$, where $C_k = \sqrt{\frac{2}{12+k}}M_p$. Denoting $A(X) = \beta X^2 + \gamma X + \alpha$, $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$ and $D = \sqrt{4\alpha\beta-\gamma^2}$, we get that the slow roll parameter $\epsilon_V$ is:
+\begin{align}
+    \epsilon_V &= \frac{2C_k^2 M_p^2}{D^2} \left[ \frac{N'(X)}{N(X)} - \frac{A'(X)}{A(X)} \right]^2 
+\end{align} 
 
 
 
 \begin{comment}
+    \epsilon_V &= \frac{4M_p^4}{(12+k)(4\alpha\beta-\gamma^2)} \left[ \frac{2\omega + 2\mu X + 6\chi X^2 + 4\lambda X^3}{\kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4 } - \frac{2 \beta X + \gamma}{\beta X^2 + \gamma X + \alpha} \right]^2
+    
+
+
     $\text{params} = [\alpha, \gamma,\beta, \epsilon, \sigma, \nu , \mu, \omega, \chi, \lambda, \kappa]$
     After the variable parameterization, now only 4 dimensionless parameters still remain free; $\{\alpha, \gamma,\beta, \epsilon, \sigma , \nu\} \rightarrow \{k, \beta, \gamma, \alpha \}$.
     So now $\text{params} = [\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa]$
@@ -471,7 +434,7 @@ Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/Terrible opt.png}
+    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/}
     \caption{$V(\tilde{\varphi})$ vs $\tilde{\varphi}$}
     \label{Canonical Potential vs Field1}
 \end{figure}
@@ -485,7 +448,27 @@ Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \
 
 \textbf{CHANGES PENDING AHEAD}
 
+
+
+The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach one around zero as shown in the below graph.
+
+\begin{comment}
+
 \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/Terrible opt.png}
+    \caption{$V(\tilde{\varphi})$ vs $\tilde{\varphi}$}
+    \label{Canonical Potential vs Field1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/Pot for terr.png}
+    \caption{$\frac{\text{d}\tilde{\varphi}}{\text{d}N}$ vs $\tilde{\varphi}$}
+    \label{Phase Space potrait1}}
+\end{figure}
+
+    \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{Python/Figures/Redefinition with correct parameters.png}
     \caption{$\tilde{\varphi}$ vs $\varphi$}
@@ -499,8 +482,6 @@ For this redefinition, we get the potential as such:
     \caption{V($\varphi$) vs $\varphi$}
     \label{Full Potential}
 \end{figure}
-
-The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach one around zero as shown in the below graph.
 
 \begin{figure}[h!]
     \centering
@@ -530,7 +511,7 @@ The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach o
     \label{r vs n_s}
 \end{figure}
 
-
+\end{comment}
 \newpage
 $\,$
 
@@ -582,6 +563,55 @@ The substitutions necessary to transform back and forth from these models are:
 
 where $g$ is a dimensionless coupling constant, this tells us that the Barker model has an extra degree of freedom that we can absorb into the definitions of the other variables.
 
+\section{3+1 decomposition of spacetime} \label{3+1 decomposition of spacetime}
+\textit{Before we proceed further, we have to consider how to treat the FLRW metric in calculations to make them simpler}. Given that the FLRW metric supposes spatial homogeneity and isotropy, a natural choice to analyse the metric and dynamics of this spacetime would be to slice the 4D spacetime $\mathcal{M}_4$ into a time-ordered sequence of 3D spacelike hypersurfaces $\Sigma_t$ such that on each hypersurface, time is constant \cite{baumann2012tasilecturesinflation}, 
+\cite{gourgoulhon_31_2007}:
+\begin{equation}
+    \forall t \in \mathbb{R} : \Sigma_t = \{p \in \mathcal{M}_4 \, | \, \hat{t} (p) = t\} \nonumber
+\end{equation}
+Since $t$ (time) is always increasing and we want this slicing to cover all of spacetime, we require:
+\begin{align}
+    \Sigma_t \cap \Sigma_{t'} &= \emptyset \,\, \text{for}\,\, t \neq t' \nonumber \\
+    \mathcal{M}_4 &= \bigcup_{t \in \mathbb{R}} \Sigma_t \nonumber
+\end{align}
+This allows us to to decompose the 4D manifold into a non-intersecting family of spacelike hypersurfaces such that $\mathcal{M}_4 \rightarrow \mathbb{R} \times \Sigma$, where $t \in \mathbb{R}$. On each hypersurface $\Sigma_t$, one can introduce a coordinate system $(x^i) = (x^1,x^2,x^3)$. For a well-behaved coordinate system on $\mathcal{M}_4$, we will require that this coordinate system varies smoothly between neighbouring hypersurfaces. Given a spacelike $\Sigma_t$, we can naturally define a unit normal 1-form 
+\begin{equation} \label{unit 1-form}
+    \underline{\bm{n}} = - \alpha \textbf{d}t    
+\end{equation}
+(Standard literature on this material uses N to denote the proportionality constant between the gradient 1-form and the 1-form $\underline{\bm{n}}$, but since we are going to be using $N$ for the efolding time, we will use $\alpha$ to avoid confusion). Using the full metric, we can also define a vector in $\mathcal{T_p}(\mathcal{M}_4)$ denoted by $\bm{n}$.
+
+By looking at the orthogonal projection operator $\Vec{\mathbf{\gamma}} : \mathcal{T_p}(\mathcal{M}_4) \rightarrow \mathcal{T_p}(\Sigma_t)$, we can define an extended induced metric $\gamma_{\alpha\beta} = g_{\alpha\beta} + n_\alpha n_\beta$ (since $g^{\mu\nu} n_\mu n_\nu = -1$, we can define the inverse metric $\gamma^{\alpha\beta} = g^{\alpha\beta} + n^\alpha n^\beta$). This defines an induced metric on $\Sigma_t$, ensuring that vectors normal to the surface give a zero dot product and tangetial vectors maintain the same dot product structure inherited from the full manifold. 
+
+Choosing the natural basis of $\mathcal{T}_p(\mathcal{M}_4)$ associated with the coordinates $(x^\alpha) =(t,x^i)$ as $(\bm{\partial}_\alpha)=(\bm{\partial}_t, \bm{\partial}_i)$. Given that this is dual to the 1-form basis $(\textbf{d}x^\alpha) = (\textbf{d}t, \textbf{d}x^i)$, we have $\langle \textbf{d}t, \bm{\partial}_t \rangle = 1$, so given equation \ref{unit 1-form}, we get $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$, where the vector $\bm{\beta}$ is the ``shift'' vector tangent to the hypersurface ($\bm{\beta} = \beta^i \boldsymbol{\partial}_i$). 
+
+Now using the components of the 3-metric $\gamma_{i j}$ with respect to the coordinates $(x^i)$, we can write $\beta_i = \gamma_{ij}\beta^j$. The components of the metric $\bm{g}$ with respect to the coordinates $(x^\alpha)$ therefore are $\bm{g} \equiv g_{\alpha \beta} \textbf{d}x^\alpha \otimes \textbf{d}x^\beta$
+By this definition, we see that we can extract the components of the metric by looking at it's action on the basis of the vector space. 
+\begin{equation}
+    g_{\alpha\beta} = \bm{g} (\bm{\partial}_\alpha, \bm{\partial}_\beta)
+\end{equation}
+This gives upon substitution of the $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$:
+\begin{equation}
+    g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}(\text{d}x^i + \beta^i \text{d}t)(\text{d}x^j + \beta^j \text{d}t)
+\end{equation}
+The vector $\alpha \bm{n}$ defines a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. The shift vector $\bm{\beta}$ defines how coordinates ``shift'' from neighbouring spacelike hypersurface on the plane (tangent to $\Sigma_t$). 
+
+So far, the discussion has been quite general; however, coming to the FLRW metric, which is spatially homogeneous and isotropic, we shall set $\beta^i = 0$. Giving us $g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}\text{d}x^i\text{d}x^j$ (The equations of motion we get through $\beta^i$ give us momentum conservation),
+
+The spatial slices $\Sigma_t$, homogeneous and isotropic 3-spaces, have constant 3-curvature. We can therefore choose one of three embeddings such that the curvature is either negative, zero, or positive. 
+
+\section{Non-Canonical Scalar Field Inflation} \label{Non-Canonical Scalar Field Inflation}
+A good part of this project was spent analysing a non-canonical scalar field. To do so, machinery distinct from the one displayed in section \ref{Canonical Scalar Field Inflation} was required. The following is the derivation for the same. Some of the equations derived have not been found elsewhere in literature (like the EOM for $\varphi$ as a function of N)
+\begin{equation} \label{13}
+    S = \int \text{dt}\text{d}^3\text{x} \; \text{a}^3(t) \left[ \frac{K(\varphi)}{2}\dot{\varphi}^2 - V(\varphi) \right]
+\end{equation}
+We vary the action and upon integrating by parts we get,
+\begin{equation}
+    \delta S = - \int \text{dt}\,\text{d}^3\textbf{x} \; \left[ a^3 K \ddot{\varphi} + a^3K_{,\varphi} \frac{\dot{\varphi}^2}{2}  +  3\dot{a} a^2 K \dot{\varphi} + a^3V_{,\varphi}  \right]\delta \varphi
+\end{equation}
+Setting this variation to zero, we get the equation of motion for a non-canonical scalar field.
+\begin{equation} \label{16}
+    K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
+\end{equation}
 \newpage
 \,
 \newpage
