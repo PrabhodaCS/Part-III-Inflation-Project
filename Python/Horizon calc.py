@@ -200,6 +200,7 @@ try:
     plt.xlabel(r'$\tilde\varphi$')
     plt.ylabel(r'$\dot{\tilde\varphi}$')
     plt.title('Phase Portrait (Uncompactified)')
+    plt.colorbar(label=r'flow speed')
     plt.legend(loc='upper right')
     plt.text(0.02, 0.95, param_text, transform=plt.gca().transAxes,
              fontsize=8, va="top", ha="left", bbox=textbox)
