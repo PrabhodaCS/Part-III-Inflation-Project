@@ -96,7 +96,7 @@ Another approach to inflationary cosmology is to consider metric-affine theories
 
 These investigations may hint towards a fundamental principle out of which these arise as limits - \textit{the inflaton potential arising} due to the gauging of this scale invariance, i.e., Weyl symmetry.
 
-This paper is structured as follows: Section \ref{The need for Inflation} explains some of the problems with the naive big bang model. Section \ref{Inflation} explains how the introduction of a scalar field that violates the strong energy condition helps us resolve these issues and derives the formulae and tools necessary to analyse the particular model that we will present in section \ref{Scale Invariant Gravity}. This section will take up most of the content of the paper and will analyse the various regimes and scenarios that the model accommodates. Finally, section \ref{Section 5??} 5?? will compare the model with observational data.
+This paper is structured as follows: Section \ref{The need for Inflation} explains some of the problems with the naive big bang model. Section \ref{Inflation} describes how the introduction of a scalar field that violates the strong energy condition helps us resolve these issues and derives the formulae and tools necessary to analyse the particular model that we will present in section \ref{Scale Invariant Gravity}. This section will take up most of the content of the paper and will analyse the various limits and different parameter choices for the model. Finally, section \ref{Section 5??} 5?? will compare the model with observational data.
 
 
 \section{The need for Inflation}\label{The need for Inflation}
@@ -168,26 +168,26 @@ Given that $\ddot{a} > 0$ and Friedmann equation \ref{2}, we see that $\frac{\rh
 So far, we have described the physical implications of inflation and it's effects. In the following section, we shall describe the physical conditions under which such an exponential expansion can arise. 
 
 \subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
-The simplest models of inflation involve a scalar field $\phi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
+The simplest models of inflation involve a scalar field $\varphi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
 
 In this section, we shall consider a general non-canonical scalar field in the presence of gravity and derive the equations of motion and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model.
-\begin{equation}\label{12}
-    S = \int \mathrm{d}^4 x \sqrt{-g} \left[\frac{M_p^2}{2}R+ g^{\mu \nu} \frac{K(\phi)}{2} \partial_{\mu}\phi \partial_{\nu} \phi  - V(\phi) \right]\
+\begin{equation}\label{Start of derivation}
+    S = \int \mathrm{d}^4 x \sqrt{-g} \left[\frac{M_p^2}{2}R+ \frac{g^{\mu \nu}}{2} \partial_{\mu}\varphi \partial_{\nu} \varphi  - V(\varphi) \right]\
 \end{equation}
 Using the methods described in \ref{3+1 decomposition of spacetime}, we can now split the action integral into one over space and one over time and make the Cauchy problem well-defined. Given certain conditions on the spacetime, it has been proven that, given initial conditions, the evolution of the fields described on the spacelike hypersurface has a unique evolution \cite{choquet-bruhat_global_1969}. Therefore, 
 \begin{equation}
-    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_V  \alpha a^3(t) \left[\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\phi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\phi \partial_{j} \phi  - V(\phi) \right]    
+    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_V  \alpha a^3(t) \left[\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \right]    
 \end{equation}
-Using the form of the Ricci scalar in the FLRW metric and neglecting the spatial derivatives, since we are considering a spatially homogeneous and isotropic fluid, we get:
+Since during the inflationary period, we assume an approximately de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= -\alpha^2 \text{d}t^2 + \gamma_{ij}\text{d}x^i\text{d}x^j$ (derived from the full general metric in equation \ref{General split Metric} and using the spatially homogeneous and isotropic nature of the FLRW to set $\beta^i = 0$) making $\sqrt{-g} = \alpha a^3(t) \sqrt{\gamma}$. We also assume that the scalar field is homogeneous and, therefore only varies with time, allowing us to drop the gradient term. Using the form of the Ricci scalar in the FLRW metric, we get:
 \begin{align}
-    S = V \int_{t_1}^{t_2} \mathrm{d}t \left[3M_p^2 \left[ \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right]+  \frac{\alpha a^3(t)}{2} \dot{\phi}^2 \nonumber \\
-    - \alpha a^3(t) V(\phi) \right]    
+    S = V \int_{t_1}^{t_2} \mathrm{d}t \left[3M_p^2 \left( \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right)+  \frac{\alpha a^3(t)}{2} \dot{\varphi}^2 \nonumber \\
+    - \alpha a^3(t) V(\varphi) \right]    
 \end{align}
-Solving the Equations of motion for $\alpha, a(t) \, \text{and} \, \phi$ (setting $M_p = 1$ for now) respectively give us:
+Using the Euler-Lagrange Equations for $\alpha, a(t) \, \text{and} \, \varphi$ (setting $M_p = 1$ for now) respectively, gives us the equations of motion:
 \begin{align}
-    \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= \frac{\dot{\phi}^2}{2} - V(\phi) \\
-    \frac{2 \ddot{a}}{\alpha^2 a} + \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a} &= -\left(\frac{\dot{\phi}^2}{2} - V(\phi) \right)
-
+    \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= \frac{\dot{\varphi}^2}{2} - V(\varphi) \\
+    \frac{2 \ddot{a}}{\alpha^2 a} + \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= -\left(\frac{\dot{\varphi}^2}{2} - V(\varphi) \right) \\
+    \ddot{\varphi} + 3\left(\frac{\dot{a}}{a} \right)\dot{\varphi} + V_{,\varphi} &= 0    \label{KGEOM}
 \end{align}
 \begin{comment}
     \begin{equation}
@@ -196,59 +196,54 @@ Solving the Equations of motion for $\alpha, a(t) \, \text{and} \, \phi$ (settin
     This gives us $\sqrt{-g} = \alpha a^3(t)$
     We can now define a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. This vector field can now be split into a spatial part (tangent to the hypersurface) and a normal part using the induced metric and the normal vector as such    
 \end{comment}
-
-    \textbf{CONTINUE FROM HERE!}
-    
-Given this, we can define 
-
+Where we can see the first two equations as being the first two Friedmann equations, and the third is the scalar field equation of motion for a spin-zero in the FLRW metric with the potential V. We also see that the equations of motion for $\alpha$ imply it to be an arbitrary constant, which we can choose to be 1 with no loss in generality.
 \begin{comment}
     Since during the inflationary period, we assume a de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \text{diag}[1,-a^2(t),-a^2(t),-a^2(t)]$ making $\sqrt{-g} = a^3(t)$. We also assume that the scalar field is homogeneous and, therefore only varies with time, allowing us to drop the gradient term. The action then becomes \cite{Baumann_2022}: 
-
-
 \end{comment}
-We see this aligns with the canonical scalar field when we set $K = 1$, getting  $ \ddot{\varphi} +  3H \dot{\varphi}  + V_{,\varphi}   = 0$. While this equation is nice, it turns out to be more useful in cosmology to record how the inflaton field changes with respect to the e-folding time ($N = \int H \text{d}t$). For this, let us take an aside and given the action \ref{12}, derive the energy-momentum tensor.
-\begin{equation} 
-    T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \phi)} \partial_\nu \phi - g_{\mu\nu} \mathcal{L}
+ To derive the equations of motion of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we first calculate the energy-momentum tensor: 
+ \begin{equation} 
+    T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}} = \frac{\partial \mathcal{L}}{\partial (\partial^\mu \varphi)} \partial_\nu \varphi - g_{\mu\nu} \mathcal{L}
 \end{equation}
 Using this, and simplifying the final expression we get, the energy density and the pressure of the fluid are as follows: 
-\begin{align}   \label{18}
-    \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
-    p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
+\begin{align}   \label{presure and density}
+    \rho &= \frac{1}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
+    p &= \frac{1}{2} \dot{\varphi}^2 - V(\varphi)
 \end{align}
 Using the third Friedmann equation \ref{3}, we get:
-\begin{equation}    \label{19}
-    3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
+\begin{equation}    \label{Friedmann 3}
+    3 M_p^2H^2 = \frac{1}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
-Upon differentiating this expression with respect to time and using \ref{16}, we get:
-\begin{equation} \label{20}
-    2 M_p^2 \dot{H} = -  K \dot{\varphi}^2
+Upon differentiating this expression with respect to time and using \ref{KGEOM}, we get:
+\begin{equation} \label{H vs phi}
+    2 M_p^2 \dot{H} = -   \dot{\varphi}^2
 \end{equation}
 Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
 \begin{widetext}
 \begin{subequations}
-\begin{align}\label{21}
-    K\frac{\text{d}^2\varphi}{\text{d}N^2} +3 K \frac{\text{d}\varphi}{\text{d}N}  - \frac{K^2}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3  +  \frac{K_{,\varphi}}{2}  \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 +  \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} = 0    
+\begin{align}\label{phi vs N}
+    \frac{\text{d}^2\varphi}{\text{d}N^2} +3 \frac{\text{d}\varphi}{\text{d}N}  - \frac{1}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3   +  \left( 3 M_p^2 - \frac{1}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} = 0    
 \end{align}
 \end{subequations}
 \end{widetext}
-\subsection{Slow Roll Inflation}
-The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\phi}$ and pressure $p_{\phi}$, as defined in \ref{18} is given by the Friedmann equation \ref{2},
+
+\subsection{Slow Roll Inflation} \label{Slow Roll Inflation}
+The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and pressure $p_{\varphi}$, as defined in \ref{presure and density} is given by the Friedmann equation \ref{2},
 \begin{equation}
-    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} (K(\phi){\dot{\phi}}^2 - V(\phi)) 
+    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} ({\dot{\varphi}}^2 - V(\varphi)) 
 \end{equation}
-We see that we can get $\ddot{a} > 0$ by requiring $K\dot{\phi}^2 << |V(\phi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\phi}| << 3H\dot{\phi} \sim |V,_{\phi}|$. To formalize this, start from equation \ref{20}:
-\begin{equation} \label{23}
+We see that we can get $\ddot{a} > 0$ by requiring $\dot{\varphi}^2 \ll |V(\varphi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\varphi}| \ll 3H\dot{\varphi} \sim |V,_{\varphi}|$. To formalize this, start from equation \ref{H vs phi}:
+\begin{equation} \label{Hp vs phi}
     \dot{\varphi}  = -  \frac{2 M_p^2}{K} H'
 \end{equation}
-Where we have denoted $\frac{dH}{d\varphi} = H'$ and using it in Equation \ref{19}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing}, \cite{salopek1990nonlinear} for inflation (where here, it has been applied to a non-canonical field in contrast with the references) :
-\begin{equation}    \label{24}
-    H'^2 - \frac{3K(\varphi)}{2M_p^2}H^2 = - \frac{K(\varphi) V(\varphi)}{2M_p^4} 
+Where we have denoted $\frac{dH}{d\varphi} = H'$ and using it in Equation \ref{19}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing}, \cite{salopek1990nonlinear} for inflation:
+\begin{equation}    \label{Hamilton-Jacobi}
+    H'^2 - \frac{3}{2M_p^2}H^2 = - \frac{V(\varphi)}{2M_p^4} 
 \end{equation}
-While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the first term in \ref{24} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$ and requiring it to be less than 1. Dropping the terms $K\ddot{\varphi}$ and $K\dot{\varphi}^2$ terms in \cite{16} $\dot{\varphi} \approx \frac{V,_\varphi}{3HK}$, we can write this Hubble Slow Roll parameter in terms of the potential.
+While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in \ref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$ and requiring it to be less than 1. Dropping the term $\ddot{\varphi}$ term in \ref{KGEOM} $\dot{\varphi} \approx \frac{V,_\varphi}{3H}$, we can write this Hubble Slow Roll parameter in terms of the potential.
 \begin{equation}
-    \epsilon_H = - M_p^2 \left(\frac{\dot{H}}{H} \right) = \frac{M_p^2}{2 K(\varphi)} \left(\frac{V,_\varphi}{V}\right)^2
+    \epsilon_H = - M_p^2 \left(\frac{\dot{H}}{H} \right) = \frac{M_p^2}{2} \left(\frac{V,_\varphi}{V}\right)^2
 \end{equation}
-Using the equations \ref{23} and \ref{20}, the above equation can also be written as such:
+Using the equations \ref{H vs phi} and \ref{Hp vs phi}, the above equation can also be written as such:
 \begin{equation} \label{26}
     \epsilon_H = - M_p^2  \frac{\dot{H}}{H^2} = - M_p^2 \left(\frac{1}{H}\frac{\text{d}H}{\text{d}N} \right)
 \end{equation}
@@ -258,10 +253,11 @@ Which is more intuitive to interpret as measuring the relative change of the Hub
 \end{equation}
 The requirement $\eta_H < 1$ can be seen as ensuring that inflation lasts for a long enough number of efolds. We can also define a potential slow-roll parameter $\eta_V$ as such:
 \begin{equation}
-    \eta_V = \frac{M_p^2}{K(\varphi)} \left( \frac{V_{,,\varphi}}{V} \right)^2 - \frac{M_p^2}{2} \frac{K_{,\varphi}}{K^2} \frac{V_{,\varphi}}{V}
+    \eta_V = M_p^2 \left| \frac{V_{,,\varphi}}{V} \right|
 \end{equation}
-So far, these arguments only provide restrictions on the potential of the scalar field $\phi$ but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Thus, we see that the theory of inflation refers to a whole host of theories that aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
+So far, these arguments only provide restrictions on the potential of the scalar field $\varphi$ but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Thus, we see that the theory of inflation refers to a whole host of theories that aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
 
+\textbf{CONTINUE FROM HERE!}
 \textbf{Explain ns, r and their derivation}
 \begin{comment}
     \url{https://arxiv.org/pdf/hep-th/9904176}
@@ -415,9 +411,35 @@ An immediate consequence is that in the final formula, $\phi_0$ drops out, and w
     X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
 \end{align}
 Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$
-Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \infty} V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta}$. This shows that it plateaus at high $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k}$, where $C_k = \sqrt{\frac{2}{12+k}}M_p$. Denoting $A(X) = \beta X^2 + \gamma X + \alpha$, $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$ and $D = \sqrt{4\alpha\beta-\gamma^2}$, we get that the slow roll parameter $\epsilon_V$ is:
+Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \infty} V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$. This shows that it plateaus at large $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k}$, where $C_k = \sqrt{\frac{2}{12+k}} \frac{1}{M_p}$.
+
+Building on the ideas of references \cite{fairbairn_radion_2003}, which analyzes a (2,2) rational potential exhibiting similar plateau behaviour, and \cite{roest_universality_2014}, which analyzes the two universality classes of single-field inflation, we can attempt to get a rough idea of this model's prediction of $n_s \, \text{vs} \, N$ and $r \, \text{vs} \, N$.
+Expanding the potential around the plateau (large $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k} = \tilde{\varphi}_{\text{max}}$):
+\begin{equation}
+    V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta^2}\left[1 + \frac{B}{X}\right] + \mathcal{O}(X^{-2})
+\end{equation}
+Where $B = 2(\frac{\chi}{\lambda} - \frac{\gamma}{\beta})$. Denoting $\delta \tilde{\varphi} =  \tilde{\varphi}_{\text{max}} - \tilde{\varphi}$, for small $\delta \tilde{\varphi}$, we get:
+\begin{equation}
+    \tan(C_k \tilde{\varphi}) \approx \frac{2\beta}{D}X
+\end{equation}
+Since $\delta \tilde{\varphi} \ll 1$, we get $\tan(C_k \tilde{\varphi}_{\text{max}} - C_k\delta\tilde{\varphi}) = \tan(\frac{\pi}{2} - C_k\delta\tilde{\varphi}) \approx \frac{1}{C_k \delta \tilde{\varphi}}$. Therefore, 
+\begin{align} \label{Weird Approx}
+    V(\tilde{\varphi}) \approx V_{\infty}[1 - B'(\tilde{\varphi}_{\text{max}} - \tilde{\varphi}) + \cdots]
+\end{align}
+Where $V_\infty = \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$ and $B' = \frac{4C_k}{D} (\gamma-\frac{\beta\chi}{\lambda})$. Then re-writing equation \ref{Weird Approx} as $V(\tilde{\varphi}) \approx V_{\infty} \exp{[\ln(1 - B'(\delta \tilde{\varphi})]} \approx V_\infty e^{-B' \tilde{\varphi}}$, We can now compare this potential to the well-studied Power-Law inflation models \cite{martin_encyclopaedia_2014} given by:
+\begin{equation}
+    V(\tilde{\varphi}) \approx V_\infty e^{-B' \tilde{\varphi}} = M^4 e^{-\alpha' \tilde{\varphi}/M_p}
+\end{equation}
+Comparing to our model (the $\alpha$ has been primed to distinguish it from the parameter in our model), we get that:
 \begin{align}
-    \epsilon_V &= \frac{2C_k^2 M_p^2}{D^2} \left[ \frac{N'(X)}{N(X)} - \frac{A'(X)}{A(X)} \right]^2 
+    \alpha' &=  \frac{4}{D} \sqrt{\frac{2}{12+k}} \left(\gamma - \frac{\beta\chi}{\lambda} \right) \nonumber \\
+    n_s &\approx 1 - \alpha^{'2} \, \, \, \, \,\,\,\,\,\,\, r \approx 8 \alpha^{'2} 
+\end{align}
+Though these models are disfavored as they do not depend on the energy scale at which reheating ends, this analysis provide a rough idea of the behaviour at the edges of the graph, where $X$ is large ($\tilde{\varphi} \approx \frac{\pi}{2 C_k}$), that $n_s$ and $r$ become constant. To understand the behaviour in the entire graph requires more careful and exact analysis.
+
+Denoting $A(X) = \beta X^2 + \gamma X + \alpha$, $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$ and $D = \sqrt{4\alpha\beta-\gamma^2}$, we get that the slow roll parameter $\epsilon_V$ is:
+\begin{align}
+    \epsilon_V(\tilde{\varphi}) &= \frac{2 M_p^2}{C_k^2 D^2} \left[ \frac{N'(X)}{N(X)} - \frac{A'(X)}{A(X)} \right]^2 
 \end{align} 
 
 
@@ -462,9 +484,6 @@ Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \in
 
 \textbf{CHANGES PENDING AHEAD}
 
-
-
-The slow roll variables, $\epsilon_V \, \, \text{and} \, \, \eta_V$ also reach one around zero as shown in the below graph.
 
 \begin{comment}
 
@@ -578,8 +597,8 @@ The substitutions necessary to transform back and forth from these models are:
 where $g$ is a dimensionless coupling constant, this tells us that the Barker model has an extra degree of freedom that we can absorb into the definitions of the other variables.
 
 \section{3+1 decomposition of spacetime} \label{3+1 decomposition of spacetime}
-\textit{Before we proceed further, we have to consider how to treat the FLRW metric in calculations to make them simpler}. Given that the FLRW metric supposes spatial homogeneity and isotropy, a natural choice to analyse the metric and dynamics of this spacetime would be to slice the 4D spacetime $\mathcal{M}_4$ into a time-ordered sequence of 3D spacelike hypersurfaces $\Sigma_t$ such that on each hypersurface, time is constant \cite{baumann2012tasilecturesinflation}, 
-\cite{gourgoulhon_31_2007}:
+In general relativity, spacetime is modeled as a four-dimensional manifold equipped with a Lorentzian metric, where space and time are fundamentally intertwined. However, for many physical and cosmological problems, it is both natural and advantageous to disentangle space and time. Given that the FLRW metric supposes spatial homogeneity and isotropy, a natural choice to analyse the metric and dynamics of this spacetime would be to slice the 4D spacetime $\mathcal{M}_4$ into a time-ordered sequence of 3D spacelike hypersurfaces $\Sigma_t$ such that on each hypersurface, time is constant \cite{baumann2012tasilecturesinflation}, 
+\cite{gourgoulhon_31_2007}. By considering such a family of non-intersecting hypersurfaces, we can recast Einstein's equations and a general action like the one written down in equation \ref{Start of derivation} into a form that treats time evolution as a dynamical process. This approach underpins both the initial value (Cauchy) formulation of general relativity and modern numerical relativity, and it provides a direct connection to the Newtonian intuition of evolving initial data forward in time \cite{choquet-bruhat_global_1969}. The spatial hypersurfaces $\Sigma_t$ and the splitting is defined as such:
 \begin{equation}
     \forall t \in \mathbb{R} : \Sigma_t = \{p \in \mathcal{M}_4 \, | \, \hat{t} (p) = t\} \nonumber
 \end{equation}
@@ -604,7 +623,7 @@ By this definition, we see that we can extract the components of the metric by l
     g_{\alpha\beta} = \bm{g} (\bm{\partial}_\alpha, \bm{\partial}_\beta)
 \end{equation}
 This gives upon substitution of the $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$:
-\begin{equation}
+\begin{equation} \label{General split Metric}
     g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}(\text{d}x^i + \beta^i \text{d}t)(\text{d}x^j + \beta^j \text{d}t)
 \end{equation}
 The vector $\alpha \bm{n}$ defines a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. The shift vector $\bm{\beta}$ defines how coordinates ``shift'' from neighbouring spacelike hypersurface on the plane (tangent to $\Sigma_t$). 
@@ -626,6 +645,42 @@ Setting this variation to zero, we get the equation of motion for a non-canonica
 \begin{equation} \label{16}
     K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
 \end{equation}
+We see this aligns with the canonical scalar field when we set $K = 1$, getting equation \ref{KGEOM}. To derive the equations of motion of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$). we use the energy density and the pressure of the fluid which are as follows: 
+\begin{align}   \label{18}
+    \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
+    p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
+\end{align}
+Using the third Friedmann equation \ref{3}, we get:
+\begin{equation}    \label{19}
+    3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
+\end{equation}
+Upon differentiating this expression with respect to time and using \ref{16}, we get:
+\begin{equation} \label{20}
+    2 M_p^2 \dot{H} = -  K \dot{\varphi}^2
+\end{equation}
+Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N. (Setting $K = 1$ in the below equation also gives us equation \ref{phi vs N})
+\begin{widetext}
+\begin{subequations}
+\begin{align}\label{Kphi vs N}
+    K\frac{\text{d}^2\varphi}{\text{d}N^2} +3 K \frac{\text{d}\varphi}{\text{d}N}  - \frac{K^2}{2M_p^2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^3  +  \frac{K_{,\varphi}}{2}  \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 +  \left( 3 M_p^2 - \frac{K}{2} \left(\frac{\text{d}\varphi}{\text{d}N} \right)^2 \right) \frac{\text{d}\ln \text{V}(\varphi)}{\text{d} \varphi} = 0    
+\end{align}
+\end{subequations}
+\end{widetext}
+\subsection{Slow Roll Inflation}
+The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and pressure $p_{\varphi}$, as defined in \ref{18} is given by the Friedmann equation \ref{2},
+\begin{equation}
+    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} (K(\varphi){\dot{\varphi}}^2 - V(\varphi)) 
+\end{equation}
+Using similar techniques as Section \ref{Slow Roll Inflation}, we get the Hamilton-Jacobi equation as: 
+\begin{equation}    \label{KHJ}
+    H'^2 - \frac{3K(\varphi)}{2M_p^2}H^2 = - \frac{K(\varphi) V(\varphi)}{2M_p^4} 
+\end{equation}
+The slow roll parameters therefore are:
+\begin{align}
+    \epsilon_H &= - M_p^2 \left(\frac{\dot{H}}{H} \right) = \frac{M_p^2}{2 K(\varphi)} \left(\frac{V,_\varphi}{V}\right)^2 \\
+    \eta_V &= \frac{M_p^2}{K(\varphi)} \left( \frac{V_{,,\varphi}}{V} \right)^2 - \frac{M_p^2}{2} \frac{K_{,\varphi}}{K^2} \frac{V_{,\varphi}}{V}
+\end{align}
+
 \newpage
 \,
 \newpage
