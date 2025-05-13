@@ -1,4 +1,5 @@
-﻿import numpy as np
+﻿from token import TILDE
+import numpy as np
 import matplotlib.pyplot as plt
 
 # --- Model parameters (example values; replace with yours) ---
@@ -15,8 +16,20 @@ omega = 5.0
 mu2    = 2.768
 chi   = 0
 lam   = 3.947
-"""
 
+"""alpha = 2
+beta  = 6.113
+gamma = 0
+phi0  = 10
+k     = 34.806
+
+kappa = 1.2
+omega = 5.0
+mu2    = 2.768
+chi   = 0
+lam   = 3.947
+"""
+"""
 alpha = 2.0
 gamma = 0.0
 chi = 0
@@ -47,11 +60,11 @@ def K(phi):
     return num / den
 
 def V(phi):
-    A = beta*phi**2 + gamma*phi0*phi + alpha*phi0**2
-    num = (kappa*phi0**4
-         + 2*omega*phi0**3*phi
-         + mu2*phi0**2*phi**2
-         + 2*chi*phi0*phi**3
+    A = beta*phi**2 + gamma*phi + alpha
+    num = (kappa
+         + 2*omega*phi
+         + mu2*phi**2
+         + 2*chi*phi**3
          + lam*phi**4)
     return M**4 * num / (2 * A**2)
 
@@ -59,24 +72,33 @@ def V(phi):
 # ˜φ(φ): analytic arctan form
 prefac = np.sqrt((12 + k)/2) * M_p
 D = np.sqrt(4*alpha*beta - gamma**2)
+"""
 def phi_tilde(phi):
     return prefac * np.arctan((2*beta*phi + gamma*phi0)/(phi0*D))
-
+"""
 # inverse: φ(˜φ)
 def phi_from_tilde(phit):
-    return (phi0/(2*beta)) * (D * np.tan(phit / prefac) - gamma)
+    return (1/(2*beta)) * (D * np.tan(phit / prefac) - gamma)
+
+print("Size of graph: ",prefac*np.pi/2)
 
 # --- Gridding -------------------------------------------------------
-phi_vals   = np.linspace(-10000, 10000, 100000)
+"""phi_vals   = np.linspace(-10000, 10000, 100000)
 tilde_vals = phi_tilde(phi_vals)
-# for canonical potential
+"""
 
+# for canonical potential
 phit_max = prefac*np.pi/2
-tilde_grid = np.linspace(-phit_max, phit_max, 5000)
+extra = phit_max/11
+tilde_grid = np.linspace(-phit_max - extra, phit_max  + extra, 5000)
 
 #tilde_grid = np.linspace(-15, 15, 100000)
 phi_inv    = phi_from_tilde(tilde_grid)
 
+def d1(phi):
+    phi_inv    = phi_from_tilde(phi)
+    return np.gradient(V(phi_inv), phi)
+epsilon = (M_p**2/2) * (d1(tilde_grid)/V(phi_inv))**2
 """
 # --- Plotting -------------------------------------------------------
 plt.figure(figsize=(12, 9))
@@ -117,6 +139,27 @@ plt.grid(True)
 
 plt.tight_layout()
 plt.show()
+
+plt.plot(tilde_grid, d1(tilde_grid))
+plt.title(r'$\epsilon$')    
+plt.xlabel(r'$\tilde\varphi$')
+plt.ylabel(r'$\epsilon$')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+
+plt.plot(tilde_grid, epsilon)
+plt.title(r'$\epsilon$')    
+plt.xlabel(r'$\tilde\varphi$')
+plt.ylabel(r'$\epsilon$')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
 """M_p   = 1.0
 M     = np.sqrt(2) * M_p
 alpha = 5.0
