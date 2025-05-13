@@ -14,7 +14,17 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 N_TARGET = 60.0
 NS_TARGET = 0.9626
 MP = 1.0
+"""
+Best Parameters Found:
+alpha = 1.982917
+k = 0.000001
+mu = -0.888148
+omega = 3.313422
+chi = 1.888643
+kappa = 4.476117
 
+At N = 60.49, n_s = 0.962600
+"""
 # --- Model Parameters ---
 params = {
     'alpha': 2.0,
