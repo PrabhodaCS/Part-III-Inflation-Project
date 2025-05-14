@@ -76,7 +76,7 @@ sorting=none]{biblatex}
 \end{abstract}
 
 \maketitle
-\section{INTRODUCTION}
+\section{INTRODUCTION} \label{Introduction}
 
 \indent The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the CMB, the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \ref{The need for Inflation}).
 
@@ -241,7 +241,7 @@ Where we have denoted $\frac{dH}{d\varphi} = H'$ and using it in Equation \ref{1
 \end{equation}
 While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in \ref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$ and requiring it to be less than 1. Dropping the term $\ddot{\varphi}$ term in \ref{KGEOM} $\dot{\varphi} \approx \frac{V,_\varphi}{3H}$, we can write this Hubble Slow Roll parameter in terms of the potential.
 \begin{equation}
-    \epsilon_H = - M_p^2 \left(\frac{\dot{H}}{H} \right) = \frac{M_p^2}{2} \left(\frac{V,_\varphi}{V}\right)^2
+    \epsilon_H = - M_p^2 \left(\frac{\dot{H}}{H^2} \right) \approx \frac{M_p^2}{2} \left(\frac{V,_\varphi}{V}\right)^2
 \end{equation}
 Using the equations \ref{H vs phi} and \ref{Hp vs phi}, the above equation can also be written as such:
 \begin{equation} \label{26}
@@ -269,12 +269,12 @@ So far, these arguments only provide restrictions on the potential of the scalar
     \url{https://arxiv.org/pdf/hep-th/9904176}
 \end{comment}
 
-\textit{One of the ways to arrive at the action principle of the inflaton field is to take a leaf out of the playbook of many successful QFTs and to hypothesize a gauge condition. This is the approach that shall be taken in this project and will be explained more in the next section.}
+The goal of this paper is to argue that, given the arguments in the introduction \ref{Introduction}, local scale invariance seems to be a natural starting point to motivate an inflaton action. Many actions written down in inflationary physics do include terms that tend to make the action scale invariant at high energies. We propose here that this scale invariance is fundamental and a local property of spacetime at high energies that is spontaneously broken.
 
 \section{Scale Invariant Gravity} \label{Scale Invariant Gravity}
-Having laid the groundwork, we now come to the primary study of this project. This is based on the paper \cite{barker2024poincaregaugetheoryconformal} mainly and will follow up on the idea and analyze the theory with the inclusion of gravity.
+Having laid the groundwork, we now come to the primary study of this project. This is based on some of the arguments made in the paper  \cite{barker2024poincaregaugetheoryconformal} about motivating an inflaton field through the principle of local scale invariance, and will follow up on the idea and analyze the theory with the inclusion of gravity.
 
-The theory of General Relativity is one of mankind's most rigorous scientific theories, is self-consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy (/length) scales. It is widely accepted that at high enough energy scales, those comparable to the Planck scale, GR breaks down. 
+The theory of General Relativity is one of mankind's most rigorous scientific theories, is self-consistent and so far, all tests of GR have been shown to be in agreement with the theory. However, we do not \textit{a priori} know that the theory of general relativity can be extended to arbitrary energy ($\backslash$length) scales. It is widely accepted that at high enough energy scales, those comparable to the Planck scale, GR breaks down. 
 
 An interesting possibility to consider is that GR as we know it, with the Einstein-Hilbert Lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental scale-invariant theory that describes physics at higher energies. 
 
@@ -411,13 +411,12 @@ This redefinition also tells us that the original range $\varphi \in (-\infty,\i
 \begin{equation}
     S_{\text{INFLATON}} = \int \text{d}^4x \sqrt{-g} \left[ \frac{1}{2}\partial_\mu \tilde{\varphi}\partial^\mu \tilde{\varphi} - V(\varphi(\tilde{\varphi})) \right]
 \end{equation}
-An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential. We can make this explicit by writing the final potential as:
+An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential \footnote{This makes sense as we used the gauge redundancy of the action \ref{Starting Action} to make the choice $\phi \rightarrow \phi_0$. However, for any gauge theory, the gauge we choose to work in must not affect the observables of the theory, which is what we see in the potential \ref{Potential}}. We can make this explicit by writing the final potential as:
 \begin{align}
     V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
     X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
 \end{align}
 Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$
-Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \infty} V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta^2} = V_\infty$. This shows that it plateaus at large $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k}$, where $C_k = \sqrt{\frac{2}{12+k}} \frac{1}{M_p} = \tilde{\varphi}_\text{max}$.
 
 \begin{figure}[h!]
     \centering
@@ -433,6 +432,9 @@ Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \in
     \label{Phase Space potrait1}}
 \end{figure}
 
+\subsubsection{Asymptotic Limits} \label{Aymptotic limits}
+Analysing this potential, we can see at the limits, $\lim_{X \rightarrow \pm \infty} V(X) \approx \frac{M_p^4}{8} \frac{\lambda}{\beta^2} = V_\infty$. This shows that it plateaus at large $X$ or as $\tilde{\varphi} \rightarrow \frac{\pi}{2 C_k}$, where $C_k = \sqrt{\frac{2}{12+k}} \frac{1}{M_p} = \tilde{\varphi}_\text{max}$.
+
 Building on the ideas of references \cite{fairbairn_radion_2003}, which analyzes a (2,2) rational potential exhibiting similar plateau behaviour, and \cite{roest_universality_2014}, which analyzes the two universality classes of single-field inflation, we can attempt to get a rough idea of this model's prediction of $n_s \, \text{vs} \, N$ and $r \, \text{vs} \, N$.
 Expanding the potential around the plateau (large $X$ or as $\tilde{\varphi} \rightarrow \tilde{\varphi}_{\text{max}}$):
 \begin{equation}
@@ -444,9 +446,9 @@ Where $B = 2(\frac{\chi}{\lambda} - \frac{\gamma}{\beta})$. Denoting $\delta \ti
 \end{equation}
 Since $\delta \tilde{\varphi} \ll 1$, we get $\tan(C_k \tilde{\varphi}_{\text{max}} - C_k\delta\tilde{\varphi}) = \tan(\frac{\pi}{2} - C_k\delta\tilde{\varphi}) \approx \frac{1}{C_k \delta \tilde{\varphi}}$. Therefore, 
 \begin{align} \label{Weird Approx}
-    V(\delta\tilde{\varphi}) \approx V_{\infty}[1 - B'(\tilde{\varphi}_{\text{max}} - \tilde{\varphi}) + \cdots]
+    V(\tilde{\varphi}) \approx V_{\infty}[1 - B'(\tilde{\varphi}_{\text{max}} - \tilde{\varphi}) + \cdots]
 \end{align}
-Where $V_\infty = \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$ and $B' = \frac{4C_k}{D} (\gamma-\frac{\beta\chi}{\lambda})$. Then re-writing equation \ref{Weird Approx} as $V(\delta\tilde{\varphi}) \approx V_{\infty} \exp{[\ln(1 - B'(\delta \tilde{\varphi})]} \approx V_\infty e^{-B' \tilde{\varphi}}$, Expanding the potential around the plateau, taking the asymptotic value to be the background, we get:
+Where $V_\infty = \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$ and $B' = \frac{4C_k}{D} (\gamma-\frac{\beta\chi}{\lambda})$. Then re-writing equation \ref{Weird Approx} as $V(\delta\tilde{\varphi}) \approx V_{\infty} \exp{[\ln(1 - B'(\delta \tilde{\varphi})]} \approx V_\infty e^{-B'\delta \tilde{\varphi}}$, Expanding the potential around the plateau, taking the asymptotic value to be the background, we get:
 \begin{equation}
     V(\tilde{\varphi}) \approx V_\infty [1 - e^{-B' \tilde{\varphi}} ] = M^4 (1 - e^{-q\tilde{\varphi}/M_p})
 \end{equation}
@@ -455,6 +457,21 @@ In the second equality, we have used compared it to the result from models deriv
     n_s &\approx 1 - \frac{2}{N} \\
     r &\approx \frac{8}{q^2N^2} = \frac{(12+k)(4\alpha\beta - \gamma^2)}{4} \left(\frac{\lambda}{\lambda \gamma - \chi \beta} \right)^2 \frac{1}{N^2} 
 \end{align}
+
+\begin{comment}
+     We can now compare this potential to the well-studied Power-Law inflation models \cite{martin_encyclopaedia_2014} given by:
+    \begin{equation}
+        V(\tilde{\varphi}) \approx V_\infty e^{-B' \tilde{\varphi}} = M^4 e^{-\alpha' \tilde{\varphi}/M_p}
+    \end{equation}
+    
+    Compared to our model (the $\alpha$ has been primed to distinguish it from the parameter in our model), we get that:
+    \begin{align}
+        \alpha' &=  \frac{4}{D} \sqrt{\frac{2}{12+k}} \left(\gamma - \frac{\beta\chi}{\lambda} \right) \nonumber \\
+        n_s &\approx 1 - \alpha^{'2} \, \, \, \, \,\,\,\,\,\,\, r \approx 8 \alpha^{'2} 
+    \end{align}
+    Though these models are disfavored as they do not depend on the energy scale at which reheating ends, this analysis provide a rough idea of the behaviour at the edges of the graph, where $X$ is large ($\tilde{\varphi} \approx \frac{\pi}{2 C_k}$), that $n_s$ and $r$ become constant. To understand the behaviour in the entire graph requires more careful and exact analysis.
+\end{comment}
+\subsubsection{Simplification of the model} \label{Reduction of parameters}
 We see that roughly, these models exhibit behaviour we would require from such inflationary models. For a more exact analysis, we would have to look at the exact form of the potential \ref{Potential}. This has nine free dimensionless parameters. However, the previous analysis shows us that only certain combinations of parameters affect the observables. To make this exact, we define the new variable $Y$ as:
 \begin{align}
     Y(\tilde{\varphi}) &= X(\tilde{\varphi}) + \frac{\gamma}{2\beta}
@@ -487,26 +504,33 @@ Therefore, starting from the equations \ref{Potential} and \ref{X} with nine par
 \begin{widetext}
     \begin{equation} 
     \begin{aligned} \label{Ugliest full Potential}
-        V(\tilde{\varphi}) =  \frac{M_p^4}{8} \Bigg(\lambda \sin^4\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2 \chi' \sin^3\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos\left( \frac{C \tilde{\varphi}}{M_p}\right)  + \mu' \sin^2\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^2\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2\omega' \sin\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^3\left( \frac{C \tilde{\varphi}}{M_p}\right)  \nonumber \\ + \kappa' \cos^4\left( \frac{C \tilde{\varphi}}{M_p}\right) \Bigg)
+        V(\tilde{\varphi}) =  \frac{M_p^4}{8} \Bigg(\lambda \sin^4\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2 \chi' \sin^3\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos\left( \frac{C \tilde{\varphi}}{M_p}\right)  + \mu' \sin^2\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^2\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2\omega' \sin\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^3\left( \frac{C \tilde{\varphi}}{M_p}\right)  \\ + \kappa' \cos^4\left( \frac{C \tilde{\varphi}}{M_p}\right) \Bigg)
     \end{aligned}
 \end{equation}
 \end{widetext}
+Denoting $\frac{C\tilde{\varphi}}{M_p}$ as $\theta$, the first and second derivatives of this potential is given by:
+\begin{widetext}
+    \begin{equation} 
+    \begin{aligned} \label{Derivatives of Pot}
+    \frac{\text{d}V}{\text{d}\tilde{\varphi}} &= \frac{CM_P^3}{8} \left[ (-\chi + \omega) \cos4\theta + (-\kappa + \lambda) \sin2\theta + \cos2\theta (\chi + \omega - (\kappa + \lambda - \mu ) 
+    \sin2\theta) \right] \nonumber \\
+    \frac{\text{d}^2V}{\text{d}\tilde{\varphi}^2} &= -\frac{C^2M_P^2}{4} \left[ (\kappa - \lambda) \cos2\theta + (\kappa + \lambda - \mu) \cos4\theta + (\chi+\omega) \sin2\theta + 2(-\chi + \omega) \sin4\theta \right]  \\
+    \end{aligned}
+\end{equation}
+\end{widetext}
+To analyse the the effective mass of the inflaton, we shall make the simplifying assumption that the minimum of the potential occurs at zero (i.e., $V_{,\tilde{\varphi}} = 0$, this is not a general analysis and is a particular regime of solutions we are choosing to focus on) for that, we require $\omega = 0$.
+Using this in the formula for the second derivative, we get:
+
+\begin{equation}
+    m_{\tilde{\varphi}}^2 \approx  \frac{\text{d}^2V}{\text{d}\tilde{\varphi}^2} \Bigg|_0 = \frac{C^2M_p^2}{4}(  \mu + \lambda - 2\kappa)
+\end{equation}
 
 \begin{comment}
     This last redefiniton and form of the potential \ref{final potential} and \ref{final redefiniton} essentially help us reduce our parameter list further by two $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{D, C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited to this new set as $Y \in (-\infty,\infty)$ and $D,C > 0$
     
     We have therefore reduced our parameter list by one $[\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa] \rightarrow [D, \beta , k , \mu, \omega, \chi, \lambda, \kappa]$
+
     
-    We can now compare this potential to the well-studied Power-Law inflation models \cite{martin_encyclopaedia_2014} given by:
-    \begin{equation}
-        V(\tilde{\varphi}) \approx V_\infty e^{-B' \tilde{\varphi}} = M^4 e^{-\alpha' \tilde{\varphi}/M_p}
-    \end{equation}
-    Compared to our model (the $\alpha$ has been primed to distinguish it from the parameter in our model), we get that:
-    \begin{align}
-        \alpha' &=  \frac{4}{D} \sqrt{\frac{2}{12+k}} \left(\gamma - \frac{\beta\chi}{\lambda} \right) \nonumber \\
-        n_s &\approx 1 - \alpha^{'2} \, \, \, \, \,\,\,\,\,\,\, r \approx 8 \alpha^{'2} 
-    \end{align}
-    Though these models are disfavored as they do not depend on the energy scale at which reheating ends, this analysis provide a rough idea of the behaviour at the edges of the graph, where $X$ is large ($\tilde{\varphi} \approx \frac{\pi}{2 C_k}$), that $n_s$ and $r$ become constant. To understand the behaviour in the entire graph requires more careful and exact analysis.
     Denoting $A(X) = \beta X^2 + \gamma X + \alpha$, $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$ and $D = \sqrt{4\alpha\beta-\gamma^2}$, we get that the slow roll parameter $\epsilon_V$ is:
     \begin{align}
         \epsilon_V(\tilde{\varphi}) &= \frac{2 M_p^2}{C_k^2 D^2} \left[ \frac{N'(X)}{N(X)} - \frac{A'(X)}{A(X)} \right]^2 
