@@ -24,12 +24,12 @@ At N = 60.49, n_s = 0.962600
 """
 # Parameters
 params = {
-    'C': np.sqrt(1/6),
-    'lam': 20,
+    'C': 10,
+    'lam': 10,
     'chi': 1.9,
-    'mu': -500,
-    'omega': 3.313,
-    'kappa': 50
+    'mu': 10,
+    'omega': 0,
+    'kappa': -50
 }
 
 # Create output directory

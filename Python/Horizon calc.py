@@ -27,15 +27,15 @@ At N = 60.49, n_s = 0.962600
 """
 # --- Model Parameters ---
 params = {
-    'alpha': 2.0,
-    'beta' : 6.113,
+    'alpha': 1.982917,
+    'beta' : 1,
     'gamma': 0.0,
-    'k'    : 34.806,
-    'mu'   : 2.768,
-    'omega': 5.0,
-    'chi'  : 0.0,
-    'lambda':3.947,
-    'kappa':1.2
+    'k'    : 0.000001,
+    'mu'   : -0.888148,
+    'omega': 3.313422,
+    'chi'  : 1.888643,
+    'lambda': 10,
+    'kappa':4.476117
 }
 
 # make sure output directory exists
