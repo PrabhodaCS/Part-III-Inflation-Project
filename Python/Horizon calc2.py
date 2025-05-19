@@ -21,15 +21,21 @@ chi = 1.888643
 kappa = 4.476117
 
 At N = 60.49, n_s = 0.962600
+C, mu, omega, chi_p, lambda_p, kappa_p
+[ 0.04124312 -2.57339875 -1.80820221 -1.45828716  9.14814676  9.17149521]
+[ 0.04177624  1.56120225 -7.03409564  3.1513638   1.37424726  9.92633943], cost=1.354e-08
+Diff code
+[ 9.95844532  1.72005577  5.43787909 -6.58661452  0.34038033  7.59055233]
+C, mu, omega, chi_p, lambda_p, kappa_p = params
 """
 # Parameters
 params = {
-    'C': 10,
-    'lam': 10,
-    'chi': 1.9,
-    'mu': 10,
-    'omega': 0,
-    'kappa': -50
+    'C': 0.04177624,
+    'lam': 1.37424726,
+    'chi': 3.1513638  ,
+    'mu': 1.56120225,
+    'omega': -7.03409564 ,
+    'kappa': 9.92633943
 }
 
 # Create output directory
@@ -226,9 +232,9 @@ def phase_rhs(t, y):
     return [dot_phi, ddot_phi]
 
 # Uncompactified
-phi_range = np.linspace(phi_min, phi_max, 40)
+phi_range = np.linspace(phi_min, phi_max, 100)
 dot_phi_max = 2 * MP
-dot_phi_range = np.linspace(-dot_phi_max, dot_phi_max, 40)
+dot_phi_range = np.linspace(-dot_phi_max, dot_phi_max, 100)
 PHI, DOT_PHI = np.meshgrid(phi_range, dot_phi_range)
 U = np.zeros_like(PHI)
 V_phase = np.zeros_like(PHI)
