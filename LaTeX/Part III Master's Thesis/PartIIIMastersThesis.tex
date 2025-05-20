@@ -73,7 +73,7 @@ sorting=none]{biblatex}
 \begin{abstract}
 
 \textbf{TO BE WRITTEN}
-\textit{Italics sections to be edited... and more}
+\textit{Italics sections to be edited... and more} Reread and Re-edit pending + Add some exact citations
 \end{abstract}
 
 \maketitle
@@ -87,7 +87,7 @@ The inflationary theory was developed in a series of papers by Guth \cite{GuthOr
 
 While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance.
 
-Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, the approximately de Sitter metric
+Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, which had approximately a de Sitter metric
 \begin{equation} \label{deSitter Conformal}
     \text{d}s^2 = \frac{1}{H^2\eta^2}(\text{d}\eta^2 - \text{d}\Vec{x}^2)
 \end{equation} 
@@ -167,25 +167,40 @@ So far, we have described the physical implications of inflation and it's effect
 \subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
 The simplest models of inflation involve a scalar field $\varphi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
 
-In this section, we shall consider a general non-canonical scalar field in the presence of gravity and derive the equations of motion and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model.
+In this section, we shall consider a general non-canonical scalar field in the presence of gravity and derive the equations of motion and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model (We shall work in the mostly minus convention).
 \begin{equation}\label{Start of derivation}
     S = \int \mathrm{d}^4 x \sqrt{-g} \left[-\frac{M_p^2}{2}R+ \frac{g^{\mu \nu}}{2} \partial_{\mu}\varphi \partial_{\nu} \varphi  - V(\varphi) \right]\
 \end{equation}
 Using the methods described in Appendix \ref{3+1 decomposition of spacetime}, we can now split the action integral into one over space and one over time and make the Cauchy problem well-defined. Given certain conditions on the spacetime, it has been proven that, given initial conditions, the evolution of the fields described on the spacelike hypersurface has a unique evolution \cite{choquet-bruhat_global_1969}. Therefore, 
-\begin{equation}
-    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_\mathcal{V}  \alpha a^3(t) \left[-\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \right]    
-\end{equation}
-Since during the inflationary period, we assume an approximately de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \alpha^2 \text{d}t^2 - \gamma_{ij}\text{d}x^i\text{d}x^j$ (derived from the full general metric in the appendix \ref{3+1 decomposition of spacetime} equation \ref{General split Metric} and using the spatially homogeneous and isotropic nature of the FLRW to set $\beta^i = 0$) making $\sqrt{-g} = \alpha a^3(t) \sqrt{\gamma}$. We also assume that the scalar field is homogeneous and, therefore only varies with time, allowing us to drop the gradient term. Using the form of the Ricci scalar in the FLRW metric, we get:
+\[
+    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_\mathcal{V}  \alpha a^3(t) \bigg[-\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \bigg]    
+\]
+Since during the inflationary period, we assume an approximately de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \alpha^2 \text{d}t^2 - \gamma_{ij}\text{d}x^i\text{d}x^j$ (derived from the full general metric in the appendix \ref{3+1 decomposition of spacetime} equation \ref{General split Metric}. Using the spatially homogeneous and isotropic nature of the FLRW, we can set $\beta^i = 0$) making $\sqrt{-g} = \alpha a^3(t) \sqrt{\gamma}$. We also assume that the scalar field is homogeneous and, therefore, only varies with time, allowing us to drop the gradient term. Using the form of the Ricci scalar in the FLRW metric, we get:
 \begin{align}
-    S = \mathcal{V} \int_{t_1}^{t_2} \mathrm{d}t \left[-3M_p^2 \left( \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right)+  \frac{ a^3(t)}{2\alpha} \dot{\varphi}^2 \nonumber \\
-    - \alpha a^3(t) V(\varphi) \right]    
+    S = \mathcal{V} \int_{t_1}^{t_2} \mathrm{d}t \big[-3M_p^2 \left( \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right)+  \frac{ a^3(t)}{2\alpha} \dot{\varphi}^2 \nonumber \\
+    - \alpha a^3(t) V(\varphi) \big]    
 \end{align}
 Using the Euler-Lagrange Equations for $\alpha, a(t) \, \text{and} \, \varphi$ respectively, gives us the equations of motion:
+\begin{eqnarray}
+  \left(\frac{\dot a}{\alpha\,a}\right)^2 + \frac{k}{a^2}
+  &=& \frac{1}{3M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 + V(\varphi)\Bigr),
+  \nonumber\\
+  \frac{2\,\ddot a}{\alpha^2\,a}
+  + \left(\frac{\dot a}{\alpha\,a}\right)^2
+  + \frac{k}{a^2}
+  &=& -\,\frac{1}{M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 - V(\varphi)\Bigr),
+  \nonumber\\
+  \ddot\varphi + 3\!\left(\frac{\dot a}{a}\right)\dot\varphi
+  + V_{,\varphi}
+  &=& 0. \nonumber
+\end{eqnarray}
+We see that the equations of motion imply $\alpha$ to be an arbitrary constant, which we can choose to be 1 with no loss in generality. Writing them more suggestively, we get:
 \begin{align}
-    \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= \frac{1}{3M_p^2} \bigg( \frac{\dot{\varphi}^2}{2 \alpha^2} + V(\varphi) \bigg) \label{First 2} \\
-    \frac{2 \ddot{a}}{\alpha^2 a} + \left( \frac{\dot{a}}{\alpha a} \right)^2 + \frac{k}{a^2} &= - \frac{1}{M_p^2}\left(\frac{\dot{\varphi}^2}{2} - V(\varphi) \right)  \\
-    \ddot{\varphi} + 3\left(\frac{\dot{a}}{a} \right)\dot{\varphi} + V_{,\varphi} &= 0    \label{KGEOM}
+    H^2 + \frac{k}{a^2} &= \frac{1}{3M_p^2} \bigg( \frac{\dot{\varphi}^2}{2} + V(\varphi) \bigg) \label{First 1} \\
+    \frac{ \ddot{a}}{a}  &=  \frac{1}{3M_p^2}\left(\dot{\varphi}^2 - V(\varphi) \right) \label{First 2} \\
+    \ddot{\varphi} + 3H\dot{\varphi} + V_{,\varphi} &= 0    \label{KGEOM}
 \end{align}
+
 \begin{comment}
     \begin{equation}
         g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + a^2(t)\delta_{ij}\text{d}x^i\text{d}x^j
@@ -193,8 +208,7 @@ Using the Euler-Lagrange Equations for $\alpha, a(t) \, \text{and} \, \varphi$ r
     This gives us $\sqrt{-g} = \alpha a^3(t)$
     We can now define a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. This vector field can now be split into a spatial part (tangent to the hypersurface) and a normal part using the induced metric and the normal vector as such    
 \end{comment}
-We see that the equations of motion imply $\alpha$ to be an arbitrary constant, which we can choose to be 1 with no loss in generality.
-The first two equations \ref{First 2} correspond to the first two Friedmann equations \ref{Friedmann Eqn 1}, \ref{Friedmann Eqn 2} if we make the following identification:
+The first two equations \ref{First 1}, \ref{First 2}, correspond to the first two Friedmann equations \ref{Friedmann Eqn 2} , \ref{Friedmann Eqn 1} respectively, if we make the following identification:
 \begin{align}   \label{presure and density}
     \rho &= \frac{1}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
     p &= \frac{1}{2} \dot{\varphi}^2 - V(\varphi)
@@ -300,7 +314,7 @@ Using the slow roll condition $\text{d}t = -(3H/V') \text{d}\varphi$, we find:
 \begin{equation}
     \frac{\text{d}}{\text{d} \ln k} \epsilon_V = -M_p^2 \frac{V'}{V}\frac{\text{d}}{\text{d}\varphi}\epsilon_V = 2\epsilon_V\eta_V - 4\epsilon_V^2
 \end{equation}
-Putting this together, we get $n_s \approx 1 -6\epsilon_v +2\eta_v$ and similar analysis \cite{baumann2012tasilecturesinflation} gives us $r \approx 16 \epsilon_V$ at the horizon crossing scale $k = aH$.
+Putting this together, we get $n_s \approx 1 -6\epsilon_V +2\eta_V$ and similar analysis \cite{baumann2012tasilecturesinflation} gives us $r \approx 16 \epsilon_V$ at the horizon crossing scale $k = aH$.
 
 So far, these arguments only provide restrictions on the potential of the scalar field $\varphi$ but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Thus, we see that the theory of inflation refers to a whole host of theories that aim to explain the mechanism behind the period of exponential expansion that occurred when the universe was around $\geq 10^{-34}s$ old.
 
@@ -318,7 +332,7 @@ In the argument that follows, we derive the most general conformally invariant a
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
 
-The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minima suitable for reheating, It is not exactly the mass \footnote{The concept of mass is tricky to define in deSitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In deSitter space, this is, however, not the symmetry group we are working with, as a simple look at the de Sitter metric \ref{deSitter Conformal} will show that it does not admit timelike Killing vectors, unlike Minkowski. \label{Footnote 1}} of the field.
+The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minimum suitable for reheating. It is not exactly the mass \footnote{The concept of mass is tricky to define in de Sitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In de Sitter space, this is, however, not the symmetry group we are working with, as a simple look at the de Sitter metric (Equation \ref{deSitter Conformal}) will show that it does not admit timelike Killing vectors, unlike Minkowski. \label{Footnote 1}} of the field.
 
 \begin{comment}
     \url{https://www.physicsforums.com/threads/finding-killing-vector-fields-of-specific-spacetime.986208/}
@@ -326,25 +340,38 @@ The $m$ in this equation is just the coefficient of the quadratic term in the po
     \url{https://gitlab.com/feynmg/FeynMG}
 \end{comment}
 
-Under local rescalings, the metric and the scalar transform as $g_{\mu\nu} \rightarrow e^{2\rho} g_{\mu\nu} $ and  $\varphi \rightarrow e^{-\rho}\varphi$ respectively. To ensure the kinetic terms retain their form, we introduce the Weyl vector $B_\mu$ which transforms as such $B_{\mu} \rightarrow B_\mu - \partial_\mu \rho$ under the gauge transformation (going back to the roots of the word) and define the covariant derivative $D_\mu = \nabla_\mu - B_\mu$. To remove the explicit mass scale $m$ appearing in the Lagrangian \ref{25}, we add a compensator scalar field $\phi \rightarrow e^{-\rho}\phi$. For the gravity sector of the Lagrangian, let us see how the Christoffel symbol transforms under a local rescaling:
-\begin{equation}
+Under local rescalings, the metric and therefore the volume element transform as $g_{\mu\nu} \rightarrow e^{2\rho} g_{\mu\nu} $ and $\sqrt{-g} \rightarrow \Omega^4 \sqrt{-g}$. Scalar fields transform as $\varphi \rightarrow e^{-\rho}\varphi$. To ensure the kinetic terms retain their form, we introduce the Weyl vector $B_\mu$ which transforms as such $B_{\mu} \rightarrow B_\mu - \partial_\mu \rho$ under the gauge transformation (going back to the roots of the word) and define the covariant derivative $D_\mu = \nabla_\mu - B_\mu$ such that we can write the purely kinetic part of this action as:
+\[
+    S = \int \text{d}^4 \text{x} \sqrt{-g} \frac{g^{\mu\nu}}{2} D_\mu \varphi D_\nu \varphi
+\]
+Under a local rescaling of the metric, the kinetic term $D_\mu \varphi D_\nu \varphi \rightarrow e^{2\rho}$ while the metric and the volume element transform as indicated above, therefore the combination in the above equation remains invariant, i.e., the action does not change. To remove the explicit mass scale $m$ appearing in the action \ref{25}, we add a compensator scalar field $\phi \rightarrow e^{-\rho}\phi$ such that
+\[
+\mathcal{L}_\text{Matter} \propto \frac{1}{2} D_\mu \varphi D^\mu \varphi - \frac{\mu}{2} \phi^2 \varphi^2 + \frac{1}{2} D_\mu \phi D^\mu \phi 
+\]
+For the gravity sector of the Lagrangian, let us see how the Christoffel symbol transforms under a local rescaling:
+\[
     \Gamma^{\alpha}_{\beta \gamma} \rightarrow \Gamma^{\alpha}_{\beta \gamma} +(\delta^{\alpha}_{\beta} \partial_\gamma \rho + \delta^{\alpha}_{\gamma} \partial_{\beta} \rho - g_{\beta \gamma}g^{\alpha \tau}\partial_{\tau}\rho)
-\end{equation}
+\]
 Defining a new connection that is conformally covariant using $B_\mu$ and using that to define the new curvature scalar, we get the Weyl curvature scalar:
 \begin{align}
     \mathring{\Gamma}^{\alpha}_{\beta \gamma} &= \Gamma^{\alpha}_{\beta \gamma} + (\delta^{\alpha}_{\beta} B_{\gamma} + \delta^{\alpha}_{\gamma} B_{\beta} - g_{\beta \gamma}g^{\alpha \tau}B_{\tau}) \nonumber \\
-    \mathring{R} &= R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
+    \implies \mathring{R} &= R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
 \end{align}
-Putting all this together, we get the most general conformally invariant action that is linear in curvature:
+However, under a local rescaling, this new curvature scalar still transforms with only Weyl weight 2\footnote{The Weyl weight of a field $\Phi$ is defined as the power of the conformal factor by which it transforms under a local rescaling. It is $\Delta$ if $\Phi \rightarrow e^{-\Delta\rho}\Phi$}, that is, $\mathring{R} \rightarrow e^{-2\rho} \mathring{R}$. This means that, for the gravitational part of our action, we must have a non-minimal coupling of our scalar fields and the Weyl Scalar to give the action Weyl weight 0.
+
+\[
+    \mathcal{L}_\text{Gravity} \propto ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) \mathring{R}
+\]
+Putting all this together, we get the most general locally scale action that is linear in curvature, including all non-irrelevant terms:
 \begin{widetext} 
-\begin{subequations} \label{Starting Action}
-\begin{align}
-    S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ -( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R + 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
-    &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu}{2} \phi^2 \varphi^2 - \omega \phi_0^3 \varphi - \chi \phi_0 \varphi^3 - \frac{\lambda}{2} \varphi^4 - \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
-\end{align}
-\end{subequations}
+    \begin{equations} 
+    \begin{align}  \label{Starting Action} 
+        S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ -( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R + 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
+        &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \frac{\mu}{2} \phi^2 \varphi^2 - \omega \phi_0^3 \varphi - \chi \phi_0 \varphi^3 - \frac{\lambda}{2} \varphi^4 - \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
+    \end{align}
+    \end{equations}
 \end{widetext}
-Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. In the proceeding discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$, this can be reinstated in the end (Section \ref{Solution}), once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
+Where the parameters ${\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \mu, \lambda, \kappa}$ are dimensionless parameters and $\hat{H}_{\mu\nu} \equiv [D_\mu,D_\nu]\phi = [\partial_\mu B_\nu - \partial_\nu B_\mu]\phi$ is the field strength tensor. A point to note here is the abundance of dimensionless parameters. We can remove any two of these by rescaling our fields, but we will leave them in this form until necessary. This will come in handy later on. In the proceeding discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$, this can be reinstated in the end (Section \ref{Solution}), once the dynamics have been analyzed and the final inflaton potential is revealed without any loss in generality.
 
 In the equation above, we find two scalar fields. This makes analyzing the equations of motion harder. However, we have a redundant degree of freedom through Weyl invariance. Looking at the units of $[\phi] = 2$, we find that it is an inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$ and "freeze it". The reparametrizations that allow us to do this are :
 \[
@@ -365,7 +392,7 @@ The resulting action in the Jordan Frame therefore reads:
 - \frac{\xi}{16}\,H_{\mu\nu} H^{\mu\nu}\,.
 \end{aligned}
 \end{equation}
-What we have here is that by gauging away the ``unphysical'' dynamics of the field $\phi$, the gauge field $B_\mu$ has acquired a Proca mass of $\nu \phi_0^2$. This is quite similar to the Anderson-Higgs mechanism \cite{anderson_plasmons_1963}, \cite{higgs_broken_1964}. In accordance with \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu/\xi \rightarrow \infty$ to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the equations of motion as
+What we have here is that by gauging away the ``unphysical'' dynamics of the field $\phi$, the gauge field $B_\mu$ has acquired a Proca mass of $\nu \phi_0^2$. This is similar to the Anderson-Higgs mechanism \cite{anderson_plasmons_1963}, \cite{higgs_broken_1964}. In accordance with \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu/\xi \rightarrow \infty$ to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the equations of motion as
 \begin{equation}\label{30}
 B_\mu = \frac{1}{2}\,\partial_\mu \ln\Bigl((\epsilon-12\beta)\,\varphi^2 + (\sigma-12\gamma)\,\phi_0\,\varphi + (\nu-12\alpha)\,\phi_0^2\Bigr)\,.
 \end{equation}
@@ -517,7 +544,7 @@ An immediate consequence is that in the final formula, $\phi_0$ drops out, and w
     V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
     X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
 \end{align}
-Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$
+Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$. This agrees with many 
 
 \begin{figure}[h!]
     \centering
@@ -590,12 +617,12 @@ For the numerator $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$
 \end{align}
 Using this redefinition of parameters, we can write the numerator as before, however, with $Y$ as the primary variable $N(Y) = \kappa + 2\omega Y +\mu Y^2 + 2\chi Y^3 + \lambda Y^4$. Writing down the equations \ref{Potential} and \ref{X}, we see
 \begin{align}
-    V(Y) &= \frac{M_p^4}{8}\lambda \left(\frac{Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + D^2)^2} \right) \nonumber \\
+    V(Y) &= \frac{M_p^4}{8} \left(\frac{\lambda Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + D^2)^2} \right) \nonumber \\
     Y(\tilde{\varphi}) &= D \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \nonumber
 \end{align}
-Where, we have performed another implicit redefiniton as $D \rightarrow \frac{D}{2\beta}$, $\lambda \rightarrow \frac{\lambda}{\beta^2}$ and denoted $\sqrt{\frac{2}{12+k}} = C$. The other parameters in the numerator $\{ \mu, \omega, \chi, \kappa \}$ have been divided by a factor of $\lambda$. As a last step, we see that a factor of $D^4$ can be factored from both the numerator and denominator provided we make the identification $\{Y, \lambda, \chi, \mu, \omega, \kappa \} \rightarrow \{Y/D, \lambda, \chi/D, \mu/D^2, \omega/D^3, \kappa/D^4 \}$ to get:
+Where, we have performed another implicit redefiniton as $D \rightarrow \frac{D}{2\beta}$, $ \{\lambda, 2\chi, \mu, 2\omega,  \kappa \} \rightarrow \{\lambda, 2\chi, \mu, 2\omega,  \kappa \} /\beta^2$ and denoted $\sqrt{\frac{2}{12+k}} = C$. As a last step, we see that a factor of $D^4$ can be factored from both the numerator and denominator provided we make the identification $\{Y, \lambda, \chi, \mu, \omega, \kappa \} \rightarrow \{Y/D, \lambda, \chi/D, \mu/D^2, \omega/D^3, \kappa/D^4 \}$ to get:
 \begin{align}
-    V(Y) &=  \frac{M_p^4}{8} \lambda \left(\frac{Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + 1)^2} \right) \label{finalest potential} \\
+    V(Y) &=  \frac{M_p^4}{8}  \left(\frac{\lambda Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + 1)^2} \right) \label{finalest potential} \\
     Y(\tilde{\varphi}) &=  \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \label{finalest redef}
 \end{align}
 Therefore, starting from the equations \ref{Potential} and \ref{X} with nine parameters, we were able to reduce our model to one with only 6 as shown in \ref{finalest potential} and \ref{finalest redef}. $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $\tilde{\varphi} \in (-\frac{\pi M_p}{2C},\frac{\pi M_p}{2C})$, $Y \in (-\infty,\infty)$ and $C > 0$. We can simplify the potential \ref{finalest potential} and write it directly as a function of $\tilde{\varphi}$ as:
@@ -603,11 +630,11 @@ Therefore, starting from the equations \ref{Potential} and \ref{X} with nine par
 \begin{widetext}
     \begin{equation} 
     \begin{aligned} \label{Ugliest full Potential}
-        V(\tilde{\varphi}) =  \frac{M_p^4}{8} \Bigg(\lambda \sin^4\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2 \chi' \sin^3\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos\left( \frac{C \tilde{\varphi}}{M_p}\right)  + \mu' \sin^2\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^2\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2\omega' \sin\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^3\left( \frac{C \tilde{\varphi}}{M_p}\right)  \\ + \kappa' \cos^4\left( \frac{C \tilde{\varphi}}{M_p}\right) \Bigg)
+        V(\tilde{\varphi}) =  \frac{M_p^4}{8} \Bigg(\lambda \sin^4\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2 \chi \sin^3\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos\left( \frac{C \tilde{\varphi}}{M_p}\right)  + \mu \sin^2\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^2\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2\omega \sin\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^3\left( \frac{C \tilde{\varphi}}{M_p}\right)  \\ + \kappa \cos^4\left( \frac{C \tilde{\varphi}}{M_p}\right) \Bigg)
     \end{aligned}
 \end{equation}
 \end{widetext}
-Where in equation \ref{Ugliest full Potential}, the primed variables are the unprimed ones multiplied by a factor of $\lambda$. Denoting $\frac{C\tilde{\varphi}}{M_p}$ as $\theta$, the first and second derivatives of this potential are given by:
+The only assumption in this process was that $\beta \neq 0$, which is required for $D > 0$. The mapping of these new dimensionless parameters at the end in equation \ref{Ugliest full Potential} to the original ones we started with in equation \ref{Potential} has been given in the Appendix \ref{Mapping of Parameters}. Denoting $\frac{C\tilde{\varphi}}{M_p}$ as $\theta$, the first and second derivatives of this potential are given by:
 \begin{widetext}
     \begin{equation} 
     \begin{aligned} \label{Derivatives of Pot}
@@ -622,7 +649,7 @@ Using this in the formula for the second derivative, we get:
 \begin{equation}
     m_{\tilde{\varphi}}^2 \approx  \frac{\text{d}^2V}{\text{d}\tilde{\varphi}^2} \Bigg|_0 = \frac{C^2M_p^2}{4}(  \mu + \lambda - 2\kappa)
 \end{equation}
-This result is exact for the given potential if we set $\omega = 0$. Again, by mass, we refer to the coefficient of the quadratic part of the potential \ref{Footnote 1}. We require $m_{\tilde{\varphi}}^2 > 0$ to allow for reheating, as this corresponds to $V_{,\tilde{\varphi}\tilde{\varphi}} > 0$; a minimum around which the inflaton field can oscillate.
+This result is exact for the given potential if we set $\omega = 0$. Again, by mass, we refer to the coefficient of the quadratic term in the potential (See footnote \ref{Footnote 1}). We require $m_{\tilde{\varphi}}^2 > 0$ to allow for reheating, as this corresponds to $V_{,\tilde{\varphi}\tilde{\varphi}} > 0$; a minimum around which the inflaton field can oscillate.
 
 \begin{comment}
     This last redefiniton and form of the potential \ref{final potential} and \ref{final redefiniton} essentially help us reduce our parameter list further by two $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{D, C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited to this new set as $Y \in (-\infty,\infty)$ and $D,C > 0$
@@ -830,11 +857,11 @@ Since $t$ (time) is always increasing and we want this slicing to cover all of s
 \end{align}
 This allows us to to decompose the 4D manifold into a non-intersecting family of spacelike hypersurfaces such that $\mathcal{M}_4 \rightarrow \mathbb{R} \times \Sigma$, where $t \in \mathbb{R}$. On each hypersurface $\Sigma_t$, one can introduce a coordinate system $(x^i) = (x^1,x^2,x^3)$. For a well-behaved coordinate system on $\mathcal{M}_4$, we will require that this coordinate system varies smoothly between neighbouring hypersurfaces. Given a spacelike $\Sigma_t$, we can naturally define a unit normal 1-form 
 \begin{equation} \label{unit 1-form}
-    \underline{\bm{n}} = - \alpha \textbf{d}t    
+    \underline{\bm{n}} =  \alpha \textbf{d}t    
 \end{equation}
 (Standard literature on this material uses N to denote the proportionality constant between the gradient 1-form and the 1-form $\underline{\bm{n}}$, but since we are going to be using $N$ for the efolding time, we will use $\alpha$ to avoid confusion). Using the full metric, we can also define a vector in $\mathcal{T_p}(\mathcal{M}_4)$ denoted by $\bm{n}$.
 
-By looking at the orthogonal projection operator $\Vec{\mathbf{\gamma}} : \mathcal{T_p}(\mathcal{M}_4) \rightarrow \mathcal{T_p}(\Sigma_t)$, we can define an extended induced metric $\gamma_{\alpha\beta} = g_{\alpha\beta} + n_\alpha n_\beta$ (since $g^{\mu\nu} n_\mu n_\nu = -1$, we can define the inverse metric $\gamma^{\alpha\beta} = g^{\alpha\beta} + n^\alpha n^\beta$). This defines an induced metric on $\Sigma_t$, ensuring that vectors normal to the surface give a zero dot product and tangetial vectors maintain the same dot product structure inherited from the full manifold. 
+By looking at the orthogonal projection operator $\Vec{\mathbf{\gamma}} : \mathcal{T_p}(\mathcal{M}_4) \rightarrow \mathcal{T_p}(\Sigma_t)$, we can define an extended induced metric $\gamma_{\alpha\beta} = g_{\alpha\beta} + n_\alpha n_\beta$ (since $g^{\mu\nu} n_\mu n_\nu = 1$, we can define the inverse metric $\gamma^{\alpha\beta} = g^{\alpha\beta} + n^\alpha n^\beta$). This defines an induced metric on $\Sigma_t$, ensuring that vectors normal to the surface give a zero dot product and tangential vectors maintain the same dot product structure inherited from the full manifold. 
 
 Choosing the natural basis of $\mathcal{T}_p(\mathcal{M}_4)$ associated with the coordinates $(x^\alpha) =(t,x^i)$ as $(\bm{\partial}_\alpha)=(\bm{\partial}_t, \bm{\partial}_i)$. Given that this is dual to the 1-form basis $(\textbf{d}x^\alpha) = (\textbf{d}t, \textbf{d}x^i)$, we have $\langle \textbf{d}t, \bm{\partial}_t \rangle = 1$, so given equation \ref{unit 1-form}, we get $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$, where the vector $\bm{\beta}$ is the ``shift'' vector tangent to the hypersurface ($\bm{\beta} = \beta^i \boldsymbol{\partial}_i$). 
 
@@ -845,11 +872,11 @@ By this definition, we see that we can extract the components of the metric by l
 \end{equation}
 This gives upon substitution of the $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$:
 \begin{equation} \label{General split Metric}
-    g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}(\text{d}x^i + \beta^i \text{d}t)(\text{d}x^j + \beta^j \text{d}t)
+    g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = \alpha^2 \text{d}t^2 - \gamma_{ij}(\text{d}x^i + \beta^i \text{d}t)(\text{d}x^j + \beta^j \text{d}t)
 \end{equation}
 The vector $\alpha \bm{n}$ defines a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. The shift vector $\bm{\beta}$ defines how coordinates ``shift'' from neighbouring spacelike hypersurfaces on the plane (tangent to $\Sigma_t$). 
 
-So far, the discussion has been quite general; however, coming to the FLRW metric, which is spatially homogeneous and isotropic, we shall set $\beta^i = 0$. Giving us $g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + \gamma_{ij}\text{d}x^i\text{d}x^j$ (The equations of motion we get through $\beta^i$ give us momentum conservation),
+So far, the discussion has been quite general; however, coming to the FLRW metric, which is spatially homogeneous and isotropic, we shall set $\beta^i = 0$. Giving us $g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = \alpha^2 \text{d}t^2 - \gamma_{ij}\text{d}x^i\text{d}x^j$ (The equations of motion we get through $\beta^i$ give us momentum conservation),
 
 The spatial slices $\Sigma_t$, homogeneous and isotropic 3-spaces, have constant 3-curvature. We can therefore choose one of three embeddings such that the curvature is either negative, zero, or positive. 
 
@@ -857,6 +884,19 @@ We can also define the intrinsic Ricci Scalar (${}^{(3)}R$) of the spatial hyper
 \begin{equation}
     {}^{(3)}R = \gamma^{ij} \,{}^{(3)}R_{ij}
 \end{equation}
+
+\section{Mapping of Parameters} \label{Mapping of Parameters}
+In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in equation \ref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p_f \rightarrow p$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
+
+\begin{align}
+    \kappa_f &= \frac{16\beta^2}{D^4}\Big(\kappa - \frac{\gamma\omega}{\beta} + \frac{\gamma^2\mu}{4\beta^2} - \frac{\gamma^3\chi}{4\beta^3} +\frac{\gamma^4\lambda}{16\beta^4} \Big)   \nonumber \\
+    2\omega_f &= \frac{8\beta}{D^3} \Big(2\omega - \frac{\gamma\mu}{\beta} + \frac{3\gamma^2\chi}{2\beta^2} - \frac{\gamma^3\lambda}{2\beta^3}\Big)   \nonumber \\
+    \mu_f &= \frac{4}{D^2} \Big(\mu - \frac{3\gamma\chi}{\beta} + \frac{3\gamma^2\lambda}{2\beta^2} \Big) \nonumber \\
+    2\chi_f &= \frac{2}{D\beta} \Big(2\chi - \frac{2\gamma\lambda}{\beta}\Big) \nonumber \\
+    \lambda_f &= \frac{1}{\beta^2}\lambda \nonumber \\
+    C &= \sqrt{\frac{2}{12+k}}
+\end{align}
+Since this mapping is many-to-one, it shows that there is a redundancy in the parameters used in \ref{Starting Action}, \ref{Potential}, as they still result in the same final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
 
 \newpage
 \,
