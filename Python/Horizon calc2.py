@@ -22,32 +22,40 @@ kappa = 4.476117
 
 At N = 60.49, n_s = 0.962600
 C, mu, omega, chi_p, lambda_p, kappa_p
-[ 0.04124312 -2.57339875 -1.80820221 -1.45828716  9.14814676  9.17149521]
 [ 0.04177624  1.56120225 -7.03409564  3.1513638   1.37424726  9.92633943], cost=1.354e-08
-Diff code
-[ 9.95844532  1.72005577  5.43787909 -6.58661452  0.34038033  7.59055233]
+{'C': 0.2629019757834433, 'mu': -9.947646763664885, 'omega': -5.87937042061773, 'chi': 9.19648442654263, 'lambda': -5.889048002757206, 'kappa': -9.69828271467001, 'phi0': -5.010835193933723, 'phip0': 0.5971745790454654}
 C, mu, omega, chi_p, lambda_p, kappa_p = params
-"""
-# Parameters
+Best params: {'C': 0.10560221559208352, 'mu': -4.037227348999432, 'omega': -8.776929269476803, 'chi': -7.1522903792017765, 
+'lambda': 9.736384698890962, 'kappa': -0.2749459598978127, 'phi0': -12.15720646751496, 'phi_N0': -0.09259248087051818}
+
+
+C = 0.19286793509396047
+lambda = -3.7344900559415866
+chi = -9.228047050350941
+mu = -1.9040106446508474
+omega = -2.581310612248299
+kappa = 5.5269587291154645
+
+"""# Parameters
 params = {
-    'C': 0.04177624,
-    'lam': 1.37424726,
-    'chi': 3.1513638  ,
-    'mu': 1.56120225,
-    'omega': -7.03409564 ,
-    'kappa': 9.92633943
+    'C':  0.19286793509396047,
+    'lam': -3.7344900559415866,
+    'chi': -9.228047050350941  ,
+    'mu': -1.9040106446508474,
+    'omega': -2.581310612248299 ,
+    'kappa': 5.5269587291154645
 }
 
 # Create output directory
-if not os.path.exists('inflation_plots'):
-    os.makedirs('inflation_plots')
+if not os.path.exists('inflation_plots2'):
+    os.makedirs('inflation_plots2')
 
 # Potential and derivatives
 def V(phi):
     theta = params['C'] * phi / MP
     s, c = np.sin(theta), np.cos(theta)
-    return (MP**4 / 8) * params['lam'] * (
-        s**4 + 2 * params['chi'] * s**3 * c + 
+    return (MP**4 / 8) *  (params['lam'] * s**4 
+        + 2 * params['chi'] * s**3 * c + 
         params['mu'] * s**2 * c**2 + 
         2 * params['omega'] * s * c**3 + 
         params['kappa'] * c**4
@@ -57,8 +65,8 @@ def dV(phi):
     theta = params['C'] * phi / MP
     s, c = np.sin(theta), np.cos(theta)
     dtheta_dphi = params['C'] / MP
-    return (MP**4 / 8) * params['lam'] * dtheta_dphi * (
-        4 * s**3 * c + 2 * params['chi'] * (3 * s**2 * c**2 - s**4) + 
+    return (MP**4 / 8) * dtheta_dphi * ( params['lam'] *4 * s**3 * c 
+         + 2 * params['chi'] * (3 * s**2 * c**2 - s**4) + 
         params['mu'] * (2 * s * c**3 - 2 * s**3 * c) + 
         2 * params['omega'] * (c**4 - 3 * s**2 * c**2) - 
         4 * params['kappa'] * s * c**3
@@ -68,8 +76,7 @@ def d2V(phi):
     theta = params['C'] * phi / MP
     s, c = np.sin(theta), np.cos(theta)
     dtheta_dphi = params['C'] / MP
-    return (MP**4 / 8) * params['lam'] * dtheta_dphi**2 * (
-        4 * (3 * s**2 * c**2 - s**4) + 
+    return (MP**4 / 8) * dtheta_dphi**2 * ( params['lam'] *4 * (3 * s**2 * c**2 - s**4) + 
         2 * params['chi'] * (6 * s * c**3 - 12 * s**3 * c) + 
         params['mu'] * (2 * c**4 - 12 * s**2 * c**2 + 2 * s**4) + 
         2 * params['omega'] * (-4 * c**3 * s + 12 * s**3 * c) - 
@@ -118,8 +125,9 @@ def d2phi_dN(N, y):
     return [phi_prime, phi_double_prime]
 
 # Initial conditions
-phi_initial = 0.2 * phi_end
-y0 = [phi_initial, 0]
+phi_initial =   0.0
+phidot_initial = 1
+y0 = [phi_initial, phidot_initial]
 N_span = [0, N_TARGET]
 
 # Solve ODE
@@ -158,7 +166,7 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/potential.png', dpi=300)
+plt.savefig('inflation_plots2/potential.png', dpi=300)
 plt.close()
 
 # 2. phi vs N
@@ -171,7 +179,7 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/phi_vs_N.png', dpi=300)
+plt.savefig('inflation_plots2/phi_vs_N.png', dpi=300)
 plt.close()
 
 # 3. Slow-roll parameters vs N
@@ -188,7 +196,7 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/slow_roll.png', dpi=300)
+plt.savefig('inflation_plots2/slow_roll.png', dpi=300)
 plt.close()
 
 # 4. Spectral index vs N
@@ -204,7 +212,7 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/n_s.png', dpi=300)
+plt.savefig('inflation_plots2/n_s.png', dpi=300)
 plt.close()
 
 # 5. Tensor-to-scalar ratio vs N
@@ -218,15 +226,13 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/r.png', dpi=300)
+plt.savefig('inflation_plots2/r.png', dpi=300)
 plt.close()
 
 # 6. Phase-space portraits
 def phase_rhs(t, y):
     phi, dot_phi = y
     V_val = V(phi)
-    if V_val < 0:
-        V_val = 0
     H = np.sqrt((0.5 * dot_phi**2 + V_val) / (3 * MP**2))
     ddot_phi = -3 * H * dot_phi - dV(phi)
     return [dot_phi, ddot_phi]
@@ -259,7 +265,7 @@ cbar = fig.colorbar(contour, cax=cax)
 cbar.set_label(r"Log Flow Speed")
 fig.tight_layout()
 plt.show()
-plt.savefig('inflation_plots/phase_portrait.png', dpi=300)
+plt.savefig('inflation_plots2/phase_portrait.png', dpi=300)
 plt.close()
 
 # Compactified
@@ -295,7 +301,7 @@ cbar = fig.colorbar(contour, cax=cax)
 cbar.set_label(r"Log Flow Speed")
 fig.tight_layout()
 plt.show()
-plt.savefig('inflation_plots/phase_portrait_compact.png', dpi=300)
+plt.savefig('inflation_plots2/phase_portrait_compact.png', dpi=300)
 plt.close()
 
 # 7. n_s vs r
@@ -311,7 +317,7 @@ plt.grid(True)
 plt.text(0.05, 0.95, param_text, transform=plt.gca().transAxes, fontsize=8, 
          verticalalignment='top', ha='left', bbox=textbox_props)
 plt.show()
-plt.savefig('inflation_plots/n_s_vs_r.png', dpi=300)
+plt.savefig('inflation_plots2/n_s_vs_r.png', dpi=300)
 plt.close()
 
-print("All plots saved in 'inflation_plots' directory.")
+print("All plots saved in 'inflation_plots2' directory.")
