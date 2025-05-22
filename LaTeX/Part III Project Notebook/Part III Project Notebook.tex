@@ -739,6 +739,43 @@ For $\varphi \rightarrow 0$, the $\frac{1}{A^2(\varphi)}$ term dominates, giving
 Finally, using Python, we can numerically integrate equation \ref{40}, interpolate the function $\tilde{\varphi}(\varphi)$, invert it, and use it to attain the shape of the true potential \ref{38}. The parameters below have been chosen such that the scalar spectral index $n_s = 1 + 2\eta_V - 6 \epsilon_V$ (We would have used $n_s = 1 + \frac{1}{K}(2\eta_V - 6 \epsilon_V -\sqrt{2\epsilon_V}\lambda_K)$ ($\lambda_K = M_p \frac{K_{,\varphi}}{K}$), if the definitions of our slow roll parameters were canonical, but since we have accounted for it's non canonical nature in \ref{26} and \ref{29}, we can use the normal definition \cite{chung2003running} ),  is close to the experimental value of 0.968 at around 60 efolds.
 
 
+\subsubsection{Simplification of the model} \label{Reduction of parameters}
+We see that roughly, these models exhibit behaviour we would require from such inflationary models. For a more exact analysis, we would have to look at the exact form of the potential \ref{Potential}. This has nine free dimensionless parameters. However, the previous analysis shows us that only certain combinations of parameters affect the observables. To make this exact, we define the new variable $Y$ as:
+\begin{align}
+    Y(\tilde{\varphi}) &= X(\tilde{\varphi}) + \frac{\gamma}{2\beta}
+\end{align}
+Denoting $A(X) = \beta X^2 + \gamma X + \alpha$ and $D = \sqrt{4\alpha\beta-\gamma^2}$, we get:
+\begin{align}
+    A(Y) &= \beta Y^2 + \frac{D^2}{4\beta} \nonumber
+\end{align}
+For the numerator $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$, following a similar procedure as the denominator above, we get the following redefinition of parameters: 
+\begin{align}
+    \kappa &\rightarrow \kappa - \frac{\gamma\omega}{\beta} + \frac{\gamma^2\mu}{4\beta^2} - \frac{\gamma^3\chi}{4\beta^3} +\frac{\gamma^4\lambda}{16\beta^4}    \nonumber \\
+    2\omega &\rightarrow 2\omega - \frac{\gamma\mu}{\beta} + \frac{3\gamma^2\chi}{2\beta^2} - \frac{\gamma^3\lambda}{2\beta^3}   \nonumber \\
+    \mu &\rightarrow \mu - \frac{3\gamma\chi}{\beta} + \frac{3\gamma^2\lambda}{2\beta^2} \nonumber \\
+    2\chi &\rightarrow 2\chi - \frac{2\gamma\lambda}{\beta} \nonumber \\
+    \lambda &\rightarrow \lambda \label{huge redefiniton}
+\end{align}
+Using this redefinition of parameters, we can write the numerator as before, however, with $Y$ as the primary variable $N(Y) = \kappa + 2\omega Y +\mu Y^2 + 2\chi Y^3 + \lambda Y^4$. Writing down the equations \ref{Potential} and \ref{X}, we see
+\begin{align}
+    V(Y) &= \frac{M_p^4}{8}\lambda \left(\frac{Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + D^2)^2} \right) \nonumber \\
+    Y(\tilde{\varphi}) &= D \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \nonumber
+\end{align}
+Where, we have performed another implicit redefiniton as $D \rightarrow \frac{D}{2\beta}$, $\lambda \rightarrow \frac{\lambda}{\beta^2}$ and denoted $\sqrt{\frac{2}{12+k}} = C$. The other parameters in the numerator $\{ \mu, \omega, \chi, \kappa \}$ have been divided by a factor of $\lambda$. As a last step, we see that a factor of $D^4$ can be factored from both the numerator and denominator provided we make the identification $\{Y, \lambda, \chi, \mu, \omega, \kappa \} \rightarrow \{Y/D, \lambda, \chi/D, \mu/D^2, \omega/D^3, \kappa/D^4 \}$ to get:
+\begin{align}
+    V(Y) &=  \frac{M_p^4}{8} \lambda \left(\frac{Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + 1)^2} \right) \label{finalest potential} \\
+    Y(\tilde{\varphi}) &=  \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \label{finalest redef}
+\end{align}
+Therefore, starting from the equations \ref{Potential} and \ref{X} with nine parameters, we were able to reduce our model to one with only 6 as shown in \ref{finalest potential} and \ref{finalest redef}. $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $\tilde{\varphi} \in (-\frac{\pi M_p}{2C},\frac{\pi M_p}{2C})$, $Y \in (-\infty,\infty)$ and $C > 0$. We can simplify the potential \ref{finalest potential} and write it directly as a function of $\tilde{\varphi}$ as:
+
+\begin{widetext}
+    \begin{equation} 
+    \begin{aligned} \label{Ugliest full Potential}
+        V(\tilde{\varphi}) =  \frac{M_p^4}{8} \Bigg(\lambda \sin^4\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2 \chi' \sin^3\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos\left( \frac{C \tilde{\varphi}}{M_p}\right)  + \mu' \sin^2\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^2\left( \frac{C \tilde{\varphi}}{M_p}\right) + 2\omega' \sin\left( \frac{C \tilde{\varphi}}{M_p}\right) \cos^3\left( \frac{C \tilde{\varphi}}{M_p}\right)  \\ + \kappa' \cos^4\left( \frac{C \tilde{\varphi}}{M_p}\right) \Bigg)
+    \end{aligned}
+\end{equation}
+\end{widetext}
+
 \printbibliography
 
 \end{document}
