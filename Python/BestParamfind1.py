@@ -137,7 +137,7 @@ def objective(trial):
 # --- 4) Run the optimization -----------------------------------------------
 
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=2000)
+study.optimize(objective, n_trials=12000)
 
 best = study.best_params
 params_opt = [
@@ -231,7 +231,7 @@ plt.figure(); plt.plot(phis, Vs); plt.title('Potential'); plt.xlabel('φ'); plt.
 
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
-
+plt.grid()
 plt.savefig('results/potential.png',dpi=200); plt.close()
 
 # 2) φ vs N
@@ -239,6 +239,7 @@ plt.figure(); plt.plot(Nt, φ); plt.title('φ vs N'); plt.xlabel('N'); plt.ylabe
 
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
+plt.grid()
 plt.savefig('results/phi_vs_N.png',dpi=200); plt.close()
 
 # 3) ε,η vs φ
@@ -247,13 +248,16 @@ plt.figure(); plt.plot(φ[mask], eps_vals[mask],label='ε'); plt.plot(φ[mask], 
 plt.legend(); plt.title('ε,η vs φ'); plt.xlabel('φ'); plt.ylabel(''); 
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
+plt.grid()
 plt.savefig('results/eps_eta_vs_phi.png',dpi=200); plt.close()
 
 # 4) ε,η vs N
 plt.figure(); plt.plot(Nt, eps_vals,label='ε'); plt.plot(Nt, np.abs(eta_vals),label='|η|')
 plt.legend(); plt.title('ε,η vs N'); plt.xlabel('N'); plt.ylabel(''); 
+
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
+plt.grid()
 plt.savefig('results/eps_eta_vs_N.png',dpi=200); plt.close()
 
 # 5) n_s vs N
@@ -261,12 +265,14 @@ plt.figure(); plt.plot(Nt, n_s_vals); plt.axhline(NS_TARGET,ls='--',color='k')
 plt.title('n_s vs N'); plt.xlabel('N'); plt.ylabel('n_s'); 
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
+plt.grid()
 plt.savefig('results/ns_vs_N.png',dpi=200); plt.close()
 
 # 6) r vs N
 plt.figure(); plt.plot(Nt, r_vals); plt.title('r vs N'); plt.xlabel('N'); plt.ylabel('r');
 plt.text(0.02, 0.95, txt, transform=plt.gca().transAxes,
         fontsize=7, verticalalignment='top', bbox=bbox)
+plt.grid()
 plt.savefig('results/r_vs_N.png',dpi=200); plt.close()
 
 def phase_rhs(t, y):
