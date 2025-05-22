@@ -659,6 +659,9 @@ Using this in the formula for the second derivative, we get:
 \textbf{CHECK}
 This result is exact for the given potential if we set $\omega = 0$. Again, by mass, we refer to the coefficient of the quadratic term in the potential (See footnote \ref{Footnote 1}). We require $m_{\tilde{\varphi}}^2 > 0$ to allow for reheating, as this corresponds to $V_{,\tilde{\varphi}\tilde{\varphi}} > 0$; a minimum around which the inflaton field can oscillate.
 
+
+
+
 \begin{comment}
     This last redefiniton and form of the potential \ref{final potential} and \ref{final redefiniton} essentially help us reduce our parameter list further by two $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{D, C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited to this new set as $Y \in (-\infty,\infty)$ and $D,C > 0$
     
@@ -697,69 +700,28 @@ This result is exact for the given potential if we set $\omega = 0$. Again, by m
 \end{comment}
 
 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Python/results/potential.png}
+    \caption{$V(\tilde{\varphi})$ vs $\tilde{\varphi}$ (Optimal Coefficients)}
+    \label{Optimized Canonical Potential vs Field1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Python/results/phase_uncompact.png}
+    \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$}
+    \label{Optimized Phase Space potrait1}}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Python/results/phase_compact.png}
+    \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$ (Compactified)}
+    \label{Optimized Compact Phase Space potrait1}}
+\end{figure}
 \textbf{CHANGES PENDING AHEAD}
-
-
-\begin{comment}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/Terrible opt.png}
-    \caption{$V(\tilde{\varphi})$ vs $\tilde{\varphi}$}
-    \label{Canonical Potential vs Field1}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/Pot for terr.png}
-    \caption{$\frac{\text{d}\tilde{\varphi}}{\text{d}N}$ vs $\tilde{\varphi}$}
-    \label{Phase Space potrait1}}
-\end{figure}
-
-    \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/Redefinition with correct parameters.png}
-    \caption{$\tilde{\varphi}$ vs $\varphi$}
-    \label{Canonical field vs field}
-\end{figure}
-For this redefinition, we get the potential as such:
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/Potential with correct parameters.png}
-    \caption{V($\varphi$) vs $\varphi$}
-    \label{Full Potential}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/Full Slow Roll Parameters.png}
-    \caption{Slow roll parameters ($\epsilon_V , \eta_V$) as a function of $\varphi$}
-    \label{Slow Roll Parameters}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/Phase Space 1.png}
-    \caption{Phase Space Attractor Diagran}
-    \label{Phase Space}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/Ns graph.png}
-    \caption{Graph of $n_s$ vs N (Hits 0.9626 at N =60)}
-    \label{n_s}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/ns vs r.png}
-    \caption{Graph of r vs $n_s$ (might be (defo)wrong??)}
-    \label{r vs n_s}
-\end{figure}
-
-\end{comment}
 
 \section{CONCLUSION}
 
@@ -896,7 +858,7 @@ We can also define the intrinsic Ricci Scalar (${}^{(3)}R$) of the spatial hyper
 \end{equation}
 
 \section{Mapping of Parameters} \label{Mapping of Parameters}
-In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in equation \ref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p_f \rightarrow p$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
+In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in equation \ref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p \rightarrow p_f$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
 
 \begin{align}
     \kappa_f &= \frac{16\beta^2}{D^4}\Big(\kappa - \frac{\gamma\omega}{\beta} + \frac{\gamma^2\mu}{4\beta^2} - \frac{\gamma^3\chi}{4\beta^3} +\frac{\gamma^4\lambda}{16\beta^4} \Big)   \nonumber \\
@@ -906,8 +868,8 @@ In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\la
     \lambda_f &= \frac{1}{\beta^2}\lambda \nonumber \\
     C &= \sqrt{\frac{2}{12+k}}
 \end{align}
-Since this mapping is many-to-one, it shows that there is a redundancy in the parameters used in \ref{Starting Action}, \ref{Potential}, as they still result in the same final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
 
+This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations \ref{Starting Action}, \ref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
 \newpage
 \,
 \newpage
