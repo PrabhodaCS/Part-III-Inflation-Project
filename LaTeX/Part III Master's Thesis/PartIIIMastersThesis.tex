@@ -219,7 +219,7 @@ The third equation \ref{KGEOM} is the scalar field equation of motion for a spin
 \begin{comment}
     Since during the inflationary period, we assume a de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \text{diag}[1,-a^2(t),-a^2(t),-a^2(t)]$ making $\sqrt{-g} = a^3(t)$. We also assume that the scalar field is homogeneous and, therefore only varies with time, allowing us to drop the gradient term. The action then becomes \cite{Baumann_2022}: 
 \end{comment}
- To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the third Friedmann equation (The first Friedmann equation is generally given by \ref{3}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe; $k=0$), we get:
+ To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the second Friedmann equation (The second Friedmann equation is generally given by \ref{Friedmann Eqn 2}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe; $k=0$), we get:
 \begin{equation}    \label{Friedmann 3}
     3 M_p^2H^2 = \frac{1}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
@@ -329,7 +329,7 @@ An interesting possibility to consider is that possibly, some of the more ``weir
 
 To be exact, we argue that GR as we know it, with the Einstein-Hilbert Lagrangian being proportional to the Ricci Scalar, is a low-energy extrapolation of a more fundamental locally scale-invariant theory that describes physics at higher energies. This assumption forces us to introduce a scalar field that exhibits all the behaviour we would expect from an inflaton field. 
 
-In the argument that follows, we derive the most general conformally invariant action with non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though this is a perfectly legal and general extension of the model. It is easy to show that this results in a two-field inflation model. We find, however, that the following model, which we will derive, is quite interesting and matches quite well with what is expected from an inflationary model. Let us begin by exploring this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation.
+In the argument that follows, we derive the most general conformally invariant action with non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though this is a perfectly permitted extension of the model. It is easy to show that this results in a two-field inflaton model. We find, however, that the following model, which we will derive, is quite interesting and matches quite well with what is expected from an inflationary model. Let us begin by exploring this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation.
 \begin{equation} \label{25}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
@@ -472,7 +472,7 @@ Now, employing the following conformal transformation:
 \[
 g_{\mu\nu}\rightarrow \Omega^2\,g_{\mu\nu},\quad\text{with}\quad \Omega^2 = \frac{M_p^2}{2(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)},
 \]
-We can move from the Jordan frame to the Einstein frame and separate the Einstein-Hilbert action and the inflaton action. Denoting $M_p/\sqrt{2} = M$, the denominator and the numerator of the kinetic term in \ref{42a} by V and N respectively, we get:
+We can move from the Jordan frame to the Einstein frame and separate the Einstein-Hilbert action and the inflaton action. The detailed calculation of how to perform this conformal transformation has been done in Appendix \ref{Conformal Transformations}. Denoting $M_p/\sqrt{2} = M$, the denominator and the numerator of the kinetic term in \ref{42a} by V and N respectively, we get:
 
 \begin{widetext}
     \begin{equation}    \label{33a}
@@ -717,7 +717,11 @@ The phase space portrait (Fig.\ref{Optimized Phase Space potrait1}) clearly show
 
 
 \section{CONCLUSION}
-We have shown that by demanding local scale invariance in a gravity-scalar theory and analysing the most general action that is linear in curvature, we get a potential that lends itself to be uniquely interpreted as an inflaton potential. 
+We have shown that by demanding local scale invariance in a gravity-scalar theory and analysing the most general action that is linear in curvature, we get a potential that lends itself to be uniquely interpreted as an inflaton potential. We did this by introducing a gauge boson to account for the new Weyl gauge symmetry. We also had to introduce one compensator field to give rise to the quadratic minima we wanted our potential to have. This sets the energy scale at which scale invariance is broken.
+
+An important consequence of our results is that the energy scale at which scale invariance is broken drops out and does not affect our observables. This avoids the common pitfalls of adding an arbitrary energy scale to our theory by hand. It also shows that the gauging of scale invariance in our theory leads to universal behaviour regardless of the energy scale.
+
+We have also shown that in such models, at least classically, there exist redundant choices of parameters that lead to the same physics. 
 
 
 \newpage
@@ -852,6 +856,31 @@ We can also define the intrinsic Ricci Scalar (${}^{(3)}R$) of the spatial hyper
     {}^{(3)}R = \gamma^{ij} \,{}^{(3)}R_{ij}
 \end{equation}
 
+
+\section{Conformal Transformations} \label{Conformal Transformations}
+
+Under a local scale transformation $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu} $, we have:
+\[
+ \sqrt{-g} \rightarrow \Omega^{4} \sqrt{-g} \quad\text{and}\quad R\rightarrow\Omega^{-2}\Big[R-\frac{6\Box\Omega}{\Omega} \Big]
+\]
+For the action \ref{42a}, looking at only the gravitational part of the action, we have,
+\begin{equation}
+    S = -\int d^4x\,\sqrt{-g}\, 
+  \,\bigl(\alpha\,\phi_0^2 + \beta\,\varphi^2 + \gamma\,\phi_0\,\varphi\bigr)\,R
+\end{equation}
+Under the conformal transformation where $ \Omega^2 = \frac{M}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}$ and denoting $A(\varphi) = (\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)$,we get:
+\begin{align}
+    S &\rightarrow -\int d^4x\,\sqrt{-g} \Omega^{4}\, 
+  \,A(\varphi)\, \Omega^{-2}\Big[R-\frac{6\Box\Omega}{\Omega} \Big] \nonumber \\
+  \implies S &= - \int d^4x\,\sqrt{-g} \Big[ \Omega^2 A(\varphi) + 6 \partial_\mu[\Omega A(\varphi)] \partial^\mu\Omega \Big]
+\end{align}
+The first term simplifies to the Einstein-Hilbert part of the action, whereas the second:
+\begin{align}
+    &-6M^2 \partial_\mu A^{-1/2} \partial_\mu A^{1/2} \nonumber \\
+    &\implies \frac{3M^2}{2} \left( \frac{2\beta \varphi + \gamma\phi_0}{\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi} \right)^2 \partial_\mu \varphi \partial^\mu \varphi
+\end{align}
+Which is what we get in equation \ref{33a}
+
 \section{Mapping of Parameters} \label{Mapping of Parameters}
 In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in equation \ref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p \rightarrow p_f$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
 
@@ -865,6 +894,7 @@ In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\la
 \end{align}.
 
 This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations \ref{Starting Action}, \ref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
+
 \newpage
 \,
 \newpage
