@@ -1,0 +1,10 @@
+Optimal Inflaton Parameters:
+  C: 0.053026084221520074
+  mu: 9.271390811390111
+  omega: 7.519412530960437
+  chi: 4.299268281025526
+  lambda: 4.297068770906545
+  kappa: 6.729848460934591
+  theta_initial_norm: 0.10634245223206562
+\nDerived Observables at N_* = N_end - 60:\n  n_s: {final_results['n_s_star']}\n  r: 0.06040201474028364
+  N_end: {final_results['N_end']}\n

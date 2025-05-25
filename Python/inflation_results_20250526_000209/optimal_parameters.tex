@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper,margin=1in]{geometry}
+\title{Optimal Inflaton Parameters and Observables}
+\date{\today}
+\author{Inflation Model Optimizer}
+\begin{document}
+\maketitle
+\section*{Optimized Potential Parameters}
+\begin{itemize}
+  \item $\texttt{C} = 0.053026$
+  \item $\texttt{mu} = 9.271391$
+  \item $\texttt{omega} = 7.519413$
+  \item $\texttt{chi} = 4.299268$
+  \item $\texttt{lambda} = 4.297069$
+  \item $\texttt{kappa} = 6.729848$
+  \item $\texttt{theta\_initial\_norm} = 0.106342$
+\end{itemize}
+\section*{Derived Observables at $N_* = N_{{end}} - 60$ e-folds}
+\begin{itemize}
+  \\item Spectral tilt, $n_s = {final_results['n_s_star']:.6f}$\n  \\item Tensor-to-scalar ratio, $r = {final_results['r_star']:.6f}$\n  \\item Total e-folds of inflation, $N_{{end}} = {final_results['N_end']:.2f}$\n  \\item E-folds before end of inflation for CMB pivot scale, $N_* = {final_results['N_star']:.2f}$\n\end{itemize}
+\end{document}
