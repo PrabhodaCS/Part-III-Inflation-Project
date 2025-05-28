@@ -1,11 +1,12 @@
 # Fdb version 4
-["biber PartIIIMastersThesis"] 1748457301.04535 "PartIIIMastersThesis.bcf" "PartIIIMastersThesis.bbl" "PartIIIMastersThesis" 1748465095.55206 2
-  "PartIIIMastersThesis.bcf" 1748465095.40941 112635 bd62d17aff32c495bfa50ae470a8052b "pdflatex"
+["biber PartIIIMastersThesis"] 1748465811.14513 "PartIIIMastersThesis.bcf" "PartIIIMastersThesis.bbl" "PartIIIMastersThesis" 1748465812.70605 2
+  "Bibliography.bib" 1748456711.48582 69104 569449d9c48ee42f46da45a0cca52788 ""
+  "PartIIIMastersThesis.bcf" 1748465812.55946 112635 bd62d17aff32c495bfa50ae470a8052b "pdflatex"
   (generated)
   "PartIIIMastersThesis.bbl"
   "PartIIIMastersThesis.blg"
   (rewritten before read)
-["pdflatex"] 1748465093.94489 "PartIIIMastersThesis.tex" "PartIIIMastersThesis.pdf" "PartIIIMastersThesis" 1748465095.55232 2
+["pdflatex"] 1748465811.15306 "PartIIIMastersThesis.tex" "PartIIIMastersThesis.pdf" "PartIIIMastersThesis" 1748465812.70635 2
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1742685315 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc" 1742685315 7013 c55cc8669071ac14036c4a0c96c16202 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc" 1742685315 2836 154e6b0061f9b8cb549144b55b268339 ""
@@ -245,11 +246,11 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1743091164 5328520 69b1198668c700b0edbba6d5a8226fe1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1743091106 2008703 63e8101517efcbbbe5a3e2876449ca01 ""
-  "PartIIIMastersThesis.aux" 1748465095.41041 18939 381fdce9ffefc8699d6cc58bfceabb83 "pdflatex"
+  "PartIIIMastersThesis.aux" 1748465812.56046 18939 381fdce9ffefc8699d6cc58bfceabb83 "pdflatex"
   "PartIIIMastersThesis.bbl" 0 -1 0 "biber PartIIIMastersThesis"
-  "PartIIIMastersThesis.out" 1748465095.42041 3835 e37fd9c3847c8f2e237d3ba5676c8162 "pdflatex"
-  "PartIIIMastersThesis.run.xml" 1748465095.41218 2452 ea65fa03f135c95437033fd7f1b995f7 "pdflatex"
-  "PartIIIMastersThesis.tex" 1748465093.88641 90460 f211f50819b23bb3345a69fd660b5ec0 ""
+  "PartIIIMastersThesis.out" 1748465812.57046 3835 e37fd9c3847c8f2e237d3ba5676c8162 "pdflatex"
+  "PartIIIMastersThesis.run.xml" 1748465812.56219 2452 ea65fa03f135c95437033fd7f1b995f7 "pdflatex"
+  "PartIIIMastersThesis.tex" 1748465810.92246 90460 f211f50819b23bb3345a69fd660b5ec0 ""
   "PartIIIProjectTemplateMacros.tex" 1743771859.06917 1110 56d7f9d352ffe909ec168fbba2771e48 ""
   "Python/Figures/AE/inflation_plots/phase_portrait.png" 0 -1 0 ""
   "Python/Figures/AE/inflation_plots/potential.png" 0 -1 0 ""
