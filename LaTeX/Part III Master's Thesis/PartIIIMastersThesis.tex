@@ -43,7 +43,9 @@
      linkcolor = Blue,%
      citecolor = Blue,%
      filecolor = Blue,%
-     urlcolor = Blue% 
+     urlcolor = Blue,%
+     pdftitle={Master's Thesis - Prabhoda Chandra Sarjapur},%
+    pdfpagemode=FullScreen,%
      }%
 \usepackage[capitalize]{cleveref} %always load this last in preamble
 
@@ -74,13 +76,13 @@ sorting=none]{biblatex}
 The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. In this paper, we argue that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry) for the inflaton-gravity system. This model has the added benefit of observables not depending on the arbitrary energy scale at which scale invariance is broken.
 \end{abstract}
 
+\begin{comment}
+    The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \ref{The need for Inflation}).
+\end{comment}
+
 \maketitle
 \section{INTRODUCTION} \label{Introduction}
-
-\indent The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \ref{The need for Inflation}).
-
-
-The inflationary theory was developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
+\indent Inflationary theory was originally developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
 \cite{PhysRevLett.48.1220}, and Starobinsky \cite{STAROBINSKY198099}, and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, there existed a homogeneous, isotropic field pervading through spacetime such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFEs) for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles.
 
 While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance.
@@ -95,72 +97,27 @@ Another approach to inflationary cosmology is to consider metric-affine theories
 
 These investigations may hint towards a fundamental principle out of which these arise as limits - \textit{the inflaton potential arising} due to the gauging of this scale invariance, i.e., Weyl symmetry.
 
-This paper is structured as follows: Section \ref{The need for Inflation} explains some of the problems with the naive big bang model. Section \ref{Inflation} describes how the introduction of a scalar field that violates the strong energy condition helps us resolve these issues and derives the formulae and tools necessary to analyse the particular model that we will present in section \ref{Scale Invariant Gravity}. In section \ref{Scale Invariant Gravity}, we will construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The main aim of this section is to massage the action into a form we are more familiar with, that is, of an action consisting of an Einstein-Hilbert term and a term corresponding to the inflaton action. Finally, in section \ref{Solution}, we will analyse this action and the behaviour of the resulting potential it predicts. We will also match the parameters with experimental observables and show that it fits quite well. 
+\begin{comment}
+     Section \ref{The need for Inflation} explains some of the problems with the naive big bang model. 
+\end{comment}
 
-
-\section{The need for Inflation}\label{The need for Inflation}
-\subsection{Horizon Problem} \label{Horizon Problem}
-In this section, we will show that given the standard assumed expansion rate in the Big Bang model, we cannot satisfactorily explain the near-perfect uniformity of the CMB. This is because, given the rate of expansion, there is no way for distant regions of the CMB to have once been causally connected.
-Given the Friedmann Equations and defining the Hubble constant $H = \frac{\dot{a}}{a}$,
-\begin{align}    
-    \ddot{a} &= -\frac{4\pi G}{3} (\rho + 3p)a \label{Friedmann Eqn 1} \\
-    H^2 + \frac{k}{a^2} &= \frac{8 \pi G}{3} \rho \label{Friedmann Eqn 2} \\
-    \dot{\rho} &= -3(\rho + p)H \label{Friedmann Eqn 3}
-\end{align}
-From the continuity equation \ref{Friedmann Eqn 3}, we have:
-\begin{equation} \label{4}
-    \frac{\mathrm{d}  \ln(\rho)}{\mathrm{d} \ln(a)} = -3(1+w)
-\end{equation}
-Where, $w = \frac{p}{\rho}$. We can solve this equation to get $\rho \propto a^{-3(1+w)}$. In combination with the Friedmann equation \ref{Friedmann Eqn 2} for a flat universe $k = 0$, we get the scale factor $a$ as a function of time $a(t)$.
-\begin{equation}    \label{5}
-    a(t) = \begin{cases}
-        t^{2/3(1+w)} & w \neq -1 \\
-        e^{Ht} & w = -1
-    \end{cases}
-\end{equation}
-Now, we can define the comoving horizon ($\tau$) as the causal horizon or the maximum distance a light ray can travel between times 0 and $t$.
-\begin{equation}    \label{6}
-    \tau \equiv \int_{0}^{t} \frac{\mathrm{d} t'}{a(t')} = \int_{0}^{a} \frac{\mathrm{d}a}{H a^2} = \int_{0}^{a} \mathrm{d} \ln(a) \frac{1}{aH}
-\end{equation}
-Therefore, for a conventional Big Bang model, the causal horizon $\tau$ for a universe with $w \geq 0$ increases with time. This means that the fraction of the universe in contact with each other increases with time.
-\begin{equation}
-    \tau \propto a^{1/2(1+3w)} \implies \tau = \begin{cases}
-        a & \text{Radiation Dominated} \\
-        a^{1/2} & \text{Matter Dominated}
-    \end{cases}
-\end{equation}
-The comoving horizon increasing with time implies that comoving scales (comoving scale is not the same as the physical scale) entering the cosmic horizon now were not in causal contact during the CMB decoupling! However, the anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree.
-
-\subsection{Flatness Problem} \label{Flatness Problem}
-Despite the presence of mass and energy in our universe, the large-scale structure of our spacetime is approximately Euclidean (flat). To see whether this is a stable equilibrium, we return to Friedmann equation \ref{Friedmann Eqn 2} and defining $\rho_{\text{crit}} = 3H^2(a)$ and $\Omega(a) = \frac{\rho(a)}{\rho_{\text{crit}}}$, we get
-\begin{equation}
-    1 - \Omega(a) = \frac{-k}{(aH)^2}
-\end{equation}
-Differentiating this equation and using the Friedmann equations, we get,
-\begin{equation}
-    \frac{\mathrm{d}\Omega}{\mathrm{d} \ln a} = (1+3w)\Omega(\Omega-1)
-\end{equation}
-Looking at this, we can see that $\Omega = 1  \implies \rho = \rho_{crit}$ is an unstable equilibrium and slight perturbations can make the universe not flat, i.e., $k \neq 0$. This means that in the standard big bang model, matter density has to be extremely fine-tuned to fit the requirement $\rho = \rho_{crit}$, which seems unlikely.
-
-The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. The next section shows how this theory solves the two problems stated above.
+This paper is organized as follows: Section \ref{Inflation} elucidates how the introduction of a scalar field that violates the strong energy condition helps us resolve the horizon and flatness problems. It further derives the necessary formulae and analytical tools required to examine the particular model that will be presented in sections \ref{Scale Invariant Gravity} and \ref{Solution}. In section \ref{Scale Invariant Gravity}, we construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The primary objective of this section is to reformulate the action into a more conventional structure, one consisting of an Einstein-Hilbert term and an inflaton action term. Finally, in section \ref{Solution}, we conduct a thorough analysis of the inflaton action and the behavior of the resultant potential it predicts. Additionally, we will align the parameters with empirical observations, demonstrating a satisfactory correspondence.
 
 \section{Inflation}\label{Inflation}
-Looking at both the problems highlighted in the previous section, we see that the comoving Hubble radius ($(aH)^{-1}$) plays an important role
-\begin{equation}    \label{10}
-    \tau = \int_{0}^{a} \mathrm{d} \ln (a) \frac{1}{aH}
-\end{equation}
-\begin{equation} \label{11}
-    1 - \Omega (a) = \frac{-k}{(aH)^2}
-\end{equation}
-If the comoving Hubble radius was decreasing, this means that large scales entering the present universe were inside the horizon before inflation. By equation \ref{11}, it also means that $\rho = \rho_{crit}$ is a stable equilibrium as the solution $\Omega = 1$ is an attractor during inflation.
+The standard Hot Big Bang model successfully describes nucleosynthesis and the CMB. However, there are two fine-tuning problems with this theory (For more details, refer to Appendix \ref{The need for Inflation}): 
+\begin{itemize}
+    \item Horizon Problem: The anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree as they would have been causally disconnected during recombination.
+    \item Flatness Problem: The observed energy density of the universe $\Omega$ is extremely close to the critical density $1$ for a flat universe. However, the critical value of $\Omega = 1$ is an unstable fixed point. It requires extreme fine-tuning of the energy density during the early universe to the order of 1 part in $10^{61}$ \cite{baumann2012tasilecturesinflation}.
+\end{itemize}
+Both of these are elegantly resolved if we assume that the early universe underwent a brief phase of accelerated (near-exponential) expansion, referred to as inflation, during which the comoving Hubble radius $(aH)^{-1}$ shrank dramatically.
 
-A decreasing comoving horizon directly implies a period of accelerated expansion as seen by taking its derivative
+A decreasing comoving horizon directly implies a period of accelerated expansion, as seen by taking its derivative
 \begin{equation}
-    \frac{\mathrm{d}}{\mathrm{d}t} \frac{1}{aH} <  0 \implies \frac{-\Ddot{a}}{(aH)^2} < 0 \implies \ddot{a} > 0
+    \frac{\mathrm{d}}{\mathrm{d}t} \frac{1}{aH} <  0 \implies \frac{-\ddot{a}}{(aH)^2} < 0 \implies \ddot{a} > 0
 \end{equation}
-Given that $\ddot{a} > 0$ and Friedmann equation \ref{Friedmann Eqn 1}, we see that $p < -\frac{\rho}{3} \implies w < - \frac{1}{3}$. This is a violation of the strong energy condition.
+Given that $\ddot{a} > 0$ and the Friedmann equations (\ref{Friedmann Eqn 1}), we see that $p < -\frac{\rho}{3} \implies w < - \frac{1}{3}$. 
 
-So far, we have described the physical implications of inflation and its effects. In the following section, we shall describe the physical conditions under which such an exponential expansion can arise. 
+In the following section, we shall describe how such a negative pressure source can arise through the introduction of a scalar field with certain properties.
 
 \subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
 The simplest models of inflation involve a scalar field $\varphi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
@@ -169,7 +126,7 @@ In this section, we shall consider a scalar field in the presence of gravity and
 \begin{equation}\label{Start of derivation}
     S = \int \mathrm{d}^4 x \sqrt{-g} \left[-\frac{M_p^2}{2}R+ \frac{g^{\mu \nu}}{2} \partial_{\mu}\varphi \partial_{\nu} \varphi  - V(\varphi) \right]\
 \end{equation}
-Using the methods described in Appendix \ref{3+1 decomposition of spacetime}, we can now split the action integral into one over space and one over time and make the Cauchy problem well-defined. Given certain conditions on the spacetime, it has been proven that, given initial conditions, the fields and the spacelike hypersurface have a unique evolution \cite{choquet-bruhat_global_1969}. Therefore, 
+Employing the techniques outlined in Appendix \ref{3+1 decomposition of spacetime}, it is now possible to split the action integral into spatial and temporal components, thereby rendering the Cauchy problem well-defined. Under certain spacetime conditions, it has been demonstrated that, with given initial conditions, the fields and the spacelike hypersurface exhibit a unique evolution \cite{choquet-bruhat_global_1969}. Consequently, we can write the action \ref{Start of derivation} as,
 \[
     S = \int_{t_1}^{t_2} \mathrm{d}t  \int_\mathcal{V}  \alpha a^3(t) \bigg[-\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \bigg]    
 \]
@@ -206,7 +163,7 @@ We see that the EOM implies $\alpha$ to be an arbitrary constant, which we can c
     This gives us $\sqrt{-g} = \alpha a^3(t)$
     We can now define a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. This vector field can now be split into a spatial part (tangent to the hypersurface) and a normal part using the induced metric and the normal vector as such    
 \end{comment}
-The first two equations \ref{First 1}, \ref{First 2}, correspond to the first two Friedmann equations \ref{Friedmann Eqn 2} , \ref{Friedmann Eqn 1} respectively, if we make the following identification:
+The first two equations \ref{First 1}, \ref{First 2}, correspond to the first two Friedmann equations, respectively, if we make the following identification:
 \begin{align}   \label{presure and density}
     \rho &= \frac{1}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
     p &= \frac{1}{2} \dot{\varphi}^2 - V(\varphi)
@@ -216,7 +173,7 @@ The third equation \ref{KGEOM} is the scalar field equation of motion for a spin
 \begin{comment}
     Since during the inflationary period, we assume a de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \text{diag}[1,-a^2(t),-a^2(t),-a^2(t)]$ making $\sqrt{-g} = a^3(t)$. We also assume that the scalar field is homogeneous and, therefore, only varies with time, allowing us to drop the gradient term. The action then becomes \cite{Baumann_2022}: 
 \end{comment}
- To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the second Friedmann equation (The second Friedmann equation is generally given by \ref{Friedmann Eqn 2}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe ($k=0$), we get:
+ To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the first Friedmann equation (The first Friedmann equation is generally given by equation \ref{First 1}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe ($k=0$), we get:
 \begin{equation}    \label{Friedmann 3}
     3 M_p^2H^2 = \frac{1}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
@@ -224,7 +181,7 @@ Upon differentiating this expression with respect to time and using \ref{KGEOM},
 \begin{equation} \label{H vs phi}
     2 M_p^2 \dot{H} = -   \dot{\varphi}^2
 \end{equation}
-Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
+Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{KGEOM} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
 \begin{widetext}
 \begin{subequations}
 \begin{align}\label{phi vs N}
@@ -234,21 +191,11 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{widetext}
 
 \subsection{Slow Roll Inflation} \label{Slow Roll Inflation}
-The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and the pressure $p_{\varphi}$, as defined in \ref{presure and density} is given by the Friedmann equation \ref{Friedmann Eqn 1},
-\[
-\frac{\ddot a}{a}
-=-\tfrac{4\pi G}{3}(\rho_\varphi+3p_\varphi)
-=-\tfrac{8\pi G}{3}(\dot\varphi^2-V(\varphi))\,.
-\]
-Accelerated expansion ($\ddot{a} > 0$) therefore requires $\dot{\varphi}^2 \ll |V(\varphi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will also only be satisfied for a long period if we require $|\ddot{\varphi}| \ll 3H\dot{\varphi} \sim |V,_{\varphi}|$. To formalize this, start from equation \ref{H vs phi}:
-\begin{equation} \label{Hp vs phi}
-    \dot{\varphi}  = -  2 M_p^2 H'
-\end{equation}
-Where we have denoted $\frac{dH}{d\varphi} = H'$ and using it in Equation \ref{19}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing, salopek1990nonlinear} for inflation:
+Looking at equation \ref{First 2}, we can see that accelerated expansion ($\ddot{a} > 0$) requires $\dot{\varphi}^2 \ll |V(\varphi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will only be satisfied for a long period if we require $|\ddot{\varphi}| \ll 3H\dot{\varphi} \sim |V,_{\varphi}|$. To formalize this, start from equation \ref{H vs phi}, ($\dot{\varphi}  = -  2 M_p^2 H'$), where we have denoted $dH/d\varphi = H'$ and using it in Equation \ref{Friedmann 3}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing, salopek1990nonlinear} for inflation:
 \begin{equation}    \label{Hamilton-Jacobi}
     H'^2 - \frac{3}{2M_p^2}H^2 = - \frac{V(\varphi)}{2M_p^4} 
 \end{equation}
-While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in \ref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$ and requiring it to be less than 1. Dropping the term $\ddot{\varphi}$ term in \ref{KGEOM} $\dot{\varphi} \approx -\frac{V,_\varphi}{3H}$, we can write this Hubble Slow Roll parameter in terms of the potential.
+While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in equation \ref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$. Dropping the term $\ddot{\varphi}$ in Equation \ref{KGEOM}, $\dot{\varphi} \approx -\frac{V,_\varphi}{3H}$, we can write the Hubble Slow Roll parameter in terms of the potential.
 \begin{equation}
     \epsilon_H = - \left(\frac{\dot{H}}{H^2} \right) \approx \frac{M_p^2}{2} \left(\frac{V,_\varphi}{V}\right)^2
 \end{equation}
@@ -263,12 +210,13 @@ While these equations are non-linear and impossible to solve except for power-la
     \end{equation}
     The requirement $\eta_H < 1$ can be seen as ensuring that inflation lasts for a long enough number of e-folds. We can also define a potential slow-roll parameter $\eta_V$ as such:
 \end{comment}
-To ensure that inflation lasts for a long enough time, we would require that the potential 
+To ensure that inflation lasts for a long enough time, we would require that the potential is flat for a long enough number of e-folds. We can quantify this with $\eta_V$
 \begin{equation}
     \eta_V = M_p^2  \frac{V_{,,\varphi}}{V} 
 \end{equation}
+Therefore, we can now say that inflation occurs when the slow-roll conditions are satisfied, i.e., $\epsilon_V < 1$ and $|\eta_V|< 1$.
 \subsection{Inflationary Observables} \label{Inflationary Observables}
-Inflation is a robust theory not only because it solves the Horizon and Flatness problems \ref{Horizon Problem}, \ref{Flatness Problem}, but it also makes predictions about the inhomogeneities in the early universe. These primordial density fluctuations are due to the inherent quantum nature of the inflaton field. 
+Inflation is a robust theory not only because it solves the horizon and flatness problems (See Appendix \ref{Horizon Problem}, \ref{Flatness Problem} for more details), but it also makes predictions about the inhomogeneities in the early universe. These primordial density fluctuations are due to the inherent quantum nature of the inflaton field. 
 The fluctuations in the inflaton field $\delta\varphi$ cause different patches of spacetime to have different amounts of inflation as the field has not exited slow-roll in certain regions yet. 
 
 These fluctuations can be treated as perturbations around a background field ($\delta\varphi(t,\textbf{x}) = \varphi(t,\textbf{x}) - \Bar{\varphi}(t)$). However, as is known, by the Einstein Field Equations $\delta G_{\mu\nu} = \frac{1}{M_p^2}\delta T_{\mu \nu}$, perturbations in the matter density cause perturbations in the metric too. Therefore, we can expand the metric around it's background value similarly as $g_{\mu\nu}(t,\textbf{x}) = \Bar{g}_{\mu\nu}(t) + \delta g_{\mu\nu}(t,\textbf{x})$. Generally, these metric perturbations $\delta g_{\mu\nu}(t,\textbf{x})$ have 10 independent components, but these can be decomposed into scalar, vector, and tensor (SVT) perturbations \cite{liddle_cosmological_2000, malik_cosmological_2009}. Using conformal time and writing the background metric in the same form as equation \ref{deSitter Conformal}, we get the perturbation to the metric to be of the form:
@@ -721,7 +669,7 @@ We have shown that by demanding local scale invariance in a gravity-scalar theor
 
 An important consequence of our results is that the energy scale at which scale invariance is broken drops out and does not affect our observables. This avoids the common pitfalls of adding an arbitrary energy scale to our theory by hand. It also shows that the gauging of scale invariance in our theory leads to universal behaviour regardless of the energy scale.
 
-We have also shown that in such models, at least classically, there exist redundant choices of parameters that lead to the same physics. 
+We have also demonstrated that, at least classically, such models contain redundant parameter choices that yield the same physics. 
 
 The Python optimizer code, plotter code, and the Mathematica notebooks, which have been used to verify these calculations, have been regularly uploaded to the GitHub Repository, which is available as supplemental material. 
 
@@ -729,6 +677,7 @@ The Python optimizer code, plotter code, and the Mathematica notebooks, which ha
 \,\,
 \newpage
 
+%TC:ignore
 \appendix
 
 \section{Translating variables from Salvio to Barker} \label{Appendix A}
@@ -739,7 +688,7 @@ By starting with this action,
 \end{equation}
 Where $\mathcal{R}'$ is the Holst Invariant, a \textit{scale-invariant} quantity. The potential derived finally is: 
 \begin{equation}
-    U_S(\omega) = \frac{1}{4 c'} \left[ \frac{M_{p}^{2}}{4} \text{sinh}(\text{X}(\omega)) - \beta  \right]^2
+    U_S(\omega) = \frac{1}{4 c'} \left[ \frac{M_{p}^{2}}{4} \text{sinh}(\text{X}_S(\omega)) - \beta  \right]^2
 \end{equation}
 where
 \begin{equation}
@@ -747,7 +696,7 @@ where
 \end{equation}
 Barker \cite{barker2024poincaregaugetheoryconformal} derives a similar form of the potential starting with a scale-invariant scalar field. The resulting potential is:
 \begin{equation}
-    U_B(\varphi) = \frac{\mu^2 \phi_{0}^{4}}{2} \left[ \frac{\sigma}{2} + \sqrt{\nu - \frac{\sigma^2}{4}} \text{sinh}\left( \text{X}'(\varphi) \right)  \right]^2
+    U_B(\varphi) = \frac{\mu^2 \phi_{0}^{4}}{2} \left[ \frac{\sigma}{2} + \sqrt{\nu - \frac{\sigma^2}{4}} \text{sinh}\left( \text{X}_B(\varphi) \right)  \right]^2
 \end{equation}
 where
 \begin{equation}
@@ -895,6 +844,56 @@ In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\la
 \end{align}.
 
 This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations \ref{Starting Action}, \ref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
+
+
+\section{A Primer on Inflaton}\label{The need for Inflation}
+
+\subsection{Horizon Problem} \label{Horizon Problem}
+In this section, we will show that given the standard assumed expansion rate in the Big Bang model, we cannot satisfactorily explain the near-perfect uniformity of the CMB. This is because, given the rate of expansion, there is no way for distant regions of the CMB to have once been causally connected.
+Given the Friedmann Equations and defining the Hubble constant $H = \frac{\dot{a}}{a}$,
+\begin{align}    
+    \ddot{a} &= -\frac{4\pi G}{3} (\rho + 3p)a \label{Friedmann Eqn 1} \\
+    H^2 + \frac{k}{a^2} &= \frac{8 \pi G}{3} \rho \label{Friedmann Eqn 2} \\
+    \dot{\rho} &= -3(\rho + p)H \label{Friedmann Eqn 3}
+\end{align}
+From the continuity equation \ref{Friedmann Eqn 3}, we have:
+\begin{equation} \label{4}
+    \frac{\mathrm{d}  \ln(\rho)}{\mathrm{d} \ln(a)} = -3(1+w)
+\end{equation}
+Where, $w = \frac{p}{\rho}$. We can solve this equation to get $\rho \propto a^{-3(1+w)}$. In combination with the Friedmann equation \ref{Friedmann Eqn 2} for a flat universe $k = 0$, we get the scale factor $a$ as a function of time $a(t)$.
+\begin{equation}    \label{5}
+    a(t) = \begin{cases}
+        t^{2/3(1+w)} & w \neq -1 \\
+        e^{Ht} & w = -1
+    \end{cases}
+\end{equation}
+Now, we can define the comoving horizon ($\tau$) as the causal horizon or the maximum distance a light ray can travel between times 0 and $t$.
+\begin{equation}    \label{6}
+    \tau \equiv \int_{0}^{t} \frac{\mathrm{d} t'}{a(t')} = \int_{0}^{a} \frac{\mathrm{d}a}{H a^2} = \int_{0}^{a} \mathrm{d} \ln(a) \frac{1}{aH}
+\end{equation}
+Therefore, for a conventional Big Bang model, the causal horizon $\tau$ for a universe with $w \geq 0$ increases with time. This means that the fraction of the universe in contact with each other increases with time.
+\begin{equation}
+    \tau \propto a^{1/2(1+3w)} \implies \tau = \begin{cases}
+        a & \text{Radiation Dominated} \\
+        a^{1/2} & \text{Matter Dominated}
+    \end{cases}
+\end{equation}
+The comoving horizon increasing with time implies that comoving scales (comoving scale is not the same as the physical scale) entering the cosmic horizon now were not in causal contact during the CMB decoupling! However, the anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree.
+
+\subsection{Flatness Problem} \label{Flatness Problem}
+Despite the presence of mass and energy in our universe, the large-scale structure of our spacetime is approximately Euclidean (flat). To see whether this is a stable equilibrium, we return to Friedmann equation \ref{Friedmann Eqn 2} and defining $\rho_{\text{crit}} = 3H^2(a)$ and $\Omega(a) = \frac{\rho(a)}{\rho_{\text{crit}}}$, we get
+\begin{equation}
+    1 - \Omega(a) = \frac{-k}{(aH)^2}
+\end{equation}
+Differentiating this equation and using the Friedmann equations, we get,
+\begin{equation}
+    \frac{\mathrm{d}\Omega}{\mathrm{d} \ln a} = (1+3w)\Omega(\Omega-1)
+\end{equation}
+Looking at this, we can see that $\Omega = 1  \implies \rho = \rho_{crit}$ is an unstable equilibrium and slight perturbations can make the universe not flat, i.e., $k \neq 0$. This means that in the standard big bang model, matter density has to be extremely fine-tuned to fit the requirement $\rho = \rho_{crit}$, which seems unlikely.
+
+The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. The next section shows how this theory solves the two problems stated above.
+
+%TC:endignore
 
 \newpage
 \,
