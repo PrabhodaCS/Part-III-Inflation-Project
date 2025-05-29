@@ -1,6 +1,8 @@
 %%====================%%
 %%  Part III Project  %%
 %%====================%%
+% 1. Save the original kernel definition
+\let\latexaddtocontents\addtocontents
 
 \documentclass[aps,prd,reprint,preprintnumbers,showpacs,floatfix,nofootinbib,superscript address]{revtex4-2}
 \usepackage[utf8]{inputenc}
@@ -21,7 +23,6 @@
 \usepackage{xstring}
 \usepackage{etoolbox}
 \usepackage{notoccite}
-\usepackage{natbib}
 \usepackage{mathrsfs}
 \usepackage{lineno}
 \usepackage{tensor}
@@ -47,8 +48,6 @@
      pdftitle={Master's Thesis - Prabhoda Chandra Sarjapur},%
     pdfpagemode=FullScreen,%
      }%
-\usepackage[capitalize]{cleveref} %always load this last in preamble
-
 \newcommand{\signature}[2][8em]{%
   \begin{tabular}[t]{ p{#1} p{#1} }
     \strut\raggedleft
@@ -58,6 +57,14 @@
   \end{tabular}
 }
 
+
+\makeatletter
+  \let\addtocontents\latexaddtocontents
+\makeatother
+
+% 4. Now load biblatex as usual
+\usepackage[backend=biber,style=vancouver]{biblatex}
+
 \usepackage[style=nejm, 
 citestyle=numeric-comp,
 sorting=none]{biblatex}
@@ -65,6 +72,17 @@ sorting=none]{biblatex}
 
 
 \nocite{*}
+
+\newcommand{\wb}[1]{{\color[RGB]{255,0,0}{\textbf{\textit{[WB: #1]}}}}}
+\newcommand{\pcs}[1]{{\color[RGB]{0,100,0}{\textbf{\textit{[PCS: #1]}}}}}
+
+\usepackage{titlesec}
+\newrobustcmd{\pea}[1]{\emph{#1}\textbf{.\ \ \ ---}}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\emph\theparagraph}{1em}{\pea}
+\titleformat{\section}[block]{\normalfont\bfseries\centering}{\MakeUppercase\thesection}{1em}{\MakeUppercase}
+\makeatother
+
+\usepackage[capitalize]{cleveref} %always load this last in preamble
 
 \begin{document}
 \title{Constraints on inflation from scale-invariant gravity}
@@ -77,79 +95,131 @@ The theory of inflation attempts to resolve the need for extreme fine-tuning of 
 \end{abstract}
 
 \begin{comment}
-    The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \ref{The need for Inflation}).
+    The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \cref{The need for Inflation}).
 \end{comment}
 
 \maketitle
 \section{INTRODUCTION} \label{Introduction}
-\indent Inflationary theory was originally developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
-\cite{PhysRevLett.48.1220}, and Starobinsky \cite{STAROBINSKY198099}, and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, there existed a homogeneous, isotropic field pervading through spacetime such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFEs) for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles.
+\begin{comment}
+    \paragraph*{Here is a paragraph} \wb{I've found this modified paragraph heading useful for breaking up ideas.}
 
-While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance.
+    \wb{capitalize Universe if it is meant to be our's}
+    
+    \pcs{Implemented}
+\end{comment}
 
-Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, which had approximately a de Sitter metric
+\paragraph*{1. Inflationary Theory} Inflationary theory was originally developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
+\cite{PhysRevLett.48.1220}, and Starobinsky \cite{STAROBINSKY198099}, and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the Universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, a homogeneous, isotropic field pervaded spacetime, such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFEs) \cite{einstein1915feldgleichungen} for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles \cite{Mukhanov:2005sc}.
+
+While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry \cite{weyl_reine_1918}) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance \cite{francesco_conformal_1997}.
+
+\begin{comment}
+\wb{This is a good opening. However, you should aim for an average reference density of one per two sentences or higher.}
+\end{comment}
+
+\paragraph*{2. The Appeal of Scale Invariance} Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck \cite{collaboration_planck_2020, collaboration_bicep_2021} and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, which had approximately a de Sitter metric
 \begin{equation} \label{deSitter Conformal}
     \text{d}s^2 = \frac{1}{H^2\eta^2}(\text{d}\eta^2 - \text{d}\Vec{x}^2)
 \end{equation} 
-remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any Effective Field Theory (EFT) defined on this background must be scale invariant too, perhaps even locally. This is in line with how EFTs defined on Minkowski space are expected to obey the symmetries of the Lorentz group $SO^+(1,3)$. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant.
+remains unchanged for a scale change corresponding to $\Vec{x} \rightarrow \lambda \Vec{x} \,\, \text{and} \,\, \eta \rightarrow \lambda \eta$ (where $\text{d}\eta =  \frac{\text{d}t'}{a(t')}$ is the conformal time), it therefore stands to reason that any Effective Field Theory (EFT) defined on this background must be scale invariant too, perhaps even locally. This is in line with how EFTs defined on Minkowski space are expected to obey the symmetries of the Lorentz group $SO^+(1,3)$. Much of the Starobinsky potential's success also arises from including the $R^2$ term in the Lagrangian, given $[R^2] = 4$ in natural units, its coefficient is naturally dimensionless and therefore invariant under change of scale $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu}$, for $\Omega$ constant \cite{Cecchini_2024}.
+\begin{comment}
+        \wb{
+    The near scale invariance in the primordial PS arises because the background conditions under which quantum fluctuations are generated are almost the same for all scales. So I think this is one of the outcomes of the slow-roll paradigm itself. What do you mean when you talk about the conformal symmetry of dS? I guess dS is conformally flat: is this what you mean?} 
+\end{comment}
+\begin{comment}
+    \wb{So I think I see what you mean, I think it is OK.}
+\pcs{I think these concerns have been addressed?}
+    \wb{You should define it.}\pcs{Explained Holst}
+\end{comment}
 
-Another approach to inflationary cosmology is to consider metric-affine theories. One approach to this is to include the Holst invariant, a quantity that is already scale-invariant, in the Lagrangian. This has been explored in \cite{Salvio_2022, pradisi2022equivalence}. The potential achieved in \cite{Salvio_2022} is identical to the one obtained through demanding scale invariance in \cite{barker2024poincaregaugetheoryconformal}, and the translation between the variables in the two theories will be given in Appendix \ref{Appendix A}. Finally, when considering the classical action of the Standard Model, dropping the Higgs mass terms, one finds that it too is classically scale-invariant and can be extended to be conformally invariant \cite{bardeen1995naturalness, bars2014local}.
+An alternative approach to the study of inflationary cosmology involves the examination of metric-affine theories, wherein the metric and the connection are treated as separate entities to be varied within the Lagrangian framework. In these theories, the metricity property need not be obeyed ($\nabla g \neq 0$), which implies that the connection is distinct from the Levi-Civita connection. One approach to this is to include the Holst invariant ($\mathcal{R}' \equiv \epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}/\sqrt{-g}$, which is zero if the connection is Levi-Civita), a quantity that is inherently scale-invariant, in the Lagrangian. This has been explored in \cite{Salvio_2022, pradisi2022equivalence}. The resulting potential shown in \cite{Salvio_2022} is congruent with the one derived through the imposition of scale invariance as discussed in \cite{barker2024poincaregaugetheoryconformal}, and the translation between the variables and parameters existing in the two respective theories will be elucidated in \cref{Appendix A}. Furthermore, upon consideration of the classical action of the Standard Model (SM), dropping the Higgs mass terms, or by introducing a dilaton field \footnote{A field $\phi(x)$ with mass dimension introduced such that it absorbs the scale transformation. Then the gauge is fixed to one where the field is no longer dynamical $\phi(x) \rightarrow \phi_0$. However, a criticism of these models is the ad hoc introduction of the mass scale $\phi_0$ \label{Footnote Criticism}}, one finds that it is also classically scale invariant and can be extended to be conformally invariant \cite{bardeen1995naturalness, bars2014local}. 
+
+Research has also been conducted on the role of the Higgs field in giving rise to an inflationary scenario via a non-minimal coupling of the Higgs field and the Ricci scalar in the action ($\mathcal{L} \propto \xi H^\dag H R$) \cite{bezrukov_standard_2008, hawking_development_1982}. However, a critique of this approach posits that the applicability of this model as described in $\xi \sim 10^4$ requires that we depart from the EFT regime of the SM \cite{barbon_naturalness_2009}. There exist other criticisms of this proposal, such as unitarity violation \cite{lerner_unitarity-violation_2012}.
+
+\begin{comment}
+    One can retain the mass term of Higgs in the SM if we also introduce a dilaton field $\phi$ (this field would be a $\text{SU}(2) \times \text{U}(1)$ singlet) to absorb the scale transformations. With this, we can write the Higgs potential as $V(H, \phi) = \frac{\lambda}{4}(H^\dag H - \alpha^2 \phi^2)^2 + \frac{\lambda'}{4}\phi^4$
+    
+    \wb{Perhaps a short discussion of Higgs inflation?} 
+    \pcs{Added}
+\end{comment}
+
 
 These investigations may hint towards a fundamental principle out of which these arise as limits - \textit{the inflaton potential arising} due to the gauging of this scale invariance, i.e., Weyl symmetry.
 
 \begin{comment}
-     Section \ref{The need for Inflation} explains some of the problems with the naive big bang model. 
+     Section \cref{The need for Inflation} explains some of the problems with the naive big bang model. 
+     
+     \wb{Double-hyphenate (--) for joining names.}
 \end{comment}
 
-This paper is organized as follows: Section \ref{Inflation} elucidates how the introduction of a scalar field that violates the strong energy condition helps us resolve the horizon and flatness problems. It further derives the necessary formulae and analytical tools required to examine the particular model that will be presented in sections \ref{Scale Invariant Gravity} and \ref{Solution}. In section \ref{Scale Invariant Gravity}, we construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The primary objective of this section is to reformulate the action into a more conventional structure, one consisting of an Einstein-Hilbert term and an inflaton action term. Finally, in section \ref{Solution}, we conduct a thorough analysis of the inflaton action and the behavior of the resultant potential it predicts. Additionally, we will align the parameters with empirical observations, demonstrating a satisfactory correspondence.
-
+\paragraph*{3. Structure of the Thesis} This paper is organized as follows: Section \cref{Inflation} elucidates how the introduction of a scalar field that violates the strong energy condition helps us resolve the horizon and flatness problems. It further derives the necessary formulae and analytical tools required to examine the particular model that will be presented in sections \cref{Scale Invariant Gravity} and \cref{Solution}. In \cref{Scale Invariant Gravity}, we construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The primary objective of this section is to reformulate the action into a more conventional structure, one consisting of an Einstein--Hilbert term and an inflaton action term. Finally, in \cref{Solution}, we conduct a thorough analysis of the inflaton action and the behavior of the resultant potential it predicts. Additionally, we will align the parameters with empirical observations, demonstrating a satisfactory correspondence. We shall work in the mostly minus convention in this paper.
 \section{Inflation}\label{Inflation}
-The standard Hot Big Bang model successfully describes nucleosynthesis and the CMB. However, there are two fine-tuning problems with this theory (For more details, refer to Appendix \ref{The need for Inflation}): 
-\begin{itemize}
-    \item Horizon Problem: The anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree as they would have been causally disconnected during recombination.
-    \item Flatness Problem: The observed energy density of the universe $\Omega$ is extremely close to the critical density $1$ for a flat universe. However, the critical value of $\Omega = 1$ is an unstable fixed point. It requires extreme fine-tuning of the energy density during the early universe to the order of 1 part in $10^{61}$ \cite{baumann2012tasilecturesinflation}.
-\end{itemize}
-Both of these are elegantly resolved if we assume that the early universe underwent a brief phase of accelerated (near-exponential) expansion, referred to as inflation, during which the comoving Hubble radius $(aH)^{-1}$ shrank dramatically.
+The standard Hot Big Bang model successfully describes nucleosynthesis and the CMB. However, there are two fine-tuning problems with this theory, which are the horizon and the flatness problems (For more details, see \cref{The need for Inflation}): 
+\begin{comment}
+\begin{description}
+    \item[Horizon Problem] The anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree as they would have been causally disconnected during recombination.
+	\item[Flatness Problem] The observed energy density of the universe $\Omega$ is extremely close to the critical density of unity for a flat universe. However, the critical value of $\Omega = 1$ is an unstable fixed point. It requires extreme fine-tuning of the energy density during the early universe to the order of 1 part in $10^{61}$ \cite{baumann2012tasilecturesinflation}.
+\end{description}
 
-A decreasing comoving horizon directly implies a period of accelerated expansion, as seen by taking its derivative
+\wb{unity? Better to spell out numbers less than ten in general.}
+    	\item :\wb{Use the `description' environment.} 
+\end{comment}
+
+Both of these are elegantly resolved if we assume that the early universe underwent a brief phase of accelerated (near-exponential) expansion, referred to as inflation, during which the comoving Hubble radius $(aH)^{-1}$ shrank dramatically. A decreasing comoving horizon directly implies a period of accelerated expansion, as seen by taking its derivative
 \begin{equation}
     \frac{\mathrm{d}}{\mathrm{d}t} \frac{1}{aH} <  0 \implies \frac{-\ddot{a}}{(aH)^2} < 0 \implies \ddot{a} > 0
 \end{equation}
-Given that $\ddot{a} > 0$ and the Friedmann equations (\ref{Friedmann Eqn 1}), we see that $p < -\frac{\rho}{3} \implies w < - \frac{1}{3}$. 
+Given that $\ddot{a} > 0$ and the Friedmann equations (\cref{Friedmann Eqn 1}), we see that $p < -\frac{\rho}{3} \implies w < - \frac{1}{3}$. 
 
 In the following section, we shall describe how such a negative pressure source can arise through the introduction of a scalar field with certain properties.
-
 \subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
-The simplest models of inflation involve a scalar field $\varphi$ (The Inflaton Field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein-Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
+The simplest models of inflation involve a scalar field $\varphi$ (the inflaton field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein--Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
+\begin{comment}
+    \wb{In general, you don't have to capitalize important things, even acronyms.}
+    
+    \wb{I'd usually put this right at the end of my introduction, after the `in this paper' paragaph.}).
+\end{comment}
 
-In this section, we shall consider a scalar field in the presence of gravity and derive the equations of motion (EOM) and relevant parameters for such a scalar field. This will provide us with the necessary groundwork for what is to come later in our model (We shall work in the mostly minus convention).
+In this section, we shall consider a scalar field in the presence of gravity and derive the equations of motion (EOM) and relevant quantities. This will provide us with the necessary groundwork for what is to come later in our model.
 \begin{equation}\label{Start of derivation}
     S = \int \mathrm{d}^4 x \sqrt{-g} \left[-\frac{M_p^2}{2}R+ \frac{g^{\mu \nu}}{2} \partial_{\mu}\varphi \partial_{\nu} \varphi  - V(\varphi) \right]\
 \end{equation}
-Employing the techniques outlined in Appendix \ref{3+1 decomposition of spacetime}, it is now possible to split the action integral into spatial and temporal components, thereby rendering the Cauchy problem well-defined. Under certain spacetime conditions, it has been demonstrated that, with given initial conditions, the fields and the spacelike hypersurface exhibit a unique evolution \cite{choquet-bruhat_global_1969}. Consequently, we can write the action \ref{Start of derivation} as,
-\[
-    S = \int_{t_1}^{t_2} \mathrm{d}t  \int_\mathcal{V}  \alpha a^3(t) \bigg[-\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 - \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \bigg]    
-\]
-Since during the inflationary period, we assume an approximately de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \alpha^2 \text{d}t^2 - \gamma_{ij}\text{d}x^i\text{d}x^j$ (derived from the full general metric in the appendix \ref{3+1 decomposition of spacetime} equation \ref{General split Metric}. Using the spatially homogeneous and isotropic nature of the FLRW, we can set $\beta^i = 0$) making $\sqrt{-g} = \alpha a^3(t) \sqrt{\gamma}$. We also assume that the scalar field is homogeneous and, therefore, only varies with time, allowing us to drop the gradient term. Using the form of the Ricci scalar in the FLRW metric, we get:
+\begin{comment}
+    Employing the techniques outlined in Appendix \cref{3+1 decomposition of spacetime}, it is now possible to split the action integral into spatial and temporal components, thereby rendering the Cauchy problem well-defined.\wb{The theory should have a good Cauchy problem without needing to split anything! Not sure what this means, maybe remove it?} 
+
+    \wb{cref always better than ref.} 
+
+    \wb{Maybe line break this one inside aligned and equation?}
+\end{comment}
+Under certain spacetime conditions, it has been demonstrated that, with given initial conditions, the fields and the spacelike hypersurface exhibit a unique evolution \cite{choquet-bruhat_global_1969}. Consequently, we can write the action \cref{Start of derivation} as
+\begin{equation}
+    \begin{aligned}
+        S = \int_{t_1}^{t_2} \mathrm{d}t  \int_\mathcal{V}  \alpha a^3(t) \bigg[&-\frac{M_p^2}{2}R+  \frac{1}{2} \dot{\varphi}^2 \nonumber \\
+        &- \frac{1}{2} \gamma^{ij}\partial_{i}\varphi \partial_{j} \varphi  - V(\varphi) \bigg]  
+    \end{aligned}
+\end{equation}
+Since during the inflationary period, we assume an approximately de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \alpha^2 \text{d}t^2 - \gamma_{ij}\text{d}x^i\text{d}x^j$ (derived from the full general metric in the \cref{3+1 decomposition of spacetime} \cref{General split Metric}. Using the spatially homogeneous and isotropic nature of the FLRW, we can set $\beta^i = 0$) making $\sqrt{-g} = \alpha a^3(t) \sqrt{\gamma}$. We also assume that the scalar field is homogeneous and, therefore, only varies with time, allowing us to drop the gradient term. Using the form of the Ricci scalar in the FLRW metric, we get:
 \begin{align}
     S = \mathcal{V} \int_{t_1}^{t_2} \mathrm{d}t \big[-3M_p^2 \left( \frac{- a \dot{a}^2}{\alpha} + \alpha ak\right)+  \frac{ a^3(t)}{2\alpha} \dot{\varphi}^2 \nonumber \\
     - \alpha a^3(t) V(\varphi) \big]    
 \end{align}
-Using the Euler-Lagrange Equations for $\alpha, a(t) \, \text{and} \, \varphi$ respectively, gives us the EOM:
-\begin{eqnarray}
-  \left(\frac{\dot a}{\alpha\,a}\right)^2 + \frac{k}{a^2}
-  &=& \frac{1}{3M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 + V(\varphi)\Bigr),
-  \nonumber\\
-  \frac{2\,\ddot a}{\alpha^2\,a}
-  + \left(\frac{\dot a}{\alpha\,a}\right)^2
-  + \frac{k}{a^2}
-  &=& -\,\frac{1}{M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 - V(\varphi)\Bigr),
-  \nonumber\\
-  \ddot\varphi + 3\!\left(\frac{\dot a}{a}\right)\dot\varphi
-  + V_{,\varphi}
-  &=& 0. \nonumber
-\end{eqnarray}
-We see that the EOM implies $\alpha$ to be an arbitrary constant, which we can choose to be unity with no loss in generality. Writing them more suggestively, we get:
+Using the Euler-Lagrange Equations for $\alpha, a(t) \, \text{and} \, \varphi$ respectively, gives us the EOM
+\begin{subequations}
+    \begin{align}
+          \left(\frac{\dot a}{\alpha\,a}\right)^2 + \frac{k}{a^2}
+          &= \frac{1}{3M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 + V(\varphi)\Bigr),
+          \nonumber\\
+          \frac{2\,\ddot a}{\alpha^2\,a}
+          + \left(\frac{\dot a}{\alpha\,a}\right)^2
+          + \frac{k}{a^2}
+          &= -\,\frac{1}{M_p^2}\Bigl(\tfrac12\,\alpha^{-2}\dot\varphi^2 - V(\varphi)\Bigr),
+          \nonumber\\
+          \ddot\varphi + 3\!\left(\frac{\dot a}{a}\right)\dot\varphi
+          + V_{,\varphi}
+          &= 0. \nonumber
+    \end{align}
+\end{subequations}
+We see that the EOM implies $\alpha$ to be an arbitrary constant, which we can choose to be unity with no loss in generality. Writing them more suggestively
 \begin{align}
     H^2 + \frac{k}{a^2} &= \frac{1}{3M_p^2} \bigg( \frac{\dot{\varphi}^2}{2} + V(\varphi) \bigg) \label{First 1} \\
     \frac{ \ddot{a}}{a}  &=  \frac{1}{3M_p^2}\left(\dot{\varphi}^2 - V(\varphi) \right) \label{First 2} \\
@@ -157,31 +227,46 @@ We see that the EOM implies $\alpha$ to be an arbitrary constant, which we can c
 \end{align}
 
 \begin{comment}
+\wb{I'd recommend not using eqnarray ever. Align inside subequations would do well here.}
+
     \begin{equation}
         g_{\mu \nu} \text{d}x^\mu\text{d}x^\nu = -\alpha^2 \text{d}t^2 + a^2(t)\delta_{ij}\text{d}x^i\text{d}x^j
     \end{equation}
     This gives us $\sqrt{-g} = \alpha a^3(t)$
-    We can now define a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. This vector field can now be split into a spatial part (tangent to the hypersurface) and a normal part using the induced metric and the normal vector as such    
+    We can now define a vector field on $\mathcal{M}_4$, $\bm{t}$, normal to $\Sigma_t$, such that under its flow, points on $\Sigma_t$ flow to the neighbouring hypersurface $\Sigma_{t+\delta t}$. This vector field can now be split into a spatial part (tangent to the hypersurface) and a normal part using the induced metric and the normal vector as such 
+
+    \wb{Not sure you quote the Friedmann equations yet, so you'd better explain that these are the pressure and density.}
 \end{comment}
-The first two equations \ref{First 1}, \ref{First 2}, correspond to the first two Friedmann equations, respectively, if we make the following identification:
+The first two equations, \cref{First 1} and \cref{First 2}, correspond to the first two Friedmann equations, respectively, if we make the following identification of the pressure $p$ and density $\rho$ of the scalar field:
 \begin{align}   \label{presure and density}
     \rho &= \frac{1}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
     p &= \frac{1}{2} \dot{\varphi}^2 - V(\varphi)
 \end{align}
-(These can also be derived from calculating the energy momentum tensor $T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}}$).
-The third equation \ref{KGEOM} is the scalar field equation of motion for a spin-zero particle in the FLRW metric with the potential V. 
+The third \cref{KGEOM} is the scalar field equation of motion for a spin-zero particle in the FLRW metric with the potential $V(\varphi)$. 
 \begin{comment}
+(These can also be derived from calculating the energy momentum tensor $T_{\mu\nu} = \frac{2}{\sqrt{-g}} \frac{\delta S}{\delta  g^{\mu \nu}}$)
+
+\wb{Inline math.}
     Since during the inflationary period, we assume a de Sitter space (minus the perturbations), the FLRW metric is given by $g_{\mu \nu}= \text{diag}[1,-a^2(t),-a^2(t),-a^2(t)]$ making $\sqrt{-g} = a^3(t)$. We also assume that the scalar field is homogeneous and, therefore, only varies with time, allowing us to drop the gradient term. The action then becomes \cite{Baumann_2022}: 
+
+    \wb{Important enough to need a displayed equation.}
+
+    \wb{All this feels like it should be in a footnote.}
 \end{comment}
- To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the first Friedmann equation (The first Friedmann equation is generally given by equation \ref{First 1}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe ($k=0$), we get:
+
+ To derive the EOM of the inflaton field with respect to the e-folding time $N$ defined as,
+ \begin{equation}
+     \text{d}N =  H \text{d}t
+ \end{equation}
+ We use the first Friedmann equation\footnote{The first Friedmann equation is generally given by \cref{First 1}, which includes a term proportional to $k$. However, a sufficiently long period of inflation drives the curvature term $k/a$ to be negligible. Furthermore, current observational data are highly consistent with a spatially flat universe ($k=0$)}, we get
 \begin{equation}    \label{Friedmann 3}
     3 M_p^2H^2 = \frac{1}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
-Upon differentiating this expression with respect to time and using \ref{KGEOM}, we get:
+Upon differentiating this expression with respect to time and using \cref{KGEOM}, we get:
 \begin{equation} \label{H vs phi}
     2 M_p^2 \dot{H} = -   \dot{\varphi}^2
 \end{equation}
-Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{KGEOM} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
+Now that we have all the relevant parameters as functions of the field, we can look at \cref{KGEOM} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N.
 \begin{widetext}
 \begin{subequations}
 \begin{align}\label{phi vs N}
@@ -189,18 +274,25 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{align}
 \end{subequations}
 \end{widetext}
+We can now use \cref{phi vs N} to determine the evolution of the inflaton field as a function of the e-folding time. We usually require inflation to occur for approximately 60 e-folds. We can verify this is the case for our model using \cref{phi vs N} and the slow roll parameters that are defined in the next section.
 
-\subsection{Slow Roll Inflation} \label{Slow Roll Inflation}
-Looking at equation \ref{First 2}, we can see that accelerated expansion ($\ddot{a} > 0$) requires $\dot{\varphi}^2 \ll |V(\varphi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will only be satisfied for a long period if we require $|\ddot{\varphi}| \ll 3H\dot{\varphi} \sim |V,_{\varphi}|$. To formalize this, start from equation \ref{H vs phi}, ($\dot{\varphi}  = -  2 M_p^2 H'$), where we have denoted $dH/d\varphi = H'$ and using it in Equation \ref{Friedmann 3}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing, salopek1990nonlinear} for inflation:
+\paragraph*{Slow Roll Inflation}
+\begin{comment}
+\wb{Best not to leave a section on an equation, but add a short discussion afterwards, if only one line.}
+\wb{Again, cref everywhere instead of ref.}
+
+
+Looking at \cref{First 2}, we can see that accelerated expansion ($\ddot{a} > 0$) requires $\dot{\varphi}^2 \ll |V(\varphi)|$. This period is called slow roll because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill. The accelerated expansion will only be satisfied for a long period if we require $|\ddot{\varphi}| \ll 3H\dot{\varphi} \sim |V,_{\varphi}|$. To formalize this, start from \cref{H vs phi}, ($\dot{\varphi}  = -  2 M_p^2 H'$), where we have denoted $dH/d\varphi = H'$ and using it in \cref{Friedmann 3}, we get the Hamilton-Jacobi Equation \cite{copeland1993reconstructing, salopek1990nonlinear} for inflation
 \begin{equation}    \label{Hamilton-Jacobi}
     H'^2 - \frac{3}{2M_p^2}H^2 = - \frac{V(\varphi)}{2M_p^4} 
 \end{equation}
-While these equations are non-linear and impossible to solve except for power-law potentials and other simple models, we can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in equation \ref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$. Dropping the term $\ddot{\varphi}$ in Equation \ref{KGEOM}, $\dot{\varphi} \approx -\frac{V,_\varphi}{3H}$, we can write the Hubble Slow Roll parameter in terms of the potential.
+We can see that the slow-roll approximation holds when the term $\dot{\varphi}^2 \ll V(\varphi)$ in \cref{Friedmann 3} can be ignored (leading to $V(\varphi) \approx 3M_p^2H^2$). This can be quantified with the parameter $\epsilon_H$. Dropping the term $\ddot{\varphi}$ in \cref{KGEOM}, $\dot{\varphi} \approx -\frac{V,_\varphi}{3H}$, we can write the Hubble Slow Roll parameter in terms of the potential
 \begin{equation}
     \epsilon_H = - \left(\frac{\dot{H}}{H^2} \right) \approx \frac{M_p^2}{2} \left(\frac{V,_\varphi}{V}\right)^2
 \end{equation}
-\begin{comment}
-    Using the equations \ref{H vs phi} and \ref{Hp vs phi}, the above equation can also be written as such:
+
+
+    Using the equations \cref{H vs phi} and \cref{Hp vs phi}, the above equation can also be written as such:
     \begin{equation} \label{26}
         \epsilon_H = -  \frac{\dot{H}}{H^2} = -  \left(\frac{1}{H}\frac{\text{d}H}{\text{d}N} \right)
     \end{equation}
@@ -209,129 +301,122 @@ While these equations are non-linear and impossible to solve except for power-la
         \eta_H = \frac{1}{\epsilon_H} \frac{\text{d}\epsilon_H}{\text{d}N}
     \end{equation}
     The requirement $\eta_H < 1$ can be seen as ensuring that inflation lasts for a long enough number of e-folds. We can also define a potential slow-roll parameter $\eta_V$ as such:
-\end{comment}
-To ensure that inflation lasts for a long enough time, we would require that the potential is flat for a long enough number of e-folds. We can quantify this with $\eta_V$
+
+To ensure that inflation lasts for a long enough time, we would require that the potential is flat for an appropriate number of e-folds. We can quantify this with $\eta_V$
 \begin{equation}
     \eta_V = M_p^2  \frac{V_{,,\varphi}}{V} 
 \end{equation}
 Therefore, we can now say that inflation occurs when the slow-roll conditions are satisfied, i.e., $\epsilon_V < 1$ and $|\eta_V|< 1$.
-\subsection{Inflationary Observables} \label{Inflationary Observables}
-Inflation is a robust theory not only because it solves the horizon and flatness problems (See Appendix \ref{Horizon Problem}, \ref{Flatness Problem} for more details), but it also makes predictions about the inhomogeneities in the early universe. These primordial density fluctuations are due to the inherent quantum nature of the inflaton field. 
-The fluctuations in the inflaton field $\delta\varphi$ cause different patches of spacetime to have different amounts of inflation as the field has not exited slow-roll in certain regions yet. 
+\end{comment}
 
-These fluctuations can be treated as perturbations around a background field ($\delta\varphi(t,\textbf{x}) = \varphi(t,\textbf{x}) - \Bar{\varphi}(t)$). However, as is known, by the Einstein Field Equations $\delta G_{\mu\nu} = \frac{1}{M_p^2}\delta T_{\mu \nu}$, perturbations in the matter density cause perturbations in the metric too. Therefore, we can expand the metric around it's background value similarly as $g_{\mu\nu}(t,\textbf{x}) = \Bar{g}_{\mu\nu}(t) + \delta g_{\mu\nu}(t,\textbf{x})$. Generally, these metric perturbations $\delta g_{\mu\nu}(t,\textbf{x})$ have 10 independent components, but these can be decomposed into scalar, vector, and tensor (SVT) perturbations \cite{liddle_cosmological_2000, malik_cosmological_2009}. Using conformal time and writing the background metric in the same form as equation \ref{deSitter Conformal}, we get the perturbation to the metric to be of the form:
-\begin{equation} \label{Perturbed metric}
-    \delta g_{\mu\nu}
-    = 
-    -a^2
-    \begin{pmatrix}
-        -2 \Phi & \partial_iB \\
-        \partial_iB & (1-2\Psi)\delta_{ij} + E_{ij} 
-    \end{pmatrix}
+Inflation proceeds when the kinetic energy of the scalar field is much smaller than the potential energy, $\dot{\varphi}^2 \ll V(\varphi) \implies \ddot{a} > 0$, and the acceleration is negligible, $\abs{\ddot{\varphi}} \ll 3H\dot{\varphi}$. Under these conditions, the equations \cref{KGEOM} and \cref{Friedmann 3} reduce to
+\begin{equation}
+    3H\dot{\varphi} + V_{,\varphi} \approx 0 \,\,\,\,;\,\,\,\, 3M_p^2H^2 \approx V(\varphi)
 \end{equation}
-Where $E_{ij} = 2\partial_i\partial_j E + h_{ij}$. There are 4 independent contributions $(\Phi, B, \Psi, E)$ which behave as scalars under transformation of frames and the transverse, traceless ($h_i^i = \partial^ih_{ij} = 0$), and symmetric tensor contribution $h_{ij}$ to the perturbed metric. We have neglected terms corresponding to the vector perturbations as they are not created by inflation, and as they also decay with the expansion of the universe. The reason we would prefer to split the metric perturbation into these three types is that at linear order, the Fourier modes decouple, and we can analyse them separately. 
+Using this, we can define the slow-roll parameters (dubbed as such because when this condition is satisfied, it corresponds to the scalar field slowly rolling down its potential hill) as:
+\begin{equation}
+    \epsilon_V \equiv \frac{M_p^2}{2} \left(\frac{V_{,\varphi}}{V} \right)^2 \,\,\,\,;\,\,\,\, \eta_V \equiv M_p \frac{V_{,\varphi \varphi}}{V} 
+\end{equation}
+Therefore, we can now say that inflation occurs when the slow-roll conditions are satisfied, i.e., $\epsilon_V < 1$ and $|\eta_V|< 1$.
 
-However, with a change in coordinates, while the tensor contributions remain the same, the scalar functions change. Therefore, by a suitable choice of coordinates, we could remove the inhomogeneities in the inflaton field $\delta \varphi(\textbf{x}',t') = 0$. To analyse these perturbations, it is important to introduce gauge-invariant quantities. An obvious choice would be to consider the intrinsic curvature of the spatial hypersurface ${}^{(3)}R$ (See Appendix \ref{3+1 decomposition of spacetime}). However, it is easier to work with a related quantity that makes no reference to the scale factor and is normalised. This quantity can therefore be defined as:
-\begin{equation} \label{comoving curvature perurbation}
-    \mathcal{R} \equiv 4 \frac{k^2}{a^2} {}^{(3)}R = \Psi - \frac{H}{\dot{\Bar{\varphi}}}\delta \varphi
-\end{equation}
-This is called the comoving curvature perturbation ($k$ here corresponds to the wavenumber of a Fourier mode). Another quantity of interest is the two polarization modes of the tensor perturbation $h_{ij}$, that is, $h \equiv h^+ , h^\times$, these are the gravitational waves generated due to inflation. The observables we can constrain from these two quantities are the scalar and tensor power spectra ($P_\mathcal{R}(k)$ and $P_h(k)$), respectively:
-\begin{align}
-    \langle \mathcal{R}_{\bm{k}} \mathcal{R}_{\bm{k}'} \rangle &= (2\pi)^3 \delta(\bm{k}+\bm{k}')P_\mathcal{R}(k) \\
-    \langle h_{\bm{k}} h_{\bm{k}'} \rangle &= (2\pi)^3 \delta(\bm{k}+\bm{k}')P_h(k)
-\end{align}
-Defining $\Delta_s^2 = \frac{k^3}{2\pi^2} P_\mathcal{R}(k)$ and $\Delta_t^2 = \frac{k^3}{\pi^2} P_h(k)$ (upon summing over the two polarizations, we lose a factor of 2 in the denominator in the definition of $\Delta_t^2$), we get the scale-dependence of the power spectrum, often called the scalar tilt as follows
+\paragraph*{Inflationary Observables} 
+Quantum fluctuations of the inflaton field $\varphi$ and the resulting perturbations in the metric generate scalar (curvature) and tensor (gravitational-wave) perturbations, characterized by spectra
 \begin{equation}
-    n_s - 1 \equiv \frac{\text{d} \ln \Delta_s^2}{\text{d} \ln k}
+    P_\mathcal{R}(k) \equiv \frac{k^3}{2\pi^2} \langle| \mathcal{R}_{\bm{k}}|^2 \rangle \,\,\,\,;\,\,\,\, P_h(k) \equiv \frac{k^3}{2\pi^2} \langle| h_{\bm{k}}|^2 \rangle
 \end{equation}
-and the tensor-to-scalar ratio, which is defined as the normalized value of the amplitude of the tensor fluctuations with respect to the amplitude of the scalar fluctuations:
+where $\mathcal{R}(k)$ is the comoving curvature perturbation and $h(k)$ the transverse-traceless metric modes (For more details, as to how these formulae come about, refer to \cref{Inflationary Observables}). One defines the scalar spectral index and tensor-to-scalar ratio by
 \begin{equation}
-    r \equiv \frac{\Delta_t^2(k)}{\Delta_s^2(k)}
+    n_s - 1 \equiv \frac{\text{d} \ln P_\mathcal{R}(k) }{\text{d} \ln k} \,\,\,\,;\,\,\,\, r \equiv \frac{P_h(k)}{P_\mathcal{R}(k)}
 \end{equation}
-The scalar tilt (also called the scalar spectral index) measures how the curvature perturbation spectrum scales with wavenumber $P_\mathcal{R}(k) = A_s\big(\frac{k}{k_*}\big)^{n_s-1}$, where $A_s$ is the amplitude of the scalar perturbation and $k_*$ is the pivot scale, the comoving wavenumber at which the the amplitude is defined. $n_s = 1$ corresponds to a scale-invariant spectrum (Harrison‑Zeldovich \cite{harrison_fluctuations_1970, zeldovich_hypothesis_1972, peebles_primeval_1970}). $n_s < 1$ implies that there is more power at smaller $k$ (larger scales) and $n_s > 1$ implies that there is more power at larger $k$ (smaller scales). 
+The scalar spectral index $n_s$, often referred to as the scalar tilt, measures how the curvature perturbation spectrum scales with wavenumber, that is, the scale-dependence of the power spectrum. The tensor-to-scalar ratio, $r$, is defined as the normalized value of the amplitude of the tensor fluctuations with respect to the amplitude of the scalar fluctuations.
 
-The latest Planck data \cite{collaboration_planck_2020} constrains these values to around $n_s = 0.9649 \pm 0.0042$, which strongly rules out the Harrison‑Zeldovich spectrum with a confidence of $8.4\sigma$. However, it still shows that the spectrum is  \textit{nearly} scale-invariant, with $P_\mathcal{R}(k) \propto k^{-0.0351}$. For $r$, the Planck data constrains the upper limit to $r_{0.002} < 0.056$ at the pivot scale $k_* =0.002 \text{Mpc}^{-1}$
+To leading order in slow roll, we can write these quantities as $n_s \approx 1 -6\epsilon_V +2\eta_V$, and  $r \approx 16 \epsilon_V$ at the horizon crossing scale $k = aH$ \cite{baumann2012tasilecturesinflation, liddle_cosmological_2000}.
 
-At leading order in slow-roll, the power=spectrum is related to the slow-roll parameters by \cite{liddle_cosmological_2000}:
-\begin{equation}
-    P_\mathcal{R}(k) \approx \frac{1}{24\pi^2 M_p^4} \frac{V}{\epsilon_V}
-\end{equation}
-Using the slow roll condition $\text{d}t = -(3H/V') \text{d}\varphi$, we find:
-\begin{equation}
-    \frac{\text{d}}{\text{d} \ln k} \epsilon_V = -M_p^2 \frac{V'}{V}\frac{\text{d}}{\text{d}\varphi}\epsilon_V = 2\epsilon_V\eta_V - 4\epsilon_V^2
-\end{equation}
-Putting this together, we get $n_s \approx 1 -6\epsilon_V +2\eta_V$, and similar analysis \cite{baumann2012tasilecturesinflation} gives us $r \approx 16 \epsilon_V$ at the horizon crossing scale $k = aH$.
+The latest Planck data \cite{collaboration_planck_2020} constrains these values to around $n_s = 0.9649 \pm 0.0042$. However, it still shows that the spectrum is  \textit{nearly} scale-invariant, with $P_\mathcal{R}(k) \propto k^{-0.0351}$. For $r$, the Planck data constrains the upper limit to $r_{0.002} < 0.056$ at the pivot scale $k_* =0.002 \text{Mpc}^{-1}$
 
 
 \section{Scale Invariant Gravity} \label{Scale Invariant Gravity}
-\begin{comment}
- Numerous formulations in the domain of inflationary physics incorporate terms that render the action scale invariant at elevated energy scales \cite{STAROBINSKY198099, karananas_geometrical_2016, Salvio_2022, Karananas:2025xcv, ferreira_inflation_2018, ferreira_inertial_2018, ferreira_weyl_2017, csaki_inflation_2014, rubio_emergent_2017}. Herein, such scale invariance is intrinsic and a localized attribute of spacetime at high energies, which is . This proposition draws from the arguments articulated in the paper \cite{barker2024poincaregaugetheoryconformal} regarding the motivation of an inflaton field through the principle of local scale invariance. In this paper, we will expand upon this . The theory of General Relativity (GR) is among humanity's most methodically consistent and rigorous scientific theories; numerous empirical tests have corroborated its validity thus far. Nevertheless, the prevailing consensus posits that GR is an effective field theory (EFT) relevant chiefly at low-energy regimes \cite{donoghue_general_1994, burgess_quantum_2004}. 
- 
- Efforts to achieve a ultraviolet (UV) completion of the theory frequently lead to a perturbative expansion that inadvertently introduces novel operators with additional parameters, thereby diminishing its predictive capacity. A compelling notion to explore is that some of the more unconventional phenomena observed in the universe's expansion, specifically inflation, might originate from the degrees of freedom within the UV theory that have been integrated out. 
- 
- Specifically, we assert that General Relativity, in its current understanding—with the Einstein-Hilbert Lagrangian being proportional to the Ricci scalar—represents a low-energy approximation of a more quintessential locally scale-invariant theory governing high-energy physics. This hypothesis necessitates the introduction of a scalar field exhibiting the expected characteristics of an inflaton field. In the subsequent discussion, we deduce the most general conformally invariant action featuring non-negligible couplings between the inflaton field and gravity. 
- We abstain from considering terms proportional to the curvature squared, even though such an extension of the model is completely permissible. It can readily be demonstrated that this leads to a two-field inflaton model. Nonetheless, we discern that the ensuing model—derived herein—is notably intriguing and aligns closely with anticipated outcomes from an inflationary model. We commence our exploration of this possibility with a spin-0 scalar field model that converges to the Klein-Gordon equation in the lowest order of perturbation.
-\end{comment}
 Thus far, these arguments solely impose constraints on the scalar field's potential $\varphi$ but make no attempt to motivate the form of the potential or the action principle for the field from first principles. Consequently, we see that the inflationary paradigm encompasses a myriad of theories aimed at elucidating the mechanism underpinning the epoch of exponential expansion that transpired when the universe was approximately $\geq 10^{-36}s$ old \cite{Mukhanov:2005sc, Baumann_2022}.
 
-The objective of this paper is to contend that, given the arguments presented in the introduction \ref{Introduction}, local scale invariance emerges as a natural assumption from which to derive an inflaton action. Many actions written down in inflationary physics do include terms that tend to make the action scale invariant at high energies \cite{STAROBINSKY198099, karananas_geometrical_2016, Salvio_2022, Karananas:2025xcv, ferreira_inflation_2018, ferreira_inertial_2018, ferreira_weyl_2017, csaki_inflation_2014, rubio_emergent_2017}. We propose here that this scale invariance is fundamental and a local property of spacetime at high energies that is broken. This is based on the arguments made in the paper \cite{barker2024poincaregaugetheoryconformal} about motivating an inflaton field through the principle of local scale invariance. We will follow up on the proposition in this paper and scrutinize the theory with the incorporation of gravitational effects.
+The objective of this paper is to contend that, given the arguments presented in the introduction \cref{Introduction}, local scale invariance emerges as a natural assumption from which to derive an inflaton action. Many actions written down in inflationary physics do include terms that tend to make the action scale invariant at high energies \cite{STAROBINSKY198099, karananas_geometrical_2016, Salvio_2022, Karananas:2025xcv, ferreira_inflation_2018, ferreira_inertial_2018, ferreira_weyl_2017, csaki_inflation_2014, rubio_emergent_2017}. We propose here that this scale invariance is fundamental and a local property of spacetime at high energies that is broken. This is based on the arguments made in the paper \cite{barker2024poincaregaugetheoryconformal} about motivating an inflaton field through the principle of local scale invariance. We will follow up on the proposition in this paper and scrutinize the theory with the incorporation of gravitational effects.
+\begin{comment}
+    \wb{Sounds a bit poetic. Maybe stick to the part after the semicolon?}
+\end{comment}
 
-The theory of General Relativity (GR) is one of mankind's most self-consistent, rigorous scientific theories; so far, all tests have been shown to be in agreement with the theory. Nevertheless, the prevailing consensus posits that GR is an EFT applicable only at low energies \cite{donoghue_general_1994, burgess_quantum_2004}. While there have been attempts to UV complete the theory, a naive perturbation expansion introduces new operators with new parameters, thereby reducing its predictive power.
+So far, all tests of GR are in excellent agreement with the theory, nevertheless, the prevailing consensus posits that GR is an EFT applicable only at low energies \cite{donoghue_general_1994, burgess_quantum_2004}. While there have been attempts to UV complete the theory, a naive perturbation expansion introduces new operators with new parameters, thereby reducing its predictive power.
 
-A compelling possibility to consider is that some of the more ``peculiar'' aspects of the universe's expansion, namely, inflation, could arise due to the degrees of freedom in the UV theory that have been integrated out. 
+A compelling possibility to consider is that some of the more `peculiar' aspects of the universe's expansion, namely, inflation, could arise due to the degrees of freedom in the UV theory that have been integrated out. 
 
-Specifically, we argue that GR as we know it, with the Einstein-Hilbert Lagrangian being proportional to the Ricci Scalar, is a low-energy approximation of a more fundamental locally scale-invariant theory that describes physics at higher energies. If we demand a minimal departure from classical gravity, this hypothesis necessitates the introduction of a scalar field exhibiting the expected characteristics of an inflaton field.
+Specifically, we argue that GR as we know it, with the Einstein--Hilbert Lagrangian being proportional to the Ricci Scalar, is a low-energy approximation of a more fundamental locally scale-invariant theory that describes physics at higher energies. If we demand a minimal departure from classical gravity, this hypothesis necessitates the introduction of a scalar field exhibiting the expected characteristics of an inflaton field.
 
-In the subsequent discussion, we derive the most general conformally invariant action featuring non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though such an extension of the model is completely permissible. It can be readily demonstrated that this leads to a two-field inflaton model. We find, however, that the following model, which we will derive, is quite interesting and matches quite well with what is expected from an inflationary model. Let us begin by exploring this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation.
+In the subsequent discussion, we derive the most general conformally invariant action featuring non-irrelevant couplings of the inflaton field and gravity. We do not consider terms proportional to the curvature squared, even though such an extension of the model is completely permissible. It can be readily demonstrated that this leads to a two-field inflaton model. We find, however, that the following model, which we will derive, is quite interesting and matches quite well with what is expected from an inflationary model. We commence our exploration of this possibility with a spin-0 scalar field model that reduces to the Klein-Gordon equation at the lowest order of perturbation
 \begin{equation} \label{25}
     S = \int \mathrm{d}^4 x \sqrt{-g} \frac{1}{2} \left[ \partial_\mu \delta \varphi \partial^\mu \delta \varphi - m^2   \delta\varphi^2   \right] + \text{gravity}
 \end{equation}
-The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minimum suitable for reheating. It is not exactly the mass \footnote{The concept of mass is tricky to define in de Sitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In de Sitter space, this is, however, not the symmetry group we are working with, as a simple look at the de Sitter metric (Equation \ref{deSitter Conformal}) will show that it does not admit timelike Killing vectors, unlike Minkowski. \label{Footnote 1}} of the field.
+The $m$ in this equation is just the coefficient of the quadratic term in the potential. It is there to ensure that the potential has a quadratic minimum suitable for reheating. It is not exactly the mass \footnote{The concept of mass is tricky to define in de Sitter space. The mass of a particle is given by one of its eigenvalues of the Casimir operators of the Poincaré group, the full symmetry group of standard Minkowski space. In de Sitter space, this is, however, not the symmetry group we are working with, as a simple look at the de Sitter metric \cref{deSitter Conformal} will show that it does not admit timelike Killing vectors, unlike Minkowski. \label{Footnote 1}} of the field.
 
-Under local rescalings, the metric and therefore the volume element transform as $g_{\mu\nu} \rightarrow e^{2\rho} g_{\mu\nu} $ and $\sqrt{-g} \rightarrow e^{4\rho} \sqrt{-g}$. Scalar fields transform as $\varphi \rightarrow e^{-\rho}\varphi$. To ensure the kinetic terms retain their form, we introduce the Weyl vector $B_\mu$ which transforms as such $B_{\mu} \rightarrow B_\mu - \partial_\mu \rho$ under the gauge transformation (going back to the roots of the word) and define the covariant derivative $D_\mu = \nabla_\mu - B_\mu$ such that we can write the purely kinetic part of this action as:
-\[
-    S = \int \text{d}^4 \text{x} \sqrt{-g} \frac{g^{\mu\nu}}{2} D_\mu \varphi D_\nu \varphi
-\]
-Under a local rescaling of the metric, the kinetic term $D_\mu \varphi D_\nu \varphi \rightarrow e^{2\rho}$ while the metric and the volume element transform as indicated above, therefore the combination in the above equation remains invariant, i.e., the action does not change. To remove the explicit mass scale $m$ appearing in the action \ref{25}, we add a compensator scalar field $\phi \rightarrow e^{-\rho}\phi$ such that
-\[
-\mathcal{L}_\text{Matter} \propto \frac{1}{2} D_\mu \varphi D^\mu \varphi - \frac{\mu}{2} \phi^2 \varphi^2 + \frac{1}{2} D_\mu \phi D^\mu \phi 
-\]
+Under local rescalings, the metric and therefore the volume element transform as $g_{\mu\nu} \rightarrow e^{2\rho} g_{\mu\nu} $ and $\sqrt{-g} \rightarrow e^{4\rho} \sqrt{-g}$. Scalar fields transform as $\varphi \rightarrow e^{-\rho}\varphi$. To ensure the kinetic terms retain their form, we introduce the Weyl vector $B_\mu$ which transforms as such $B_{\mu} \rightarrow B_\mu - \partial_\mu \rho$ under the gauge transformation (going back to the roots of the word) and define the covariant derivative $D_\mu = \nabla_\mu - B_\mu$ such that we can write the purely kinetic part of this action as
+\begin{equation}
+    S = \int \text{d}^4 \text{x} \sqrt{-g} \frac{g^{\mu\nu}}{2} D_\mu \varphi D_\nu \varphi   
+     \nonumber
+\end{equation}
+Under a local rescaling of the metric, the kinetic term $D_\mu \varphi D_\nu \varphi \rightarrow e^{2\rho}$ while the metric and the volume element transform as indicated above, therefore the combination in the above equation remains invariant, i.e., the action does not change. To remove the explicit mass scale $m$ appearing in the action \cref{25}, we add a compensator scalar field $\phi \rightarrow e^{-\rho}\phi$ such that
+
+\begin{equation}
+    \mathcal{L}_\text{Matter} \propto \frac{1}{2} D_\mu \varphi D^\mu \varphi - \frac{\mu}{2} \phi^2 \varphi^2 + \frac{1}{2} D_\mu \phi D^\mu \phi \nonumber
+\end{equation}
 For the gravity sector of the Lagrangian, let us see how the Christoffel symbol transforms under a local rescaling:
 \[
     \Gamma^{\alpha}_{\beta \gamma} \rightarrow \Gamma^{\alpha}_{\beta \gamma} +(\delta^{\alpha}_{\beta} \partial_\gamma \rho + \delta^{\alpha}_{\gamma} \partial_{\beta} \rho - g_{\beta \gamma}g^{\alpha \tau}\partial_{\tau}\rho)
 \]
-Defining a new connection that is conformally covariant using $B_\mu$ and using that to define the new curvature scalar, we get the conformally covariant curvature scalar (CCCS):
+Defining a new connection that is conformally covariant using $B_\mu$ and using that to define the new curvature scalar, we get the conformally covariant curvature scalar $\mathring{R}$
 \begin{align}
     \mathring{\Gamma}^{\alpha}_{\beta \gamma} &= \Gamma^{\alpha}_{\beta \gamma} + (\delta^{\alpha}_{\beta} B_{\gamma} + \delta^{\alpha}_{\gamma} B_{\beta} - g_{\beta \gamma}g^{\alpha \tau}B_{\tau}) \nonumber \\
     \implies \mathring{R} &= R - 6 B_{\mu} B^{\mu} - 6 \nabla_\mu B^\mu
 \end{align}
-However, under a local rescaling, this new curvature scalar still transforms with only Weyl weight\footnote{The Weyl weight of a field $\Phi$ is defined as the power of the conformal factor by which it transforms under a local rescaling. It is $\Delta$ if $\Phi \rightarrow e^{-\Delta\rho}\Phi$} 2, that is, $\mathring{R} \rightarrow e^{-2\rho} \mathring{R}$. This means that, for the gravitational part of our action, we must have a non-minimal coupling of our scalar fields and the CCCS to give the action Weyl weight 0.
+However, under a local rescaling, this new curvature scalar still transforms with only Weyl weight\footnote{The Weyl weight of a field $\Phi$ is defined as the power of the conformal factor by which it transforms under a local rescaling. It is $\Delta$ if $\Phi \rightarrow e^{-\Delta\rho}\Phi$} 2, that is, $\mathring{R} \rightarrow e^{-2\rho} \mathring{R}$. This means that, for the gravitational part of our action, we must have a non-minimal coupling of our scalar fields and $\mathring{R}$ to give the action Weyl weight 0
 \[
     \mathcal{L}_\text{Gravity} \propto ( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) \mathring{R}
 \]
 Putting all this together, we get the most general locally scale action that is linear in curvature, including all non-irrelevant terms:
 \begin{widetext} 
-    \begin{equations} 
     \begin{align}  \label{Starting Action} 
         S =\int \text{d}^4\text{x} \; \sqrt{-g} &\; \left[ -( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) R + 6( \beta \varphi^2 + \gamma \phi \varphi +\alpha \phi^2) (B_{\mu} B^{\mu} + \nabla_\mu B^\mu) \right. \nonumber \\
         &\quad \left. +\frac{\epsilon}{2} D_{\mu}\varphi D^{\mu}\varphi + \frac{\sigma}{2} D_{\mu}\varphi D^{\mu}\phi + \frac{\nu}{2} D_{\mu}\phi D^{\mu}\phi \right. \left. - \omega \phi^3 \varphi - \frac{\mu}{2} \phi^2 \varphi^2  - \chi \phi \varphi^3 - \frac{\lambda}{2} \varphi^4 - \frac{\kappa}{2} \phi^4 - \frac{\xi}{16} H_{\mu\nu}H^{\mu\nu} \right]  
     \end{align}
-    \end{equations}
 \end{widetext}
+\begin{comment}
+    \wb{You could probably always refer to it by its inline sybol, the acronym looks a bit much.}
 
-An action in which the curvature is coupled to an arbitrary function of the scalar fields is referred to as the Jordan Frame. Upon variation of the action in the Jordan Frame, the resulting Equations of Motion differ from the EFEs. However, in this frame, particles still move on geodesics.  Through a conformal transformation, it is possible to transition to the customary action, wherein the gravitational component of the action assumes the structure of an Einstein-Hilbert term. This frame is termed the Einstein Frame. Although there is ongoing discourse concerning which frame is the "physical" one, i.e., which one accurately represents the system's physics, it is established that at least classically, the Jordan Frame gives rise to negative energy solutions. Therefore, the energy density of the theory is not bounded from below \cite{faraoni_einstein_1999, faraoni_conformal_1998, magnano_physical_1994}. This attribute, along with the extensive literature that already exists in analysing theories in the Einstein frame, makes it much more appealing for analysing our model. Consequently, this section's objective is to reformulate our action \ref{Starting Action} into one consistent with form $S_{\text{EH}} + S_{\text{INFLATON}}$, thereby effecting a transition from the Jordan Frame to the Einstein Frame.
+    \wb{As being formulated in the Jordan Frame. You may wish to put a footnote to say that discussions about whether the Jordan or Einstein frames are physical are completely irrelevant to this paper.}
 
+    \wb{You already set up an acronym for this, you should stick to it.}
 
-In the action \ref{Starting Action}, we have also included terms that couples the derivatives of the two fields $\phi$ and $\varphi$ and the field strength tensor $\hat{H}_{\mu\nu}\varphi \equiv [D_\mu,D_\nu]\varphi$ as these too remains invariant under local rescalings. The 11 parameters $\{\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \omega, \mu, \chi ,\lambda, \kappa\}$ and $\xi$ are dimensionless parameters. It is noteworthy to mention the abundance of dimensionless parameters. While any two of these parameters could be eliminated through rescaling of the fields, they will be maintained in their current form until essential. This decision will prove advantageous in subsequent analyses. In the forthcoming discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$; this assumption can be restored in the concluding section (Section \ref{Solution}), after thoroughly examining the dynamics and unveiling the ultimate inflaton potential, without any loss of generality.
+    \wb{Canonical might be a better word: it doesn't just apply to the kinetic normalisation.} 
+    
+\wb{Do you know why? :)} \pcs{}
+\wb{Oh here we go! Mike will not like this.} \pcs{?}
 
-In the equation above, we have two scalar fields. This makes analyzing the EOM harder. However, we have a redundant degree of freedom through Weyl invariance. Looking at the units of $[\phi] = 2$, we find that it is an inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$ and "freeze it". The reparametrizations that allow us to do this are :
+Upon variation of the action in the Jordan Frame, the resulting EOMs differ from the EFEs. However, in this frame, particles still move on geodesics
+\end{comment}
+An action in which the curvature is coupled to an arbitrary function of the scalar fields is referred to as being formulated in the `Jordan Frame'. Through a conformal transformation, it is possible to transition to the canonical action, wherein the gravitational component of the action assumes the structure of an Einstein--Hilbert term. Such actions are referred to as being formulated in the `Einstein Frame'. Since the EOMs in the Einstein Frame have been well studied and analysed, we will work in this frame. Though there exists discourse on which frame is ``physical''\footnote{There is ongoing discourse concerning which frame is the "physical" one, i.e., which one accurately represents the system's physics; it is established that at least classically, the Jordan Frame gives rise to negative energy solutions. Therefore, the energy density of the theory is not bounded from below \cite{faraoni_einstein_1999, faraoni_conformal_1998, magnano_physical_1994}. Others argue that the fact that particles do not move on geodesics in the Einstein frame is a serious drawback that must be considered seriously.}, these are irrelevant to the aims of this study and therefore will not be discussed.
+
+Consequently, this section's objective is to reformulate our action \cref{Starting Action} into one consistent with form $S_{\text{EH}} + S_{\text{INFLATON}}$, thereby effecting a transition from the Jordan Frame to the Einstein Frame.
+\begin{comment}
+    \wb{I'd just say the EF is simpler, because everyone knows the equations that apply when we are using it.}
+\wb{plural?} s\wb{conjugation?}
+\end{comment}
+
+In the action \cref{Starting Action}, we have also included terms that couple the derivatives of the two fields $\phi$ and $\varphi$ and the field strength tensor $\hat{H}_{\mu\nu}\varphi \equiv [D_\mu,D_\nu]\varphi$ as these too remain invariant under local rescalings. The 11 parameters $\{\beta, \gamma, \alpha, \epsilon, \sigma, \nu, \omega, \mu, \chi ,\lambda, \kappa\}$ and $\xi$ are dimensionless parameters. It is noteworthy to mention the abundance of dimensionless parameters. While any two of these parameters could be eliminated through rescaling of the fields, they will be maintained in their current form until essential. This decision will prove advantageous in subsequent analyses. In the forthcoming discussions, we shall set $\lambda = \kappa = \omega = \chi= 0$; this assumption can be restored in the concluding section (\cref{Solution}), after thoroughly examining the dynamics and unveiling the ultimate inflaton potential, without any loss of generality.
+
+In the equation above, we have two scalar fields. However, we have a redundant degree of freedom through Weyl invariance. Looking at the units of $[\phi] = 2$, we find that it is an inverse length. Since the action is written down to be invariant under any choice of scale, we can choose a particular local length scale such that the field $\phi$ no longer appears dynamical, that is, rescale the metric and fields such that $\phi(\text{x}^\mu) = \phi_0$ and "freeze it". The reparametrizations that allow us to do this are :
 \[
     g_{\mu \nu}\rightarrow \bigg(\frac{\phi_0}{\phi}\bigg)^2\,g_{\mu \nu},\quad 
     \varphi\rightarrow\frac{\phi}{\phi_0}\,\varphi,\quad 
     B_{\mu}\rightarrow B_{\mu} - \partial_{\mu}\ln(\phi)\ \nonumber
 \]
 \\
-The resulting Lagrangian in the Jordan Frame therefore reads:
+The resulting Lagrangian in the Jordan Frame therefore reads
 \begin{equation}\label{29}
 \begin{aligned}
 \mathcal{L} &= -\Bigl(\beta\, \varphi^2 + \gamma\, \phi_0\, \varphi + \alpha\, \phi_0^2\Bigr)
@@ -343,11 +428,14 @@ The resulting Lagrangian in the Jordan Frame therefore reads:
 - \frac{\xi}{16}\,H_{\mu\nu} H^{\mu\nu}\,.
 \end{aligned}
 \end{equation}
-What we have here is that by gauging away the ``unphysical'' dynamics of the field $\phi$, the gauge field $B_\mu$ has acquired a Proca mass of $\nu \phi_0^2$. This is the Stuckleberg mechanism in which the massless vector boson with two degrees of freedom absorbs the scalar degrees of freedom and gains mass \cite{stueckelberg_wechselwirkungskrafte_1938, kors_aspects_2005}. Therefore, it appears massive and has 3 degrees of freedom. In accordance with \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu/\xi \rightarrow \infty$ to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the EOM as
+\begin{comment}
+    \wb{I'd recommend single quotes unless you are quoting a person.} 
+\end{comment}
+What we have here is that by gauging away the `unphysical' dynamics of the field $\phi$, the gauge field $B_\mu$ has acquired a Proca mass of $\nu \phi_0^2$. This is the Stueckelberg mechanism in which a massless vector boson with two degrees of freedom absorbs a scalar degree of freedom and gains mass \cite{stueckelberg_wechselwirkungskrafte_1938, kors_aspects_2005}. Therefore, it appears massive and has three degrees of freedom. Following \cite{barker2024poincaregaugetheoryconformal}, we can send $\nu/\xi \rightarrow \infty$ to give us a Proca field $B_\mu$, (which could be a dark matter candidate \cite{Lasenby_2016}). In this regime, we can neglect the kinetic term corresponding to the Proca field, and it can be eliminated using the EOM as
 \begin{equation}\label{30}
 B_\mu = \frac{1}{2}\,\partial_\mu \ln\Bigl((\epsilon-12\beta)\,\varphi^2 + (\sigma-12\gamma)\,\phi_0\,\varphi + (\nu-12\alpha)\,\phi_0^2\Bigr)\,.
 \end{equation}
-and \ref{29} becomes:
+and \cref{29} becomes:
 \begin{widetext}
 \begin{subequations}
 \begin{align}  \label{42a}
@@ -392,7 +480,7 @@ S = \int d^4x\,\sqrt{-g}\,\Biggl[
 \end{subequations}
 \end{widetext}
 \begin{comment}
-    and \ref{29} becomes:
+    and \cref{29} becomes:
     \begin{widetext}
     \begin{subequations}\label{33a}
     \begin{align}
@@ -405,7 +493,7 @@ S = \int d^4x\,\sqrt{-g}\,\Biggl[
     \[
     g_{\mu\nu}\rightarrow \Omega^2\,g_{\mu\nu},\quad\text{with}\quad \Omega^2 = \frac{M_p^2}{2(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)},
     \]
-    Wwe can move from the Jordan frame to the Einstein frame and separate the Einstein-Hilbert action and the inflaton action. Denoting $M_p/\sqrt{2} = M$, we get:
+	Wwe can move from the Jordan frame to the Einstein frame and separate the Einstein-Hilbert action and the inflaton action. Denoting $M_p/\sqrt{2} = M$, we get:
     \begin{widetext}
     \begin{subequations}\label{33a}
     \begin{align}
@@ -420,20 +508,19 @@ Now, employing the following conformal transformation:
 \[
 g_{\mu\nu}\rightarrow \Omega^2\,g_{\mu\nu},\quad\text{with}\quad \Omega^2 = \frac{M_p^2}{2(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)},
 \]
-We can move from the Jordan frame to the Einstein frame and separate the Einstein-Hilbert action and the inflaton action. The detailed calculation of how to perform this conformal transformation has been done in Appendix \ref{Conformal Transformations}. Denoting $M_p/\sqrt{2} = M$, the denominator and the numerator of the kinetic term in \ref{42a} by V and N respectively, we get:
-
+We can move from the Jordan frame to the Einstein frame and separate the Einstein--Hilbert action and the inflaton action (For more details, see \cref{Conformal Transformations}). Denoting $M_p/\sqrt{2} = M$, the denominator and the numerator of the kinetic term in \cref{42a} by $\mathcal{A}$ and $\mathcal{N}$, respectively, we get the following:
 \begin{widetext}
     \begin{equation}    \label{33a}
     \begin{aligned}
         S = \int d^4x\, \sqrt{-g} &\Biggl[- M^2\, R + \,\frac{M^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)}
-        \frac{N}{V} (\partial_{\mu}\varphi\,\partial^{\mu}\varphi) \\[2mm]
+        \frac{\mathcal{N}}{\mathcal{A}} (\partial_{\mu}\varphi\,\partial^{\mu}\varphi) \\[2mm]
         &\quad + \frac{3M^2}{2}\,\frac{(2\beta\,\varphi+\gamma\,\phi_0)^2}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,(\partial_{\mu}\varphi\,\partial^{\mu}\varphi) - \frac{M^4}{(\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi)^2}\,\frac{\mu}{2}\,\phi_0^2\,\varphi^2 \Biggr].
     \end{aligned}
     \end{equation}
 \end{widetext}
-Denoting $A(\varphi) = (\beta\varphi^2+\gamma\phi_0\varphi+\alpha\phi_0^2)$ and $V(\varphi) = (\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0  \varphi + (\nu - 12\alpha)\phi^2_0$. There are 6 free parameters here $\{ \beta, \gamma, \alpha , \epsilon, \sigma, \nu \}$. Using the redundancy in our choice of parameters in \ref{Starting Action}, we can reparametrize the fields $\varphi$ and $\phi_0$ and the parameters to absorb two of these dimensionless parameters. Therefore, we can choose\[
+Denoting $A(\varphi) = (\beta\varphi^2+\gamma\phi_0\varphi+\alpha\phi_0^2)$ and comparing it with $\mathcal{A}(\varphi) = (\epsilon - 12\beta) \varphi^2 + (\sigma - 12\gamma) \phi_0  \varphi + (\nu - 12\alpha)\phi^2_0$, we see there are 6 free parameters here $\{ \beta, \gamma, \alpha , \epsilon, \sigma, \nu \}$. Using the redundancy in our choice of parameters in \cref{Starting Action}, we can reparametrize the fields $\varphi$, $\phi_0$, and the parameters to absorb two of these dimensionless parameters. Therefore, we can choose\[
 \begin{split}
-\text{V} &= \left[(\epsilon - 12\beta)\,\varphi^2 + (\sigma - 12\gamma)\,\phi_0\,\varphi + (\nu - 12\alpha)\,\phi_0^2\right] \\
+\mathcal{A}(\varphi) &= \left[(\epsilon - 12\beta)\,\varphi^2 + (\sigma - 12\gamma)\,\phi_0\,\varphi + (\nu - 12\alpha)\,\phi_0^2\right] \\
          &= k\,*\left[\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2\right]
 \end{split}
 \]
@@ -443,6 +530,8 @@ Now only 4 dimensionless parameters remain free; $\{k, \beta, \gamma, \alpha \}$
 \end{equation}
 
 \begin{comment}
+\wb{The density of widetext environments here is a bit high, it might be better to break lines in equations and use allowdisplaybreaks in the preamble.}
+
     \begin{equation} \label{Variable Dictionary}
     \begin{Bmatrix}
         \epsilon \\ \sigma \\ \nu 
@@ -452,8 +541,9 @@ Now only 4 dimensionless parameters remain free; $\{k, \beta, \gamma, \alpha \}$
         \beta \\ \gamma \\ \alpha
     \end{Bmatrix}
 \end{equation}
-\end{comment}
-Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta ) = k^2 (\gamma^2 - 4\alpha \beta) = (\frac{k}{12+k})^2 (\sigma^2 -4 \epsilon \nu)$. This simplifies the equation \ref{33a} and we can write it as:
+
+
+
 \begin{widetext}
     \begin{equation} 
     \begin{aligned}
@@ -461,10 +551,19 @@ Discriminant $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta
     \end{aligned}
     \end{equation}
 \end{widetext}
-where we have used $M=M_p/\sqrt{2} $ and $A =\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2$. The first term in the above action \[S = - \frac{M_p^2}{2}\int \text{d}^4\text{x} \sqrt{-g} R\] is just the Einstein-Hilbert action ($S_\text{EH}$) of GR. The remaining part of the action is associated with the inflaton field. It has the form of a non-canonical scalar field, with the kinetic and potential coefficients, $K(\varphi)$ and $V(\varphi)$.
+
+\wb{Can't parse this part?}
+\end{comment}
+The discriminant of $\mathcal{A}(\varphi)$ is $D = (\sigma -12 \gamma )^2-4 (\nu -12 \alpha ) (\epsilon -12 \beta ) = k^2 (\gamma^2 - 4\alpha \beta)$. This simplifies \cref{33a} and we can write it as:
+\begin{equation}
+    \begin{aligned}
+          S = \int \text{d}^4\text{x} &\sqrt{-g} \Bigg[- \frac{M_p^2}{2}R \\ &+ \frac{1}{2} \left[\ \frac{M_p^2(12+k)(4\alpha\beta-\gamma^2) \phi_0^2}{8(\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2)^2} \right] (\partial_\mu \varphi \partial^\mu \varphi) \\ &-  \frac{M_p^4}{4A^2} \bigg( \frac{\mu}{2} \phi^2_0 \varphi^2 \bigg) \Bigg]
+    \end{aligned}
+\end{equation}
+where we have used $M=M_p/\sqrt{2} $ and $A =\beta\,\varphi^2 + \gamma\,\phi_0\,\varphi + \alpha\,\phi_0^2$. The first term in the above action \[S = - \frac{M_p^2}{2}\int \text{d}^4\text{x} \sqrt{-g} R\] is just the Einstein--Hilbert action ($S_\text{EH}$) of GR. The remaining part of the action is associated with the inflaton field. It has the form of a non-canonical scalar field.
 
 \section{The Inflaton Action} \label{Solution}
-We now have all the relevant pieces to analyze the model, given the information in subsection \ref{Non-Canonical Scalar Field Inflation}  and section \ref{Scale Invariant Gravity}. For the starting Lagrangian \ref{Starting Action}, using a neat parameter and field redefinition (which we have done with no loss in generality) given by \ref{Variable Dictionary}, we were able to simplify the action \ref{Starting Action} to one of the form $S_{\text{EH}} + S_{\text{INFLATON}}$. Now, we can analyse the inflaton action by itself: 
+We now have all the relevant pieces to analyze the model, given the information in \cref{Inflation}  and \cref{Scale Invariant Gravity}. For the starting Lagrangian \cref{Starting Action}, using a suitable parameter and field redefinition (which we have done with no loss in generality) given by \cref{Variable Dictionary}, we were able to simplify the action \cref{Starting Action} to one of the form $S_{\text{EH}} + S_{\text{INFLATON}}$. Now, we can analyse the inflaton action by itself: 
 \begin{equation}
     S_{\text{INFLATON}} = \int \text{d}^4x \left[ \frac{K(\varphi)}{2} \partial_\mu \varphi \partial^\mu \varphi - V(\varphi)\right]
 \end{equation}
@@ -477,7 +576,7 @@ Where, in the final potential formula, we have reinstated $\lambda, \kappa$, $\o
 \begin{equation} \label{40}
     \tilde{\varphi}(\varphi) = \int_0^{\varphi} \sqrt{K(x)} \text{d}x
 \end{equation}
-Using equation \ref{KE}, we get,
+Using \cref{KE}, we get,
 \begin{equation}
     \tilde{\varphi}(\varphi) = \sqrt{\frac{12+k}{2}}M_p \arctan \left( \frac{2\varphi\beta + \gamma \phi_0}{\phi_0\sqrt{4\alpha\beta - \gamma^2}} \right)
 \end{equation}
@@ -485,16 +584,19 @@ Inverting this relation, we get:
 \begin{equation}
     \varphi(\tilde{\varphi}) = \frac{\phi_0}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr] 
 \end{equation}
-This redefinition also tells us that the original range $\varphi \in (-\infty,\infty)$ gets mapped to $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$.Therefore using this inside the potential \ref{VE}, we get the potential $V(\varphi(\tilde{\varphi}))$, to get the final canonical inflaton action:
+This redefinition also tells us that the original range $\varphi \in (-\infty,\infty)$ gets mapped to $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$. Therefore using this inside the potential \cref{VE}, we get the potential $V(\varphi(\tilde{\varphi}))$, to get the final canonical inflaton action
 \begin{equation}
     S_{\text{INFLATON}} = \int \text{d}^4x \sqrt{-g} \left[ \frac{1}{2}\partial_\mu \tilde{\varphi}\partial^\mu \tilde{\varphi} - V(\varphi(\tilde{\varphi})) \right]
 \end{equation}
-An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential \footnote{This makes sense as we used the gauge redundancy of the action \ref{Starting Action} to make the choice $\phi \rightarrow \phi_0$. However, for any gauge theory, the gauge we choose to work in must not affect the observables of the theory, which is what we see in the potential \ref{Potential}}. We can make this explicit by writing the final potential as:
+An immediate consequence is that in the final formula, $\phi_0$ drops out, and we only have the dimensionless parameters to tune. This is interesting as this implies the energy scale at which scale-invariance is broken does not affect the final potential. We can make this explicit by writing the final potential as:
+\begin{comment}
+    \footnote{This makes sense as we used the gauge redundancy of the action \cref{Starting Action} to make the choice $\phi \rightarrow \phi_0$. However, for any gauge theory, the gauge we choose to work in must not affect the observables of the theory, which is what we see in the potential \cref{Potential}}
+\end{comment}
 \begin{align}
     V(X(\tilde{\varphi})) &=  \frac{M_p^4}{8}  \frac{ \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4 }{(\beta X^2 + \gamma X + \alpha )^2} \label{Potential} \\
     X(\tilde{\varphi}) &= \frac{1}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr]  \label{X}
 \end{align}
-Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$. This exhibits the desired behaviour of $V^{1/4} \sim M_p$. This is desirable as it prevents the Universe from collapsing within a Planck time scale if the density parameter starts out bigger than unity ($\Omega > 1$). It also ensures that if in the beginning $\Omega < 1$, an initially homogeneous region will not be invaded by its inhomogeneous surroundings \cite{Liddle_Lyth_2000}.  
+Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$. The potential also exhibits the desired behaviour of $V^{1/4} \sim M_p$. This is desirable as it prevents the Universe from collapsing within a Planck time scale if the density parameter starts out bigger than unity ($\Omega > 1$). It also ensures that if in the beginning $\Omega < 1$, an initially homogeneous region will not be invaded by its inhomogeneous surroundings \cite{Liddle_Lyth_2000}.  \wb{Interesting!}
 
 \begin{figure}[h!]
     \centering
@@ -522,10 +624,13 @@ Where $B = 2(\frac{\chi}{\lambda} - \frac{\gamma}{\beta})$. Denoting $\delta \ti
     \tan(C_k \tilde{\varphi}) \approx \frac{2\beta}{D}X
 \end{equation}
 Since $\delta \tilde{\varphi} \ll 1$, we get $\tan(C_k \tilde{\varphi}_{\text{max}} - C_k\delta\tilde{\varphi}) = \tan(\frac{\pi}{2} - C_k\delta\tilde{\varphi}) \approx \frac{1}{C_k \delta \tilde{\varphi}}$. Therefore, 
+\[
+\frac{1}{C_k \delta \tilde{\varphi}} \approx \frac{2\beta}{D}X
+\] Gives us
 \begin{align} \label{Weird Approx}
     V(\tilde{\varphi}) \approx V_{\infty}[1 - B'(\tilde{\varphi}_{\text{max}} - \tilde{\varphi}) + \cdots]
 \end{align}
-Where $V_\infty = \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$ and $B' = \frac{4C_k}{D} (\gamma-\frac{\beta\chi}{\lambda})$. Then re-writing equation \ref{Weird Approx} as $V(\delta\tilde{\varphi}) \approx V_{\infty} \exp{[\ln(1 - B'(\delta \tilde{\varphi})]} \approx V_\infty e^{-B'\delta \tilde{\varphi}}$, Expanding the potential around the plateau, taking the asymptotic value to be the background, we get:
+Where $V_\infty = \frac{M_p^4}{8} \frac{\lambda}{\beta^2}$ and $B' = \frac{4C_k}{D} (\gamma-\frac{\beta\chi}{\lambda})$. Then re-writing \cref{Weird Approx} as $V(\delta\tilde{\varphi}) \approx V_{\infty} \exp{[\ln(1 - B'(\delta \tilde{\varphi})]} \approx V_\infty e^{-B'\delta \tilde{\varphi}}$. Finally, shifting \(\delta\tilde\varphi\to\tilde\varphi\), giving us the familiar plateau–exponential form
 \begin{equation}
     V(\tilde{\varphi}) \approx V_\infty [1 - e^{-B' \tilde{\varphi}} ] = M^4 (1 - e^{-q\tilde{\varphi}/M_p})
 \end{equation}
@@ -536,6 +641,8 @@ In the second equality, we have compared it to the result from models derived in
 \end{align}
 
 \begin{comment}
+ we can expand the potential around the plateau, taking the asymptotic value to be the background, that is,
+
      We can now compare this potential to the well-studied Power-Law inflation models \cite{martin_encyclopaedia_2014} given by:
     \begin{equation}
         V(\tilde{\varphi}) \approx V_\infty e^{-B' \tilde{\varphi}} = M^4 e^{-\alpha' \tilde{\varphi}/M_p}
@@ -549,7 +656,7 @@ In the second equality, we have compared it to the result from models derived in
     Though these models are disfavored as they do not depend on the energy scale at which reheating ends, this analysis provide a rough idea of the behaviour at the edges of the graph, where $X$ is large ($\tilde{\varphi} \approx \frac{\pi}{2 C_k}$), that $n_s$ and $r$ become constant. To understand the behaviour in the entire graph requires more careful and exact analysis.
 \end{comment}
 \subsection{Simplification of the model} \label{Reduction of parameters}
-We see that roughly, these models exhibit behaviour we would require from such inflationary models. For a more exact analysis, we would have to look at the exact form of the potential \ref{Potential}. This has nine free dimensionless parameters. However, the previous analysis shows us that only certain combinations of parameters affect the observables. To make this exact, we define the new variable $Y$ as:
+We see that roughly, these models exhibit behaviour we would require from such inflationary models. For a more exact analysis, we would have to look at the exact form of the potential \cref{Potential}. This has nine free dimensionless parameters. However, the previous analysis shows us that only certain combinations of parameters affect the observables. To make this exact, we define the new variable $Y$ as:
 \begin{align}
     Y(\tilde{\varphi}) &= X(\tilde{\varphi}) + \frac{\gamma}{2\beta}
 \end{align}
@@ -565,7 +672,7 @@ For the numerator $N(X) = \kappa + 2\omega X +\mu X^2 + 2\chi X^3 + \lambda X^4$
     2\chi &\rightarrow 2\chi - \frac{2\gamma\lambda}{\beta} \nonumber \\
     \lambda &\rightarrow \lambda \label{huge redefiniton}
 \end{align}
-Using this redefinition of parameters, we can write the numerator as before, however, with $Y$ as the primary variable, $N(Y) = \kappa + 2\omega Y +\mu Y^2 + 2\chi Y^3 + \lambda Y^4$. Writing down the equations \ref{Potential} and \ref{X}, we see
+Using this redefinition of parameters, we can write the numerator as before, however, with $Y$ as the primary variable, $N(Y) = \kappa + 2\omega Y +\mu Y^2 + 2\chi Y^3 + \lambda Y^4$. Writing down the equations \cref{Potential} and \cref{X}, we see
 \begin{align}
     V(Y) &= \frac{M_p^4}{8} \left(\frac{\lambda Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + D^2)^2} \right) \nonumber \\
     Y(\tilde{\varphi}) &= D \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \nonumber
@@ -575,7 +682,7 @@ Where, we have performed another implicit redefiniton as $D \rightarrow \frac{D}
     V(Y) &=  \frac{M_p^4}{8}  \left(\frac{\lambda Y^4 + 2 \chi Y^3 + \mu Y^2  + 2\omega Y + \kappa}{(Y^2 + 1)^2} \right) \label{finalest potential} \\
     Y(\tilde{\varphi}) &=  \tan \left(\frac{C \tilde{\varphi}}{M_p} \right) \label{finalest redef}
 \end{align}
-Therefore, starting from the equations \ref{Potential} and \ref{X} with nine parameters, we were able to reduce our model to one with only 6, as shown in \ref{finalest potential} and \ref{finalest redef}. $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $\tilde{\varphi} \in (-\frac{\pi M_p}{2C},\frac{\pi M_p}{2C})$, $Y \in (-\infty,\infty)$ and $C > 0$. We can simplify the potential \ref{finalest potential} and write it directly as a function of $\tilde{\varphi}$ as:
+Therefore, starting from the equations \cref{Potential} and \cref{X} with nine parameters, we were able to reduce our model to one with only 6, as shown in \cref{finalest potential} and \cref{finalest redef}. $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $\tilde{\varphi} \in (-\frac{\pi M_p}{2C},\frac{\pi M_p}{2C})$, $Y \in (-\infty,\infty)$ and $C > 0$. We can simplify the potential \cref{finalest potential} and write it directly as a function of $\tilde{\varphi}$ as:
 
 \begin{widetext}
     \begin{equation} 
@@ -584,7 +691,10 @@ Therefore, starting from the equations \ref{Potential} and \ref{X} with nine par
     \end{aligned}
 \end{equation}
 \end{widetext}
-The only assumption in this process was that $\beta \neq 0$, which is required for $D > 0$. The mapping of these new dimensionless parameters at the end in equation \ref{Ugliest full Potential} to the original ones we started with in equation \ref{Potential} has been given in the Appendix \ref{Mapping of Parameters}. We also see that for small values of $C$, we get an approximate shift symmetry in our potential \cite{finelli_effective_2018}. Denoting $\frac{C\tilde{\varphi}}{M_p}$ as $\theta$, the first and second derivatives of this potential are given by:
+The only assumption in this process was that $\beta \neq 0$, which is required for $D > 0$. The mapping of these new dimensionless parameters at the end in \cref{Ugliest full Potential} to the original ones we started with in \cref{Potential} has been given in the \cref{Mapping of Parameters}. Denoting $\frac{C\tilde{\varphi}}{M_p}$ as $\theta$, the first and second derivatives of this potential are given by:\wb{What does this mean?}
+\begin{comment}
+    We also see that for small values of $C$, we get an approximate shift symmetry in our potential \cite{finelli_effective_2018}\wb{What does this mean?}.
+\end{comment}
 \begin{widetext}
     \begin{equation} 
     \begin{aligned} \label{Derivatives of Pot}
@@ -599,13 +709,10 @@ Using this in the formula for the second derivative, we get:
 \begin{equation}
     m_{\tilde{\varphi}}^2 \approx  \frac{\text{d}^2V}{\text{d}\tilde{\varphi}^2} \Bigg|_0 = \frac{C^2M_p^2}{4}(  \mu - 2\kappa)
 \end{equation}
-This result is exact for the given potential if we set $\omega = 0$. Again, by mass, we refer to the coefficient of the quadratic term in the potential (See footnote \ref{Footnote 1}). We require $m_{\tilde{\varphi}}^2 > 0$ to allow for reheating, as this corresponds to $V_{,\tilde{\varphi}\tilde{\varphi}} > 0$; a minimum around which the inflaton field can oscillate.
-
-
-
+This result is exact for the given potential if we set $\omega = 0$. Again, by mass, we refer to the coefficient of the quadratic term in the potential (See \cref{Footnote 1}). We require $m_{\tilde{\varphi}}^2 > 0$ to allow for reheating, as this corresponds to $V_{,\tilde{\varphi}\tilde{\varphi}} > 0$; a minimum around which the inflaton field can oscillate.
 
 \begin{comment}
-    This last redefiniton and form of the potential \ref{final potential} and \ref{final redefiniton} essentially help us reduce our parameter list further by two $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{D, C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $Y \in (-\infty,\infty)$ and $D, C > 0$
+    This last redefiniton and form of the potential \cref{final potential} and \cref{final redefiniton} essentially help us reduce our parameter list further by two $\{\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa\} \rightarrow \{D, C , \mu, \omega, \chi, \lambda, \kappa\}$. The original conditions on the parameters and variables get inherited by this new set as $Y \in (-\infty,\infty)$ and $D, C > 0$
     
     We have therefore reduced our parameter list by one $[\alpha, \gamma,\beta, k , \mu, \omega, \chi, \lambda, \kappa] \rightarrow [D, \beta , k , \mu, \omega, \chi, \lambda, \kappa]$
 
@@ -639,9 +746,10 @@ This result is exact for the given potential if we set $\omega = 0$. Again, by m
         V({\tilde{\varphi}}) &= M^4  \frac{ \kappa \phi_0^4 + 2\omega \phi_0^3 \tilde{\varphi} +\mu^2 \phi^2_0 \tilde{\varphi}^2 + 2\chi \phi_0 \tilde{\varphi}^3 + \lambda \tilde{\varphi}^4 }{2(\beta \tilde{\varphi}^2 + \gamma\phi_0\tilde{\varphi} + \alpha \phi_0^2)^2} \nonumber \\
         \varphi(\tilde{\varphi}) &= \frac{\phi_0}{2\beta} \Biggl[ \sqrt{4\alpha\beta - \gamma^2} \tan\left(\sqrt{\frac{2}{12+k}}\frac{\tilde{\varphi}}{M_p}\right) - \gamma \Biggr] 
     \end{align}    
+    \wb{You should point to these again using cref} 
 \end{comment}
 
-Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the below graphs (We have set $M_p = 1$ for these graphs and code):
+Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the below graphs \cref{Optimized Canonical Potential vs Field1}, \cref{Optimized Phase Space potrait1} and \cref{Optimized Compact Phase Space potrait1} (We have set $M_p = 1$ for these graphs and code):
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{Python/results/potential.png}
@@ -661,18 +769,20 @@ Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the
     \label{Optimized Compact Phase Space potrait1}}
 \end{figure}
 
-The phase space portrait (Fig.\ref{Optimized Phase Space potrait1}) clearly shows attractor behaviour at the minima of the potential (Fig.\ref{Optimized Canonical Potential vs Field1}) at $\tilde{\varphi}_0 \approx -4.9157 M_p$. For these parameters, the mass of the inflaton is $m_{\tilde{\varphi}}^2 \approx  0.1965 M_p^2$. For the value of $C = 0.2063$, we get that the range of the canonical field is $\tilde{\varphi} \in (-7.61414,7.61414)$. The only caveat with the portrait is that it shows trajectories exiting and entering this range. We would expect something akin to the trajectories in the compactified phase space \ref{Optimized Compact Phase Space potrait1}. However, this is not a failure of the theory. While plotting, we have used the EOMs \ref{KGEOM} and \ref{Friedmann 3}, which means treating $\tilde{\varphi}$ as the fundamental field without any bounds.
+The phase space portrait (\cref{Optimized Phase Space potrait1}) clearly shows attractor behaviour at the minima of the potential (\cref{Optimized Canonical Potential vs Field1}) at $\tilde{\varphi}_0 \approx -4.9157 M_p$. For these parameters, the mass of the inflaton is $m_{\tilde{\varphi}}^2 \approx  0.1965 M_p^2$. For the value of $C = 0.2063$, we get that the range of the canonical field is $\tilde{\varphi} \in (-7.61414,7.61414)$. The only caveat with the portrait is that it shows trajectories exiting and entering this range. We would expect something akin to the trajectories in the compactified phase space \cref{Optimized Compact Phase Space potrait1}. However, this is not a failure of the theory. While plotting, we have used the EOMs \cref{KGEOM} and \cref{Friedmann 3}, which means treating $\tilde{\varphi}$ as the fundamental field without any bounds.
 
 
 \section{CONCLUSION}
 We have shown that by demanding local scale invariance in a gravity-scalar theory and analysing the most general action that is linear in curvature, we get a potential that lends itself to be uniquely interpreted as an inflaton potential. We did this by introducing a gauge boson to account for the new Weyl gauge symmetry. We also had to introduce one compensator field to give rise to the quadratic minima we wanted our potential to have. This sets the energy scale at which scale invariance is broken.
 
-An important consequence of our results is that the energy scale at which scale invariance is broken drops out and does not affect our observables. This avoids the common pitfalls of adding an arbitrary energy scale to our theory by hand. It also shows that the gauging of scale invariance in our theory leads to universal behaviour regardless of the energy scale.
+An important consequence of our results is that the energy scale at which scale invariance is broken drops out and does not affect our observables. This avoids the common pitfalls of adding an arbitrary energy scale to our theory by hand and avoids the criticism levied against such models as described in \cref{Footnote Criticism}. It also shows that the gauging of scale invariance in our theory leads to universal behaviour regardless of the energy scale.
 
 We have also demonstrated that, at least classically, such models contain redundant parameter choices that yield the same physics. 
 
-The Python optimizer code, plotter code, and the Mathematica notebooks, which have been used to verify these calculations, have been regularly uploaded to the GitHub Repository, which is available as supplemental material. 
-
+The Python optimizer code, plotter code, and the Mathematica notebooks, which have been used to verify these calculations, have been uploaded to the GitHub Repository, which is available as supplemental material. 
+\begin{comment}
+    \wb{Not sure what regularly means here.} \pcs{removed} 
+\end{comment}
 \newpage
 \,\,
 \newpage
@@ -712,9 +822,110 @@ The substitutions necessary to transform back and forth from these models are:
 \end{align}
 
 Where $g$ is a dimensionless parameter, this tells us that the Barker model has an extra redundant parameter that we can absorb into the definitions of the other variables.
+
+\section{A Primer on Inflaton}\label{The need for Inflation}
+
+\subsection{Horizon Problem} \label{Horizon Problem}
+In this section, we will show that given the standard assumed expansion rate in the Big Bang model, we cannot satisfactorily explain the near-perfect uniformity of the CMB. This is because, given the rate of expansion, there is no way for distant regions of the CMB to have once been causally connected.
+Given the Friedmann Equations and defining the Hubble constant $H = \frac{\dot{a}}{a}$,
+\begin{align}    
+    \ddot{a} &= -\frac{4\pi G}{3} (\rho + 3p)a \label{Friedmann Eqn 1} \\
+    H^2 + \frac{k}{a^2} &= \frac{8 \pi G}{3} \rho \label{Friedmann Eqn 2} \\
+    \dot{\rho} &= -3(\rho + p)H \label{Friedmann Eqn 3}
+\end{align}
+From the continuity equation \cref{Friedmann Eqn 3}, we have:
+\begin{equation} \label{4}
+    \frac{\mathrm{d}  \ln(\rho)}{\mathrm{d} \ln(a)} = -3(1+w)
+\end{equation}
+Where, $w = \frac{p}{\rho}$. We can solve this equation to get $\rho \propto a^{-3(1+w)}$. In combination with the Friedmann equation \cref{Friedmann Eqn 2} for a flat universe $k = 0$, we get the scale factor $a$ as a function of time $a(t)$.
+\begin{equation}    \label{5}
+    a(t) = \begin{cases}
+        t^{2/3(1+w)} & w \neq -1 \\
+        e^{Ht} & w = -1
+    \end{cases}
+\end{equation}
+Now, we can define the comoving horizon ($\tau$) as the causal horizon or the maximum distance a light ray can travel between times 0 and $t$.
+\begin{equation}    \label{6}
+    \tau \equiv \int_{0}^{t} \frac{\mathrm{d} t'}{a(t')} = \int_{0}^{a} \frac{\mathrm{d}a}{H a^2} = \int_{0}^{a} \mathrm{d} \ln(a) \frac{1}{aH}
+\end{equation}
+Therefore, for a conventional Big Bang model, the causal horizon $\tau$ for a universe with $w \geq 0$ increases with time. This means that the fraction of the universe in contact with each other increases with time.
+\begin{equation}
+    \tau \propto a^{1/2(1+3w)} \implies \tau = \begin{cases}
+        a & \text{Radiation Dominated} \\
+        a^{1/2} & \text{Matter Dominated}
+    \end{cases}
+\end{equation}
+The comoving horizon increasing with time implies that comoving scales (comoving scale is not the same as the physical scale) entering the cosmic horizon now were not in causal contact during the CMB decoupling! However, the anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree.
+
+\subsection{Flatness Problem} \label{Flatness Problem}
+Despite the presence of mass and energy in our universe, the large-scale structure of our spacetime is approximately Euclidean (flat). To see whether this is a stable equilibrium, we return to Friedmann equation \cref{Friedmann Eqn 2} and defining $\rho_{\text{crit}} = 3H^2(a)$ and $\Omega(a) = \frac{\rho(a)}{\rho_{\text{crit}}}$, we get
+\begin{equation}
+    1 - \Omega(a) = \frac{-k}{(aH)^2}
+\end{equation}
+Differentiating this equation and using the Friedmann equations, we get,
+\begin{equation}
+    \frac{\mathrm{d}\Omega}{\mathrm{d} \ln a} = (1+3w)\Omega(\Omega-1)
+\end{equation}
+Looking at this, we can see that $\Omega = 1  \implies \rho = \rho_{crit}$ is an unstable equilibrium and slight perturbations can make the universe not flat, i.e., $k \neq 0$. This means that in the standard big bang model, matter density has to be extremely fine-tuned to fit the requirement $\rho = \rho_{crit}$, which seems unlikely.
+
+The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. The next section shows how this theory solves the two problems stated above.
+
+\subsection{Inflationary Observables}  \label{Inflationary Observables}
+Inflation is a robust theory not only because it solves the horizon and flatness problems (See \cref{Horizon Problem}, \cref{Flatness Problem} for more details), but it also makes predictions about the inhomogeneities in the early universe. These primordial density fluctuations are a result of the inherent quantum nature of the inflaton field. 
+The fluctuations in the inflaton field $\delta\varphi$ cause different patches of spacetime to have different amounts of inflation as the field has not exited slow-roll in certain regions yet. 
+
+These fluctuations can be treated as perturbations around a background field ($\delta\varphi(t,\textbf{x}) = \varphi(t,\textbf{x}) - \Bar{\varphi}(t)$). However, as is known, by the EFEs $\delta G_{\mu\nu} = \frac{1}{M_p^2}\delta T_{\mu \nu}$, perturbations in the matter density cause perturbations in the metric too. Therefore, we can expand the metric around it's background value similarly as $g_{\mu\nu}(t,\textbf{x}) = \Bar{g}_{\mu\nu}(t) + \delta g_{\mu\nu}(t,\textbf{x})$. Generally, these metric perturbations $\delta g_{\mu\nu}(t,\textbf{x})$ have 10 independent components, but these can be decomposed into scalar, vector, and tensor (SVT) perturbations \cite{liddle_cosmological_2000, malik_cosmological_2009}. Using conformal time and writing the background metric in the same form as \cref{deSitter Conformal}, we get the perturbation to the metric to be of the form
+\begin{equation} \label{Perturbed metric}
+    \delta g_{\mu\nu}
+    = 
+    -a^2
+    \begin{pmatrix}
+        -2 \Phi & \partial_iB \\
+        \partial_iB & (1-2\Psi)\delta_{ij} + E_{ij} 
+    \end{pmatrix}
+\end{equation}
+Where $E_{ij} = 2\partial_i\partial_j E + h_{ij}$. There are 4 independent contributions $(\Phi, B, \Psi, E)$ which behave as scalars under transformation of frames and the transverse, traceless ($h_i^i = \partial^ih_{ij} = 0$), and symmetric tensor contribution $h_{ij}$ to the perturbed metric. We have neglected terms corresponding to the vector perturbations as they are not created by inflation, and as they also decay with the expansion of the universe. The reason we would prefer to split the metric perturbation into these three types is that at linear order, the Fourier modes decouple, and we can analyse them separately. 
+
+
+However, with a change in coordinates, while the tensor contributions remain the same, the scalar functions change. Therefore, by a suitable choice of coordinates, we could remove the inhomogeneities in the inflaton field $\delta \varphi(\textbf{x}',t') = 0$. To analyse these perturbations, it is therefore important to consider gauge-invariant quantities. An obvious choice would be to consider the intrinsic curvature of the spatial hypersurface ${}^{(3)}R$ (See \cref{3+1 decomposition of spacetime}). However, it is easier to work with a related quantity that makes no reference to the scale factor and is normalised. This quantity can therefore be defined as
+\begin{equation} \label{comoving curvature perurbation}
+    \mathcal{R} \equiv 4 \frac{k^2}{a^2} {}^{(3)}R = \Psi - \frac{H}{\dot{\Bar{\varphi}}}\delta \varphi
+\end{equation}
+This is called the comoving curvature perturbation ($k$ here corresponds to the wavenumber of the Fourier mode). Another quantity of interest is the two polarization modes of the tensor perturbation $h_{ij}$, that is, $h \equiv h^+ , h^\times$, these are the gravitational waves generated due to inflation. The observables we can constrain from these two quantities are the scalar and tensor power spectra ($P_\mathcal{R}(k)$ and $P_h(k)$), respectively
+\begin{align}
+    \langle \mathcal{R}_{\bm{k}} \mathcal{R}_{\bm{k}'} \rangle &= (2\pi)^3 \delta(\bm{k}+\bm{k}')P_\mathcal{R}(k) \\
+    \langle h_{\bm{k}} h_{\bm{k}'} \rangle &= (2\pi)^3 \delta(\bm{k}+\bm{k}')P_h(k)
+\end{align}
+Where $\bm{k}$ is the Fourier wavevector corresponding to that mode in the decomposition. Defining $\Delta_s^2 = \frac{k^3}{2\pi^2} P_\mathcal{R}(k)$ and $\Delta_t^2 = \frac{k^3}{\pi^2} P_h(k)$ (upon summing over the two polarizations, we lose a factor of 2 in the denominator in the definition of $\Delta_t^2$), we get the scale-dependence of the power spectrum, often called the scalar tilt as follows
+\begin{equation}
+    n_s - 1 \equiv \frac{\text{d} \ln \Delta_s^2}{\text{d} \ln k}
+\end{equation}
+and the tensor-to-scalar ratio, which is defined as the normalized value of the amplitude of the tensor fluctuations with respect to the amplitude of the scalar fluctuations
+\begin{equation}
+    r \equiv \frac{\Delta_t^2(k)}{\Delta_s^2(k)}
+\end{equation}
+The scalar tilt (also called the scalar spectral index) measures how the curvature perturbation spectrum scales with wavenumber $P_\mathcal{R}(k) = A_s\big(\frac{k}{k_*}\big)^{n_s-1}$, where $A_s$ is the amplitude of the scalar perturbation and $k_*$ is the pivot scale, the comoving wavenumber at which the the amplitude is defined. $n_s = 1$ corresponds to a scale-invariant spectrum (Harrison‑Zeldovich \cite{harrison_fluctuations_1970, zeldovich_hypothesis_1972, peebles_primeval_1970})
+. $n_s < 1$ implies that there is more power at smaller $k$ (larger scales) and $n_s > 1$ implies that there is more power at larger $k$ (smaller scales). 
+\
+The latest Planck data \cite{collaboration_planck_2020} constrains these values to around $n_s = 0.9649 \pm 0.0042$, which strongly rules out the Harrison‑Zeldovich spectrum with a confidence of $8.4\sigma$. However, it still shows that the spectrum is \textit{nearly} scale-invariant, with $P_\mathcal{R}(k) \propto k^{-0.0351}$. For $r$, the Planck data constrains the upper limit to $r_{0.002} < 0.056$ at the pivot scale $k_* =0.002 \text{Mpc}^{-1}$
+\begin{comment}
+    \wb{So in general, you want to put some punctuation at the end of each equation, and avoid punctuation at the end of the line before the equation. Exceptions apply for very large displayed equations.}
+
+    \wb{Typo.}
+\end{comment}
+At leading order, the power spectrum is related to the slow-roll parameters by \cite{liddle_cosmological_2000}
+\begin{equation}
+    P_\mathcal{R}(k) \approx \frac{1}{24\pi^2 M_p^4} \frac{V}{\epsilon_V}
+\end{equation}
+Using the slow roll condition $\text{d}t = -(3H/V') \text{d}\varphi$, we find
+\begin{equation}
+    \frac{\text{d}}{\text{d} \ln k} \epsilon_V = -M_p^2 \frac{V'}{V}\frac{\text{d}}{\text{d}\varphi}\epsilon_V = 2\epsilon_V\eta_V - 4\epsilon_V^2
+\end{equation}
+Putting this together, we get $n_s \approx 1 -6\epsilon_V +2\eta_V$, and similar analysis \cite{baumann2012tasilecturesinflation} gives us $r \approx 16 \epsilon_V$ at the horizon crossing scale $k = aH$.
+
 \section{Non-Canonical Scalar Field Inflation} \label{Non-Canonical Scalar Field Inflation}
 
-A good part of this project was spent analysing a non-canonical scalar field. To do so, machinery distinct from the one displayed in section \ref{Canonical Scalar Field Inflation} was required. The following is the derivation for the same. Some of the equations derived have not been found elsewhere in literature (like the EOM for $\varphi$ as a function of N)
+A good part of this project was spent analysing a non-canonical scalar field. To do so, machinery distinct from the one displayed in \cref{Inflation} was required. The following is the derivation for the same. Some of the equations derived have not been found elsewhere in literature (like the EOM for $\varphi$ as a function of N)
 \begin{equation} \label{13}
     S = \int \text{dt}\text{d}^3\text{x} \; \text{a}^3(t) \left[ \frac{K(\varphi)}{2}\dot{\varphi}^2 - V(\varphi) \right]
 \end{equation}
@@ -726,20 +937,20 @@ Setting this variation to zero, we get the equation of motion for a non-canonica
 \begin{equation} \label{16}
     K \ddot{\varphi} + \dot{\varphi} \left(\frac{K_{,\varphi} \dot{\varphi}}{2} + 3H K \right) + V_{,\varphi}   = 0
 \end{equation}
-We see this aligns with the canonical scalar field when we set $K = 1$, getting equation \ref{KGEOM}. To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the energy density and the pressure of the fluid, which are as follows: 
+We see this aligns with the canonical scalar field when we set $K = 1$, getting equation \cref{KGEOM}. To derive the EOM of the inflaton field with respect to the e-folding time ($N = \int H \text{d}t$), we use the energy density and the pressure of the fluid, which are as follows: 
 \begin{align}   \label{18}
     \rho &= \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi) \nonumber \\
     p &= \frac{K(\varphi)}{2} \dot{\varphi}^2 - V(\varphi)
 \end{align}
-Using the third Friedmann equation \ref{Friedmann Eqn 2}, we get:
+Using the third Friedmann \cref{Friedmann Eqn 2}, we get:
 \begin{equation}    \label{19}
     3 M_p^2H^2 = \frac{K(\varphi)}{2} \dot{\varphi}^2 + V(\varphi)
 \end{equation}
-Upon differentiating this expression with respect to time and using \ref{16}, we get:
+Upon differentiating this expression with respect to time and using \cref{16}, we get:
 \begin{equation} \label{20}
     2 M_p^2 \dot{H} = -  K \dot{\varphi}^2
 \end{equation}
-Now that we have all the relevant parameters as functions of the field, we can look at equation \ref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N. (Setting $K = 1$ in the below equation also gives us equation \ref{phi vs N})
+Now that we have all the relevant parameters as functions of the field, we can look at \cref{16} and replace the time derivative there with the derivative with respect to the e-folding time N. Using $\text{d}N = H \text{d}t$, we get our final answer of the field evolution as a differential equation with respect to N. (Setting $K = 1$ in the below equation also gives us \cref{phi vs N})
 \begin{widetext}
 \begin{subequations}
 \begin{align}\label{Kphi vs N}
@@ -748,11 +959,11 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{subequations}
 \end{widetext}
 \subsubsection{Slow Roll Inflation for noncanonical scalar field}
-The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and pressure $p_{\varphi}$, as defined in \ref{18}, is given by the Friedmann equation \ref{Friedmann Eqn 1},
+The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and pressure $p_{\varphi}$, as defined in \cref{18}, is given by the Friedmann equation \cref{Friedmann Eqn 1},
 \begin{equation}
     \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} (K(\varphi){\dot{\varphi}}^2 - V(\varphi)) 
 \end{equation}
-Using similar techniques as Section \ref{Slow Roll Inflation}, we get the Hamilton-Jacobi equation as: 
+Using similar techniques as Section \cref{Inflation}, we get the Hamilton-Jacobi equation as: 
 \begin{equation}    \label{KHJ}
     H'^2 - \frac{3K(\varphi)}{2M_p^2}H^2 = - \frac{K(\varphi) V(\varphi)}{2M_p^4} 
 \end{equation}
@@ -765,7 +976,7 @@ The slow roll parameters, therefore, are:
 
 \section{3+1 decomposition of spacetime} \label{3+1 decomposition of spacetime}
 In general relativity, spacetime is modeled as a four-dimensional manifold equipped with a Lorentzian metric, where space and time are fundamentally intertwined. However, for many physical and cosmological problems, it is both natural and advantageous to disentangle space and time. Given that the FLRW metric supposes spatial homogeneity and isotropy, a natural choice to analyse the metric and dynamics of this spacetime would be to slice the 4D spacetime $\mathcal{M}_4$ into a time-ordered sequence of 3D spacelike hypersurfaces $\Sigma_t$ such that on each hypersurface, time is constant \cite{baumann2012tasilecturesinflation}, 
-\cite{gourgoulhon_31_2007}. By considering such a family of non-intersecting hypersurfaces, we can recast Einstein's equations and a general action like the one written down in equation \ref{Start of derivation} into a form that treats time evolution as a dynamical process. This approach underpins both the initial value (Cauchy) formulation of general relativity and modern numerical relativity, and it provides a direct connection to the Newtonian intuition of evolving initial data forward in time \cite{choquet-bruhat_global_1969}. The spatial hypersurfaces $\Sigma_t$ and the splitting are defined as such:
+\cite{gourgoulhon_31_2007}. By considering such a family of non-intersecting hypersurfaces, we can recast Einstein's equations and a general action like the one written down in \cref{Start of derivation} into a form that treats time evolution as a dynamical process. This approach underpins both the initial value (Cauchy) formulation of general relativity and modern numerical relativity, and it provides a direct connection to the Newtonian intuition of evolving initial data forward in time \cite{choquet-bruhat_global_1969}. The spatial hypersurfaces $\Sigma_t$ and the splitting are defined as such:
 \begin{equation}
     \forall t \in \mathbb{R} : \Sigma_t = \{p \in \mathcal{M}_4 \, | \, \hat{t} (p) = t\} \nonumber
 \end{equation}
@@ -782,7 +993,7 @@ This allows us to decompose the 4D manifold into a non-intersecting family of sp
 
 By looking at the orthogonal projection operator $\Vec{\mathbf{\gamma}} : \mathcal{T_p}(\mathcal{M}_4) \rightarrow \mathcal{T_p}(\Sigma_t)$, we can define an extended induced metric $\gamma_{\alpha\beta} = g_{\alpha\beta} + n_\alpha n_\beta$ (since $g^{\mu\nu} n_\mu n_\nu = 1$, we can define the inverse metric $\gamma^{\alpha\beta} = g^{\alpha\beta} + n^\alpha n^\beta$). This defines an induced metric on $\Sigma_t$, ensuring that vectors normal to the surface give a zero dot product and tangential vectors maintain the same dot product structure inherited from the full manifold. 
 
-Choosing the natural basis of $\mathcal{T}_p(\mathcal{M}_4)$ associated with the coordinates $(x^\alpha) =(t,x^i)$ as $(\bm{\partial}_\alpha)=(\bm{\partial}_t, \bm{\partial}_i)$. Given that this is dual to the 1-form basis $(\textbf{d}x^\alpha) = (\textbf{d}t, \textbf{d}x^i)$, we have $\langle \textbf{d}t, \bm{\partial}_t \rangle = 1$, so given equation \ref{unit 1-form}, we get $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$, where the vector $\bm{\beta}$ is the ``shift'' vector tangent to the hypersurface ($\bm{\beta} = \beta^i \boldsymbol{\partial}_i$). 
+Choosing the natural basis of $\mathcal{T}_p(\mathcal{M}_4)$ associated with the coordinates $(x^\alpha) =(t,x^i)$ as $(\bm{\partial}_\alpha)=(\bm{\partial}_t, \bm{\partial}_i)$. Given that this is dual to the 1-form basis $(\textbf{d}x^\alpha) = (\textbf{d}t, \textbf{d}x^i)$, we have $\langle \textbf{d}t, \bm{\partial}_t \rangle = 1$, so given \cref{unit 1-form}, we get $\bm{\partial}_t = \alpha \bm{n} + \bm{\beta}$, where the vector $\bm{\beta}$ is the ``shift'' vector tangent to the hypersurface ($\bm{\beta} = \beta^i \boldsymbol{\partial}_i$). 
 
 Now using the components of the 3-metric $\gamma_{i j}$ with respect to the coordinates $(x^i)$, we can write $\beta_i = \gamma_{ij}\beta^j$. The components of the metric $\bm{g}$ with respect to the coordinates $(x^\alpha)$ therefore are $\bm{g} \equiv g_{\alpha \beta} \textbf{d}x^\alpha \otimes \textbf{d}x^\beta$
 By this definition, we see that we can extract the components of the metric by looking at its action on the basis of the vector space. 
@@ -813,7 +1024,7 @@ Under a local scale transformation $g_{\mu\nu} \rightarrow \Omega^2 g_{\mu\nu} $
 \[
  \sqrt{-g} \rightarrow \Omega^{4} \sqrt{-g} \quad\text{and}\quad R\rightarrow\Omega^{-2}\Big[R-\frac{6\Box\Omega}{\Omega} \Big]
 \]
-For the action \ref{42a}, looking at only the gravitational part of the action, we have,
+For the action \cref{42a}, looking at only the gravitational part of the action, we have,
 \begin{equation}
     S = -\int d^4x\,\sqrt{-g}\, 
   \,\bigl(\alpha\,\phi_0^2 + \beta\,\varphi^2 + \gamma\,\phi_0\,\varphi\bigr)\,R
@@ -829,10 +1040,10 @@ We have used $M = M_p/\sqrt{2}$ throughout. The first term simplifies to the Ein
     &-6M^2 \partial_\mu A^{-1/2} \partial_\mu A^{1/2} \nonumber \\
     &\implies \frac{3M^2}{2} \left( \frac{2\beta \varphi + \gamma\phi_0}{\alpha\,\phi_0^2+\beta\,\varphi^2+\gamma\,\phi_0\,\varphi} \right)^2 \partial_\mu \varphi \partial^\mu \varphi
 \end{align}
-Which is what we get in equation \ref{33a}
+Which is exactly the additional term we get in \cref{33a}
 
 \section{Mapping of Parameters} \label{Mapping of Parameters}
-In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in equation \ref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p \rightarrow p_f$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
+In \cref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted with an underscore f), which we got from algebraic manipulations of the parameters in \cref{Potential} ($p = \{\beta,\gamma,\alpha,\lambda, k, 2\chi, \mu, 2\omega,  \kappa \}$) (Which shall be denoted as is). The mapping from $p \rightarrow p_f$ is given by (where $D = \sqrt{4\alpha \beta- \gamma^2}$):
 
 \begin{align}
     \kappa_f &= \frac{16\beta^2}{D^4}\Big(\kappa - \frac{\gamma\omega}{\beta} + \frac{\gamma^2\mu}{4\beta^2} - \frac{\gamma^3\chi}{4\beta^3} +\frac{\gamma^4\lambda}{16\beta^4} \Big)   \nonumber \\
@@ -843,60 +1054,14 @@ In equation \ref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\la
     C &= \sqrt{\frac{2}{12+k}}
 \end{align}.
 
-This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations \ref{Starting Action}, \ref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \ref{Ugliest full Potential} without any loss in generality or physics. 
+This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations \cref{Starting Action}, \cref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \cref{Ugliest full Potential} without any loss in generality or physics. 
 
-
-\section{A Primer on Inflaton}\label{The need for Inflation}
-
-\subsection{Horizon Problem} \label{Horizon Problem}
-In this section, we will show that given the standard assumed expansion rate in the Big Bang model, we cannot satisfactorily explain the near-perfect uniformity of the CMB. This is because, given the rate of expansion, there is no way for distant regions of the CMB to have once been causally connected.
-Given the Friedmann Equations and defining the Hubble constant $H = \frac{\dot{a}}{a}$,
-\begin{align}    
-    \ddot{a} &= -\frac{4\pi G}{3} (\rho + 3p)a \label{Friedmann Eqn 1} \\
-    H^2 + \frac{k}{a^2} &= \frac{8 \pi G}{3} \rho \label{Friedmann Eqn 2} \\
-    \dot{\rho} &= -3(\rho + p)H \label{Friedmann Eqn 3}
-\end{align}
-From the continuity equation \ref{Friedmann Eqn 3}, we have:
-\begin{equation} \label{4}
-    \frac{\mathrm{d}  \ln(\rho)}{\mathrm{d} \ln(a)} = -3(1+w)
-\end{equation}
-Where, $w = \frac{p}{\rho}$. We can solve this equation to get $\rho \propto a^{-3(1+w)}$. In combination with the Friedmann equation \ref{Friedmann Eqn 2} for a flat universe $k = 0$, we get the scale factor $a$ as a function of time $a(t)$.
-\begin{equation}    \label{5}
-    a(t) = \begin{cases}
-        t^{2/3(1+w)} & w \neq -1 \\
-        e^{Ht} & w = -1
-    \end{cases}
-\end{equation}
-Now, we can define the comoving horizon ($\tau$) as the causal horizon or the maximum distance a light ray can travel between times 0 and $t$.
-\begin{equation}    \label{6}
-    \tau \equiv \int_{0}^{t} \frac{\mathrm{d} t'}{a(t')} = \int_{0}^{a} \frac{\mathrm{d}a}{H a^2} = \int_{0}^{a} \mathrm{d} \ln(a) \frac{1}{aH}
-\end{equation}
-Therefore, for a conventional Big Bang model, the causal horizon $\tau$ for a universe with $w \geq 0$ increases with time. This means that the fraction of the universe in contact with each other increases with time.
-\begin{equation}
-    \tau \propto a^{1/2(1+3w)} \implies \tau = \begin{cases}
-        a & \text{Radiation Dominated} \\
-        a^{1/2} & \text{Matter Dominated}
-    \end{cases}
-\end{equation}
-The comoving horizon increasing with time implies that comoving scales (comoving scale is not the same as the physical scale) entering the cosmic horizon now were not in causal contact during the CMB decoupling! However, the anisotropy of the CMB is about one part in $10^{-5}$, posing a problem to the conventional big bang model to explain how these distant regions of the CMB managed to regulate their temperatures to such an accurate degree.
-
-\subsection{Flatness Problem} \label{Flatness Problem}
-Despite the presence of mass and energy in our universe, the large-scale structure of our spacetime is approximately Euclidean (flat). To see whether this is a stable equilibrium, we return to Friedmann equation \ref{Friedmann Eqn 2} and defining $\rho_{\text{crit}} = 3H^2(a)$ and $\Omega(a) = \frac{\rho(a)}{\rho_{\text{crit}}}$, we get
-\begin{equation}
-    1 - \Omega(a) = \frac{-k}{(aH)^2}
-\end{equation}
-Differentiating this equation and using the Friedmann equations, we get,
-\begin{equation}
-    \frac{\mathrm{d}\Omega}{\mathrm{d} \ln a} = (1+3w)\Omega(\Omega-1)
-\end{equation}
-Looking at this, we can see that $\Omega = 1  \implies \rho = \rho_{crit}$ is an unstable equilibrium and slight perturbations can make the universe not flat, i.e., $k \neq 0$. This means that in the standard big bang model, matter density has to be extremely fine-tuned to fit the requirement $\rho = \rho_{crit}$, which seems unlikely.
-
-The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. The next section shows how this theory solves the two problems stated above.
 
 %TC:endignore
 
 \newpage
 \,
 \newpage
+
 \printbibliography
 \end{document}
