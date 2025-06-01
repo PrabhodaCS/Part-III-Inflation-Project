@@ -19,10 +19,12 @@
 \usepackage{multirow,tabularx}
 \usepackage{siunitx}
 \usepackage{multirow}
+\usepackage{appendix}
 \usepackage{graphicx}
 \usepackage{xstring}
 \usepackage{etoolbox}
 \usepackage{notoccite}
+\usepackage{tocbasic}
 \usepackage{mathrsfs}
 \usepackage{lineno}
 \usepackage{tensor}
@@ -67,22 +69,33 @@
   \let\addtocontents\latexaddtocontents
 \makeatother
 
-\usepackage[style=nejm, 
-citestyle=numeric-comp,
-sorting=none]{biblatex}
-\addbibresource{Bibliography.bib}
+
+%	Will: the old way
+%\usepackage[style=nejm, 
+%citestyle=numeric-comp,
+%sorting=none]{biblatex}
+%\usepackage{biblatex}
+%\addbibresource{Bibliography.bib}
+%	Will: the new way
+\usepackage{natbib}
 
 
 \newcommand{\wb}[1]{{\color[RGB]{255,0,0}{\textbf{\textit{[WB: #1]}}}}}
 \newcommand{\pcs}[1]{{\color[RGB]{0,100,0}{\textbf{\textit{[PCS: #1]}}}}}
 
+
 \usepackage{titlesec}
 \newrobustcmd{\pea}[1]{\emph{#1}\textbf{.\ \ \ ---}}
 \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\emph\theparagraph}{1em}{\pea}
 \titleformat{\section}[block]{\normalfont\bfseries\centering}{\MakeUppercase\thesection}{1em}{\MakeUppercase}
-\makeatother
+\DeclareTOCStyleEntry[numwidth=20pt,linefill=\bfseries\TOCLineLeaderFill]{tocline}{section}
+\DeclareTOCStyleEntry[entryformat=\textit,numwidth=10pt,linefill=\TOCLineLeaderFill]{tocline}{subsection}
+\DeclareTOCStyleEntry[entryformat=\textit,numwidth=10pt,linefill=\TOCLineLeaderFill]{tocline}{subsubsection}
 
-\usepackage[capitalize]{cleveref} %always load this last in preamble
+\usepackage[capitalize,nameinlink]{cleveref}
+\crefname{paragraph}{paragraph}{paragraphs}
+\Crefname{paragraph}{Paragraph}{Paragraphs}
+\AddToHook{cmd/appendix/before}{\crefalias{section}{appendix}}
 
 \begin{document}
 \title{Constraints on inflation from scale-invariant gravity}
@@ -100,8 +113,10 @@ The theory of inflation attempts to resolve the need for extreme fine-tuning of 
     The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \cref{The need for Inflation}).
 \end{comment}
 
+
 \maketitle
-\section{INTRODUCTION} \label{Introduction}
+\tableofcontents
+\section{Introduction} \label{Introduction}
 \begin{comment}
     \paragraph*{Here is a paragraph} \wb{I've found this modified paragraph heading useful for breaking up ideas.}
 
@@ -608,13 +623,13 @@ adnoion
 Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2},\sqrt{\frac{12 + k}{2}}M_p \frac{\pi}{2} \right)$. The potential also exhibits the desired behaviour of $V^{1/4} \sim M_p$. This is desirable as it prevents the Universe from collapsing within a Planck time scale if the density parameter starts out bigger than unity ($\Omega > 1$). It also ensures that if in the beginning $\Omega < 1$, an initially homogeneous region will not be invaded by its inhomogeneous surroundings \cite{Liddle_Lyth_2000}.  
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.4\textwidth]{Python/Figures/AE/inflation_plots/potential.png}
+    \includegraphics[width=0.4\textwidth]{../../Python/Figures/AE/inflation_plots/potential.png}
     \caption{$V(\tilde{\varphi})$ vs $\tilde{\varphi}$ (Un-Optimized)}
     \label{Canonical Potential vs Field1}
 \end{figure}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{Python/Figures/AE/inflation_plots/phase_portrait.png}
+    \includegraphics[width=0.5\textwidth]{../../Python/Figures/AE/inflation_plots/phase_portrait.png}
     \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$}
     \label{Phase Space potrait1}}
 \end{figure}
@@ -767,12 +782,12 @@ Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the
   \centering
   % First sub‐figure: Potential vs Field ----------------------------
   {%
-    \includegraphics[width=1.0\columnwidth]{Python/results/potential.png}%
+    \includegraphics[width=1.0\columnwidth]{../../Python/results/potential.png}%
   }%
   \\[1ex]  % <-- force a small vertical gap, then place next subfloat below
   % Second sub‐figure: Phase Space Portrait -------------------------
   {%
-    \includegraphics[width=1.0\columnwidth]{Python/results/phase_uncompact.png}%
+    \includegraphics[width=1.0\columnwidth]{../../Python/results/phase_uncompact.png}%
   }%
   \caption{%
     (a) Optimized canonical potential $V(\tilde{\varphi})$ plotted against $\tilde{\varphi}$. 
@@ -781,7 +796,7 @@ Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the
   \label{fig:combined_potential_and_phase}
 \end{figure}
 \begin{figure}
-    \includegraphics[width=0.5\textwidth]{Python/results/phase_compact.png}
+    \includegraphics[width=0.5\textwidth]{../../Python/results/phase_compact.png}
     \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$ (Compactified)}
     \label{Optimized Compact Phase Space potrait1}
 \end{figure}
@@ -813,17 +828,17 @@ Current preliminary investigations hint towards the possibility that Weyl Symmet
 \paragraph*{Conclusion}
 A distinct inflationary potential was formulated by positing a scale-invariant inflaton-gravity action. This formulation did not necessitate the inflaton to be massless, contrary to conformally coupled scalar gravity models, provided that a compensator scalar (dilaton) and a Weyl vector are introduced simultaneously. Consequently, this approach mitigates the critiques directed at such models, as the resultant potential does not exhibit dependence on the energy scale of scale-invariance breaking, thereby affirming its naturalness.
 
-
-
 \begin{comment}
     \wb{Not sure what regularly means here.} \pcs{removed} 
 \end{comment}
-\newpage
-\,\,
-\newpage
 
-%TC:ignore
+%	Will: the old way
+%\printbibliography
+%	Will: the new way
+\bibliography{Bibliography}
+
 \appendix
+
 \section{A Primer on Inflaton}\label{The need for Inflation}
 
 \subsection{Horizon Problem} \label{Horizon Problem}
@@ -1095,11 +1110,4 @@ In \cref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\
 This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations, \cref{Starting Action} and \cref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \cref{Ugliest full Potential} without any loss in generality or physics. 
 
 
-%TC:endignore
-
-\newpage
-\,
-\newpage
-
-\printbibliography
 \end{document}

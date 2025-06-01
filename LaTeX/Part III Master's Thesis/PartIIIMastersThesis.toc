@@ -1,0 +1,24 @@
+\contentsline {title}{Constraints on inflation from scale-invariant gravity}{1}{section*.2}%
+\contentsline {abstract}{Abstract}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Inflation}{2}{section.2}%
+\contentsline {subsection}{\numberline {A}Canonical Scalar Field Inflation}{2}{subsection.2.1}%
+\contentsline {section}{\numberline {III}Scale Invariant Gravity}{4}{section.3}%
+\contentsline {section}{\numberline {IV}The Inflaton Action}{7}{section.4}%
+\contentsline {subsection}{\numberline {A}Asymptotic Limits}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {B}Simplification of the model}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {V}Results}{9}{section.5}%
+\contentsline {section}{\numberline {}References}{10}{section*.3}%
+\appendix 
+\contentsline {section}{\numberline {A}A Primer on Inflaton}{12}{appendix.A}%
+\contentsline {subsection}{\numberline {1}Horizon Problem}{12}{subsection.A.1}%
+\contentsline {subsection}{\numberline {2}Flatness Problem}{12}{subsection.A.2}%
+\contentsline {subsection}{\numberline {3}Inflationary Observables}{12}{subsection.A.3}%
+\contentsline {section}{\numberline {B}Translating variables from the papers \cite {Salvio_2022} to \cite {barker2024poincaregaugetheoryconformal}}{13}{appendix.B}%
+\contentsline {section}{\numberline {C}Non-Canonical Scalar Field Inflation}{14}{appendix.C}%
+\contentsline {subsubsection}{\numberline {a}Slow Roll Inflation for noncanonical scalar field}{14}{subsubsection.C.0.1}%
+\contentsline {section}{\numberline {D}3+1 decomposition of spacetime}{14}{appendix.D}%
+\contentsline {section}{\numberline {E}Conformal Transformations}{15}{appendix.E}%
+\contentsline {section}{\numberline {F}Mapping of Parameters}{15}{appendix.F}%

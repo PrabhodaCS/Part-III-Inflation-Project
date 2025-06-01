@@ -1,0 +1,74 @@
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: PartIIIMastersThesis.aux
+The style file: apsrev4-2.bst
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Database file #1: PartIIIMastersThesisNotes.bib
+Database file #2: Bibliography.bib
+Repeated entry---line 261 of file Bibliography.bib
+ : @article{bars2014local
+ :                       ,
+I'm skipping whatever remains of this entry
+control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
+apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (0) allowed
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 55 entries,
+            6079 wiz_defined-function locations,
+            2077 strings with 26291 characters,
+and the built_in function-call counts, 51109 in all, are:
+= -- 4103
+> -- 975
+< -- 259
++ -- 326
+- -- 222
+* -- 7371
+:= -- 5081
+add.period$ -- 53
+call.type$ -- 55
+change.case$ -- 282
+chr.to.int$ -- 63
+cite$ -- 55
+duplicate$ -- 4838
+empty$ -- 3719
+format.name$ -- 553
+if$ -- 10342
+int.to.chr$ -- 3
+int.to.str$ -- 62
+missing$ -- 735
+newline$ -- 211
+num.names$ -- 159
+pop$ -- 1877
+preamble$ -- 1
+purify$ -- 265
+quote$ -- 0
+skip$ -- 2360
+stack$ -- 0
+substring$ -- 1242
+swap$ -- 4400
+text.length$ -- 102
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 691
+warning$ -- 1
+while$ -- 157
+width$ -- 0
+write$ -- 536
+(There was 1 error message)
