@@ -1,0 +1,12 @@
+Dear Prabhoda,
+
+How have things gone so far this weekend? I'm in Catania now, but I should have
+wifi from this evening. I've pushed to `master` a slightly improved version of
+the posterior plot for you to use. The names of the chains should be clear in
+the script, so you can hunt for these in your full-grid download.
+
+Hopefully the comments in the script are self-explanatory. Don't forget to
+beautify the plot as much as you can, including the use of TeX-style labels
+using `rc`.
+
+Best -w
