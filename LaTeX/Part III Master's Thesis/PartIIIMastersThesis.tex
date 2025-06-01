@@ -1,9 +1,6 @@
 %%====================%%
 %%  Part III Project  %%
 %%====================%%
-% 1. Save the original kernel definition
-\let\latexaddtocontents\addtocontents
-
 \documentclass[aps,prd,reprint,preprintnumbers,showpacs,floatfix,nofootinbib,superscript address]{revtex4-2}
 \usepackage[utf8]{inputenc}
 \usepackage{parskip}
@@ -34,7 +31,7 @@
 \usepackage{listings}
 \usepackage{bm}
 \usepackage{comment}
-
+\usepackage{natbib}
 \usepackage{graphicx}    % already loaded by RevTeX, but shown here for clarity
 \usepackage{subfigure}   % RevTeX normally loads this automatically
 
@@ -64,20 +61,13 @@
   \end{tabular}
 }
 
-
-\makeatletter
-  \let\addtocontents\latexaddtocontents
-\makeatother
-
-
 %	Will: the old way
 %\usepackage[style=nejm, 
 %citestyle=numeric-comp,
 %sorting=none]{biblatex}
 %\usepackage{biblatex}
-%\addbibresource{Bibliography.bib}
 %	Will: the new way
-\usepackage{natbib}
+
 
 
 \newcommand{\wb}[1]{{\color[RGB]{255,0,0}{\textbf{\textit{[WB: #1]}}}}}
@@ -87,35 +77,33 @@
 \usepackage{titlesec}
 \newrobustcmd{\pea}[1]{\emph{#1}\textbf{.\ \ \ ---}}
 \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\emph\theparagraph}{1em}{\pea}
-\titleformat{\section}[block]{\normalfont\bfseries\centering}{\MakeUppercase\thesection}{1em}{\MakeUppercase}
-\DeclareTOCStyleEntry[numwidth=20pt,linefill=\bfseries\TOCLineLeaderFill]{tocline}{section}
-\DeclareTOCStyleEntry[entryformat=\textit,numwidth=10pt,linefill=\TOCLineLeaderFill]{tocline}{subsection}
-\DeclareTOCStyleEntry[entryformat=\textit,numwidth=10pt,linefill=\TOCLineLeaderFill]{tocline}{subsubsection}
 
-\usepackage[capitalize,nameinlink]{cleveref}
-\crefname{paragraph}{paragraph}{paragraphs}
-\Crefname{paragraph}{Paragraph}{Paragraphs}
-\AddToHook{cmd/appendix/before}{\crefalias{section}{appendix}}
+\usepackage{tocloft}  % you can also use tocbasic, but tocloft gives \cftsecnumwidth
+\setlength{\cftsecnumwidth}{3em}    % widen for section numbers
+\setlength{\cftsubsecnumwidth}{2em} % widen for subsections, if any
+% ───────────────────────────────
+\usepackage{cleveref}
+
 
 \begin{document}
+
 \title{Constraints on inflation from scale-invariant gravity}
 
 \author{Prabhoda Chandra Sarjapur, Candidate number \textbf{4639K}}
 \affiliation{Department of Physics, Cavendish Laboratory, University of Cambridge}
 
 \author{\\\textbf{SUPERVISOR}, Dr. Will Barker}
-
+\begin{widetext}
+    \textbf{Except where specific reference is made to the work of others, this work is original and has not been already submitted either wholly or in part to satisfy any degree requirement at this or any other university}
+\end{widetext}
 \begin{abstract}
 The theory of inflation attempts to resolve the need for extreme fine-tuning of the initial conditions of the universe by positing a period of exponential expansion. In this paper, we posit that a compelling inflationary model emerges by demanding local scale invariance (Weyl symmetry). We present a Weyl‐invariant single‐scalar model of cosmic inflation in which local scale symmetry is gauged by introducing a dilaton $\phi$ and Weyl gauge vector $B_\mu$ such that no explicit mass parameters appear at the classical level. This model has the added benefit of observables not depending on the arbitrary energy scale at which scale invariance is broken. 
 \end{abstract}
 
-\begin{comment}
-    The simplest model of the Big Bang theory naturally follows from General Relativity applied to a general isotropic and homogeneous universe (Friedmann Equations) combined with Hubble's observations (Hubble's Law).  It is a highly successful theory, able to offer a comprehensive explanation for many experimental observations such as the Cosmic Microwave Background (CMB), the abundance of light elements, large-scale structure, and mainly, Hubble's Law. However, the model assumes a decelerating expansion dominated by matter or radiation, leading to fine-tuning problems like the horizon and flatness puzzles (discussed in Section \cref{The need for Inflation}).
-\end{comment}
-
 
 \maketitle
 \tableofcontents
+
 \section{Introduction} \label{Introduction}
 \begin{comment}
     \paragraph*{Here is a paragraph} \wb{I've found this modified paragraph heading useful for breaking up ideas.}
@@ -125,7 +113,7 @@ The theory of inflation attempts to resolve the need for extreme fine-tuning of 
     \pcs{Implemented}
 \end{comment}
 
-\paragraph*{1. Inflationary Theory} Inflationary theory was originally developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
+\paragraph*{Inflationary Theory} Inflationary theory was originally developed in a series of papers by Guth \cite{GuthOriginalPaper}, Linde \cite{LINDE1982389}, Steinhardt 
 \cite{PhysRevLett.48.1220}, and Starobinsky \cite{STAROBINSKY198099}, and is a paradigm that aims to explain the observed level of homogeneity and isotropy in the Universe today. It posits that in the early universe, a small patch underwent a period of rapid exponential expansion where all the initial inhomogeneities were wiped out. The main idea of the theory is as follows: during the early universe, a homogeneous, isotropic field pervaded spacetime, such that its potential energy was greater than its kinetic energy. This supplied the negative pressure required in the Einstein Field Equations (EFEs) \cite{einstein1915feldgleichungen} for gravity to become repulsive and cause the rapid exponential expansion necessary for inflation. Inflation terminates when the slow-roll conditions—characterized by small field acceleration and kinetic energy relative to potential energy—break down, triggering reheating into Standard Model particles \cite{Mukhanov:2005sc}.
 
 While inflation is phenomenologically successful, it lacks a unique fundamental origin. Most models are ad hoc, constrained only by observational data on the inflaton potential’s slope and curvature. This paper argues that a particularly satisfying and vibrant inflationary model emerges by demanding local scale invariance (Weyl symmetry \cite{weyl_reine_1918}) for the inflaton-gravity system. Such a symmetry naturally restricts the Lagrangian’s form and links to broader theoretical principles like conformal invariance \cite{francesco_conformal_1997}.
@@ -134,7 +122,7 @@ While inflation is phenomenologically successful, it lacks a unique fundamental 
 \wb{This is a good opening. However, you should aim for an average reference density of one per two sentences or higher.}
 \end{comment}
 
-\paragraph*{2. The Appeal of Scale Invariance} Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck \cite{collaboration_planck_2020, collaboration_bicep_2021} and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, which had approximately a de Sitter metric
+\paragraph*{The Appeal of Scale Invariance} Scale invariance in cosmology seems quite an attractive hypothesis given the nearly scale-invariant spectrum of primordial fluctuations as measured by Planck \cite{collaboration_planck_2020, collaboration_bicep_2021} and WMAP, which might reflect the approximate conformal symmetry of the quasi–de Sitter phase during inflation. We also see that during inflation, which had approximately a de Sitter metric
 \begin{equation} \label{deSitter Conformal}
     \text{d}s^2 = \frac{1}{H^2\eta^2}(\text{d}\eta^2 - \text{d}\Vec{x}^2)
 \end{equation} 
@@ -172,7 +160,7 @@ These investigations may hint towards a fundamental principle out of which these
      \wb{Double-hyphenate (--) for joining names.}
 \end{comment}
 
-\paragraph*{3. Structure of the Thesis} This paper is organized as follows: \cref{Inflation} elucidates how the introduction of a scalar field that violates the strong energy condition helps us resolve the horizon and flatness problems. It further derives the necessary formulae and analytical tools required to examine the particular model that will be presented in \cref{Scale Invariant Gravity} and \cref{Solution}. In \cref{Scale Invariant Gravity}, we construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The primary objective of this section is to reformulate the action into a more conventional structure, one consisting of an Einstein--Hilbert term and an inflaton action term. Finally, in \cref{Solution}, we conduct a thorough analysis of the inflaton action and the behavior of the resultant potential it predicts. Additionally, we will align the parameters with empirical observations, demonstrating a satisfactory correspondence. We use the metric signature $(+,-,-,-)$ in this paper.
+\paragraph*{Structure of the Thesis} This paper is organized as follows: \cref{Inflation} elucidates how the introduction of a scalar field that violates the strong energy condition helps us resolve the horizon and flatness problems. It further derives the necessary formulae and analytical tools required to examine the particular model that will be presented in \cref{Scale Invariant Gravity} and \cref{Solution}. In \cref{Scale Invariant Gravity}, we construct the most general Weyl Invariant action that is linear in curvature. However, we will see that the gravitational sector and the scalars are coupled when we do this. The primary objective of this section is to reformulate the action into a more conventional structure, one consisting of an Einstein--Hilbert term and an inflaton action term. Finally, in \cref{Solution}, we conduct a thorough analysis of the inflaton action and the behavior of the resultant potential it predicts. Additionally, we will align the parameters with empirical observations, demonstrating a satisfactory correspondence. We use the metric signature $(+,-,-,-)$ in this paper.
 
 \section{Inflation}\label{Inflation}
 The standard Hot Big Bang model successfully describes nucleosynthesis and the CMB. However, there are two fine-tuning problems with this theory, which are the horizon and the flatness problems (For more details, see \cref{The need for Inflation}): 
@@ -193,7 +181,7 @@ Both of these are elegantly resolved if we assume that the early universe underw
 Given that $\ddot{a} > 0$ and the Friedmann equations (\cref{Friedmann Eqn 1}), we see that $p < -\frac{\rho}{3} \implies w < - \frac{1}{3}$. 
 
 In the following section, we shall describe how such a negative pressure source can arise through the introduction of a scalar field with certain properties.
-\subsection{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
+\paragraph{Canonical Scalar Field Inflation} \label{Canonical Scalar Field Inflation}
 The simplest models of inflation involve a scalar field $\varphi$ (the inflaton field) that acts as the perfect fluid with $w < -\frac{1}{3}$ such that upon coupling with gravity through the Einstein--Hilbert action, it can provide the repulsive force in the Friedmann equations for the accelerated expansion.
 \begin{comment}
     \wb{In general, you don't have to capitalize important things, even acronyms.}
@@ -295,7 +283,7 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{widetext}
 We can now use \cref{phi vs N} to determine the evolution of the inflaton field as a function of the e-folding time. We usually require inflation to occur for approximately 60 e-folds. We can verify this is the case for our model using \cref{phi vs N} and the slow roll parameters that are defined in the next section.
 
-\paragraph*{Slow Roll Inflation}
+\paragraph{Slow Roll Inflation}
 \begin{comment}
 \wb{Best not to leave a section on an equation, but add a short discussion afterwards, if only one line.}
 \wb{Again, cref everywhere instead of ref.}
@@ -328,7 +316,7 @@ To ensure that inflation lasts for a long enough time, we would require that the
 Therefore, we can now say that inflation occurs when the slow-roll conditions are satisfied, i.e., $\epsilon_V < 1$ and $|\eta_V|< 1$.
 \end{comment}
 
-Inflation proceeds when the kinetic energy of the scalar field is much smaller than the potential energy, $\dot{\varphi}^2 \ll V(\varphi) \implies \ddot{a} > 0$, and the acceleration is negligible, $\abs{\ddot{\varphi}} \ll 3H\dot{\varphi}$. Under these conditions, the equations \cref{KGEOM} and \cref{Friedmann 3} reduce to
+Inflation proceeds when the kinetic energy of the scalar field is much smaller than the potential energy, $\dot{\varphi}^2 \ll V(\varphi) \implies \ddot{a} > 0$, and the acceleration is negligible, $\ddot{\varphi} \ll 3H\dot{\varphi}$. Under these conditions, the equations \cref{KGEOM} and \cref{Friedmann 3} reduce to
 \begin{equation}
     3H\dot{\varphi} + V_{,\varphi} \approx 0 \,\,\,\,;\,\,\,\, 3M_p^2H^2 \approx V(\varphi)
 \end{equation}
@@ -338,7 +326,7 @@ Using this, we can define the slow-roll parameters (dubbed as such because when 
 \end{equation}
 Therefore, we can now say that inflation occurs when the slow-roll conditions are satisfied, i.e., $\epsilon_V < 1$ and $|\eta_V|< 1$.
 
-\paragraph*{Inflationary Observables} 
+\paragraph{Inflationary Observables} 
 Quantum fluctuations of the inflaton field $\varphi$ and the resulting perturbations in the metric generate scalar (curvature) and tensor (gravitational-wave) perturbations, characterized by spectra
 \begin{equation}
     P_\mathcal{R}(k) \equiv \frac{k^3}{2\pi^2} \langle| \mathcal{R}_{\bm{k}}|^2 \rangle \,\,\,\,;\,\,\,\, P_h(k) \equiv \frac{k^3}{2\pi^2} \langle| h_{\bm{k}}|^2 \rangle
@@ -631,7 +619,7 @@ Where again we require $\tilde{\varphi} \in \left( -\sqrt{\frac{12 + k}{2}}M_p \
     \centering
     \includegraphics[width=0.5\textwidth]{../../Python/Figures/AE/inflation_plots/phase_portrait.png}
     \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$}
-    \label{Phase Space potrait1}}
+    \label{Phase Space potrait1}
 \end{figure}
 
 \subsection{Asymptotic Limits} \label{Aymptotic limits}
@@ -795,8 +783,8 @@ Optimizing the parameters such that at $N=60$, we get $n_s = 0.9649$, we get the
   }
   \label{fig:combined_potential_and_phase}
 \end{figure}
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{../../Python/results/phase_compact.png}
+\begin{figure}[h!]
+    \includegraphics[width=0.4\textwidth]{../../Python/results/phase_compact.png}
     \caption{$\dot{\tilde{\varphi}}$ vs $\tilde{\varphi}$ (Compactified)}
     \label{Optimized Compact Phase Space potrait1}
 \end{figure}
@@ -814,16 +802,12 @@ We have further established that, at least at the classical level, such models e
 
 The Python optimization code, plotting tools, and Mathematica notebooks used to verify these calculations have been made available in the GitHub Repository as supplementary material.
 
-We have also demonstrated that, at least classically, such models contain redundant parameter choices that yield the same physics. 
-
-The Python optimizer code, plotter code, and the Mathematica notebooks, which have been used to verify these calculations, have been uploaded to the GitHub Repository, which is available as supplemental material. 
-
 \paragraph*{Further Work} 
 The current analysis has been limited to the classical regime. We aim to expand this model to examine its behavior under quantum corrections and to explore the effective field theory aspect. This would involve understanding the reheating phase of the model.
 
 Our immediate objective is to identify the specific symmetries and characteristics of this model that enable the invariance of observables with respect to the energy scale set by the dilaton field $\phi_0$, and to investigate whether this characteristic persists under quantum corrections. We also aim to understand the class of extended gravity models that exhibit similar behaviour and categorize them.
 
-Current preliminary investigations hint towards the possibility that Weyl Symmetry may introduce a gauge redundancy, which we have characterized through equivalence classes of fields $B_\mu$ and $\phi$ \cite{jackiw_fake_2015, hertzberg_inflation_2015}, ther. However, further investigation is required to verify this claim.
+Current preliminary investigations hint towards the possibility that Weyl Symmetry may introduce a gauge redundancy, which we have characterized through equivalence classes of fields $B_\mu$ and $\phi$ \cite{jackiw_fake_2015, hertzberg_inflation_2015}. However, further investigation is required to verify this claim.
 
 \paragraph*{Conclusion}
 A distinct inflationary potential was formulated by positing a scale-invariant inflaton-gravity action. This formulation did not necessitate the inflaton to be massless, contrary to conformally coupled scalar gravity models, provided that a compensator scalar (dilaton) and a Weyl vector are introduced simultaneously. Consequently, this approach mitigates the critiques directed at such models, as the resultant potential does not exhibit dependence on the energy scale of scale-invariance breaking, thereby affirming its naturalness.
@@ -839,6 +823,7 @@ A distinct inflationary potential was formulated by positing a scale-invariant i
 
 \appendix
 
+%TC:ignore
 \section{A Primer on Inflaton}\label{The need for Inflation}
 
 \subsection{Horizon Problem} \label{Horizon Problem}
@@ -1010,7 +995,7 @@ Now that we have all the relevant parameters as functions of the field, we can l
 \end{align}
 \end{subequations}
 \end{widetext}
-\subsubsection{Slow Roll Inflation for noncanonical scalar field}
+\subsection{Slow Roll Inflation for noncanonical scalar field}
 The acceleration equation for a universe dominated by the inflaton field with the energy density $\rho_{\varphi}$ and pressure $p_{\varphi}$, as defined in \cref{18}, is given by the Friedmann equation \cref{Friedmann Eqn 1},
 \begin{equation}
     \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho +3p) = -\frac{8\pi G}{3} (K(\varphi){\dot{\varphi}}^2 - V(\varphi)) 
@@ -1108,6 +1093,5 @@ In \cref{Ugliest full Potential}, we have the parameters ($p_f = \{C,\lambda, 2\
 \end{subequations}
 
 This derivation assumes $4\alpha\beta > \gamma^2$ and $\beta \neq 0. $The non-injective nature of these mappings (e.g., multiple ($\alpha,\beta,\gamma$) combinations yield the same $D = \sqrt{4\alpha\beta - \gamma^2}$) reveals a redundancy in the parameters $p$ in equations, \cref{Starting Action} and \cref{Potential}, demonstrating that observables depend only on the parameters $p_f$ in the final potential \cref{Ugliest full Potential} without any loss in generality or physics. 
-
-
+%TC:endignore
 \end{document}
