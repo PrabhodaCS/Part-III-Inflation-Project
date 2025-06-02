@@ -1,9 +1,5 @@
 # Constraints on inflation from scale-invariant gravity
 
-# WB
-
-Look into lines 145-6 of the `ParamFinderH.py` file
-
 ## Abstract:
 
 ### Background and context
@@ -40,9 +36,10 @@ Please note, it may not be up to date and updates are meant to be in shorthand d
 1. The "Learning Notebook.nb" serves as an introductory testfile + playground for me to learn the commands used in the rest of the notebooks. The "Salvio into Barker variables.nb" too serves as an elementary application of these tests. These may be overlooked for other viewers.
 2. The "Finding Conf Invariant Tensor.nb" was my attempt at deriving a conformally invariant version of the Ricci Scalar. This was before I learned of the existence of the Weyl Curvature Scalar, but either way, served as an excellent testfile for me to learn and practice the xAct module.
 3. The "Finding Action.nb" is my ongoing attempt at solving the EOM for the B vector and entering that into the action to find the final form of the potential. Further work needed in this section (Is it possible to simplify further on Mathematica at all?).
-4.  The "Rubi Learning.nb" is the nb in which I calculated the field redefinitions and tried out possible different expansions for field redefinitions /potential redefinitions
 5. "Numerical Integrator.nb" is the file being used to crosscheck python's numerical integrator to get the canonical field.
-   
+
+6.  The "Rubi Learning.nb" is the nb in which I calculated the field redefinitions and tried out possible different expansions for field redefinitions /potential redefinitions. This is the one notebook that has been used consistently for different deriving different expressions and reqularly updated
+7.  The "Complete Conformal Action.nb" contains the step by step proof of the derivation of how to start with the action III.8 to III.17. This contains the entire derivation and must be run to see all the steps.
 ### Python Folder
 
 1. The figures folder contains important figures generated which get fed directly into the LaTeX figure calls.
@@ -50,3 +47,7 @@ Please note, it may not be up to date and updates are meant to be in shorthand d
 3. The files "PPotenial.py" and "PPotenial V1.5.py" are to analyse the different regimes of the extended model (plateau and hilltop), there are other scenarios which have not been uploaded too.
 4. The file "Full field as func of N.py" is an exact solver of the field $\varphi$ vs N (the efolding time). The differential equation was derived independently (more details in lab notebook) and have been numerically solved to get the relevant graph in the Figures folder.
 5. The file "Potential Solver for noncanonical action.py" plots the potential of the canonical field without making approximations in contrast to the files in 3. There are also attempts to plot the slow roll parameters here.
+---------
+Above codes are not fully relevant for the paper
+6. The "BestParamfind1.py" is the one used to generate the graphs based on optimized values of n_s.
+7. The "Horizon Calc2.py" was used to graph all the different graphs for given inputs of parameters and initial conditions
