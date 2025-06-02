@@ -1,9 +1,5 @@
 # Constraints on inflation from scale-invariant gravity
 
-# WB
-
-Look into lines 145-6 of the `ParamFinderH.py` file
-
 ## Abstract:
 
 ### Background and context
