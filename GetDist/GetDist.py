@@ -1,19 +1,50 @@
-from getdist import plots   # Prabhoda: you should install getdist via cobaya
-from getdist.mcsamples import loadMCSamples 
+from getdist import plots
+from getdist.mcsamples import loadMCSamples
 import matplotlib.pyplot as plt
 
-# Prabhoda: you don't have this but I'll give it to you.
-samples = loadMCSamples('/home/barker/Downloads/base_r/plikHM_TTTEEE_lowl_lowE_BK15_lensing/base_r_plikHM_TTTEEE_lowl_lowE_BK15_lensing')
+# ----------------------------------------------------------------
+# Point each loadMCSamples(...) at the folder where your chains actually live.
+# In your case, everything is under "...GetDist\Code\base_r\…", not "...GetDist\PlanckData\…"
+# ----------------------------------------------------------------
 
-# Grab the slices.
+# (1) “Planck only” (no BK15, no lensing) lives in:
+planck_only = loadMCSamples(
+    r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\GetDist\Code\base_r\plikHM_TTTEEE_lowl_lowE\base_r_plikHM_TTTEEE_lowl_lowE"
+)
+
+# (2) “Planck + BK15” (but no lensing) lives in:
+planck_plus_BK15 = loadMCSamples(
+    r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\GetDist\Code\base_r\plikHM_TTTEEE_lowl_lowE_BK15\base_r_plikHM_TTTEEE_lowl_lowE_BK15"
+)
+
+# (3) “Planck + lensing” lives in:
+planck_plus_lensing = loadMCSamples(
+    r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\GetDist\Code\base_r\plikHM_TTTEEE_lowl_lowE_lensing\base_r_plikHM_TTTEEE_lowl_lowE_lensing"
+)
+
+# (4) “Planck + BK15 + lensing” lives in:
+planck_BK15_lensing = loadMCSamples(
+    r"C:\Users\Asus\Documents\Cambridge\Project\Inflation Project\Git Repo\Part-III-Inflation-Project\GetDist\Code\base_r\plikHM_TTTEEE_lowl_lowE_BK15_lensing\base_r_plikHM_TTTEEE_lowl_lowE_BK15_lensing"
+)
+
+# Now you can over‐plot n_s vs r for whichever combinations you like. For example:
 plotter = plots.get_subplot_plotter()
-plotter.plot_2d(samples, 'ns', 'r', filled=True, legend_labels=['Planck 2018'])
+plotter.plot_2d(
+    [planck_only, planck_BK15_lensing],
+    "ns", "r",
+    filled=True,
+    colors=["green", ("#F7BAA6", "#E03424")]
+)
+plotter.add_legend([
+    "Planck only",
+    "Planck + lensing + BICEP/Keck"
+])
 
-# Prabhoda's fancy inflation model on top.
-plt.scatter([0.965], [0.005], marker='*', s=150, color='red', label='Sarjapur inflation')
-plt.legend()
-plt.xlabel(r'$n_s$')
-plt.ylabel(r'$r$')
+# …and if you want to mark a particular inflation model:
+plt.scatter([0.965], [0.005], marker="*", s=150, color="red")
+plt.xlabel(r"$n_s$")
+plt.ylabel(r"$r$")
+plt.gcf().set_size_inches(8, 8)
 plt.tight_layout()
-plt.gcf().set_size_inches(10, 8)
-plt.savefig('ns_r_plot.png', dpi=300)
+plt.savefig("ns_r_plot.pdf", dpi=300)
+plt.show()
