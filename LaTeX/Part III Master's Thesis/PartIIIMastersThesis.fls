@@ -470,6 +470,7 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/stix/stix-mathsf.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/stix/stix-mathsfit.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/stix/stix-mathtt.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/stix/t1-stixgeneral-bold.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc
 INPUT /usr/share/texmf-dist/fonts/tfm/public/stix/t1-stixgeneral-bold.tfm

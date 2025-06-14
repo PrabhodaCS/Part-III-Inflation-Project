@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex PartIIIMastersThesis"] 1748812792.93174 "PartIIIMastersThesis.aux" "PartIIIMastersThesis.bbl" "PartIIIMastersThesis" 1748813459.95389 2
+["bibtex PartIIIMastersThesis"] 1748813648.51672 "PartIIIMastersThesis.aux" "PartIIIMastersThesis.bbl" "PartIIIMastersThesis" 1748813655.49568 2
   "./Bibliography.bib" 1748812792.7981 77714 239ac0deab9d360e5bbb7030760672e4 ""
-  "./PartIIIMastersThesisNotes.bib" 1748813459.56914 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+  "./PartIIIMastersThesisNotes.bib" 1748813655.09515 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "/usr/share/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1742685315 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "PartIIIMastersThesis.aux" 1748813459.56714 20805 3d47af4a50d153230e08bb75abe88b05 "pdflatex"
+  "PartIIIMastersThesis.aux" 1748813655.09315 16593 ce07d2e966a3a58f932b33223741f4e5 "pdflatex"
   (generated)
   "PartIIIMastersThesis.bbl"
   "PartIIIMastersThesis.blg"
   (rewritten before read)
-["pdflatex"] 1748813457.05963 "PartIIIMastersThesis.tex" "PartIIIMastersThesis.pdf" "PartIIIMastersThesis" 1748813459.95425 2
+["pdflatex"] 1748813652.62344 "PartIIIMastersThesis.tex" "PartIIIMastersThesis.pdf" "PartIIIMastersThesis" 1748813655.49596 2
   "../../Python/Figures/AE/inflation_plots/phase_portrait.png" 1748456711.51282 546601 bd9525a2e4ddb4db8b8af43372c72633 ""
   "../../Python/Figures/AE/inflation_plots/potential.png" 1748456711.51682 146323 5098c5b58d595163933b98cae866b69c ""
   "../../Python/results/phase_compact.png" 1748456711.53982 422676 c91b9e2a26d7fbd467816ea2f3403746 ""
@@ -240,11 +240,11 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1743091164 5328520 69b1198668c700b0edbba6d5a8226fe1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1743091106 2008703 63e8101517efcbbbe5a3e2876449ca01 ""
-  "PartIIIMastersThesis.aux" 1748813459.56714 20805 3d47af4a50d153230e08bb75abe88b05 "pdflatex"
-  "PartIIIMastersThesis.bbl" 1748812793.0151 34940 5df077f8a5064bc1961ddc49dad6fc4a "bibtex PartIIIMastersThesis"
-  "PartIIIMastersThesis.out" 1748813459.56914 4008 849c5996d56bdf7c079fd20967d0fb2a "pdflatex"
-  "PartIIIMastersThesis.tex" 1748813455.37414 99223 2903504a1991104ffc0fb236fedaf499 ""
-  "PartIIIMastersThesis.toc" 1748813459.56914 1839 0ab54110763072400ac40f84f7d9669e "pdflatex"
+  "PartIIIMastersThesis.aux" 1748813655.09315 16593 ce07d2e966a3a58f932b33223741f4e5 "pdflatex"
+  "PartIIIMastersThesis.bbl" 1748813648.59615 0 d41d8cd98f00b204e9800998ecf8427e "bibtex PartIIIMastersThesis"
+  "PartIIIMastersThesis.out" 1748813655.09515 3903 8eb28287c942d43f92dd1ea164847e35 "pdflatex"
+  "PartIIIMastersThesis.tex" 1748813652.22615 99224 330582a577742cb78b6a0ff481526123 ""
+  "PartIIIMastersThesis.toc" 1748813655.09515 1772 a3be5b5ec2f5aa944d0812165570335e "pdflatex"
   "PartIIIProjectTemplateMacros.tex" 1743771859.06917 1110 56d7f9d352ffe909ec168fbba2771e48 ""
   (generated)
   "PartIIIMastersThesis.aux"
